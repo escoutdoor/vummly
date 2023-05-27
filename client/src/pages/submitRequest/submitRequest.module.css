@@ -1,0 +1,235 @@
+.submitReq {
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'europa', sans-serif;
+    padding: 20px 0 60px 0 ;
+}
+
+.submitReqWrapper {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+.submitTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 45px;
+}
+
+.submitWay {
+    display: flex;
+    gap: 5px;
+    font-size: 13px;
+    line-height: 19.5px;
+    font-weight: 300;
+    color: #707070;
+}
+
+.submitLink {
+    display: flex;
+    color: #3a9691;
+    font-size: 13px;
+    line-height: 19.5px;
+    font-weight: 300;
+}
+
+.submitLink::after {
+    content: attr(data-end);
+    margin-left: 5px;
+    user-select: none;
+    color: #707070;
+    font-size: 13px;
+    line-height: 19.5px;
+    font-weight: 300;
+}
+
+.submitSearch {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.searchIcon {
+    top: 18%;
+    position: absolute;
+    left: 10px;
+}
+
+/* body */
+
+.submitBody {
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 21.44px;
+}
+
+.submitTitle {
+    color: #232323;
+    font-size: 32px;
+    line-height: 39.36px;
+    margin-bottom: 21.44px;
+}
+
+.submitInputs {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* inputs  */
+
+.subInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.subInput__title {
+    color: #4a4a4a;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.subInput__title::after {
+    content: attr(data-end);
+    font-size: 13px;
+    color: #7d7d7d;
+    font-weight: 400;
+    line-height: 19.5px;
+    margin-left: 4px;
+}
+
+.subInput__input {
+    font-family: 'europa', sans-serif;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #666;
+    width: 100%;
+    font-size: 14px;
+    line-height: 16.1px;
+    font-weight: 300;
+    cursor: pointer;
+    outline: none;
+    padding: 10px;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.subInput__input:focus {
+    border: 1px solid #3a9691;
+    cursor:auto;
+}
+
+.subInput__underDesc {
+    margin: 5px 0px 0px;
+    color: #7d7d7d;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
+.subInput__textArea {
+    border: 1px solid #ddd;
+    font-family: 'europa', sans-serif;
+    border-radius: 4px;
+    padding: 10px;
+    min-width: 100%;
+    max-width: 100%;
+    outline: none;
+    min-height: 120px;
+    cursor: pointer;
+    color: #666;
+    font-size: 14px;
+    line-height: 16.1px;
+    font-weight: 300;
+    transition: border .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.subInput__textArea:focus {
+    border: 1px solid #3a9691;
+    cursor: default;
+}
+
+.subInput__select {
+    height: 40px;
+    color: #666;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.select__single-value {
+    color: #666 !important;
+    font-size: 14px;
+}
+
+
+/* validation */
+
+
+.validationBlock {
+    padding: 5px 5px 5px 5px;
+    background-image: url('../../../public/assets/images/icons/support/warning.svg');
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: 5px;
+    border-radius: 4px;
+    line-height: 14px;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #e35b66;
+    color: #cc3340;
+    background-color: #fff0f1;
+    margin-top: 5px;
+}
+
+.submitInputs__attachmentBox {
+    position: relative;
+    cursor: pointer;
+    margin-top: 5px;
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.submitInputs__attachmentClick {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 16.1px;
+    color: #3a9691;
+}
+
+.submitInputs__attachmentBox:hover .submitInputs__attachmentClick {
+    text-decoration: underline;
+} 
+
+.submitInputs__attachmentInput {
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    top: 0px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* butt */
+
+.submitButt {
+    cursor: pointer;
+    width: 100%;
+    color: #fff;
+    padding: 10px;
+    background-color: #3a9691;
+    border-radius: 4px;
+    transition: all .2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+
+.submitButt:hover {
+    background-color: #1e4c4a;
+}

@@ -1,0 +1,84 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #232323;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+input, button {
+    background: transparent;
+    border: none;
+    outline: none;
+}
+
+.wrap {
+    width: 1180px;
+    margin: 0 auto;
+}
+
+@font-face {
+    font-family: 'europa';
+    src: url('./../fonts/europa/Europa-Bold.ttf');
+    font-size: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'europa';
+    src: url('./../fonts/europa/Europa-Regular.ttf');
+    font-size: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'europa';
+    src: url('./../fonts/europa/Europa-Light.woff2.ttf');
+    font-size: normal;
+    font-weight: 100;
+}
+
+.supportWrap {
+    width: 1160px;
+    margin: 0 auto;
+}
+
+
+/* loader Skew */
+
+.loaderSkew {
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.loaderRecipe {
+    top: 0;
+    bottom: 0;
+    width: 530px;
+    height: 530px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.select__single-value {
+    color: #666 !important;
+    font-size: 14px;
+}
+
+.select__control:focus  {
+    outline-color: #3a9691;
+}

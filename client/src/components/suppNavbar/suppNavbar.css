@@ -1,0 +1,13 @@
+.suppNavbar {
+    display: flex;
+    padding: 20px 0px 10px;
+    align-self: center;
+    width: 100%;
+    background: #fff;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.suppNavbar img {
+    width: 99px;
+    height: 37px;
+}

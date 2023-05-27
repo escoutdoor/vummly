@@ -1,0 +1,21 @@
+.suppFooter {
+    display: flex;
+    width: 100%;
+    background-color: #fff;
+    font-family: 'europa', sans-serif;
+    padding: 30px 0px;
+    border-top: 1px solid #e3e3e3;
+}
+
+
+.help__link {
+    color: #7d7d7d;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 22.5px;
+    transition: all .2s cubic-bezier(0.215, 0.610, 0.355, 1) .2s;
+}
+
+.help__link:hover {
+    text-decoration: underline;
+}
