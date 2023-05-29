@@ -18,10 +18,6 @@ const MyFeed = () => {
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     }, [])
 
-    useEffect(() => {
-        console.log(active)
-    }, [active])
-
     const sum = (items) => {
         return items.reduce(function(a, b){
             return a + b['stars'];

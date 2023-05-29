@@ -30,15 +30,37 @@ router.get(`/all`, async (req, res) => {
 })
 
 
-router.get(`/all/:withArray`, async (req, res) => {
+router.get(`/all/:withArray/:without`, async (req, res) => {
     try {
         const params = await req.params.withArray.replace("_", " ").split("-")
-        const recipes = await Recipe.find({"ingredients.us.ingredient": {$in: params}})
+        const paramsWo = await req.params.without.replace("_", " ").split("-")
+        const recipes = await Recipe.find({$and: [{"ingredients.us.ingredient": {$all: params}}, {"ingredients.us.ingredient": {$nin : paramsWo}}]})
         res.status(200).json(recipes)
     } catch (err) { 
         res.status(500).json(err)
     }
 })
+
+router.get(`/with/:withArray`, async (req, res) => {
+    try {
+        const params = await req.params.withArray.replace("_", " ").split("-")
+        const recipes = await Recipe.find({"ingredients.us.ingredient": {$all: params}})
+        res.status(200).json(recipes)
+    } catch (err) { 
+        res.status(500).json(err)
+    }
+})
+
+router.get(`/without/:without`, async (req, res) => {
+    try {
+        const params = await req.params.without.replace("_", " ").split("-")
+        const recipes = await Recipe.find({"ingredients.us.ingredient": {$nin: params}})
+        res.status(200).json(recipes)
+    } catch (err) { 
+        res.status(500).json(err)
+    }
+})
+
 
 // related
 

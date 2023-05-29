@@ -6,11 +6,13 @@ import axios from 'axios';
 import RecipeItem from '../../components/recipeItem/RecipeItem'
 import RecipeSkeleton from '../../components/recipeSkeleton/RecipeSkeleton';
 import { navbar } from '../../helpers/searchRecipe/navbar';
+import Inputs from '../../components/filterSearch/inputs/Inputs'
 
 
 const SearchRecipe = () => {
     const location = useLocation()
     const query = location.state?.query
+    const [activeInput, setActiveInput] = useState(false)
     const [recipes, setRecipes] = useState([])
     const [searchValue, setSearchValue] = useState(query ? query : '')
     const [loading, setLoading] = useState(false)
@@ -21,64 +23,44 @@ const SearchRecipe = () => {
     const [activeFilter, setActiveFilter] = useState(false)
     const [proRecipesOnly, setProRecipesOnly] = useState(false)
     const [guidedRecipesOnly, setGuidedRecipesOnly] = useState(false)
-    const [withIngredients, setWithIngredients] = useState("")
-    const [woIngredients, setWoIngredients] = useState([])
     const [filterPage, setFilterPage] = useState("ingredients")
+    const [allowed, setAllowed] = useState("")
+    const [banned, setBanned] = useState("")
     const [ingredients, setIngredients] = useState([])
-    const [searchWithIngredientValue, setSearchWithIngredientValue] = useState("")
-    const [withIngredientDrop, setWithIngredientDrop] = useState([])
-    const [activeWithIngredient, setActiveWithIngredient] = useState(false)
-
-    const sum = (items) => {
-        return items.reduce(function(a, b){
-            return a + b['stars'];
-        }, 0);
-    }
 
     useEffect(() => {
-        setWithIngredientDrop(ingredients.filter(ingredient => ingredient.toLowerCase().includes(searchWithIngredientValue.toLowerCase())).filter((value, index, array) => array.indexOf(value) === index).sort((a, b) => 0.5 - Math.random()))
-    }, [searchWithIngredientValue])
+        setIngredients(recipes.flatMap(r => r.ingredients.us.map(i => i.ingredient)).filter((value, index, array) => array.indexOf(value) === index).sort((a, b) => 0.5 - Math.random()))
+    }, [recipes])
 
-    useEffect(() => {
-        const prev = JSON.parse(localStorage.getItem('search-history')) || []
-        const act = prev ? JSON.stringify([query, ...prev.slice(0, 5)].filter((value, index, array) => array.indexOf(value) === index)) : []
-        query && query !== "" && localStorage.setItem('search-history', act)
-    }, [])
-
-
+    // all
     useEffect(() => {
         const fetch = async () => {
-            await axios.get(withIngredients ? `/recipe/all/${withIngredients}` : '/recipe/all').then(info => {
+            await axios.get(allowed && banned ? `/recipe/all/${allowed}/${banned}` : allowed ? `/recipe/with/${allowed}` : banned ? `/recipe/without/${banned}` : `/recipe/all`).then(info => {
                 setRecipes(info.data)
             })
             setLoading(true)
         }
         fetch()
-    }, [withIngredients])
-
-    useEffect(() => {
-        setIngredients(recipes.flatMap((r) => r.ingredients.us.map((ext) => ext.ingredient)))
-    }, [recipes])
-
-    const handleIngredients = (e) => {
-        const splitted = e.split(" ")
-        const ts = splitted.join(" ").replace(" ", "_")
-        !withIngredients.replace("_", " ").split("-").includes(e) && setWithIngredients(`${withIngredients && `${withIngredients}-`}${ts && ts}`)
+    }, [allowed, banned])
+    // sum for stars
+    const sum = (items) => {
+        return items.reduce(function(a, b){
+            return a + b['stars'];
+        }, 0);
     }
-
+    // title and scroll
     useEffect(() => {
         document.title = "Recipes | Vummly"
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     }, [])
-
+    // search recipes
     useEffect(() => {
         recipes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.tag.toLowerCase().includes(searchValue.toLowerCase())) && recipe || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))))
     }, [recipes, searchValue])
-
+    // state settings
     window.history.replaceState({}, searchValue)
     const PF = 'http://localhost:3000/assets/'
-    const [activeInput, setActiveInput] = useState(false)
-
+    // filter by menu
     useEffect(() => {
         const filter = () => {
             let filteredRecipes = [...tagsAndTitle];
@@ -91,12 +73,19 @@ const SearchRecipe = () => {
             }
             setSorted([...filteredRecipes]);
         };
-
         filter()
     }, [sortSettings, tagsAndTitle])
+    // search history
+    useEffect(() => {
+        const prev = JSON.parse(localStorage.getItem('search-history')) || []
+        const act = prev ? JSON.stringify([query, ...prev.slice(0, 5)].filter((value, index, array) => array.indexOf(value) === index)) : []
+        query && query !== "" && localStorage.setItem('search-history', act)
+    }, [])
+
+    console.log(banned.replace("_", " ").split("-"))
 
     return (
-        <div onClick={() => {setActiveInput(false); setOpenSort(false); setActiveWithIngredient(false)}}>
+        <div onClick={() => {setActiveInput(false); setOpenSort(false);}}>
             <Sidebar/>
             <div className={s.searchRecipe}>
                 <div className="supportWrap">
@@ -127,9 +116,10 @@ const SearchRecipe = () => {
                                             <img src={`${PF}images/icons/recipes/lockFilter.svg`} alt="" />
                                             <h1 className={s.searchRecipe__filterButt__title}>Filter</h1>  
                                         </div>
-                                        <button className={s.searchRecipe__filterResetButt} onClick={() => setWithIngredients("")}>Reset</button>
+                                        <button className={s.searchRecipe__filterResetButt} onClick={() => {}}>Reset</button>
                                         <ul className={s.searchRecipe__filterOptions}>
-                                            <li className={s.searchRecipe__filterOptions__item}>Vegetarian (no meat, no eggs)</li>
+                                            
+                                            {/* <li className={s.searchRecipe__filterOptions__item}>With {b}</li> */}
                                         </ul>
                                     </div>
                                     <div onClick={() => setOpenSort(!openSort)} className={s.searchRecipe__filterRight}>
@@ -171,39 +161,8 @@ const SearchRecipe = () => {
                                             <li className={filterPage === item.title ? `${s.advancedFilter__navbarItem} ${s.activePage}` : s.advancedFilter__navbarItem} onClick={() => setFilterPage(item.title)} key={item.id}>{item.title}</li>
                                         ))}
                                     </ul>   
-                                    <div className={s.advancedFilter__main}>
-                                        <div className={s.advancedFilter__inputs}>
-                                            <div className={s.advancedFilter__inputsItem}>
-                                                <div className={s.advancedFilter__inputsSearch}>
-                                                    <div className={s.advancedFilter__inputsSearch__field}>
-                                                        <img src={`${PF}images/icons/recipes/search.svg`} alt="" />
-                                                        <input onClick={() => setActiveWithIngredient(true)} onChange={(e) => setSearchWithIngredientValue(e.target.value)} placeholder='With Ingredients' className={s.advancedFilter__input} type="text" />
-                                                    </div>  
-                                                    <ul className={activeWithIngredient ? s.advancedFilter__inputsSearch__drop : `${s.advancedFilter__inputsSearch__drop} ${s.hidden}`}>
-                                                        {withIngredientDrop.slice(0, 5).map((ingredient, index) => (
-                                                            <li key={index}>{ingredient}</li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                                <div className={s.advancedFilter__ingredientsList}>
-
-                                                </div>
-                                            </div>
-                                            <div className={s.advancedFilter__inputsItem}>
-                                                <div className={s.advancedFilter__inputsSearch}>
-                                                    <div className={s.advancedFilter__inputsSearch__field}>
-                                                        <img src={`${PF}images/icons/recipes/search.svg`} alt="" />
-                                                        <input placeholder='Without Ingredients' className={s.advancedFilter__input} type="text" />
-                                                    </div>
-                                                    <ul className={s.advancedFilter__inputsSearch__drop}>
-
-                                                    </ul>
-                                                </div>
-                                                <div className={s.advancedFilter__ingredientsList}>
-
-                                                </div>
-                                            </div>
-                                        </div>    
+                                    <div className={s.advancedFilter__group}>
+                                        {filterPage === 'ingredients' ? <Inputs setWith={setAllowed} setWithout={setBanned} ingredients={ingredients}/> : null}
                                     </div>
                                 </div>
                             </div>
