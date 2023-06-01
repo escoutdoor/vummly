@@ -1,0 +1,10 @@
+.resource {
+    min-height: 100vh;
+    width: calc(100% - 216px);
+    float: right;
+    font-family: 'europa';
+}
+
+.banner {
+    padding: 87px 20px 24px 0;
+}

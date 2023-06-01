@@ -61,6 +61,46 @@ router.get(`/without/:without`, async (req, res) => {
     }
 })
 
+router.get(`/nutrition/:nutrition`, async (req, res) => {
+    try {
+        const recipes = await Recipe.find({"tags.tag" : req.params.nutrition})
+        res.status(200).json(recipes)
+    } catch (err) { 
+        res.status(500).json(err)
+    }
+})
+
+router.get(`/allowedAndNutrition/:withArray/:nutrition`, async (req, res) => {
+    try {
+        const params = await req.params.withArray.replace("_", " ").split("-")
+        const recipes = await Recipe.find({$and : [{"tags.tag" : req.params.nutrition}, {"ingredients.us.ingredient": {$all : params}}]})
+        res.status(200).json(recipes)
+    } catch (err) { 
+        res.status(500).json(err)
+    }
+})
+
+
+router.get(`/bannedAndNutrition/:without/:nutrition`, async (req, res) => {
+    try {
+        const params = await req.params.without.replace("_", " ").split("-")
+        const recipes = await Recipe.find({$and : [{"tags.tag" : req.params.nutrition}, {"ingredients.us.ingredient": {$nin : params}}]})
+        res.status(200).json(recipes)
+    } catch (err) { 
+        res.status(500).json(err)
+    }
+})
+
+router.get(`/all/:withArray/:without/:nutrition`, async (req, res) => {
+    try {
+        const params = await req.params.withArray.replace("_", " ").split("-")
+        const paramsWo = await req.params.without.replace("_", " ").split("-")
+        const recipes = await Recipe.find({$and: [{"ingredients.us.ingredient": {$all: params}}, {"ingredients.us.ingredient": {$nin : paramsWo}}, {"tags.tag" : req.params.nutrition}]})
+        res.status(200).json(recipes)
+    } catch (err) { 
+        res.status(500).json(err)
+    }
+})
 
 // related
 
@@ -84,6 +124,17 @@ router.get('/moreFrom/:resource', async (req, res) => {
     }
 })
 
+
+// page
+
+router.get('/page/:page', async (req, res) => {
+    try {
+        const page = await Recipe.find({"resource.link" : req.params.page})
+        res.status(200).json(page)
+    } catch (err) { 
+        res.status(500).json(err)
+    }
+})
 
 
 module.exports = router

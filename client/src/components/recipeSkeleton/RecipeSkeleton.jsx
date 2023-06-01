@@ -8,7 +8,7 @@ const RecipeSkeleton = ({recipes}) => {
             <div className={s.recipe} key={i}>
                 <Skeleton width={176} height={176}/>
                 <div className={s.recipeText}>
-                    <Skeleton height={40}/>
+                    <Skeleton height={20}/>
                     <Skeleton height={41}/>
                 </div>
             </div>

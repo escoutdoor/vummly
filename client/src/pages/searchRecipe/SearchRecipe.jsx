@@ -7,6 +7,9 @@ import RecipeItem from '../../components/recipeItem/RecipeItem'
 import RecipeSkeleton from '../../components/recipeSkeleton/RecipeSkeleton';
 import { navbar } from '../../helpers/searchRecipe/navbar';
 import Inputs from '../../components/filterSearch/inputs/Inputs'
+import Buttons from '../../components/filterSearch/buttons/Buttons';
+import TitleAndDesc from '../../components/filterSearch/titles/TitleAndDesc';
+import { nutrition as nutr, nutrition } from '../../helpers/searchRecipe/filter';
 
 
 const SearchRecipe = () => {
@@ -27,6 +30,9 @@ const SearchRecipe = () => {
     const [allowed, setAllowed] = useState("")
     const [banned, setBanned] = useState("")
     const [ingredients, setIngredients] = useState([])
+    const [minutes, setMinutes] = useState()
+    const [reset, setReset] = useState(false)
+    const [nutrition, setNutrition] = useState("")
 
     useEffect(() => {
         setIngredients(recipes.flatMap(r => r.ingredients.us.map(i => i.ingredient)).filter((value, index, array) => array.indexOf(value) === index).sort((a, b) => 0.5 - Math.random()))
@@ -35,13 +41,22 @@ const SearchRecipe = () => {
     // all
     useEffect(() => {
         const fetch = async () => {
-            await axios.get(allowed && banned ? `/recipe/all/${allowed}/${banned}` : allowed ? `/recipe/with/${allowed}` : banned ? `/recipe/without/${banned}` : `/recipe/all`).then(info => {
+            await axios.get(
+                allowed && banned ? `/recipe/all/${allowed}/${banned}` : 
+                allowed ? `/recipe/with/${allowed}` : 
+                banned ? `/recipe/without/${banned}` : 
+                nutrition ? `/recipe/nutrition/${nutrition}` :
+                nutrition && allowed ? `/recipe/allowedAndNutrition/${allowed}/${nutrition}` :
+                nutrition && banned ? `/recipe/bannedAndNutrition/${banned}/${nutrition}` :
+                nutrition && allowed && banned ? `/recipe/all/${allowed}/${banned}/${nutrition}` :
+                `/recipe/all`
+                    ).then(info => {
                 setRecipes(info.data)
             })
             setLoading(true)
         }
         fetch()
-    }, [allowed, banned])
+    }, [allowed, banned, nutrition])
     // sum for stars
     const sum = (items) => {
         return items.reduce(function(a, b){
@@ -53,10 +68,13 @@ const SearchRecipe = () => {
         document.title = "Recipes | Vummly"
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     }, [])
+
     // search recipes
     useEffect(() => {
-        recipes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.tag.toLowerCase().includes(searchValue.toLowerCase())) && recipe || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))))
-    }, [recipes, searchValue])
+        recipes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.tag.toLowerCase().includes(searchValue.toLowerCase())) || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))))
+    }, [recipes, searchValue, nutrition])
+
+
     // state settings
     window.history.replaceState({}, searchValue)
     const PF = 'http://localhost:3000/assets/'
@@ -82,7 +100,13 @@ const SearchRecipe = () => {
         query && query !== "" && localStorage.setItem('search-history', act)
     }, [])
 
-    console.log(banned.replace("_", " ").split("-"))
+    useEffect(() => {
+        minutes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.tag.toLowerCase().includes(searchValue.toLowerCase())) && recipe || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))).filter(t => t.time <= minutes))
+    }, [minutes])
+
+    useEffect(() => {
+
+    }, [nutrition])
 
     return (
         <div onClick={() => {setActiveInput(false); setOpenSort(false);}}>
@@ -116,7 +140,7 @@ const SearchRecipe = () => {
                                             <img src={`${PF}images/icons/recipes/lockFilter.svg`} alt="" />
                                             <h1 className={s.searchRecipe__filterButt__title}>Filter</h1>  
                                         </div>
-                                        <button className={s.searchRecipe__filterResetButt} onClick={() => {}}>Reset</button>
+                                        <button className={s.searchRecipe__filterResetButt} onClick={() => setReset(true)}>Reset</button>
                                         <ul className={s.searchRecipe__filterOptions}>
                                             
                                             {/* <li className={s.searchRecipe__filterOptions__item}>With {b}</li> */}
@@ -162,7 +186,9 @@ const SearchRecipe = () => {
                                         ))}
                                     </ul>   
                                     <div className={s.advancedFilter__group}>
-                                        {filterPage === 'ingredients' ? <Inputs setWith={setAllowed} setWithout={setBanned} ingredients={ingredients}/> : null}
+                                        <Inputs visibility={filterPage === 'ingredients' ? true : false} clear={reset} setClear={setReset} setWith={setAllowed} setWithout={setBanned} ingredients={ingredients}/> 
+                                        <Buttons visibility={filterPage === 'time' ? true : false} clear={reset} setClear={setReset} setTime={setMinutes} minutes={[5, 10, 15, 20, 30, 45, 60, 120]} bold={false} title={'Cooking time, less than:'}/>
+                                        <TitleAndDesc visibility={filterPage === 'nutrition' ? true : false} setActive={setNutrition} active={nutrition} items={nutr}/>
                                     </div>
                                 </div>
                             </div>

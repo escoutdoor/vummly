@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
-import { MyFeed, Overview, Activate, Support, Category, Article, SearchSupport, SubmitRequest, Recipe } from './pages/pages'
+import { MyFeed, Overview, Activate, Support, Category, Article, SearchSupport, SubmitRequest, Recipe, SearchRecipe, Resource } from './pages/pages'
 import SupportLayout from "./layouts/support/SupportLayout";
-import SearchRecipe from "./pages/searchRecipe/SearchRecipe";
 
 function App() {
     return (
@@ -30,6 +29,7 @@ function App() {
                     <Route path={'recipe/:recipe'} element={<Recipe />} />
                     <Route path={'recipes'} element={<SearchRecipe />} />
                     <Route path={''} element={<MyFeed/>} />
+                    <Route path={'page/:id'} element={<Resource />}/>
                 </Route>
                 
             </Routes>
