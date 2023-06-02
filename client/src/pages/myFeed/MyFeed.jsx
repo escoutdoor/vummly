@@ -38,7 +38,7 @@ const MyFeed = () => {
             <Sidebar/>
             <div className={styles.myFeed} >
                 <SearchRecipes setActive={setActive} active={active} />
-                <div className="supportWrap">
+                <div className="wrap1160">
                     <div className={styles.myFeed__content}  >
                         <h1 className={styles.myFeed__title}>Just For You</h1>
                         <div className={styles.myFeed__rec}>

@@ -33,6 +33,7 @@ const SearchRecipe = () => {
     const [minutes, setMinutes] = useState()
     const [reset, setReset] = useState(false)
     const [nutrition, setNutrition] = useState("")
+    const [noResults, setNoResults] = useState(false)
 
     useEffect(() => {
         setIngredients(recipes.flatMap(r => r.ingredients.us.map(i => i.ingredient)).filter((value, index, array) => array.indexOf(value) === index).sort((a, b) => 0.5 - Math.random()))
@@ -42,12 +43,12 @@ const SearchRecipe = () => {
     useEffect(() => {
         const fetch = async () => {
             await axios.get(
-                allowed && banned ? `/recipe/all/${allowed}/${banned}` : 
-                allowed ? `/recipe/with/${allowed}` : 
-                banned ? `/recipe/without/${banned}` : 
-                nutrition ? `/recipe/nutrition/${nutrition}` :
-                nutrition && allowed ? `/recipe/allowedAndNutrition/${allowed}/${nutrition}` :
-                nutrition && banned ? `/recipe/bannedAndNutrition/${banned}/${nutrition}` :
+                allowed && banned && !nutrition? `/recipe/all/${allowed}/${banned}` : 
+                allowed && !nutrition && !banned ? `/recipe/with/${allowed}` : 
+                banned && !nutrition ? `/recipe/without/${banned}` : 
+                nutrition && !allowed && !banned ? `/recipe/nutrition/${nutrition}` :
+                nutrition && allowed && !banned ? `/recipe/allowedAndNutrition/${allowed}/${nutrition}` :
+                nutrition && banned && !allowed ? `/recipe/bannedAndNutrition/${banned}/${nutrition}` :
                 nutrition && allowed && banned ? `/recipe/all/${allowed}/${banned}/${nutrition}` :
                 `/recipe/all`
                     ).then(info => {
@@ -63,6 +64,13 @@ const SearchRecipe = () => {
             return a + b['stars'];
         }, 0);
     }
+
+    useEffect(() => {
+        ( nutrition || allowed || banned) && recipes.length === 0 ? setNoResults(true) : setNoResults(false)
+    }, [nutrition, allowed, banned, recipes])
+
+    console.log(noResults)
+
     // title and scroll
     useEffect(() => {
         document.title = "Recipes | Vummly"
@@ -73,7 +81,6 @@ const SearchRecipe = () => {
     useEffect(() => {
         recipes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.tag.toLowerCase().includes(searchValue.toLowerCase())) || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))))
     }, [recipes, searchValue, nutrition])
-
 
     // state settings
     window.history.replaceState({}, searchValue)
@@ -104,15 +111,11 @@ const SearchRecipe = () => {
         minutes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.tag.toLowerCase().includes(searchValue.toLowerCase())) && recipe || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))).filter(t => t.time <= minutes))
     }, [minutes])
 
-    useEffect(() => {
-
-    }, [nutrition])
-
     return (
         <div onClick={() => {setActiveInput(false); setOpenSort(false);}}>
             <Sidebar/>
             <div className={s.searchRecipe}>
-                <div className="supportWrap">
+                <div className="wrap1160">
                     <div className={s.searchRecipe__content}>
                         <div className={s.searchRecipe__Top} onClick={(e) => e.stopPropagation()}>
                             <div className={s.searchRecipe__inputBox}>

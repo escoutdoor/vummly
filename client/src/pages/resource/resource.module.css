@@ -2,9 +2,52 @@
     min-height: 100vh;
     width: calc(100% - 216px);
     float: right;
-    font-family: 'europa';
+    font-family: 'europa', sans-serif;
 }
 
 .banner {
     padding: 87px 20px 24px 0;
+}
+
+.info {
+    display: flex;
+    gap: 42px;
+    align-items: center;
+    max-width: 727px;
+}
+
+.icon {
+    max-width: 148px;
+    max-height: 148px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    color: #232323;
+    font-size: 34px;
+    line-height: 51px;
+}
+
+.description {
+    font-size: 16px;
+    color: #707070;
+    line-height: 25px;
+    margin-bottom: 15px;
+}
+
+.socials {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.recipes {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 30px 0px;
+    gap: 30px 20.8px;
 }

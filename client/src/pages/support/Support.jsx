@@ -82,7 +82,7 @@ const Support = () => {
                             <input onKeyDown={handleEnter} onChange={(e) => searchHandle(e.target.value)} type="search" placeholder='Search' />
                         </div>
                     </div>
-                    <div className="supportWrap">
+                    <div className="wrap1160">
                         <div className="support__navigation">
                             {support.map((sup) => (
                                 <Link key={sup.id} to={sup.link}>

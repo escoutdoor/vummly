@@ -75,7 +75,7 @@ const Article = () => {
 
     return (
         <div className='article'>
-            <div className="supportWrap">
+            <div className="wrap1160">
                 {loading ?
                 <div className="article__content">
                     {/* <div className="articleTop">

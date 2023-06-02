@@ -20,7 +20,7 @@ const RecipeItem = ({recipe, more, loading, setLoading, rating}) => {
     const { ref, inView} = useInView({
         threshold: 0.3,
         triggerOnce: true, 
-        delay: 500
+        delay: 500,
     });
 
     return (

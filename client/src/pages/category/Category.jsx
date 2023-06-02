@@ -33,7 +33,7 @@ const Category = () => {
 
     return (
         <div className='category'>
-            <div className="supportWrap">
+            <div className="wrap1160">
                 {loading ? 
                 <div className="category__content" key={category._id}>
                         {/* <div className="category__wayNsearch">
