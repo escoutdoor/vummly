@@ -10,6 +10,7 @@ import Inputs from '../../components/filterSearch/inputs/Inputs'
 import Buttons from '../../components/filterSearch/buttons/Buttons';
 import TitleAndDesc from '../../components/filterSearch/titles/TitleAndDesc';
 import { nutrition as nutr, nutrition } from '../../helpers/searchRecipe/filter';
+import NoResults from '../../components/noResults/NoResults';
 
 
 const SearchRecipe = () => {
@@ -164,7 +165,6 @@ const SearchRecipe = () => {
                                 </div>
                             </div>
                         </div>
-
                         <div className={activeFilter ? s.advancedFilter : `${s.advancedFilter} ${s.hidden}`}>
                             <div className={s.advancedFilter__content}>
                                 <div className={activeFilter ? s.advancedFilter__top : `${s.advancedFilter__top} ${s.hidden}`}>
@@ -196,29 +196,9 @@ const SearchRecipe = () => {
                                 </div>
                             </div>
                         </div>
-
                         <div className={s.recipesMain}>
                             {tagsAndTitle.length !== 0 && <h1 className={s.suggestedRecipes__title}>{tagsAndTitle.length} suggested recipes</h1>}
-                            {(tagsAndTitle.length === 0 && loading) ? <div className={tagsAndTitle.length !== 0 ? `${s.no__result} ${s.hidden}` : s.no__result}>
-                                <div className={s.no__resultContent}>
-                                    <h1 className={s.no__resultTitle}>We searched all over but didn't find a recipe for '{searchValue}'</h1>
-                                    <p className={s.no__resultSubTitle}>Try some of our most popular recipes below or search again with these tips:</p>
-                                    <div className={s.no__resultProblems}>
-                                        <div className={s.no__resultProblems__item}>
-                                            <img className={s.no__resultImg} src={`${PF}images/icons/recipes/check_spelling.svg`} alt="checkSpelling" />
-                                            <p className={s.no__resultSubTitle}>Check Spelling</p>
-                                        </div>
-                                        <div className={s.no__resultProblems__item}>
-                                            <img  className={s.no__resultImg} src={`${PF}images/icons/recipes/different_keywords.svg`} alt="diffKeywords" />
-                                            <p className={s.no__resultSubTitle}>Different Keywords</p>
-                                        </div>
-                                        <div className={s.no__resultProblems__item}>
-                                            <img className={s.no__resultImg} src={`${PF}images/icons/recipes/simplify_search.svg`} alt="simplifySearch" />
-                                            <p className={s.no__resultSubTitle}>Simplify Search</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> : null}
+                            {(tagsAndTitle.length === 0 && loading) ? <NoResults length={tagsAndTitle.length} searchVal={searchValue}/> : null}
                             {<div className={s.recipeList}>
                                 {!loading && <RecipeSkeleton recipes={100}/>}
                                 {sorted.map((r) => (

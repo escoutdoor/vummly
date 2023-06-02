@@ -273,61 +273,6 @@
 }
 
 
-/* no result */
-
-.no__result  {
-    width: 100%;
-    padding: 4em 0 4.5em;
-    text-align: center;
-    background-color: #e3e3e3;
-    color: #4a4a4a;
-    visibility: visible;
-    opacity: 1;
-    transition: all .4s ease;
-    border-radius: 4px;
-}
-
-.no__result.hidden {
-    visibility: hidden;
-    opacity: 0;
-}
-
-.no__resultContent {
-    display: flex;
-    flex-direction: column;
-}
-
-.no__resultProblems {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: nowrap;
-    padding: 25px 0;
-    gap: 80px;
-}
-
-.no__resultProblems__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.no__resultTitle {
-    font-size: 24px;
-    line-height: 36px;
-    font-weight: 100;
-}
-
-.no__resultSubTitle {
-    font-size: 16px;
-    font-weight: 100;
-}
-
-.no__resultImg {
-    max-width: 100px;
-    max-height: 100px;
-}
-
 /* switch */
 
 .advancedFilter {
