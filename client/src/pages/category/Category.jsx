@@ -36,19 +36,7 @@ const Category = () => {
             <div className="wrap1160">
                 {loading ? 
                 <div className="category__content" key={category._id}>
-                        {/* <div className="category__wayNsearch">
-                            <div className="category__way" >
-                                <Link className={'page__before'} data-end={'>'} to={'/support'}>Yummly Help Center</Link>
-                                <p>{category.title}</p>
-                            </div>
-                            <div className="category__search">
-                                <Link className='searchIcon' to={searchVal !== null ? '/support/search' : ''} state={{data: searchVal}}>
-                                    <img src={`${PF}images/icons/arrows/support/search.svg`} alt="" />
-                                </Link>
-                                <input onKeyDown={handleEnter} onChange={(e) => searchHandle(e.target.value)} className='search' type="search" placeholder='Search'/>
-                            </div>
-                        </div> */}
-                        <SearchInput title={category.title}/>
+                    <SearchInput title={category.title}/>
                     <div className="category__main">
                         <h1 className='category__title'>{category.title}</h1>
                         <div className="category__paragraphs">

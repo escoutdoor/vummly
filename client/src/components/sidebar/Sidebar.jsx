@@ -40,7 +40,7 @@ const Sidebar = () => {
                     <Link to={'/'}>
                         <img className='logo' src={`${PF}images/logo/yummlyLogo.svg`} alt="logoYummly" />
                     </Link>
-                    <Link to={'/'}>
+                    <Link to={'/profile/PopovIvan'}>
                         <img title='Profile' className='avatar' src={`${PF}images/icons/ava.jpg`} alt="avatar" />
                     </Link>
                     <Link to={'/'}>

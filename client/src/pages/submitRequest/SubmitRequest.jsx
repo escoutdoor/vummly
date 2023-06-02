@@ -133,17 +133,6 @@ const SubmitRequest = () => {
     return (
         <div className={styles.submitReq}>
             <div className={styles.submitReqWrapper}>
-                {/* <div className={styles.submitTop}>
-                    <div className={styles.submitWay} >
-                        <Link data-end={'> Submit a request'} className={styles.submitLink} to={'/support'}>Yummly Help Center</Link>
-                    </div>
-                    <div className={styles.submitSearch}>
-                        <Link className={styles.searchIcon} to={searchVal !== null ? '/support/search' : ''} state={{data: searchVal}}>
-                            <img src={`${PF}images/icons/arrows/support/search.svg`} alt="" />
-                        </Link>
-                        <input onChange={(e) => searchHandle(e.target.value)} className='search' type="search" placeholder='Search'/>
-                    </div>
-                </div> */}
                 <SearchInput title={"Submit a request"}/>
                 <form ref={form} className={styles.submitBody} onSubmit={sendForm} >
                     <h1 className={styles.submitTitle}>Submit a request</h1>

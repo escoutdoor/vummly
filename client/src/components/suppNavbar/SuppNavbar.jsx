@@ -5,7 +5,7 @@ const SuppNavbar = () => {
     const PF = 'http://localhost:3000/assets/'
     return (
         <div className='suppNavbar'>
-            <div className="supportWrap">
+            <div className="wrap1160">
                 <Link to={'/support'}>
                     <img src={`${PF}images/logo/yummlyLogo.svg`} alt="YummlyLogo" />
                 </Link>

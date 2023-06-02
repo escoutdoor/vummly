@@ -78,23 +78,6 @@ const Article = () => {
             <div className="wrap1160">
                 {loading ?
                 <div className="article__content">
-                    {/* <div className="articleTop">
-                        <div className="article__way" >
-                            <Link data-end={'>'} className='article__link' to={'/support'}>Yummly Help Center</Link>
-                            {articleInfo.way && articleInfo.way.map((w, index) => (
-                                <Link key={index} to={`/support/${w.link}`}>
-                                    <p data-end={'>'} className='article__link' >{w.wayname}</p>
-                                </Link>
-                            ))}
-                            {articleInfo.title && articleInfo.title}
-                        </div>
-                        <div className="article__search">
-                            <Link className='searchIcon' to={searchVal !== null ? '/support/search' : ''} state={{data: searchVal}}>
-                                <img src={`${PF}images/icons/arrows/support/search.svg`} alt="" />
-                            </Link>
-                            <input onKeyDown={handleEnter} onChange={(e) => searchHandle(e.target.value)} className='search' type="search" placeholder='Search'/>
-                        </div>
-                    </div> */}
                     <SearchInput way={articleInfo.way} title={articleInfo.title}/>
                     <div className="article__info">
                         <div className="articleLeft">

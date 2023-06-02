@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
-import { MyFeed, Overview, Activate, Support, Category, Article, SearchSupport, SubmitRequest, Recipe, SearchRecipe, Resource } from './pages/pages'
+import { MyFeed, Overview, Activate, Support, Category, Article, SearchSupport, SubmitRequest, Recipe, SearchRecipe, Resource, Profile } from './pages/pages'
 import SupportLayout from "./layouts/support/SupportLayout";
 
 function App() {
@@ -32,6 +32,10 @@ function App() {
                     <Route path={'page/:id'} element={<Resource />}/>
                 </Route>
                 
+                <Route path={'/profile/'}>
+                    <Route path={':id'} element={<Profile />}/> 
+                </Route>
+
             </Routes>
         </Router>
     );
