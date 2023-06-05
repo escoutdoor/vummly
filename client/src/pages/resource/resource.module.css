@@ -1,8 +1,4 @@
 .resource {
-    min-height: 105vh;
-    width: calc(100% - 216px);
-    float: right;
-    font-family: 'europa', sans-serif;
     padding-bottom: 30px;
 }
 

@@ -1,8 +1,6 @@
 .category {
     display: block;
     width: 100%;
-    min-height: 100vh;
-    font-family: 'europa', sans-serif;
     padding: 20px 0px 60px 0px;
 }
 

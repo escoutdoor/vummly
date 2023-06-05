@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
 import { MyFeed, Overview, Activate, Support, Category, Article, SearchSupport, SubmitRequest, Recipe, SearchRecipe, Resource, Profile } from './pages/pages'
 import SupportLayout from "./layouts/support/SupportLayout";
+import MainLayout from "./layouts/main/MainLayout";
 
 function App() {
     return (
@@ -8,7 +9,7 @@ function App() {
             <Routes>
 
                 {/* thermometer pages */}
-                <Route path="/thermometer/">
+                <Route path="/thermometer/" element={<MainLayout />}>
                     <Route path={'overview'} element={<Overview/>} />
                     <Route path={'activate'} element={<Activate/>} />
                 </Route>
@@ -25,7 +26,7 @@ function App() {
                     <Route path={'submit-request'} element={<SubmitRequest />}/>
                 </Route>
 
-                <Route path={'/'}>
+                <Route path={'/'} element={<MainLayout />}>
                     <Route path={'recipe/:recipe'} element={<Recipe />} />
                     <Route path={'recipes'} element={<SearchRecipe />} />
                     <Route path={''} element={<MyFeed/>} />

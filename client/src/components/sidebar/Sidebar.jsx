@@ -4,7 +4,7 @@ import { sideInf as sideData, aboutYumm as aboutUs, privacy, social} from './../
 import { Link } from 'react-router-dom';
 
 
-const Sidebar = () => {
+const Sidebar = ({user, setActive}) => {
 
     const PF = 'http://localhost:3000/assets/'
     const year = new Date().getFullYear()
@@ -40,12 +40,14 @@ const Sidebar = () => {
                     <Link to={'/'}>
                         <img className='logo' src={`${PF}images/logo/yummlyLogo.svg`} alt="logoYummly" />
                     </Link>
-                    <Link to={'/profile/PopovIvan'}>
-                        <img title='Profile' className='avatar' src={`${PF}images/icons/ava.jpg`} alt="avatar" />
-                    </Link>
-                    <Link to={'/'}>
-                        <button title='Upgrade' className='upgradeButt'>Upgrade</button>
-                    </Link>
+                    {user ? <>
+                        <Link to={'/profile/PopovIvan'}>
+                            <img title='Profile' className='avatar' src={`${PF}images/icons/ava.jpg`} alt="avatar" />
+                        </Link>
+                        <Link to={'/'}>
+                            <button title='Upgrade' className='upgradeButt'>Upgrade</button>
+                        </Link>
+                    </> : <button onClick={() => setActive(true)} className={'logButton'}>Sign Up / Log In</button>}
                 </div>
                 <div className="sidebarNav">
                     {sideData.map((part) => (

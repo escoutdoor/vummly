@@ -2,10 +2,6 @@
 .myFeed {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    width: calc(100% - 216px);
-    float: right;
-    font-family: 'europa';
     overflow-x: hidden;
 }
 

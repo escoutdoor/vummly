@@ -1,9 +1,4 @@
 .recipe {
-    width: calc(100% - 216px);
-    float: right;
-    overflow-x: hidden;
-    font-family: 'europa', sans-serif;
-    min-height: 100vh;
     padding: 102px 0 102px;
 }
 

@@ -9,6 +9,7 @@ app.use(express.json())
 const articles = require('./routes/articles');
 const sections = require('./routes/sections');
 const categories = require('./routes/categories');
+const users = require('./routes/recipes');
 
 // recipe
 
@@ -26,6 +27,10 @@ app.use('/server/support/categories', categories)
 
 // recipe 
 app.use('/server/recipe', recipes)
+
+// users
+
+app.use('/server/user', users)
 
 // --------------------------------------------
 

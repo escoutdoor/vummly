@@ -19,7 +19,6 @@ const Activate = () => {
 
     return (
         <div className='activate'>
-            <Sidebar />
             <div className="activate__content">
                 <Navbar value={false}/>
                 <div className="activateMobile">

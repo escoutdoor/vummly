@@ -7,7 +7,6 @@
     top: 0;
     left: 0;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 40px -20px;
-    font-family: 'europa', sans-serif;
 }
 
 .sidebar-container {
@@ -21,7 +20,6 @@
 
 .sidebarUpgrade {
     display: flex;
-    height: 185px;
     align-items: center;
     gap: 12px;
     flex-direction: column;
@@ -318,4 +316,20 @@
 
 .part p:hover {
     color: #3A9691;
+}
+
+.logButton {
+    font-size: 14px;
+    border-radius: 42px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 40px;
+    padding: 0px 32px;
+    background: #3A9691;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    cursor: pointer;
+}
+
+.logButton:hover {
+    background: #4b9b96;
 }

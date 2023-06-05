@@ -43,7 +43,6 @@ const Resource = () => {
 
     return (
         <div>
-            <Sidebar />
             <div className={s.resource}>
                 <div className='wrap1160'>
                     <div className={s.resource__content}>

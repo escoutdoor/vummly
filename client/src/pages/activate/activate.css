@@ -1,10 +1,6 @@
 .activate {
     display: flex;
-    float: right;
-    width: -webkit-calc(100% - 216px);
-    width: calc(100% - 216px);
     padding-top: 81px;
-    font-family: 'europa', sans-serif;
 }
 
 .activate__content {

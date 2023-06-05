@@ -114,7 +114,6 @@ const SearchRecipe = () => {
 
     return (
         <div onClick={() => {setActiveInput(false); setOpenSort(false);}}>
-            <Sidebar/>
             <div className={s.searchRecipe}>
                 <div className="wrap1160">
                     <div className={s.searchRecipe__content}>

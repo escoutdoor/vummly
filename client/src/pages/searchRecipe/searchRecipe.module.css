@@ -1,7 +1,5 @@
 .searchRecipe {
     min-height: 100vh;
-    width: calc(100% - 216px);
-    float: right;
     font-family: 'europa';
 }
 

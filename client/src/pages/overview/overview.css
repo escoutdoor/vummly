@@ -1,10 +1,6 @@
 .overview {
     display: flex;
-    float: right;
-    width: -webkit-calc(100% - 216px);
-    width: calc(100% - 216px);
     padding-top: 104px;
-    font-family: 'europa';
     flex-direction: column;
 }
 

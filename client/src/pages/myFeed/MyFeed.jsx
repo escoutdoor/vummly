@@ -35,7 +35,6 @@ const MyFeed = () => {
     const PF = 'http://localhost:3000/assets/'
     return (
         <>
-            <Sidebar/>
             <div className={styles.myFeed} >
                 <SearchRecipes setActive={setActive} active={active} />
                 <div className="wrap1160">

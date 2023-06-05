@@ -4,7 +4,6 @@
     filter:contrast(95%);
     width: 100%;
     flex-direction: column;
-    font-family: 'europa', sans-serif;
     background-position: top;
     background-image: url('http://localhost:3000/assets/images/img/myFeed/background.avif');
     background-size: 100% 700px;
@@ -172,17 +171,18 @@
 /* drop */
 
 .searchRecipes__drop {
-    position: absolute;
+    position: fixed;
     background: rgba(0,0,0,0.4);
-    top: 0px;
     left: 0;
-    right: 0;
+    top: 0;
+    bottom: 0;
     width: 100vw;
     height: 100vh;
     z-index: 99;
     transition: opacity .2s cubic-bezier(0.165, 0.84, 0.44, 1) ease-in;
     visibility: visible;
     opacity: 1;
+    overflow: hidden;
 }
 
 .searchRecipes__drop.hide {
@@ -202,7 +202,6 @@
     top: 0;
     right: 0;
     left: 0;
-    height: fit-content;
     transition: height .2s cubic-bezier(0.165, 0.84, 0.44, 1), opacity .2s ease;
 }
 

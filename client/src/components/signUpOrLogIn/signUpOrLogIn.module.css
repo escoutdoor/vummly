@@ -1,0 +1,21 @@
+.window {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    visibility: visible;
+    opacity: 1;
+    z-index: 999999;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.window.hidden {
+    opacity: 0;
+    overflow: visible;
+    pointer-events: none;
+}
