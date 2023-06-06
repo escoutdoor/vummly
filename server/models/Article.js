@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const support = mongoose.createConnection('mongodb+srv://PopovIvan:esc@vummly.zagaor4.mongodb.net/support')
+const support = mongoose.createConnection(process.env.DATABASE_SUPPORT_CONNECTION)
 
 const articleSchema = support.model('Article', new mongoose.Schema({
     idPage: {type: String, unique: true, required: true},

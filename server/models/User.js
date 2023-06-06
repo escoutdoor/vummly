@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const users = mongoose.createConnection('mongodb+srv://PopovIvan:esc@vummly.zagaor4.mongodb.net/users')
+const users = mongoose.createConnection(process.env.DATABASE_USERS_CONNECTION)
 
 const userSchema = users.model('User', new mongoose.Schema({
     mail: {

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const book = mongoose.createConnection('mongodb+srv://PopovIvan:esc@vummly.zagaor4.mongodb.net/book')
+const book = mongoose.createConnection(process.env.DATABASE_BOOK_CONNECTION)
 
 const recipeSchema = book.model('Recipe', new mongoose.Schema({
     id: {
