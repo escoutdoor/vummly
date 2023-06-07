@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import s from './thirdPage.module.css'
+import s from './namePage.module.css'
 import { Rating, Star} from '@smastrom/react-rating'
 
-const ThirdPage = ({setPage, name, nameHandler, nameError, createUser}) => {
+const NamePage = ({setPage, name, nameHandler, nameError, createUser}) => {
     
     const ratingStars = {
         itemShapes: Star,
@@ -18,7 +18,7 @@ const ThirdPage = ({setPage, name, nameHandler, nameError, createUser}) => {
     return (
         <div className={s.third} onKeyDown={goNext}>
             <div className={s.side} style={{backgroundImage: `url(${PF}images/icons/logInModal/third.webp)`}}>
-                <button className={s.back} onClick={() => setPage('second')}>back</button>
+                <button className={s.back} onClick={() => setPage('password')}>back</button>
                 <h1 className={s.sideTitle}>Cooks love us!</h1>
                 <Rating halfFillMode='svg' className={s.ratingStars} readOnly={true} value={4.5} itemStyles={ratingStars} />
                 <p className={s.subtitle}>We're rated 4.5 out of 5 stars because our users have so much success finding recipes they love.</p>
@@ -35,4 +35,4 @@ const ThirdPage = ({setPage, name, nameHandler, nameError, createUser}) => {
     );
 };
 
-export default ThirdPage;
+export default NamePage;

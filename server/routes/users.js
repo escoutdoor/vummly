@@ -1,12 +1,30 @@
 const router = require('express').Router()
 const User = require('../models/User');
+const bcrypt = require('bcrypt');
 
 router.post('/createOne', async (req, res) => {
-    const newUser = await new User(req.body)
-    try {
-        // const saved = await newUser.save()
-        const saved = await newUser.save()
-        res.status(200).json(saved)
+    try {   
+        const hashedPass = bcrypt.hashSync(req.body.password, 10)
+
+        const user = new User({
+            name: req.body.name,
+            mail: req.body.mail,
+            password: hashedPass
+        })
+
+        await user.save()
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+router.get('/login', async (req, res) => {
+    try {   
+        const user = await User.findOne({mail: req.body.mail})
+        const pass = await bcrypt.compare(req.body.password, user.password)
+        // await user.save()
+        res.status(200).json(user)
     } catch (err) {
         res.status(500).json(err)
     }

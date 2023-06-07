@@ -9,6 +9,10 @@ const userSchema = users.model('User', new mongoose.Schema({
     },
     name: {
         type: String,
+        // required: true
+    },
+    password: {
+        type: String,
         required: true
     },
     city: {type: String},
