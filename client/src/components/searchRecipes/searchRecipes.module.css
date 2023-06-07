@@ -2,20 +2,17 @@
     display: flex;
     filter:brightness(20%);
     filter:contrast(95%);
-    width: 100%;
     flex-direction: column;
     background-position: top;
     background-image: url('http://localhost:3000/assets/images/img/myFeed/background.avif');
-    background-size: 100% 700px;
     background-repeat: no-repeat;
     object-fit: cover;
     margin-bottom: 30px;
-    z-index: 999999;
+    z-index: 999;
 }
 
 .search__container {
     display: flex;
-    width: 100%;
     flex-direction: column;
 }
 
@@ -176,17 +173,15 @@
     left: 0;
     top: 0;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
-    z-index: 99;
+    z-index: 3;
     transition: opacity .2s cubic-bezier(0.165, 0.84, 0.44, 1) ease-in;
     visibility: visible;
     opacity: 1;
-    overflow: hidden;
 }
 
 .searchRecipes__drop.hide {
-    height: 0;
     visibility: hidden;
     opacity: 0;
 }

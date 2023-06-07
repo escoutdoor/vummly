@@ -31,25 +31,21 @@ const MyFeed = () => {
         }
         fetch()
     }, [])
-
-    const PF = 'http://localhost:3000/assets/'
     return (
-        <>
-            <div className={styles.myFeed} >
-                <SearchRecipes setActive={setActive} active={active} />
-                <div className="wrap1160">
-                    <div className={styles.myFeed__content}  >
-                        <h1 className={styles.myFeed__title}>Just For You</h1>
-                        <div className={styles.myFeed__rec}>
-                            {!loading && <RecipeSkeleton recipes={100}/>}
-                            {recipes.map((r) => (
-                                <RecipeItem key={r._id} recipe={r} rating={sum(r.reviews)/r.reviews.length}/>
-                            ))}
-                        </div>
+        <div className={styles.MyFeed} >
+            <SearchRecipes setActive={setActive} active={active} />
+            <div className="wrap1160">
+                <div className={styles.myFeed__content}  >
+                    <h1 className={styles.myFeed__title}>Just For You</h1>
+                    <div className={active ? styles.myFeed__rec : `${styles.myFeed__rec} ${styles.show}`}>
+                        {!loading && <RecipeSkeleton recipes={100}/>}
+                        {recipes.map((r) => (
+                            <RecipeItem key={r._id} recipe={r} rating={sum(r.reviews)/r.reviews.length}/>
+                        ))}
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

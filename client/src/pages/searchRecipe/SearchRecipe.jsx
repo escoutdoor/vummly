@@ -70,8 +70,6 @@ const SearchRecipe = () => {
         ( nutrition || allowed || banned) && recipes.length === 0 ? setNoResults(true) : setNoResults(false)
     }, [nutrition, allowed, banned, recipes])
 
-    console.log(noResults)
-
     // title and scroll
     useEffect(() => {
         document.title = "Recipes | Vummly"

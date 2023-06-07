@@ -27,7 +27,6 @@ const SearchRecipes = ({setActive, active}) => {
         setSearchHistory(storage)
     }, [])
 
-
     useEffect(() => {
         if (dropInput.current) {
             dropInput.current.focus();
@@ -62,8 +61,8 @@ const SearchRecipes = ({setActive, active}) => {
                             <div className={styles.drop__recent}>
                                 <h1>Recent Searches:</h1>
                                 <div className={styles.recentSearches}>
-                                    {searchHistory.map((s) => (
-                                        <span onClick={() => navigate('/recipes', {state: {query: s}})} data-end={searchHistory[4] === s ? '' : ','}>{s}</span> 
+                                    {searchHistory.map((s, index) => (
+                                        <span key={index} onClick={() => navigate('/recipes', {state: {query: s}})} data-end={searchHistory[4] === s ? '' : ','}>{s}</span> 
                                     ))}
                                 </div>
                             </div>

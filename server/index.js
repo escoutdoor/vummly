@@ -10,11 +10,14 @@ dotenv.config()
 const articles = require('./routes/articles');
 const sections = require('./routes/sections');
 const categories = require('./routes/categories');
-const users = require('./routes/recipes');
 
 // recipe
 
 const recipes = require('./routes/recipes')
+
+// users 
+
+const users = require('./routes/users')
 
 // connection --------------------------------------------
 

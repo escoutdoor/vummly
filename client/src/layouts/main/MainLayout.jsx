@@ -1,20 +1,24 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../../components/sidebar/Sidebar";
 import s from './mainLayout.module.css'
-import { useState } from "react";
-import SignUpOrLogIn from "../../components/signUpOrLogIn/SignUpOrLogIn";
+import { useEffect, useState } from "react";
+import Main from "../../components/signUpOrLogIn/main/Main";
 
 
 const MainLayout = () => {
     
     const [activeLoginModal, setActiveLoginModal] = useState(false)
 
+    useEffect(() => {
+        document.body.style.overflow = activeLoginModal ? 'hidden' : 'visible'
+    }, [activeLoginModal])
+
     return (
-        <div className={!activeLoginModal ? s.page : `${s.active} ${s.open}`}>
+        <div>
             <Sidebar setActive={setActiveLoginModal}/>
             <div className={s.main}>
                 <Outlet />
-                <SignUpOrLogIn active={activeLoginModal} setActive={setActiveLoginModal}/>
+                <Main active={activeLoginModal} setActive={setActiveLoginModal}/>
             </div>
         </div>
     );

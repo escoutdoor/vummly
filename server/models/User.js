@@ -7,7 +7,22 @@ const userSchema = users.model('User', new mongoose.Schema({
         unique: true, 
         required: true
     },
-    
+    name: {
+        type: String,
+        required: true
+    },
+    city: {type: String},
+    country: {type: String},
+    social: [{
+
+    }],
+    yums: {type: Array, default: []},
+    collections: [
+        {
+            name: {type: String, required: true},
+            recipes: [{type: String}]
+        },
+    ]
 }))
 
 module.exports = userSchema

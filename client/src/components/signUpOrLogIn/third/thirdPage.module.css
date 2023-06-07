@@ -1,0 +1,126 @@
+.third {
+    display: flex;
+    justify-content: space-between;
+    color: #4a4a4a;
+}
+
+.side {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 360px;
+    height: 100%;
+    background: #e3e3e3;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+.back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 14px;
+    padding: 24px;
+    color: #00000066;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.sideTitle {
+    font-size: 24px;
+    line-height: 36px;
+}
+
+.ratingStars {
+    max-width: 100px;
+    margin-top: 5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    max-width: 304px;
+    text-align: center;
+    margin-top: 14px;
+    line-height: 21px;  
+}
+
+.main {
+    width: calc(80vw - 360px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input {
+    padding: 0px 40px 12px;
+    margin-top: 36px;
+    text-align: center;
+    color: #4a4a4a;
+    font-size: 34px;
+    line-height: 42px;
+    font-weight: 400;
+    border-bottom: 2px solid #e3e3e3;
+}
+
+.alert.active {
+    padding: 24px;
+    opacity: 1;
+    visibility: visible;
+    margin-bottom: 26px;
+}
+
+.alert {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(240, 240, 240);
+    padding: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.alertText {
+    opacity: 0;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    text-transform: capitalize;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.alertText.active {
+    opacity: 1;
+}
+
+.nextButton {
+    min-width: 140px;
+    font-size: 14px;
+    background: #3a9691;
+    color: #fff;
+    padding: 0px 32px;
+    height: 40px;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 42px;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.nextButton:hover {
+    background: #4b9b96;
+}
