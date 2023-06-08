@@ -9,11 +9,13 @@ const userSchema = users.model('User', new mongoose.Schema({
     },
     name: {
         type: String,
-        // required: true
     },
     password: {
         type: String,
         required: true
+    },
+    avatar: {
+        type: String
     },
     city: {type: String},
     country: {type: String},

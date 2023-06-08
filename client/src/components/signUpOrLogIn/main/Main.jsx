@@ -5,23 +5,26 @@ import EmailPage from '../emailPage/EmailPage';
 import NamePage from '../namePage/NamePage';
 import axios from 'axios'
 import PasswordPage from '../passwordPage/PasswordPage';
+import { useDispatch, useSelector } from 'react-redux';
+import { login, selectUser } from '../../../redux/features/userSlice';
 
 const Main = ({active, setActive}) => {
     const PF = 'http://localhost:3000/assets/'
-    const [user, setUser] = useState({})
 
     const [name, setName] = useState("")
     const [nameError, setNameError] = useState(false)
     const [mail, setMail] = useState("")
     const [mailError, setMailError] = useState(false)
 
-    const [login, setLogin] = useState(false)
+    const [loginForm, setLoginForm] = useState(false)
 
     const [password, setPassword] = useState("")
     const [passwordError, setPasswordError] = useState(false)
 
     const [users, setUsers] = useState([])
     const [activePage, setActivePage] = useState('start')
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const fetch = async () => {
@@ -38,7 +41,7 @@ const Main = ({active, setActive}) => {
         } else {
             setMailError("")
         }
-        users.find(user => user.mail === mail) ? setLogin(true) : setLogin(false)
+        users.find(user => user.mail === mail) ? setLoginForm(true) : setLoginForm(false)
     }, [mail, activePage])
 
 
@@ -54,7 +57,6 @@ const Main = ({active, setActive}) => {
 
     const passwordHandler = (p) => {
         setPassword(p)
-        // const pattern = ^[@#](?=.{7,13}$)(?=\w{7,13})(?=[^aeiou_]{7,13})(?=.*[A-Z])(?=.*\d);
         if(!/(?=.*[A-Z])/.test(p)) {
             setPasswordError("Password should contain at least one capital char")
         } 
@@ -72,19 +74,12 @@ const Main = ({active, setActive}) => {
         }
     }
 
-    console.log(users);
-
-    useEffect(() => {
-        console.log(user);
-    }, [user])
-
-
     const createUser = async () => {
         await axios.post(`/user/createOne`, {
             name: name,
             mail: mail,
             password: password
-        })
+        }).then(u => dispatch(login(u.data)))
         setActive(false)
         setActivePage('start')
         setMail('')
@@ -93,10 +88,10 @@ const Main = ({active, setActive}) => {
     }
 
     const logInUser = async () => {
-        await axios.get(`/user/login`, {
+        await axios.post(`/user/login`, {
             mail: mail,
             password: password
-        }).then(u => setUser(u.data))
+        }).then(u => {dispatch(login(u.data))})
         setActive(false)
         setActivePage('start')
     }
@@ -110,7 +105,7 @@ const Main = ({active, setActive}) => {
                     : activePage === 'email' ?
                         <EmailPage setPage={setActivePage} mailError={mailError} setMail={setMail} mail={mail}/>
                     : activePage === 'password' ?
-                        <PasswordPage setPage={setActivePage} passwordHandler={passwordHandler} passwordError={passwordError} password={password} login={login} logInUser={logInUser} />
+                        <PasswordPage setPage={setActivePage} passwordHandler={passwordHandler} passwordError={passwordError} password={password} login={loginForm} logInUser={logInUser} />
                     : activePage === 'name' ?
                         <NamePage setPage={setActivePage} name={name} nameHandler={nameHandler} nameError={nameError} createUser={createUser}/>
                     : null

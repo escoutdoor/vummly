@@ -9,7 +9,8 @@ router.post('/createOne', async (req, res) => {
         const user = new User({
             name: req.body.name,
             mail: req.body.mail,
-            password: hashedPass
+            password: hashedPass,
+            ...req.body
         })
 
         await user.save()
@@ -19,7 +20,7 @@ router.post('/createOne', async (req, res) => {
     }
 })
 
-router.get('/login', async (req, res) => {
+router.post('/login', async (req, res) => {
     try {   
         const user = await User.findOne({mail: req.body.mail})
         const pass = await bcrypt.compare(req.body.password, user.password)

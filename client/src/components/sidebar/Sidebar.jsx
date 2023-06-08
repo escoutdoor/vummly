@@ -4,30 +4,22 @@ import { sideInf as sideData, aboutYumm as aboutUs, privacy, social} from './../
 import { Link } from 'react-router-dom';
 
 
-const Sidebar = ({user, setActive}) => {
-
+const Sidebar = ({setActive, user}) => {
     const PF = 'http://localhost:3000/assets/'
     const year = new Date().getFullYear()
-
     const [selected, setSelected] = useState(null)
     const [about, setAbout] = useState(false)
-    
     const aboutClick = () => {
         about ?  setAbout(false) : setAbout(true)
     }
-
     const clicked = (e) => {
         selected ? setSelected(null) : setSelected(e)
     }
-
     const [hover, setHovered] = useState(null)
-
     const Hover = (e) => {
         hover ? setHovered(null) : setHovered(e)
     }
-
     const [activeLink, setActiveLink] = useState()
-    // const act = sideData.filter(item => item.downtitles.some(d => d.link === window.location.pathname)).flatMap((obj) => obj.downtitles.filter((d) => d.link === window.location.pathname && d.link))
     useEffect(() => {
         const act = sideData.flatMap(data => data.downtitles.filter(d => d.link === window.location.pathname))
         setActiveLink(...act)
@@ -42,7 +34,7 @@ const Sidebar = ({user, setActive}) => {
                     </Link>
                     {user ? <>
                         <Link to={'/profile/PopovIvan'}>
-                            <img title='Profile' className='avatar' src={`${PF}images/icons/ava.jpg`} alt="avatar" />
+                            <img title='Profile' className='avatar' src={user.avatar ? `${PF}images/avatars/${user.avatar}` : `${PF}images/no-avatar.webp`} alt="avatar" />
                         </Link>
                         <Link to={'/'}>
                             <button title='Upgrade' className='upgradeButt'>Upgrade</button>
@@ -87,7 +79,6 @@ const Sidebar = ({user, setActive}) => {
                             </div>
                         ))}
                     </div>
-
                     <div className="privacy">
                         {privacy.map((pr, index) => (
                             <ul className="privacy-content" key={index}>
@@ -99,7 +90,6 @@ const Sidebar = ({user, setActive}) => {
                             </ul>
                         ))}
                     </div>
-
                     <div className="bottom__social">
                         {social.map((soc) => (
                             <ul className='social' key={soc.id}>
@@ -111,7 +101,6 @@ const Sidebar = ({user, setActive}) => {
                             </ul>
                         ))}
                     </div>
-
                     <div className="ummlyYear">
                         <p className='rights'>{`®/™©${year} Yummly. All rights reserved.`}</p>
                         <Link to={'/whirlpool'}>

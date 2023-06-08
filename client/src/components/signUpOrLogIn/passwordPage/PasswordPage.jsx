@@ -27,10 +27,12 @@ const PasswordPage = ({setPage, password, passwordHandler, passwordError, login,
                 <input type="password" className={s.input} value={password} onChange={(e) => passwordHandler(e.target.value)} placeholder='Password'/>
                 <div className={password && passwordError ? `${s.alert} ${s.active}` : s.alert}><p className={password && passwordError ? `${s.alertText} ${s.active}` :  s.alertText}>{passwordError}</p></div>
             </div>
-            <button title='Next' className={s.nextButton} onClick={() => !passwordError && password && login ? logInUser() : !passwordError && password && !login ? setPage('name') : console.log("It's pizdez my friend")}>{login ? 'Log In' : 'Next'}</button>
+            <button title='Next' className={s.nextButton} onClick={() => {!login && password && !passwordError && setPage('name'); login && password && !passwordError && logInUser()}}>{login ? 'Log In' : 'Next'}</button>
             <div className={s.footer}>By clicking Next, you accept our <Link to={'/privacy'} className={s.termsLink}>Terms of Use</Link> and <Link to={'/privacy'} className={s.termsLink}>Privacy Notice</Link></div>
         </div>
     );
 };
+
+// !passwordError && password && login ? logInUser() : !passwordError && password && !login ? setPage('name') : console.log("It's pizdez my friend")
 
 export default PasswordPage;

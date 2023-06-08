@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useOutletContext  } from 'react-router-dom';
 import styles from './recipe.module.css'
 import Sidebar from '../../components/sidebar/Sidebar';
 import { useEffect, useRef, useState } from 'react';
@@ -21,7 +21,8 @@ const Recipe = () => {
     const [more, setMore] = useState([])
     const [related, setRelated] = useState([])
     const [tags, setTags] = useState("")
-
+    // user
+    const [user] = useOutletContext();
     // add Ingr
     const addIngredient = (ingredient) => {
         const newList = ingredients.filter(ing => ing !== ingredient)
@@ -50,7 +51,7 @@ const Recipe = () => {
         const fetchAll = async () => {
             const ts = recipeData.tags.map((t) => t.tag.replace(" ", "_"))
             setTags(ts.join("-"))
-            await axios.get(`/recipe/related/${tags}`).then(result => setRelated([...result.data].sort((a, b) => 0.5 - Math.random())))
+            tags && await axios.get(`/recipe/related/${tags}`).then(result => setRelated([...result.data].sort((a, b) => 0.5 - Math.random())))
             setLoading(true)
         }
         fetchAll()
@@ -253,7 +254,7 @@ const Recipe = () => {
                                         <div className={styles.reviewsWrite}>
                                             <div className={activeReview ? `${styles.reviewsWrite__content}` : `${styles.reviewsWrite__content} ${styles.hideContent}`}>
                                                 <div className={styles.reviewsWriteTop}>
-                                                    <img className={styles.reviewAvatar} src={`${PF}images/icons/no-avatar.webp`} alt="avatarRev" />
+                                                    <img className={styles.reviewAvatar} src={`${PF}images/no-avatar.webp`} alt="avatarRev" />
                                                     {!activeReview ? <p onClick={(e) => {setActiveReview(true); setReviewValue(e.target.value)}} value={reviewValue} className={styles.reviewTarget}>Write your review or comment here</p> : 
                                                         <div className={activeReview ? `${styles.reviewPerson} ${styles.show}` : `${styles.reviewPerson}`}>
                                                             <h1 className={styles.reviewName}>Popov Ivan</h1>
@@ -275,7 +276,7 @@ const Recipe = () => {
                                         {recipeData.reviews.map((rev) => (
                                             <div className={styles.usersReviews__item} key={rev._id}>
                                                 <Link to={`/profile/${rev.link}`}>
-                                                    <img className={styles.reviewAvatar} src={`${PF}images/icons/no-avatar.webp`} alt="avatarRev" />
+                                                    <img className={styles.reviewAvatar} src={`${PF}images/no-avatar.webp`} alt="avatarRev" />
                                                 </Link>
                                                 <div className={styles.reviewDetails}>
                                                     <div className={styles.reviewDetailsMain}>
