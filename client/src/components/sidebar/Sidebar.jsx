@@ -33,7 +33,7 @@ const Sidebar = ({setActive, user}) => {
                         <img className='logo' src={`${PF}images/logo/yummlyLogo.svg`} alt="logoYummly" />
                     </Link>
                     {user ? <>
-                        <Link to={'/profile/PopovIvan'}>
+                        <Link to={`/profile/${user.name}-${user._id}`}>
                             <img title='Profile' className='avatar' src={user.avatar ? `${PF}images/avatars/${user.avatar}` : `${PF}images/no-avatar.webp`} alt="avatar" />
                         </Link>
                         <Link to={'/'}>

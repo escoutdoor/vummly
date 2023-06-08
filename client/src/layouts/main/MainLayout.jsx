@@ -17,7 +17,7 @@ const MainLayout = () => {
         <div>
             <Sidebar setActive={setActiveLoginModal} user={user}/>
             <div className={s.main}>
-                <Outlet context={[user]}/>
+                <Outlet />
                 <Main active={activeLoginModal} setActive={setActiveLoginModal}/>
             </div>
         </div>

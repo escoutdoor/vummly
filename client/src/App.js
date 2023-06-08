@@ -31,10 +31,7 @@ function App() {
                     <Route path={'recipes'} element={<SearchRecipe />} />
                     <Route path={''} element={<MyFeed/>} />
                     <Route path={'page/:id'} element={<Resource />}/>
-                </Route>
-                
-                <Route path={'/profile/'}>
-                    <Route path={':id'} element={<Profile />}/> 
+                    <Route path={'profile/:id'} element={<Profile />}/> 
                 </Route>
 
             </Routes>

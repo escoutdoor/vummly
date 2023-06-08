@@ -8,9 +8,9 @@ import PasswordPage from '../passwordPage/PasswordPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, selectUser } from '../../../redux/features/userSlice';
 
+
 const Main = ({active, setActive}) => {
     const PF = 'http://localhost:3000/assets/'
-
     const [name, setName] = useState("")
     const [nameError, setNameError] = useState(false)
     const [mail, setMail] = useState("")
@@ -42,7 +42,7 @@ const Main = ({active, setActive}) => {
             setMailError("")
         }
         users.find(user => user.mail === mail) ? setLoginForm(true) : setLoginForm(false)
-    }, [mail, activePage])
+    }, [mail])
 
 
     const nameHandler = (n) => {
@@ -79,21 +79,20 @@ const Main = ({active, setActive}) => {
             name: name,
             mail: mail,
             password: password
-        }).then(u => dispatch(login(u.data)))
-        setActive(false)
-        setActivePage('start')
-        setMail('')
-        setName('')
-        setPassword('')
+        }).then(u => {dispatch(login(u.data)); setActivePage('start'); setActive(false);})
     }
 
     const logInUser = async () => {
-        await axios.post(`/user/login`, {
+        const res = await axios.post(`/user/login`, {
             mail: mail,
             password: password
-        }).then(u => {dispatch(login(u.data))})
-        setActive(false)
-        setActivePage('start')
+        }).then(u => {
+            dispatch(login(u.data)); 
+            setActivePage('start'); 
+            setActive(false); 
+        })
+        .catch(() => setPasswordError('Invalid password'))
+
     }
 
     return (

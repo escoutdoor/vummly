@@ -1,4 +1,4 @@
-import { useParams, Link, useOutletContext  } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import styles from './recipe.module.css'
 import Sidebar from '../../components/sidebar/Sidebar';
 import { useEffect, useRef, useState } from 'react';
@@ -21,8 +21,6 @@ const Recipe = () => {
     const [more, setMore] = useState([])
     const [related, setRelated] = useState([])
     const [tags, setTags] = useState("")
-    // user
-    const [user] = useOutletContext();
     // add Ingr
     const addIngredient = (ingredient) => {
         const newList = ingredients.filter(ing => ing !== ingredient)
@@ -34,7 +32,7 @@ const Recipe = () => {
         const fetchRecipe = async () => {
             await axios.get(`/recipe/getOne/${recipe}`).then(res => setRecipeData(res.data))
         }
-        setTimeout(() => fetchRecipe(), 600)
+        fetchRecipe()
     }, [recipe])
 
     // more
@@ -42,19 +40,19 @@ const Recipe = () => {
         const fetchMore = async () => {
             await axios.get(`/recipe/moreFrom/${recipeData.resource.link}`).then(res => setMore([...res.data].sort((a, b) => 0.5 - Math.random())))
         }
-        fetchMore()
+        recipeData.resource && fetchMore()
         document.title = recipeData.title ? recipeData.title : 'Vummly'
     }, [recipeData])
 
     // related
     useEffect(() => {
         const fetchAll = async () => {
-            const ts = recipeData.tags.map((t) => t.tag.replace(" ", "_"))
+            const ts = await recipeData.tags.map((t) => t.tag.replace(" ", "_"))
             setTags(ts.join("-"))
             tags && await axios.get(`/recipe/related/${tags}`).then(result => setRelated([...result.data].sort((a, b) => 0.5 - Math.random())))
             setLoading(true)
         }
-        fetchAll()
+        recipeData.tags && fetchAll()
     }, [recipeData]) 
 
     useEffect(() => {

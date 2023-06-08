@@ -1,17 +1,18 @@
 import { useParams } from 'react-router-dom';
 import s from './profile.module.css'
 import { useEffect, useState } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 
 const Profile = () => {
     const {id} = useParams()
-    const [loading, setLoading] = useState(false)
     const [user, setUser] = useState({})
+    console.log(id.split("-")[1]);
 
     useEffect(() => {
         const fetch = async () => {
-            await axios.get(``).then(data => setUser(data.data))
-            setLoading(true)
+            await axios.get(`/user/${id.split("-")[1]}`).then((user) => {
+                setUser(user.data)
+            })
         }
         fetch()
     }, [])
@@ -19,7 +20,7 @@ const Profile = () => {
     return (
         <div className={s.profile}>
             <div className={s.content}>
-                
+                <h1>{user.name}</h1>
             </div>
         </div>
     );

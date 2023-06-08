@@ -11,7 +11,7 @@ const NamePage = ({setPage, name, nameHandler, nameError, createUser}) => {
     }
 
     const goNext = (event) => {
-        event.key === 'Enter' && name && !nameError && setPage('')
+        event.key === 'Enter' && name && !nameError && createUser()
     }
 
     const PF = 'http://localhost:3000/assets/'
