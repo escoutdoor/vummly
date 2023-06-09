@@ -188,7 +188,7 @@ const SearchRecipe = () => {
                                     <div className={s.advancedFilter__group}>
                                         <Inputs visibility={filterPage === 'ingredients' ? true : false} clear={reset} setClear={setReset} setWith={setAllowed} setWithout={setBanned} ingredients={ingredients}/> 
                                         <Buttons visibility={filterPage === 'time' ? true : false} clear={reset} setClear={setReset} setTime={setMinutes} minutes={[5, 10, 15, 20, 30, 45, 60, 120]} bold={false} title={'Cooking time, less than:'}/>
-                                        <TitleAndDesc visibility={filterPage === 'nutrition' ? true : false} setActive={setNutrition} active={nutrition} items={nutr}/>
+                                        <TitleAndDesc visibility={filterPage === 'nutrition' ? true : false} clear={reset} setClear={setReset} setActive={setNutrition} active={nutrition} items={nutr}/>
                                     </div>
                                 </div>
                             </div>

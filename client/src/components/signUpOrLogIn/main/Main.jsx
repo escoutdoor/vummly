@@ -5,12 +5,11 @@ import EmailPage from '../emailPage/EmailPage';
 import NamePage from '../namePage/NamePage';
 import axios from 'axios'
 import PasswordPage from '../passwordPage/PasswordPage';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, selectUser } from '../../../redux/features/userSlice';
+import { useDispatch } from 'react-redux';
+import { login } from '../../../redux/features/userSlice';
 
 
 const Main = ({active, setActive}) => {
-    const PF = 'http://localhost:3000/assets/'
     const [name, setName] = useState("")
     const [nameError, setNameError] = useState(false)
     const [mail, setMail] = useState("")
@@ -79,20 +78,20 @@ const Main = ({active, setActive}) => {
             name: name,
             mail: mail,
             password: password
-        }).then(u => {dispatch(login(u.data)); setActivePage('start'); setActive(false);})
+        }).then(u => {dispatch(login(u.data)); setActivePage('start'); setActive(false); localStorage.setItem("_auth", JSON.stringify(u.data.token))})
     }
 
     const logInUser = async () => {
         const res = await axios.post(`/user/login`, {
-            mail: mail,
-            password: password
-        }).then(u => {
+            mail, password
+        })
+        .then(u => {
             dispatch(login(u.data)); 
             setActivePage('start'); 
             setActive(false); 
+            localStorage.setItem("_auth", JSON.stringify(u.data.token))
         })
         .catch(() => setPasswordError('Invalid password'))
-
     }
 
     return (
