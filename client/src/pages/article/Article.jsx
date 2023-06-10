@@ -11,7 +11,7 @@ import SkewLoader from "react-spinners/SkewLoader";
 import SearchInput from '../../components/searchInput/SearchInput'
 
 const Article = () => {
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     const { article, ctgr } = useParams()
     const [articleInfo, setArticleInfo] = useState([])
     const [sectionInfo, setSectionInfo] = useState([])

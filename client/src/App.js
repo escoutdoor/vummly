@@ -3,6 +3,7 @@ import { MyFeed, Overview, Activate, Support, Category, Article, SearchSupport, 
 import SupportLayout from "./layouts/support/SupportLayout";
 import MainLayout from "./layouts/main/MainLayout";
 
+
 function App() {
     return (
         <Router>

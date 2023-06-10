@@ -14,7 +14,7 @@ const NamePage = ({setPage, name, nameHandler, nameError, createUser}) => {
         event.key === 'Enter' && name && !nameError && createUser()
     }
 
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     return (
         <div className={s.third} onKeyDown={goNext}>
             <div className={s.side} style={{backgroundImage: `url(${PF}images/icons/logInModal/third.webp)`}}>

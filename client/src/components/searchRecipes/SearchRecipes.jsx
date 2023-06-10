@@ -9,7 +9,7 @@ import { useState, useRef, useEffect } from 'react';
 
 const SearchRecipes = ({setActive, active}) => {
     const dropInput = useRef(null)
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
 
     const [searchActive, setSearchActive] = useState(false)
     const [searchVal, setSearchVal] = useState('')

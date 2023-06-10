@@ -6,7 +6,7 @@ import SuppFooter from './../../components/suppFooter/SuppFooter'
 import { useState, useEffect } from 'react';
 
 const Support = () => {
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     const [searchVal, setSearchVal] = useState(null)
 
     const searchHandle = (e) => {

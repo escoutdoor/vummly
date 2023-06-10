@@ -4,7 +4,7 @@ import './advantages.css'
 
 const Advantages = () => {
 
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     return (
         <div className='advantages'>
             {advatages.map((adv) => (

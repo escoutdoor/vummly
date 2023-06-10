@@ -9,7 +9,7 @@ import RecipeSkeleton from '../recipeSkeleton/RecipeSkeleton';
 import { useEffect, useState } from 'react';
 
 const RecipeItem = ({recipe, more, loading, setLoading, rating}) => {
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     // 
     const ratingStars = {
         itemShapes: Star,

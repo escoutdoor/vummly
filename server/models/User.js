@@ -15,13 +15,14 @@ const userSchema = users.model('User', new mongoose.Schema({
         required: true
     },
     avatar: {
-        type: String
+        type: String,
+        default: 'no-avatar.webp'
+    },
+    description: {
+        type: String,
     },
     city: {type: String},
     country: {type: String},
-    social: [{
-
-    }],
     yums: {type: Array, default: []},
     collections: [
         {

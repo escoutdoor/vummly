@@ -2,7 +2,7 @@ import './suppNavbar.css'
 import {Link} from 'react-router-dom'
 
 const SuppNavbar = () => {
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     return (
         <div className='suppNavbar'>
             <div className="wrap1160">

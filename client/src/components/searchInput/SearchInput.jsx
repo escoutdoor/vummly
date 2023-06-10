@@ -3,7 +3,7 @@ import { Link, useNavigate} from 'react-router-dom';
 import { useState } from 'react';
 
 const SearchInput = ({way, title}) => {
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
 
     const [searchVal, setSearchVal] = useState(null)
     const searchHandle = (e) => {

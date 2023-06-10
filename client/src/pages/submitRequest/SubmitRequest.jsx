@@ -8,7 +8,7 @@ import emailjs from '@emailjs/browser'
 import SearchInput from '../../components/searchInput/SearchInput';
 
 const SubmitRequest = () => {
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
 
     const [searchVal, setSearchVal] = useState(null)
     const searchHandle = (e) => {

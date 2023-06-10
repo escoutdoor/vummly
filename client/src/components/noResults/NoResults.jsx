@@ -1,7 +1,7 @@
 import s from './noResults.module.css'
 
 const NoResults = ({searchVal, length}) => {
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     return (
         <div className={length !== 0 ? `${s.no__result} ${s.hidden}` : s.no__result}>
             <div className={s.no__resultContent}>

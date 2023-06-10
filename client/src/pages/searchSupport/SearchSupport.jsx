@@ -12,7 +12,7 @@ import SearchInput from '../../components/searchInput/SearchInput';
 
 const SearchSupport = () => {
 
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     const location = useLocation()
 
     const data = location.state?.data

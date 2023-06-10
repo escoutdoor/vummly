@@ -10,7 +10,7 @@ import SkewLoader from "react-spinners/SkewLoader";
 import SearchInput from '../../components/searchInput/SearchInput';
 
 const Category = () => {
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     const {categories} = useParams();
 
     const [searchVal, setSearchVal] = useState(null)

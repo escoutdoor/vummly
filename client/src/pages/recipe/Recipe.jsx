@@ -10,7 +10,7 @@ import '@smastrom/react-rating/style.css'
 import RecipeItem from '../../components/recipeItem/RecipeItem';
 
 const Recipe = () => {
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     const {recipe} = useParams()
     const [rating, setRating] = useState()
     const [recipeData, setRecipeData] = useState({})

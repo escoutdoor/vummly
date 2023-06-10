@@ -8,10 +8,11 @@ import { faqs } from '../../helpers/activate/faqs'
 const Activate = () => {
 
     const [showQ, setShowQ] = useState(null)
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     const toggleActivate = (e) => {
         showQ === e ? setShowQ(null) : setShowQ(e)
     }
+
 
     useEffect(() => {
         document.title = 'Activate Thermometer'

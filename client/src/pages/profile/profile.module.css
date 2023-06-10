@@ -1,0 +1,151 @@
+.profile {
+    padding: 87px 0 24px 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    gap: 42px;
+}
+
+.userLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.userAvatar {
+    position: relative;
+}
+
+.image {
+    height: 124px;
+    width: 124px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.avatarClick {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    height: 100%;
+    width: 100%;
+}
+
+.inputAvatar {
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.logout {
+    font-size: 14px;
+    padding: 0px 32px 2px;
+    font-weight: 700;
+    color: #3a9691;
+    border: 2px solid #3a9691;
+    border-radius: 42px;
+    height: 30px;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    cursor: pointer;
+}
+
+.logout:hover {
+    color: #fff;
+    background: #3a9691;
+}
+
+.userRight {
+    display: flex;
+    flex-direction: column;
+}
+
+.editName {
+    display: flex;
+    flex-direction: column;
+}
+
+.username {
+    display: block;
+    line-height: 51px;
+    font-size: 34px;
+    color: #232323;
+    transition: all .2s ease;    
+    cursor: pointer;
+}
+
+.username.active {
+    display: none;
+}
+
+.username:hover {
+    color: #3a9691;
+}
+
+.nameInput {
+    display: none;
+    line-height: 51px;
+    font-size: 34px;
+    color: #232323;   
+    font-weight: 700;
+}
+
+.nameInput.active {
+    display: block;
+}
+
+.editText__target {
+    visibility: hidden;
+    opacity: 0;
+    color: #707070;
+    font-size: 16px;
+    line-height: 25px;
+    display: none;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.editText__target.active {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+}
+
+.editText__target.active:hover {
+    color: #3a9691;
+}
+
+.description {
+    flex-direction: column;
+    gap: 3px;
+    visibility: hidden;
+    opacity: 0;
+    display: none;
+}
+
+.description.active {
+    visibility: visible;
+    opacity: 1;
+    display: flex;
+}
+
+.descriptionInput {
+    resize: none;
+    width: 300px;
+    outline: none;
+    border-width:  0px 0px 1px 0px;
+    border-color: #e3e3e3;
+}
+
+.description span {
+    color: #707070;
+    font-size: 11px;
+}

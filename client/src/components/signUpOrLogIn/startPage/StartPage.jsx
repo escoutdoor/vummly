@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 
 const StartPage = ({setActive, setPage}) => {
 
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
 
     return (
         <div className={s.first}>

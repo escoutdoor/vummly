@@ -4,7 +4,7 @@ import { useScrollPosition } from '../../hooks/scrollPosition';
 
 const Navbar = (money) => {
 
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     const price = [
         {
             now: '79.99',

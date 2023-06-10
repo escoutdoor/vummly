@@ -2,10 +2,12 @@ import './sidebar.css'
 import { useEffect, useState } from 'react';
 import { sideInf as sideData, aboutYumm as aboutUs, privacy, social} from './../../helpers/thermometer/sidebar'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
-const Sidebar = ({setActive, user}) => {
-    const PF = 'http://localhost:3000/assets/'
+const Sidebar = ({setActive, activeLoginModal}) => {
+    const PF = process.env.REACT_APP_BASE_URL;
+    const [user, setUser] = useState({})
     const year = new Date().getFullYear()
     const [selected, setSelected] = useState(null)
     const [about, setAbout] = useState(false)
@@ -25,6 +27,16 @@ const Sidebar = ({setActive, user}) => {
         setActiveLink(...act)
     }, [])
 
+
+    useEffect(() => {
+        const getUser = async () => {
+            await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((user) => {
+                setUser(user.data)
+            })
+        }
+        getUser()
+    }, [activeLoginModal])
+
     return (
         <div className='sidebar'>
             <div className="sidebar-container">
@@ -32,7 +44,7 @@ const Sidebar = ({setActive, user}) => {
                     <Link to={'/'}>
                         <img className='logo' src={`${PF}images/logo/yummlyLogo.svg`} alt="logoYummly" />
                     </Link>
-                    {user ? <>
+                    {user._id ? <>
                         <Link to={`/profile/${user.name}-${user._id}`}>
                             <img title='Profile' className='avatar' src={user.avatar ? `${PF}images/avatars/${user.avatar}` : `${PF}images/no-avatar.webp`} alt="avatar" />
                         </Link>

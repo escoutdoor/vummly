@@ -90,6 +90,7 @@ const Main = ({active, setActive}) => {
             setActivePage('start'); 
             setActive(false); 
             localStorage.setItem("_auth", JSON.stringify(u.data.token))
+            window.location.reload()
         })
         .catch(() => setPasswordError('Invalid password'))
     }

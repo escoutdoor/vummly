@@ -28,7 +28,7 @@ const Overview = () => {
         document.title = 'Vummly Smart Thermometer'
     }, [])
     
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [badge, setBadge] = useState(true)
     const [amount, setAmount] = useState(1)

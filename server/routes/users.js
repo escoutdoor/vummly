@@ -12,14 +12,17 @@ router.post('/createOne', async (req, res) => {
         }
         const hashedPass = bcrypt.hashSync(req.body.password, 10)
         const user = new User({
+            _id: req.body._id,
             name: req.body.name,
             mail: req.body.mail,
             password: hashedPass,
             ...etc
         })
 
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {expiresIn: '24h'})
+
         const saved = await user.save()
-        res.status(200).json(user)
+        res.status(200).json({token})
     } catch (err) {
         res.status(500).json(err)
     }

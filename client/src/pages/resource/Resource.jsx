@@ -39,7 +39,7 @@ const Resource = () => {
         document.title = page && loading ? `${page[0].resource.name} on Vummly` : 'Vummly'
     }, [loading])
 
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
 
     return (
         <div>

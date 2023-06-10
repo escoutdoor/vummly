@@ -83,7 +83,7 @@ const SearchRecipe = () => {
 
     // state settings
     window.history.replaceState({}, searchValue)
-    const PF = 'http://localhost:3000/assets/'
+    const PF = process.env.REACT_APP_BASE_URL;
     // filter by menu
     useEffect(() => {
         const filter = () => {
