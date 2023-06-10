@@ -34,7 +34,7 @@ const Sidebar = ({setActive, activeLoginModal}) => {
                 setUser(user.data)
             })
         }
-        getUser()
+        localStorage.getItem('_auth') && getUser()
     }, [activeLoginModal])
 
     return (
@@ -44,7 +44,7 @@ const Sidebar = ({setActive, activeLoginModal}) => {
                     <Link to={'/'}>
                         <img className='logo' src={`${PF}images/logo/yummlyLogo.svg`} alt="logoYummly" />
                     </Link>
-                    {user._id ? <>
+                    {user?._id ? <>
                         <Link to={`/profile/${user.name}-${user._id}`}>
                             <img title='Profile' className='avatar' src={user.avatar ? `${PF}images/avatars/${user.avatar}` : `${PF}images/no-avatar.webp`} alt="avatar" />
                         </Link>

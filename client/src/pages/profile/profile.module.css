@@ -9,7 +9,6 @@
 
 .user {
     display: flex;
-    align-items: center;
     gap: 42px;
 }
 
@@ -111,6 +110,7 @@
     display: none;
     cursor: pointer;
     transition: all .2s ease;
+    margin-bottom: 15px;
 }
 
 .editText__target.active {
@@ -129,12 +129,14 @@
     visibility: hidden;
     opacity: 0;
     display: none;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .description.active {
     visibility: visible;
     opacity: 1;
     display: flex;
+    margin-bottom: 5px;
 }
 
 .descriptionInput {
@@ -148,4 +150,89 @@
 .description span {
     color: #707070;
     font-size: 11px;
+}
+
+.location {
+    display: flex;
+    gap: 2px;
+    color: #bababa;
+}
+
+.locationTextCity,
+.locationTextCountry {
+    font-size: 14px;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.locationTextCity.active,
+.locationTextCountry.active {
+    visibility: hidden;
+    opacity:  0;
+    display: none;
+}
+
+.locationItem {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.editLocation {
+    visibility: hidden;
+    width: 0;
+    opacity: 0;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    color: #e3e3e3;
+    font-size: 14px;
+}
+
+.editLocation::placeholder {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.editLocation.active {
+    visibility: visible;
+    opacity: 1;
+    width: 100px;
+}
+
+.locationItem:hover .locationTextCity,
+.locationItem:hover .locationTextCountry{
+    color: #3a9691;
+}
+
+/* navbar */
+
+.navbar {
+    display: flex;
+    gap: 22px;
+    margin: 52px 0px 30px;
+}
+
+.navbar__item {
+    text-transform: uppercase;
+    color: #707070;
+    margin-right: 22px;
+    padding-bottom: 10px;
+    letter-spacing: 3px;
+    font-size: 12px;
+    line-height: 12px;
+    transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.navbar__item.active {
+    color: #232323;
+    border-bottom: 3px solid #3a9691;
+}
+
+.navbar__item:hover {
+    color: #3a9691;
+}
+
+.section {
+    width: 100%;
 }
