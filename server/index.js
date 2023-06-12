@@ -10,6 +10,7 @@ dotenv.config()
 const articles = require('./routes/articles');
 const sections = require('./routes/sections');
 const categories = require('./routes/categories');
+const collections = require('./routes/collections');
 
 // recipe
 
@@ -35,6 +36,10 @@ app.use('/server/recipe', recipes)
 // users
 
 app.use('/server/user', users)
+
+// collections
+
+app.use('/server/collections', collections)
 
 // --------------------------------------------
 

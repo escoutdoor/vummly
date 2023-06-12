@@ -17,7 +17,7 @@ const userSchema = users.model('User', new mongoose.Schema({
     },
     avatar: {
         type: String,
-        default: 'no-avatar.webp'
+        default: ''
     },
     description: {
         type: String,
@@ -30,17 +30,7 @@ const userSchema = users.model('User', new mongoose.Schema({
     country: {
         type: String, 
         default: ''
-    },
-    yums: {
-        type: Array
-        , default: []
-    },
-    collections: [
-        {
-            name: {type: String, required: true},
-            recipes: [{type: String}]
-        },
-    ]
+    }
 }))
 
 module.exports = userSchema

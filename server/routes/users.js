@@ -8,13 +8,7 @@ const jwt = require('jsonwebtoken')
 router.post('/createOne', async (req, res) => {
     try {   
         const etc = {
-            collections: [
-                {name: 'Desserts', recipes: []},
-                {name: 'Breakfasts', recipes: []},
-                {name: 'Dinners', recipes: []},
-                {name: 'Drinks', recipes: []},
-                {name: 'Sides', recipes: []},
-            ],
+            
         }
         const hashedPass = bcrypt.hashSync(req.body.password, 10)
         const user = new User({
@@ -90,5 +84,6 @@ router.get('/:id', async (req, res) => {
         res.status(404).json("not found")
     }
 })
+
 
 module.exports = router

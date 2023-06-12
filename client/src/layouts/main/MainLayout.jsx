@@ -10,12 +10,23 @@ const MainLayout = () => {
     useEffect(() => {
         document.body.style.overflow = activeLoginModal ? 'hidden' : 'visible'
     }, [activeLoginModal])
+    const [loggedInUser, setLoggedInUser] = useState({})
+    const [notLoggedInUser, setNotLoggedInUser] = useState({})
+
+    useEffect(() => {
+        const fetchme = async () => {
+            await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((me) => {
+                setLoggedInUser(me.data)
+            })
+        }
+        localStorage.getItem('_auth') && fetchme()
+    }, [notLoggedInUser])
     
     return (
         <div>
             <Sidebar setActive={setActiveLoginModal} activeLoginModal={activeLoginModal}/>
             <div className={s.main}>
-                <Outlet />
+                <Outlet context={[loggedInUser, setNotLoggedInUser, setActiveLoginModal]}/>
                 <Main active={activeLoginModal} setActive={setActiveLoginModal}/>
             </div>
         </div>

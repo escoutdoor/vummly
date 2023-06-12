@@ -20,6 +20,15 @@ router.get('/getOne/:id', async (req, res) => {
     }
 })
 
+router.get('/getSome', async (req, res) => {
+    try {
+        const recipes = await Recipe.find({_id: {$in: req.body.recipes}})
+        res.status(200).json(recipes)
+    } catch (error) {
+        res.status(400).json(error)    
+    }
+})
+
 router.get(`/all`, async (req, res) => {
     try {
         const recipes = await Recipe.find({})

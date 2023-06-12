@@ -16,9 +16,6 @@ const recipeSchema = book.model('Recipe', new mongoose.Schema({
     time: {
         type: Number
     },
-    recipeCollection: {
-        type: Array
-    },
     resource: {
         link: {type: String},
         name: {type: String}

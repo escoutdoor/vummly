@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import s from './profile.module.css'
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
@@ -16,10 +16,12 @@ const Profile = () => {
     const dispatch = useDispatch()
     const [isMe, setIsMe] = useState(false)
     const {id} = useParams()
+    const [loggedInUser, setNotLoggedInUser] = useOutletContext()
     const [user, setUser] = useState({})
     const [foundRecipes, setFoundRecipes] = useState([])
     const [loaded, setLoaded] = useState(false)
     const [section, setSection] = useState("saved recipes")
+    const [vums, setVums] = useState([])
 
     const [activeName, setActiveName] = useState(false)
     const [activeDescription, setActiveDescription] = useState(false)
@@ -38,20 +40,31 @@ const Profile = () => {
         const fetch = async () => {
             await axios.get(`/user/${id.split("-")[1]}`).then((user) => {
                 setUser(user.data);
+                setNotLoggedInUser(user.data)
             })
         }
         fetch()
     }, [id])
 
     useEffect(() => {
-        const fetchme = async () => {
-            await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((me) => {
-                me.data?._id === user?._id ? setIsMe(true) : setIsMe(false)
+        document.title = user.name ? `${user.name} on Vummly` : 'Vummly'
+    }, [user])
+
+    useEffect(() => {
+        loggedInUser?._id === user?._id ? setIsMe(true) : setIsMe(false)
+    }, [user, loggedInUser])
+
+    
+    useEffect(() => {
+        const fetchVums = async () => {
+            await axios.get(`/collections/all/${user._id}`).then((collections) => {
+                setVums(collections.data)
             })
             setLoaded(true)
         }
-        localStorage.getItem('_auth') && fetchme()
+        user && fetchVums()
     }, [user])
+
 
     const logOut = () => {
         dispatch(logout())
@@ -82,7 +95,7 @@ const Profile = () => {
                         <div className={s.user}>
                             <div className={s.userLeft}>
                                 <div className={s.userAvatar}>
-                                    <img className={s.image} src={`${PF}images/avatars/${user.avatar}` || `${PF}images/avatars/avatar.png`} />
+                                    <img className={s.image} src={user.avatar ? `${PF}images/avatars/${user.avatar}` : `${PF}images/avatars/no-avatar.webp`}/>
                                     {isMe && <div className={s.avatarClick}>
                                         <input className={s.inputAvatar} type="file" accept="image/*"  onChange={() => {}}/>
                                     </div>}
@@ -127,7 +140,7 @@ const Profile = () => {
                             </ul>
                             <div className={s.section}>
                                 {
-                                    section === 'saved recipes' ? <SavedRecipes setFoundRecipes={setFoundRecipes} foundRecipes={foundRecipes} user={user}/> :
+                                    section === 'saved recipes' ? <SavedRecipes setFoundRecipes={setFoundRecipes} foundRecipes={foundRecipes} vums={vums}/> :
                                     section === 'preferences' ? <Preferences user={user}/> : 
                                     section === 'settings' ? <Settings user={user} /> :
                                     null

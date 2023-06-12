@@ -1,11 +1,9 @@
 
-
 const recipes = [
     {
         "id": "low-carb-meatloaf",
         "title": "Low Carb Meatloaf",
         "time": 110,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 760}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Meatloaf"}, {"tag": "Low Sugar"}, {"tag": "Low Carb"}],
@@ -45,13 +43,12 @@ const recipes = [
                 {"quantity": 140, "measurement": "grams", "ingredient": "mozzarella"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
+    
     {
         "id": "low-carb-no-bake-cookies",
         "title": "Low Carb No Bake Cookies",
         "time": 20,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 790}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick and easy"}, {"tag": "Cookies"}, {"tag": "Quick"}, {"tag": "Easy"}],
@@ -79,13 +76,11 @@ const recipes = [
                 {"quantity": 40, "measurement": "grams", "ingredient": "coconut", "technique": "shredded + unsweetened"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "keto-peanut-butter-cups",
         "title": "Keto Peanut Butter Cups",
         "time": 20,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 740}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick and easy"}, {"tag": "Microwaving"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Boiling"}],
@@ -109,13 +104,11 @@ const recipes = [
                 {"quantity": 2, "measurement": "Tbsp.", "ingredient": "coconut oil"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "blueberry-smoothie",
         "title": "Blueberry Smoothie",
         "time": 5,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 110}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Beverages"}, {"tag": "Quick"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
@@ -139,13 +132,11 @@ const recipes = [
                 {"quantity": 1, "measurement": "handful", "ingredient": "spinach", "technique": "or Greens, the sweetness from the fruit helps to mask this!, optional"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "tabouleh",
         "title": "Tabouleh",
         "time": 30,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 320}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Easy"}, {"tag": "Salads"}],
@@ -177,13 +168,11 @@ const recipes = [
                 {"ingredient": "pepper"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "low-carb-strawberry-smoothie",
         "title": "Low Carb Strawberry Smoothie",
         "time": 10,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 220}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Beverages"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
@@ -203,13 +192,11 @@ const recipes = [
                 {"ingredient": "sweetener", "technique": "if needed"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 2, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "low-carb-mexican-chicken-casserole",
         "title": "Low Carb Mexican Chicken Casserole",
         "time": 45,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 190}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Mexican"}, {"tag": "Casserole"}, {"tag": "Low Sugar"}, {"tag": "Sauteeing"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Browning"}, {"tag": "Baking"}],
@@ -248,13 +235,11 @@ const recipes = [
                 {"ingredient": "cilantro", "technique": "to garnish, optional"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "ground-chicken-casserole",
         "title": "Ground Chicken Casserole",
         "time": 40,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 1010}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Casserole"}, {"tag": "Boiling"}, {"tag": "Low Sugar"}, {"tag": "Low Carb"}],
@@ -287,13 +272,11 @@ const recipes = [
                 {"quantity": 339, "measurement": "grams", "ingredient": "cheddar cheese", "technique": "shredded"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 2, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "mediterranean-chicken-marinade",
         "title": "Mediterranean Chicken Marinade",
         "time": 20,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 360}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Quick"}, {"tag": "Marinade"}, {"tag": "Low Sugar"}, {"tag": "Grilling"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -324,13 +307,11 @@ const recipes = [
                 {"quantity": 0.91, "measurement": "kilograms", "ingredient": "chicken breast boneless", "technique": "+ skinless"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 2, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "crustless-spinach-quiche",
         "title": "Crustless Spinach Quiche",
         "time": 50,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 410}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Quiche"}, {"tag": "Browning"}, {"tag": "Baking"}],
@@ -359,13 +340,11 @@ const recipes = [
                 {"quantity": 168, "measurement": "grams", "ingredient": "shredded mozzarella"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 2, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "parmesan-crisps",
         "title": "Parmesan Crisps",
         "time": 10,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 110}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Quick And Easy"}, {"tag": "Browning"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Baking"}],
@@ -386,13 +365,11 @@ const recipes = [
                 {"quantity": 1.5, "measurement": "tsp.", "ingredient": "hemp seeds", "technique": "optional"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 1, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 2, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "keto-fried-chicken",
         "title": "Keto Fried Chicken",
         "time": 40,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 290}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Fried Chicken"}, {"tag": "Baking"}, {"tag": "Low Sugar"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -423,13 +400,11 @@ const recipes = [
                 {"quantity": 2, "ingredient": "eggs"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "stuffed-chicken-parmesan",
         "title": "Stuffed Chicken Parmesan",
         "time": 60,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 510}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Low Carb"}, {"tag": "Baking"}],
@@ -454,13 +429,11 @@ const recipes = [
                 {"ingredient": "basil", "technique": "fresh, sliced"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "cheese-log",
         "title": "Cheese Log",
         "time": 10,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 230}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Appetizers"}, {"tag": "Quick"}, {"tag": "Low Sugar"}, {"tag" : "Low Carb"}],
@@ -487,13 +460,11 @@ const recipes = [
                 {"quantity": 113, "measurement": "grams", "ingredient": "cheddar"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "keto-peanut-butter-bites",
         "title": "Keto Peanut Butter Bites",
         "time": 45,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 100}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Microwaving"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -516,13 +487,11 @@ const recipes = [
                 {"quantity": 1.5, "measurement": "tsp.", "ingredient": "oil"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "keto-radish-home-fries-wo-potatoes",
         "title": "Keto Radish Home Fries (Without Potatoes!)",
         "time": 20,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 90}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Side Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Fries"}, {"tag": "Low Sugar"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -549,13 +518,11 @@ const recipes = [
                 {"quantity": 0.5, "measurement": "tsp.", "ingredient": "paprika"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "chocolate-peanut-butter-smoothie",
         "title": "Chocolate Peanut Butter Smoothie",
         "time": 10,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 340}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Beverages"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
@@ -578,13 +545,11 @@ const recipes = [
                 {"quantity": 237, "measurement": "grams", "ingredient": "ice"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "keto-tiramisu-for-two",
         "title": "Keto Tiramisu for Two",
         "time": 60,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 40}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Cocktails"}, {"tag": "Tiramisu"}, {"tag": "Microwaving"}],
@@ -599,13 +564,11 @@ const recipes = [
                 {"quantity": 1, "measurement": "Tbsp.", "ingredient": "brandy", "technique": "or rum optional"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "keto-peanut-butter-mousse",
         "title": "Keto Peanut Butter Mousse",
         "time": 15,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 420}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick And Easy"}, {"tag": "Mousse"}, {"tag": "Quick"}, {"tag": "Easy"}],
@@ -628,13 +591,11 @@ const recipes = [
                 {"quantity": 2, "measurement": "Tbsp.", "ingredient": "half and half"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "cream-cheese-pancakes",
         "title": "Cream Cheese Pancakes",
         "time": 10,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 230}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Breakfast And Brunch"}, {"tag": "Quick"}, {"tag": "Pancakes"}, {"tag": "Low Sugar"}, {"tag": "Blending"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -657,13 +618,11 @@ const recipes = [
                 {"quantity": 0.5, "measurement": "tsp.", "ingredient": "vanilla extract", "technique": "Optional"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "keto-chili",
         "title": "Keto Chili",
         "time": 480,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 200}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Easy"}, {"tag": "Chili"}, {"tag": "Low Sugar"}, {"tag": "Slow Cooking"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Browning"}],
@@ -694,13 +653,11 @@ const recipes = [
                 {"quantity": 79, "measurement": "ml", "ingredient": "water"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
     {
         "id": "keto-chocolate-peanut-butter-smoothie",
         "title": "Keto Chocolate Peanut Butter Smoothie",
         "time": 5,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 160}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Beverages"}, {"tag": "Quick"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
@@ -729,14 +686,12 @@ const recipes = [
                 {"ingredient": "salt", "technique": "Pinch of Mineral"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "the-best-creamy-cucumber-salad",
         "title": "The Best Creamy Cucumber Salad",
         "time": 10,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 50}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Salads"}, {"tag": "Quick And Easy"}, {"tag": "Low Sugar"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Sodium"}, {"tag": "Low Fat"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -761,14 +716,12 @@ const recipes = [
                 {"quantity": 0.25, "measurement": "tsp.", "ingredient": "garlic powder"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "keto-smoothie-healthy-green-detox-low-carb-smoothie",
         "title": "Keto Smoothie - Healthy Green Detox Low Carb Smoothie",
         "time": 5,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 400}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Beverages"}, {"tag": "Quick"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
@@ -795,14 +748,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "tsp.", "ingredient": "vanilla extract"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "easy-keto-seeds-1g-carb-crackers-healthy-low-carb-crunchy-snack",
         "title": "Easy Keto Seeds 1g carb Crackers - Healthy Low Carb Crunchy Snack",
         "time": 120,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 50}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Snacks"}, {"tag": "Boiling"}, {"tag": "Lunch"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Baking"}],
@@ -831,14 +782,12 @@ const recipes = [
                 {"quantity": 0.5, "measurement": "tsp.", "ingredient": "salt"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "creamy-thick-keto-hot-chocolate-sugar-free-drink",
         "title": "Creamy & Thick Keto Hot Chocolate - Sugar-Free Drink",
         "time": 4,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 180}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Beverages"}, {"tag": "Quick"}, {"tag": "Boiling"}, {"tag": "Blending"}],
@@ -861,14 +810,12 @@ const recipes = [
                 {"quantity": 0.25, "measurement": "tsp.", "ingredient": "cinnamon"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "keto-pork-chops-with-super-creamy-mushroom-sauce",
         "title": "Keto Pork Chops with Super Creamy Mushroom Sauce",
         "time": 25,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 510}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Easy"}, {"tag": "Low Sugar"}, {"tag": "Sauteeing"}, {"tag": "Low Carb"}, {"tag": "Browning"}, {"tag": "Boiling"}],
@@ -915,14 +862,12 @@ const recipes = [
                 {"quantity": 5, "ingredient": "garlic cloves", "technique": "minced"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "cream-cheese-frosting",
         "title": "Cream Cheese Frosting",
         "time": 20,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 950}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Frosting"}],
@@ -941,14 +886,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "tsp.", "ingredient": "pure vanilla extract"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "snowball-cookies",
         "title": "Snowball Cookies",
         "time": 30,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 220}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Cookies"}, {"tag": "Browning"}, {"tag": "Baking"}],
@@ -971,14 +914,12 @@ const recipes = [
                 {"quantity": 82, "measurement": "grams", "ingredient": "chopped pecans"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "peach-crisp",
         "title": "Peach Crisp",
         "time": 60,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 610}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Crisp"}, {"tag": "Browning"}, {"tag": "Baking"}],
@@ -1007,14 +948,12 @@ const recipes = [
                 {"quantity": 31, "measurement": "grams", "ingredient": "flour", "technique": "all-purpose, spooned & leveled"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "chocolate-mug-cake",
         "title": "Chocolate Mug Cake",
         "time": 11,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 160}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Cake"}, {"tag": "Microwaving"}],
@@ -1043,14 +982,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "Tbsp.", "ingredient": "semi-sweet chocolate chips", "technique": "optional"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "sweet-potato-casserole",
         "title": "Sweet Potato Casserole",
         "time": 80,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 370}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Side Dishes"}, {"tag": "Sweet Potato Casserole"}, {"tag": "Thanksgiving"}, {"tag": "Low Sodium"}, {"tag": "Browning"}, {"tag": "Casserole"}, {"tag": "High Fiber"}, {"tag": "Baking"}],
@@ -1087,14 +1024,12 @@ const recipes = [
                 {"quantity": "82", "measurement": "grams", "ingredient": "chopped pecans"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "chicken-enchilada-casserole",
         "title": "Chicken Enchilada Casserole",
         "time": 30,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 350}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Quick"}, {"tag": "Casserole"}, {"tag": "Low Sugar"}, {"tag": "Baking"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "High Fiber"}],
@@ -1115,14 +1050,12 @@ const recipes = [
                 {"quantity": 480, "measurement": "grams", "ingredient": "enchilada sauce"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "blueberry-lemon-bread-with-lemon-glaze",
         "title": "Blueberry Lemon Bread with Lemon Glaze",
         "time": 75,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 280}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Breads"}, {"tag": "Glazing"}, {"tag": "Baking"}],
@@ -1159,14 +1092,12 @@ const recipes = [
                 {"quantity": 2, "measurement": "Tbsp.", "ingredient": "fresh lemon juice"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 1, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "crockpot-turkey-chili",
         "title": "Crockpot Turkey Chili",
         "time": 360,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 390}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Chili"}, {"tag": "Slow Cooking"}, {"tag": "Low Calorie"}, {"tag": "High Fiber"}],
@@ -1201,14 +1132,12 @@ const recipes = [
                 {"ingredient": "pepper"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "creamy-cheesy-potatoes",
         "title": "CREAMY CHEESY POTATOES",
         "time": 90,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "jonna's-get-off-your-butt-and-bake", "name": "Jonna's Get Off Your Butt and Bake"},
         "nutrition": [{"label": "calories", "value": 420}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Side Dishes"}, {"tag": "Oven"}, {"tag": "Low Sugar"}, {"tag": "Frying"}, {"tag": "High Fiber"}, {"tag": "Browning"}, {"tag": "Boiling"}, {"tag": "Baking"}],
@@ -1233,14 +1162,12 @@ const recipes = [
                 {"quantity": 226, "measurement": "grams", "ingredient": "cheddar cheese", "technique": "grated"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "fry-bread",
         "title": "FRY BREAD",
         "time": 70,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "jonna's-get-off-your-butt-and-bake", "name": "Jonna's Get Off Your Butt and Bake"},
         "nutrition": [{"label": "calories", "value": 1500}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Breads"}, {"tag": "Oven"}, {"tag": "Frying"}],
@@ -1267,14 +1194,12 @@ const recipes = [
                 {"quantity": 473, "measurement": "ml", "ingredient": "oil", "technique": "for frying"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "the-perfect-no-bake-cheesecake",
         "title": "The Perfect No Bake Cheesecake",
         "time": 30,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "jonna's-get-off-your-butt-and-bake", "name": "Jonna's Get Off Your Butt and Bake"},
         "nutrition": [{"label": "calories", "value": 630}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick And Easy"}, {"tag": "Cheesecake"}, {"tag": "Quick"}, {"tag": "Easy"}],
@@ -1301,14 +1226,12 @@ const recipes = [
                 {"quantity": 50, "measurement": "grams", "ingredient": "granulated sugar"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "cherry-or-blueberry-crumb-dessert",
         "title": "CHERRY OR BLUEBERRY CRUMB DESSERT",
         "time": 55,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "jonna's-get-off-your-butt-and-bake", "name": "Jonna's Get Off Your Butt and Bake"},
         "nutrition": [{"label": "calories", "value": 750}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Oven"}],
@@ -1327,14 +1250,12 @@ const recipes = [
                 {"quantity": 125, "measurement": "grams", "ingredient": "chopped walnuts", "technique": "or pecans or almonds"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "green-beans-and-brown-sugar-bacon",
         "title": "Green Beans & Brown Sugar Bacon",
         "time": 30,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "jonna's-get-off-your-butt-and-bake", "name": "Jonna's Get Off Your Butt and Bake"},
         "nutrition": [{"label": "calories", "value": 390}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Quick And Easy"}, {"tag": "Side Dishes"}],
@@ -1369,14 +1290,12 @@ const recipes = [
                 {"quantity": 47, "measurement": "grams", "ingredient": "roasted red peppers", "technique": "jarred, coarsely chopped"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "chickpea-pesto-pasta-salad",
         "title": "Chickpea Pesto Pasta Salad",
         "time": 30,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "barilla", "name": "Barilla"},
         "nutrition": [{"label": "calories", "value": 35}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Salads"}, {"tag": "Easy"}, {"tag": "Pasta Salad"}, {"tag": "Boiling"}],
@@ -1407,14 +1326,12 @@ const recipes = [
                 {"ingredient": "black pepper", "technique": "to taste"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 3, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 2, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "barilla-rustic-basil-pesto-3-cheese-dip",
         "title": "Barilla® Rustic Basil Pesto & 3 Cheese Dip",
         "time": 30,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "barilla", "name": "Barilla"},
         "nutrition": [{"label": "calories", "value": 370}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Appetizers"}, {"tag": "Easy"}, {"tag": "Dips And Spreads"}, {"tag": "Baking"}],
@@ -1437,14 +1354,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "Tbsp.", "ingredient": "Italian parsley", "technique": "chopped"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 3, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 2, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "barilla-cheddar-pesto-mac-cheese",
         "title": "Barilla® Cheddar Pesto Mac & Cheese",
         "time": 35,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "barilla", "name": "Barilla"},
         "nutrition": [{"label": "calories", "value": 470}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Browning"}, {"tag": "Boiling"}, {"tag": "Baking"}],
@@ -1475,14 +1390,12 @@ const recipes = [
                 {"ingredient": "white pepper", "technique": "to taste"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 3, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 2, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "focaccia-sandwich-with-turkey-red-pepper-barilla-creamy-pesto",
         "title": "Focaccia Sandwich with Turkey, Red Pepper & Barilla® Creamy Pesto",
         "time": 5,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "barilla", "name": "Barilla"},
         "nutrition": [{"label": "calories", "value": 370}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Lunch"}, {"tag": "Quick And Easy"}, {"tag": "Quick"}, {"tag": "Easy"}],
@@ -1507,14 +1420,12 @@ const recipes = [
                 {"ingredient": "white pepper", "technique": "to taste"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "barilla-creamy-pesto-lemon-chicken-recipe",
         "title": "Barilla® Creamy Pesto Lemon Chicken Recipe",
         "time": 80,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "barilla", "name": "Barilla"},
         "nutrition": [{"label": "calories", "value": 170}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Easy"}, {"tag": "Marinating"}, {"tag": "Browning"}, {"tag": "Baking"}],
@@ -1535,14 +1446,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "tsp.", "ingredient": "black pepper"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "berry-smoothie",
         "title": "Berry Smoothie",
         "time": 10,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "drAxe.com", "name": "DrAxe.com"},
         "nutrition": [{"label": "calories", "value": 100}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Beverages"}, {"tag": "Easy"}, {"tag": "Smoothie"}],
@@ -1561,7 +1470,6 @@ const recipes = [
                 {"ingredient": "stevia", "technique": "to taste"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad"]}]
     },
 
 
@@ -1569,7 +1477,6 @@ const recipes = [
         "id": "gravy",
         "title": "Gravy",
         "time": 30,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "drAxe.com", "name": "DrAxe.com"},
         "nutrition": [{"label": "calories", "value": 600}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Easy"}, {"tag": "Gravy"}],
@@ -1594,14 +1501,12 @@ const recipes = [
                 {"ingredient": "sea salt"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Vanek krasava", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad"]}]
     },
 
     {
         "id": "pumpkin-spice-latte",
         "title": "Pumpkin Spice Latte",
         "time": 8,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "drAxe.com", "name": "DrAxe.com"},
         "nutrition": [{"label": "calories", "value": 310}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Beverages"}, {"tag": "Easy"}, {"tag": "Fall"}],
@@ -1624,14 +1529,12 @@ const recipes = [
                 {"quantity": 59, "measurement": "ml", "ingredient": "brewed coffee", "technique": "organic, or espresso"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Great flavor", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "Vanek nekrasava", "likes" : ["vlad"]}]
     },
 
     {
         "id": "baked-cauliflower",
         "title": "Baked Cauliflower",
         "time": 50,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "drAxe.com", "name": "DrAxe.com"},
         "nutrition": [{"label": "calories", "value": 250}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Side Dishes"}, {"tag": "Oven"}, {"tag": "Low Sugar"}, {"tag": "Browning"}, {"tag": "Low Sodium"}, {"tag": "High Fiber"}, {"tag": "Boiling"}, {"tag": "Baking"}],
@@ -1656,14 +1559,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "pinch", "ingredient": "oregano"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 2, "rev": "Not a good choice", "likes" : ["vlad"]}]
     },
 
     {
         "id": "hummus",
         "title": "Hummus",
         "time": 5,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "drAxe.com", "name": "DrAxe.com"},
         "nutrition": [{"label": "calories", "value": 520}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Appetizers"}, {"tag": "Quick"}, {"tag": "Hummus"}, {"tag": "High Fiber"}],
@@ -1688,7 +1589,6 @@ const recipes = [
                 {"ingredient": "paprika", "technique": "to taste"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 2, "rev": "Not a good choice", "likes" : ["vlad"]}]
     },
 
 
@@ -1696,7 +1596,6 @@ const recipes = [
         "id": "creamed-spinach",
         "title": "Creamed Spinach",
         "time": 15,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "love-and-lemons", "name": "Love and Lemons"},
         "nutrition": [{"label": "calories", "value": 240}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Side Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Low Sugar"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "High Fiber"}],
@@ -1729,7 +1628,6 @@ const recipes = [
                 {"ingredient": "freshly ground black pepper"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Not a good choice", "likes" : ["vlad"]}]
     },
 
 
@@ -1737,7 +1635,6 @@ const recipes = [
         "id": "healthy-banana-bread",
         "title": "Healthy Banana Bread",
         "time": 55,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "love-and-lemons", "name": "Love and Lemons"},
         "nutrition": [{"label": "calories", "value": 340}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Breads"}, {"tag": "Banana Bread"}, {"tag": "Baking"}],
@@ -1780,7 +1677,6 @@ const recipes = [
                 {"quantity": 1.5, "measurement": "Tbsp.", "ingredient": "rolled oats"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Not a good choice", "likes" : ["vlad"]}]
     },
 
 
@@ -1788,7 +1684,6 @@ const recipes = [
         "id": "homemade-corn-tortillas",
         "title": "Homemade Corn Tortillas",
         "time": 65,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "love-and-lemons", "name": "Love and Lemons"},
         "nutrition": [{"label": "calories", "value": 60}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Breads"}],
@@ -1807,7 +1702,6 @@ const recipes = [
                 {"ingredient": "tortilla", "technique": "press, I have this one., Or go without like she did – brave girl"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 3, "rev": "Not a good choice", "likes" : ["vlad"]}]
     }, 
 
 
@@ -1815,7 +1709,6 @@ const recipes = [
         "id": "baked-sweet-potato",
         "title": "Baked Sweet Potato",
         "time": 45,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "love-and-lemons", "name": "Love and Lemons"},
         "nutrition": [{"label": "calories", "value": 290}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Side Dishes"}, {"tag": "Easy"}, {"tag": "Roasting"}],
@@ -1842,14 +1735,12 @@ const recipes = [
                 {"ingredient": "stuffing", "technique": "any of these, ideas!"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "good choice", "likes" : ["vlad"]}]
     }, 
 
     {
         "id": "cilantro-lime-dressing",
         "title": "Cilantro Lime Dressing",
         "time": 5,
-        "recipeCollection": ["vlad", "vanya"],
         "resource": { "link": "love-and-lemons", "name": "Love and Lemons"},
         "nutrition": [{"label": "calories", "value": 340}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Salads"}, {"tag": "Quick"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -1876,14 +1767,12 @@ const recipes = [
                 {"quantity": 1, "ingredient": "avocado", "technique": "or 0.5 cup plain whole milk Greek yogurt"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "good choice", "likes" : ["vlad"]}]
     },
 
     {
         "id": "zero-calorie-salad-dressing",
         "title": "Zero Calorie Salad Dressing",
         "time": 60,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "CDKitchen", "name": "CDKitchen"},
         "nutrition": [{"label": "calories", "value": 5}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Salads"}],
@@ -1908,14 +1797,12 @@ const recipes = [
                 {"ingredient": "artificial sweetener", "technique": "to taste"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "good choice", "likes" : ["vlad"]}]
     }, 
 
     {
         "id": "white-rice",
         "title": "White Rice",
         "time": 29,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "CDKitchen", "name": "CDKitchen"},
         "nutrition": [{"label": "calories", "value": 280}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Side Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Fat"}],
@@ -1934,14 +1821,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "Tbsp.", "ingredient": "vegetable oil"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "good choice", "likes" : ["vlad"]}]
     }, 
 
     {
         "id": "homemade-vanilla-pudding",
         "title": "Homemade Vanilla Pudding",
         "time": 60,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "CDKitchen", "name": "CDKitchen"},
         "nutrition": [{"label": "calories", "value": 230}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Easy"}],
@@ -1964,14 +1849,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "Tbsp.", "ingredient": "butter"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 5, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 5, "rev": "good choice", "likes" : ["vlad"]}]
     }, 
 
     {
         "id": "simple-sweet-and-sour-sauce",
         "title": "Simple Sweet And Sour Sauce",
         "time": 20,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "CDKitchen", "name": "CDKitchen"},
         "nutrition": [{"label": "calories", "value": 70}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Condiments And Sauces"}, {"tag": "Easy"}, {"tag": "Low Fat"}],
@@ -1990,14 +1873,12 @@ const recipes = [
                 {"quantity": 59, "measurement": "ml", "ingredient": "water"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "good choice", "likes" : ["vlad"]}]
     },
 
     {
         "id": "easy-chicken-alfredo",
         "title": "Easy Chicken Alfredo",
         "time": 15,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "CDKitchen", "name": "CDKitchen"},
         "nutrition": [{"label": "calories", "value": 320}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Alfredo"}, {"tag": "Low Sugar"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Calorie"}],
@@ -2024,7 +1905,6 @@ const recipes = [
                 {"quantity": 0.25, "measurement": "tsp.", "ingredient": "freshly ground black pepper"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "good choice", "likes" : ["vlad"]}]
     },
 
 
@@ -2032,7 +1912,6 @@ const recipes = [
         "id": "easiest-ever-almond-cookie",
         "title": "Easiest Ever Almond Cookie",
         "time": 24,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "the-sugar-free-diva", "name": "The Sugar Free Diva"},
         "nutrition": [{"label": "calories", "value": 60}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Cookies"}, {"tag": "Baking"}],
@@ -2055,14 +1934,12 @@ const recipes = [
                 {"quantity": 36, "measurement": "grams", "ingredient": "chopped almonds"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "I liked it", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "good choice", "likes" : ["vlad"]}]
     },
 
     {
         "id": "sugar-free-blueberry-pie",
         "title": "Sugar Free Blueberry Pie",
         "time": 70,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "the-sugar-free-diva", "name": "The Sugar Free Diva"},
         "nutrition": [{"label": "calories", "value": 460}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Pie"}, {"tag": "Baking"}],
@@ -2083,14 +1960,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "Tbsp.", "ingredient": "lemon juice"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Not quiet what I thought, but tasty. I’ll work on presentation next time I make it.", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "good choice", "likes" : ["vlad"]}]
     },
 
     {
         "id": "super-simple-sugar-free-chocolate-icing",
         "title": "Super Simple Sugar Free Chocolate Icing",
         "time": 70,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "the-sugar-free-diva", "name": "The Sugar Free Diva"},
         "nutrition": [{"label": "calories", "value": 160}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Icing"}],
@@ -2111,14 +1986,12 @@ const recipes = [
                 {"quantity": 100, "measurement": "grams", "ingredient": "sugar", "technique": "alternative such as Splenda"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Not quiet what I thought, but tasty. I’ll work on presentation next time I make it.", "likes" : ["vlad", "vanya"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "good choice", "likes" : ["vlad"]}]
     },
 
     {
         "id": "sugar-free-vanilla-ice-cream",
         "title": "Sugar Free Vanilla Ice Cream",
         "time": 20,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "the-sugar-free-diva", "name": "The Sugar Free Diva"},
         "nutrition": [{"label": "calories", "value": 520}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Ice Cream"}],
@@ -2137,14 +2010,12 @@ const recipes = [
                 {"quantity": 2, "measurement": "tsp.", "ingredient": "vanilla extract"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Good one!", "likes" : ["vlad"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "good choice", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "how-to-make-keto-low-carb-noodles",
         "title": "How To Make Keto Low Carb Noodles",
         "time": 480,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "the-sugar-free-diva", "name": "The Sugar Free Diva"},
         "nutrition": [{"label": "calories", "value": 200}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Quick"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -2159,14 +2030,12 @@ const recipes = [
                 {"quantity": 2, "ingredient": "egg yolks", "technique": "Gently stirred"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "vanek", "stars": 4, "rev": "Good one!", "likes" : ["vlad"]}, {"user": "nevanek", "link": "nevanek", "stars": 4, "rev": "good choice", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "how-to-make-caramelized-onions",
         "title": "How to Make Caramelized Onions",
         "time": 50,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "add-a-pinch", "name": "Add a Pinch"},
         "nutrition": [{"label": "calories", "value": 70}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Side Dishes"}, {"tag": "Easy"}, {"tag": "Low Sugar"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -2183,14 +2052,12 @@ const recipes = [
                 {"ingredient": "salt", "technique": "to taste"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "Vladislav", "stars": 4, "rev": "Good one!", "likes" : ["vlad"]}, {"user": "nevanek", "link": "John", "stars": 4, "rev": "good choice", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "perfect-whipped-cream",
         "title": "Perfect Whipped Cream",
         "time": 2,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "add-a-pinch", "name": "Add a Pinch"},
         "nutrition": [{"label": "calories", "value": 60}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick"}],
@@ -2207,14 +2074,12 @@ const recipes = [
                 {"quantity": 0.5, "measurement": "tsp.", "ingredient": "vanilla", "technique": "or other flavorings or liquors"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "Vladislav", "stars": 4, "rev": "Good one!", "likes" : ["vlad"]}, {"user": "nevanek", "link": "John", "stars": 4, "rev": "good choice", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "shortbread",
         "title": "Shortbread",
         "time": 70,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "add-a-pinch", "name": "Add a Pinch"},
         "nutrition": [{"label": "calories", "value": 390}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Shortbread"}],
@@ -2233,14 +2098,12 @@ const recipes = [
                 {"quantity": 250, "measurement": "grams", "ingredient": "flour", "technique": "all-purpose"}
             ]
         },
-        "reviews": [{"user": "vanek", "link": "Vladislav", "stars": 4, "rev": "Good one!", "likes" : ["vlad"]}, {"user": "nevanek", "link": "John", "stars": 4, "rev": "good choice", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "perfect-queso",
         "title": "Perfect Queso",
         "time": 5,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "add-a-pinch", "name": "Add a Pinch"},
         "nutrition": [{"label": "calories", "value": 250}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Quick"}, {"tag": "Slow Cooking"}, {"tag": "Microwaving"}],
@@ -2259,14 +2122,12 @@ const recipes = [
                 {"quantity": 118, "measurement": "ml", "ingredient": "whole milk", "technique": "or half and half"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 4, "rev": "Good one!", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "good choice", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "apple-crisp",
         "title": "Apple Crisp",
         "time": 55,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "add-a-pinch", "name": "Add a Pinch"},
         "nutrition": [{"label": "calories", "value": 380}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Crisp"}, {"tag": "Browning"}, {"tag": "Baking"}],
@@ -2303,14 +2164,12 @@ const recipes = [
                 {"quantity": 59, "measurement": "ml", "ingredient": "canola oil", "technique": "or 3 tablespoons melted coconut oil"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 4, "rev": "Good one!", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "good choice", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "taco-soup",
         "title": "Taco Soup",
         "time": 15,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 230}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Soups"}, {"tag": "Quick And Easy"}, {"tag": "Quick"}, {"tag": "Easy"}],
@@ -2337,14 +2196,12 @@ const recipes = [
                 {"quantity": 118, "measurement": "ml", "ingredient": "water"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 4, "rev": "Good one!", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "good choice", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "chicken-enchiladas",
         "title": "Chicken Enchiladas",
         "time": 25,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 570}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Enchiladas"}, {"tag": "Low Sugar"}, {"tag": "Baking"}, {"tag": "Quick"}, {"tag": "Easy"}],
@@ -2363,14 +2220,12 @@ const recipes = [
                 {"quantity": 113, "measurement": "grams", "ingredient": "cheese"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 4, "rev": "Good one!", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "good choice", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "homemade-french-fries",
         "title": "Homemade French Fries",
         "time": 25,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 250}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Side Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Fries"}, {"tag": "Oven"}, {"tag": "Low Sugar"}, {"tag": "Baking"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Sodium"}, {"tag": "Low Fat"}, {"tag": "High Fiber"}],
@@ -2393,14 +2248,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "tsp.", "ingredient": "black pepper"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "barbecue-ranch-turkey-burgers",
         "title": "Barbecue Ranch Turkey Burgers",
         "time": 30,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 170}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Turkey Burger"}, {"tag": "Grilling"}, {"tag": "Burger"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Fat"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Baking"}],
@@ -2427,14 +2280,12 @@ const recipes = [
                 {"quantity": 4, "measurement": "Tbsp.", "ingredient": "ranch dressing"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "korean-beef-and-veggies",
         "title": "Korean Beef and Veggies",
         "time": 15,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 310}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Korean"}, {"tag": "Quick And Easy"}, {"tag": "Low Carb"}, {"tag": "Frying"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Calorie"}, {"tag": "Browning"}],
@@ -2457,14 +2308,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "tsp.", "ingredient": "garlic powder"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "olive-garden-copycat-chicken-gnocchi-soup",
         "title": "Olive Garden Copycat Chicken Gnocchi Soup",
         "time": 45,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 320}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Soups"}, {"tag": "Low Sugar"}, {"tag": "Sauteeing"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Boiling"}],
@@ -2503,7 +2352,6 @@ const recipes = [
                 {"quantity": 1, "measurement": "pkg.", "ingredient": "gnocchi"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
 
@@ -2511,7 +2359,6 @@ const recipes = [
         "id": "mug-cakes-in-a-jar",
         "title": "Mug Cakes in a Jar",
         "time": 35,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 90}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Microwaving"}],
@@ -2538,7 +2385,6 @@ const recipes = [
                 {"quantity": 0.125, "measurement": "Tbsp.", "ingredient": "baking powder"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
 
@@ -2546,7 +2392,6 @@ const recipes = [
         "id": "peanut-butter-frosting",
         "title": "Peanut Butter Frosting",
         "time": 20,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 690}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick And Easy"}, {"tag": "Frosting"}, {"tag": "Quick"}, {"tag": "Easy"}],
@@ -2567,14 +2412,12 @@ const recipes = [
                 {"quantity": 1, "measurement": "Tbsp.", "ingredient": "milk"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "green-chili-chicken-enchiladas",
         "title": "Green Chili Chicken Enchiladas",
         "time": 30,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 370}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Quick"}, {"tag": "Enchiladas"}, {"tag": "Baking"}],
@@ -2597,14 +2440,12 @@ const recipes = [
                 {"quantity": 448, "measurement": "grams", "ingredient": "chicken", "technique": "cooked and shredded"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "eggless-sugar-cookie-dough",
         "title": "Eggless Sugar Cookie Dough",
         "time": 5,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 860}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick"}],
@@ -2633,14 +2474,12 @@ const recipes = [
                 {"quantity": 61, "measurement": "grams", "ingredient": "oatmeal"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 4, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "weightloss-protein-smoothie",
         "title": "Weightloss Protein Smoothie",
         "time": 15,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 140}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Beverages"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
@@ -2659,14 +2498,12 @@ const recipes = [
                 {"ingredient": "water", "technique": "for consistency"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "edible-peanut-butter-cookie-dough",
         "title": "Edible Peanut Butter Cookie Dough",
         "time": 5,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 670}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick And Easy"}, {"tag": "Quick"}, {"tag": "Easy"}],
@@ -2687,14 +2524,12 @@ const recipes = [
                 {"quantity": 63, "measurement": "grams", "ingredient": "flour", "technique": "baked"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "pumpkin-pie-mousse",
         "title": "Pumpkin Pie Mousse",
         "time": 120,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 470}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Mousse"}, {"tag": "Thanksgiving"}],
@@ -2717,43 +2552,12 @@ const recipes = [
                 {"quantity": 227, "measurement": "grams", "ingredient": "cool whip", "technique": "defrosted"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
-    },
-
-
-    {
-        "id": "pumpkin-pie-mousse",
-        "title": "Garlic Butter Green Beans",
-        "time": 10,
-        "recipeCollection": ["vanya"],
-        "resource": { "link": "homan-at-home", "name": "Homan At Home"},
-        "nutrition": [{"label": "calories", "value": 110}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Steaming"}, {"tag": "Quick"}, {"tag" : "Easy"}],
-        "servings": 4,
-        "ingredients": {
-            "us": [       
-                {"quantity": 1, "measurement": "bag", "ingredient": "frozen green beans"},
-                {"quantity": 4, "measurement": "Tbsp.", "ingredient": "butter"},
-                {"quantity": 2, "measurement": "tsp.", "ingredient": "garlic powder"},
-                {"ingredient": "salt"},
-                {"ingredient": "pepper"}
-            ], 
-            "metric": [
-                {"quantity": 1, "measurement": "bag", "ingredient": "frozen green beans"},
-                {"quantity": 4, "measurement": "Tbsp.", "ingredient": "butter"},
-                {"quantity": 2, "measurement": "tsp.", "ingredient": "garlic powder"},
-                {"ingredient": "salt"},
-                {"ingredient": "pepper"}
-            ]
-        },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "beef-and-broccoli-stirfry",
         "title": "Beef and Broccoli Stirfry",
         "time": 15,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 530}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Low Sugar"}, {"tag": "Steaming"}, {"tag" : "Quick"}, {"tag": "Easy"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Frying"}, {"tag" : "Browning"}],
@@ -2778,7 +2582,6 @@ const recipes = [
                 {"quantity": 0.25, "measurement": "tsp.", "ingredient": "curry powder"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
 
@@ -2786,7 +2589,6 @@ const recipes = [
         "id": "shish-kebabs",
         "title": "Shish Kebabs",
         "time": 120,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 170}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Easy"}, {"tag": "Kebab"}, {"tag": "Low Sugar"}, {"tag" : "Marinating"}, {"tag": "Low Fat"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Grilling"}, {"tag" : "Baking"}],
@@ -2819,14 +2621,12 @@ const recipes = [
                 {"quantity": 312, "measurement": "grams", "ingredient": "veggies", "technique": "choice"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "ultimate-grilled-cheese-sandwich",
         "title": "Ultimate Grilled Cheese Sandwich",
         "time": 30,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 1410}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Lunch"}, {"tag": "Easy"}, {"tag": "Sandwich"}, {"tag": "Low Sugar"}, {"tag" : "Grilled Cheese"}],
@@ -2849,14 +2649,12 @@ const recipes = [
                 {"quantity": 113, "measurement": "grams", "ingredient": "cream cheese", "technique": "softened or whipped"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "pink-lemonade-sangria",
         "title": "Pink Lemonade Sangria",
         "time": 75,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 80}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Cocktails"}, {"tag": "Easy"}, {"tag": "Sangria"}, {"tag": "Beverages"}],
@@ -2875,14 +2673,12 @@ const recipes = [
                 {"quantity": 1.18, "measurement": "liters", "ingredient": "lemonade", "technique": "pink"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "better-than-take-out-shrimp-noodles",
         "title": "Better than Take-Out Shrimp & Noodles",
         "time": 30,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 350}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Asian"}, {"tag": "Low Sugar"}, {"tag": "Sauteeing"}, {"tag": "Low Calorie"}, {"tag": "Boiling"}],
@@ -2913,14 +2709,12 @@ const recipes = [
                 {"quantity": 59, "measurement": "ml", "ingredient": "hoisin sauce"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "the-best-basic-banana-bread",
         "title": "The Best Basic Banana Bread",
         "time": 70,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 280}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Asian"}, {"tag": "Low Sugar"}, {"tag": "Sauteeing"}, {"tag": "Low Calorie"}, {"tag": "Boiling"}],
@@ -2951,14 +2745,12 @@ const recipes = [
                 {"quantity": 2, "measurement": "tsp.", "ingredient": "sugar"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "no-churn-nutella-ice-cream",
         "title": "No-Churn Nutella Ice Cream",
         "time": 30,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 1080}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Ice Cream"}],
@@ -2975,14 +2767,12 @@ const recipes = [
                 {"quantity": 307, "measurement": "ml", "ingredient": "sweetened condensed milk"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "hungarian-mushroom-beef-stroganoff",
         "title": "Hungarian Mushroom Beef Stroganoff",
         "time": 60,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 650}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Beef Stroganoff"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}],
@@ -3019,14 +2809,12 @@ const recipes = [
                 {"quantity": 12, "measurement": "oz.", "ingredient": "egg noodles"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "tahini-chocolate-chip-cookie-bars",
         "title": "Tahini Chocolate Chip Cookie Bars",
         "time": 80,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 520}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Bars"}],
@@ -3059,14 +2847,12 @@ const recipes = [
                 {"quantity": 84, "measurement": "grams", "ingredient": "chocolate chips", "technique": "additional, melted for topping"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "turkey-sloppy-joes",
         "title": "Turkey Sloppy Joes",
         "time": 35,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 360}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Sloppy Joes"}, {"tag": "Low Carb"}, {"tag": "Sauteeing"}, {"tag": "Low Calorie"}, {"tag": "Browning"}],
@@ -3107,14 +2893,12 @@ const recipes = [
                 {"ingredient": "brioche buns", "technique": "for serving"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "mom's-peach-tart",
         "title": "Mom’s Peach Tart",
         "time": 70,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 820}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Tart"}, {"tag": "Browning"}, {"tag": "Baking"}],
@@ -3149,49 +2933,6 @@ const recipes = [
                 {"quantity": 2, "measurement": "Tbsp.", "ingredient": "flour"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
-    },
-
-    {
-        "id": "mom's-peach-tart",
-        "title": "Mom’s Peach Tart",
-        "time": 70,
-        "recipeCollection": ["vanya"],
-        "resource": { "link": "kj-and-company", "name": "KJ and Company"},
-        "nutrition": [{"label": "calories", "value": 820}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Tart"}, {"tag": "Browning"}, {"tag": "Baking"}],
-        "servings": 4,
-        "ingredients": {
-            "us": [       
-                {"quantity": 1.5, "measurement": "cups", "ingredient": "flour"},
-                {"quantity": 0.5, "measurement": "tsp.", "ingredient": "salt"},
-                {"quantity": 1, "measurement": "tsp.", "ingredient": "sugar"},
-                {"quantity": 0.25, "measurement": "cup", "ingredient": "oil", "technique": "vegetable oil will do"},
-                {"quantity": 0.25, "measurement": "cup", "ingredient": "olive oil"},
-                {"quantity": 2, "measurement": "Tbsp.", "ingredient": "milk"},
-                {"quantity": 1, "measurement": "tsp.", "ingredient": "almond extract"},
-                {"quantity": 6, "ingredient": "peaches", "technique": "sliced"},
-                {"quantity": 1, "measurement": "cup", "ingredient": "sugar"},
-                {"quantity": 0.25, "measurement": "tsp.", "ingredient": "salt"},
-                {"quantity": 4, "measurement": "Tbsp.", "ingredient": "butter", "technique": "melted"},
-                {"quantity": 2, "measurement": "Tbsp.", "ingredient": "flour"}
-            ],
-            "metric": [
-                {"quantity": 188, "measurement": "grams", "ingredient": "flour"},
-                {"quantity": 0.5, "measurement": "tsp.", "ingredient": "salt"},
-                {"quantity": 1, "measurement": "tsp.", "ingredient": "sugar"},
-                {"quantity": 59, "measurement": "ml", "ingredient": "oil", "technique": "vegetable oil will do"},
-                {"quantity": 59, "measurement": "ml", "ingredient": "olive oil"},
-                {"quantity": 2, "measurement": "Tbsp.", "ingredient": "milk"},
-                {"quantity": 1, "measurement": "tsp.", "ingredient": "almond extract"},
-                {"quantity": 6, "ingredient": "peaches", "technique": "sliced"},
-                {"quantity": 200, "measurement": "grams", "ingredient": "sugar"},
-                {"quantity": 0.25, "measurement": "tsp.", "ingredient": "salt"},
-                {"quantity": 4, "measurement": "Tbsp.", "ingredient": "butter", "technique": "melted"},
-                {"quantity": 2, "measurement": "Tbsp.", "ingredient": "flour"}
-            ]
-        },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
 
@@ -3199,7 +2940,6 @@ const recipes = [
         "id": "red-wine-braised-beef-tips",
         "title": "Red Wine Braised Beef Tips",
         "time": 180,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 160}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Low Sugar"}, {"tag": "Low Fat"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -3232,14 +2972,12 @@ const recipes = [
                 {"quantity": 5, "measurement": "sprigs", "ingredient": "fresh thyme"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "brown-sugar-sweet-potato-wedges",
         "title": "Brown Sugar Sweet Potato Wedges",
         "time": 55,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 200}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Side Dishes"}, {"tag": "Easy"}, {"tag": "Low Sodium"}, {"tag": "Browning"}, {"tag": "Low Calorie"}],
@@ -3262,14 +3000,12 @@ const recipes = [
                 {"quantity": 0.25, "measurement": "tsp.", "ingredient": "cinnamon"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "homemade-chicken-ramen",
         "title": "Homemade Chicken Ramen",
         "time": 65,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 320}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Main Dishes"}, {"tag": "Ramen"}, {"tag": "Low Sugar"}, {"tag": "Low Fat"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
@@ -3302,14 +3038,12 @@ const recipes = [
                 {"quantity": 85, "measurement": "grams", "ingredient": "ramen noodles", "technique": "packages, flavor packets removed"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "pineapple-margaritas",
         "title": "Pineapple Margaritas",
         "time": 5,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 260}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Cocktails"}, {"tag": "Quick And Easy"}, {"tag": "Margarita"}, {"tag": "Beverages"}, {"tag": "Quick"}, {"tag": "Easy"}],
@@ -3334,14 +3068,12 @@ const recipes = [
                 {"ingredient": "pineapple slices", "technique": "for garnish, optional"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "cinnamon-pecan-rolls",
         "title": "Cinnamon Pecan Rolls",
         "time": 80,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 1360}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Breads"}],
@@ -3374,14 +3106,12 @@ const recipes = [
                 {"quantity": 73, "measurement": "grams", "ingredient": "brown sugar"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     },
 
     {
         "id": "the-best-simple-guacamole",
         "title": "The Best Simple Guacamole",
         "time": 15,
-        "recipeCollection": ["vanya"],
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 280}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
         "tags": [{"tag": "Appetizers"}, {"tag": "Quick And Easy"}, {"tag": "Guacamole"}, {"tag": "Low Sugar"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Sodium"}, {"tag": "High Fiber"}],
@@ -3402,9 +3132,9 @@ const recipes = [
                 {"ingredient": "salt", "technique": "to taste"}
             ]
         },
-        "reviews": [{"user": "Vladislav", "link": "vladislav", "stars": 2, "rev": "Bad one :(", "likes" : ["vlad"]}, {"user": "John", "link": "john", "stars": 5, "rev": "Perfect!", "likes" : ["vlad", "vanya"]}]
     }
     
 ]
 
-export {recipes}
+
+// export {recipes}

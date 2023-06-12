@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useOutletContext } from 'react-router-dom';
 import styles from './recipe.module.css'
 import Sidebar from '../../components/sidebar/Sidebar';
 import { useEffect, useRef, useState } from 'react';
@@ -12,6 +12,7 @@ import RecipeItem from '../../components/recipeItem/RecipeItem';
 const Recipe = () => {
     const PF = process.env.REACT_APP_BASE_URL;
     const {recipe} = useParams()
+    const [loggedInUser, setNotLoggedInUser, setActiveLoginModal] = useOutletContext()
     const [rating, setRating] = useState()
     const [recipeData, setRecipeData] = useState({})
     const [system, setSystem] = useState('us')
@@ -100,6 +101,15 @@ const Recipe = () => {
         inactiveFillColor: '#f1f1f1'
     }
 
+    // add to collection
+
+    const addToCollection = () => {
+        if(loggedInUser._id) {
+            console.log("lucky");
+        } else {
+            setActiveLoginModal(true)
+        }
+    }
 
     return (
         <>
@@ -112,7 +122,7 @@ const Recipe = () => {
                                 <h1 className={styles.recipeSummary__title}>{recipeData.title}</h1>
                                 <Link className={styles.recipeSummary__resource} to={`/page/${recipeData.resource.link}`}>{recipeData.resource.name}</Link>
                                 <div className={styles.recipeSummary__rating}>
-                                    <Rating halfFillMode='svg' className={styles.ratingStars} readOnly={true} value={rating} itemStyles={ratingStars} />
+                                    <Rating halfFillMode='svg' className={styles.ratingStars} readOnly={true} value={rating || 0} itemStyles={ratingStars} />
                                     <p>({recipeData.reviews.length})</p> 
                                 </div>
                                 <div className={styles.recipeSummary__reviews} >
@@ -143,8 +153,8 @@ const Recipe = () => {
                                 <div className={styles.recipeSummary__buttons}>
                                     <button title='Read Directions' className={styles.recipeSummary__readDir}>Read Directions</button>
                                     <div className={styles.recipeSummary__addYumm}>
-                                        <button title='Add Recipe' className={styles.recipeSummary__addRecipe}></button>
-                                        <span className={styles.recipeSummary__addYumm__added}>{recipeData.recipeCollection.length >= 1000 ? recipeData.recipeCollection.length / 1000 + 'k' : recipeData.recipeCollection.length}</span>
+                                        <button onClick={() => addToCollection()} title='Add Recipe' className={styles.recipeSummary__addRecipe}></button>
+                                        {/* <span className={styles.recipeSummary__addYumm__added}>{recipeData?.recipeCollection.length >= 1000 ? recipeData?.recipeCollection.length / 1000 + 'k' : recipeData?.recipeCollection.length}</span> */}
                                     </div>
                                     <div className={styles.recipeSummary__addMealPlanner}>
                                         <img className={styles.recipeSummary__lock} src={`${PF}images/icons/recipes/lock.svg`} alt="" />

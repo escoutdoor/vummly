@@ -45,7 +45,7 @@ const RecipeItem = ({recipe, more, loading, setLoading, rating}) => {
                             <span title={recipe.resource.name} className={s.recommendationsList__itemResource}>{recipe.resource.name}</span>
                         </Link>
                     </div>
-                    <Rating halfFillMode='svg' className={s.ratingStars} readOnly={true} value={rating} itemStyles={ratingStars} />
+                    <Rating halfFillMode='svg' className={s.ratingStars} readOnly={true} value={rating || 0} itemStyles={ratingStars} />
                 </div> 
             : <RecipeSkeleton />}
         </div>
