@@ -81,6 +81,14 @@
     cursor: pointer;
 }
 
+.username.me {
+    cursor: unset;
+}
+
+.username.me:hover {
+    color: #232323;
+}
+
 .username.active {
     display: none;
 }
@@ -111,6 +119,13 @@
     cursor: pointer;
     transition: all .2s ease;
     margin-bottom: 15px;
+}
+
+.editText__target.me {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    cursor:unset;
 }
 
 .editText__target.active {
@@ -206,10 +221,16 @@
 
 /* navbar */
 
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
 .navbar {
     display: flex;
     gap: 22px;
-    margin: 52px 0px 30px;
+    margin: 52px 0px 0;
 }
 
 .navbar__item {

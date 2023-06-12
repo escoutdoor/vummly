@@ -10,7 +10,7 @@ const MainLayout = () => {
     useEffect(() => {
         document.body.style.overflow = activeLoginModal ? 'hidden' : 'visible'
     }, [activeLoginModal])
-
+    
     return (
         <div>
             <Sidebar setActive={setActiveLoginModal} activeLoginModal={activeLoginModal}/>

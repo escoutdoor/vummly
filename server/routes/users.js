@@ -3,12 +3,18 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
+// auth
+
 router.post('/createOne', async (req, res) => {
     try {   
         const etc = {
-            avatar: req.body?.avatar,
-            collections: req.body?.collections,
-            city: req.body?.city
+            collections: [
+                {name: 'Desserts', recipes: []},
+                {name: 'Breakfasts', recipes: []},
+                {name: 'Dinners', recipes: []},
+                {name: 'Drinks', recipes: []},
+                {name: 'Sides', recipes: []},
+            ],
         }
         const hashedPass = bcrypt.hashSync(req.body.password, 10)
         const user = new User({
@@ -50,6 +56,8 @@ router.post('/login', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
+// get users / user
 
 router.get('/getUser/:token', async(req, res) => {
     try {

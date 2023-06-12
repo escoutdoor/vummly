@@ -17,6 +17,7 @@ const Profile = () => {
     const [isMe, setIsMe] = useState(false)
     const {id} = useParams()
     const [user, setUser] = useState({})
+    const [foundRecipes, setFoundRecipes] = useState([])
     const [loaded, setLoaded] = useState(false)
     const [section, setSection] = useState("saved recipes")
 
@@ -46,8 +47,8 @@ const Profile = () => {
         const fetchme = async () => {
             await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((me) => {
                 me.data?._id === user?._id ? setIsMe(true) : setIsMe(false)
-                setLoaded(true)
             })
+            setLoaded(true)
         }
         localStorage.getItem('_auth') && fetchme()
     }, [user])
@@ -82,25 +83,25 @@ const Profile = () => {
                             <div className={s.userLeft}>
                                 <div className={s.userAvatar}>
                                     <img className={s.image} src={`${PF}images/avatars/${user.avatar}` || `${PF}images/avatars/avatar.png`} />
-                                    <div className={s.avatarClick}>
+                                    {isMe && <div className={s.avatarClick}>
                                         <input className={s.inputAvatar} type="file" accept="image/*"  onChange={() => {}}/>
-                                    </div>
+                                    </div>}
                                 </div>
-                                {isMe ? <button onClick={() => logOut()} className={s.logout}>Log Out</button> : null}
+                                {isMe && <button onClick={() => logOut()} className={s.logout}>Log Out</button>}
                             </div>                        
                             <div className={s.userRight}>
-                                <div className={s.editName} onClick={(e) => e.stopPropagation()}>
+                                {isMe ? <div className={s.editName} onClick={(e) => e.stopPropagation()}>
                                     <h1 onClick={() => setActiveName(true)} className={activeName ? `${s.username} ${s.active}` :  s.username}>{user?.name}</h1>
                                     <input ref={nameInput} type="text" value={name} className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput} onChange={(e) => setName(e.target.value)} />
-                                </div>
-                                <div className={s.editText} onClick={(e) => e.stopPropagation()}>
+                                </div> : <h1 className={`${s.username} ${s.me}`}>{user?.name}</h1>}
+                                {isMe ? <div className={s.editText} onClick={(e) => e.stopPropagation()}>
                                     <p onClick={() => setActiveDescription(true)} className={!activeDescription ? `${s.editText__target} ${s.active}` : s.editText__target}>{user?.description || 'Tell us about yourself here'}</p>
                                     <div className={activeDescription ? `${s.description} ${s.active}`  : s.description}>
                                         <textarea ref={descInput} placeholder='Tell us about yourself here' className={s.descriptionInput} maxLength={80} onChange={(e) => setDescription(e.target.value)} value={description} />
                                         <span>{`${description.length}/80`}</span>
                                     </div>
-                                </div>
-                                <div className={s.location} onClick={e => e.stopPropagation()}>
+                                </div> : user.description ?  <p className={`${s.editText__target} ${s.me}`}>{user.description}</p> : null}
+                                {isMe ? <div className={s.location} onClick={e => e.stopPropagation()}>
                                     <div className={s.locationItem} onClick={() => { setActiveCity(true); setActiveCountry(false)}}>
                                         <input placeholder='City' type="text" className={activeCity ? `${s.editLocation} ${s.active}` : s.editLocation} onChange={(e) => setCity(e.target.value)} value={city}/>
                                         <p className={activeCity ? `${s.locationTextCity} ${s.active}` : s.locationTextCity} >{user?.city || 'City'}</p>
@@ -109,22 +110,30 @@ const Profile = () => {
                                         <input placeholder='Country' type="text" className={activeCountry ? `${s.editLocation} ${s.active}` : s.editLocation} onChange={(e) => setCountry(e.target.value)} value={country}/>
                                         <p className={activeCountry ? `${s.locationTextCountry} ${s.active}` : s.locationTextCountry}>{user?.country || 'Country'}</p>
                                     </div>
-                                </div>
+                                </div> : 
+                                    user.city || user.country ? <div className={s.location}>
+                                        {user.city ? <p className={s.locationTextCity}>{user.city}</p> : null}
+                                        {user.city && user.country && ','}
+                                        {user.country ? <p className={s.locationTextCity}>{user.country}</p> : null}
+                                    </div> : null
+                                }
                             </div> 
                         </div>}
-                        <ul className={s.navbar}>
-                            <li onClick={() => setSection('saved recipes')} className={section === 'saved recipes' ? `${s.navbar__item} ${s.active}` : s.navbar__item}>saved recipes</li>
-                            <li onClick={() => setSection('preferences')} className={section === 'preferences' ? `${s.navbar__item} ${s.active}` : s.navbar__item}>preferences</li>
-                            <li onClick={() => setSection('settings')} className={section === 'settings' ? `${s.navbar__item} ${s.active}` : s.navbar__item}>settings</li>
-                        </ul>
-                        <div className={s.section}>
-                            {
-                                section === 'saved recipes' ? <SavedRecipes user={user}/> :
-                                section === 'preferences' ? <Preferences user={user}/> : 
-                                section === 'settings' ? <Settings user={user} /> :
-                                null
-                            }
-                        </div>
+                        {isMe && <div className={s.navigation}>
+                            <ul className={s.navbar}>
+                                <li onClick={() => setSection('saved recipes')} className={section === 'saved recipes' ? `${s.navbar__item} ${s.active}` : s.navbar__item}>saved recipes</li>
+                                <li onClick={() => setSection('preferences')} className={section === 'preferences' ? `${s.navbar__item} ${s.active}` : s.navbar__item}>preferences</li>
+                                <li onClick={() => setSection('settings')} className={section === 'settings' ? `${s.navbar__item} ${s.active}` : s.navbar__item}>settings</li>
+                            </ul>
+                            <div className={s.section}>
+                                {
+                                    section === 'saved recipes' ? <SavedRecipes setFoundRecipes={setFoundRecipes} foundRecipes={foundRecipes} user={user}/> :
+                                    section === 'preferences' ? <Preferences user={user}/> : 
+                                    section === 'settings' ? <Settings user={user} /> :
+                                    null
+                                }
+                            </div>
+                        </div>}
                 </div>
             </div>
         </div>

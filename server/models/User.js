@@ -9,6 +9,7 @@ const userSchema = users.model('User', new mongoose.Schema({
     },
     name: {
         type: String,
+        required: true
     },
     password: {
         type: String,
@@ -20,10 +21,20 @@ const userSchema = users.model('User', new mongoose.Schema({
     },
     description: {
         type: String,
+        default: ''
     },
-    city: {type: String},
-    country: {type: String},
-    yums: {type: Array, default: []},
+    city: {
+        type: String, 
+        default: ''
+    },
+    country: {
+        type: String, 
+        default: ''
+    },
+    yums: {
+        type: Array
+        , default: []
+    },
     collections: [
         {
             name: {type: String, required: true},
