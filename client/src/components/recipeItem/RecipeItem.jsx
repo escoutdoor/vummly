@@ -8,7 +8,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import RecipeSkeleton from '../recipeSkeleton/RecipeSkeleton';
 import { useEffect, useState } from 'react';
 
-const RecipeItem = ({recipe, more, loading, setLoading, rating}) => {
+const RecipeItem = ({recipe, loading, setLoading, rating}) => {
     const PF = process.env.REACT_APP_BASE_URL;
     // 
     const ratingStars = {

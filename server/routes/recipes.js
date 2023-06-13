@@ -20,9 +20,10 @@ router.get('/getOne/:id', async (req, res) => {
     }
 })
 
-router.get('/getSome', async (req, res) => {
+router.get('/getByIds/:recipes', async (req, res) => {
     try {
-        const recipes = await Recipe.find({_id: {$in: req.body.recipes}})
+        const params = req.params.recipes.split("-")
+        const recipes = await Recipe.find({_id: {$in: params}})
         res.status(200).json(recipes)
     } catch (error) {
         res.status(400).json(error)    
@@ -144,6 +145,7 @@ router.get('/page/:page', async (req, res) => {
         res.status(500).json(err)
     }
 })
+
 
 
 module.exports = router

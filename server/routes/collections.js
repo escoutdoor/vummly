@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Collection = require('../models/Collection')
+const Recipe = require('../models/Recipe')
 
 
 router.get('/all/:id', async (req, res) => {
@@ -26,6 +27,56 @@ router.put('/createOne', async (req, res) => {
 })
 
 
+router.get('/getOne/:collectionId', async (req, res) => {
+    try {
+        const collection = await Collection.findOne({_id: req.params.collectionId})
+        res.status(200).json(collection)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
+
+router.put('/:userId/:recipeId', async (req, res) => {
+    try {
+        const existsColl = await Collection.findOne({userId: req.params.userId, name: req.body.collectionName})
+
+        if(existsColl) {
+            if(!existsColl.recipes.includes(req.params.recipeId)) {
+                const updated = await Collection.findOneAndUpdate({userId: req.params.userId, name: req.body.collectionName}, {$push: {recipes: req.params.recipeId}})
+                res.status(200).json(updated)
+            } else {
+                const deleted = await Collection.findOneAndUpdate({userId: req.params.userId, name: req.body.collectionName}, {$pull: {recipes: req.params.recipeId}})
+                res.status(200).json(deleted)
+            }
+        } else {
+            const newColl = await new Collection({
+                userId: req.params.userId,
+                name: req.body.collectionName,
+                recipes: [req.params?.recipeId]
+            })
+            const savedColl = await newColl.save()
+            res.status(200).json(savedColl)
+        }
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+
+// get users collections
+
+
+router.get('/:userId', async (req, res) => {
+    try {
+        const collections = await Collection.find({userId: req.params.userId})
+        const recipeIds = collections.flatMap((c) => c.recipes);
+        const recipes = await Recipe.find({_id: {$in : recipeIds}})
+        res.status(200).json({recipes, collections})
+    } catch (err) {
+        res.status(404).json(err)
+    }
+})
 
 
 

@@ -1,0 +1,50 @@
+.collection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.collection:hover .collectionImage{
+    filter: brightness(100%);
+}
+
+.collection:hover .collectionInfo {
+    color: #3a9691;
+}
+
+.collectionImage {
+    height: 176px;
+    width: 176px;
+    object-fit: cover;
+    border-radius: 4px;
+    filter: brightness(50%);
+    transition: all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.collectionInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #4a4a4a;
+    transition: all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.collectionStat {
+    display: flex;
+    gap: 3px;
+    align-items:first baseline;
+}
+
+.collectionText {
+    text-transform: capitalize;
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 100;
+}
+
+.collectionSmallText {
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 15px;
+}

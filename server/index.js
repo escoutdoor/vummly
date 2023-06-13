@@ -11,14 +11,11 @@ const articles = require('./routes/articles');
 const sections = require('./routes/sections');
 const categories = require('./routes/categories');
 const collections = require('./routes/collections');
-
-// recipe
-
 const recipes = require('./routes/recipes')
-
-// users 
-
 const users = require('./routes/users')
+const auth  = require('./routes/auth')
+
+
 
 // connection --------------------------------------------
 
@@ -40,6 +37,10 @@ app.use('/server/user', users)
 // collections
 
 app.use('/server/collections', collections)
+
+// auth
+
+app.use('/server/auth', auth)
 
 // --------------------------------------------
 

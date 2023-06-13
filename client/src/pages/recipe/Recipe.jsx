@@ -22,6 +22,7 @@ const Recipe = () => {
     const [more, setMore] = useState([])
     const [related, setRelated] = useState([])
     const [tags, setTags] = useState("")
+
     // add Ingr
     const addIngredient = (ingredient) => {
         const newList = ingredients.filter(ing => ing !== ingredient)
@@ -105,7 +106,9 @@ const Recipe = () => {
 
     const addToCollection = () => {
         if(loggedInUser._id) {
-            console.log("lucky");
+            axios.put(`/collections/${loggedInUser._id}/${recipeData._id}`, {
+                collectionName: "Desserts"
+            })
         } else {
             setActiveLoginModal(true)
         }

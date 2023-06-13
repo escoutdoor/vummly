@@ -74,15 +74,16 @@ const Main = ({active, setActive}) => {
     }
 
     const createUser = async () => {
-        await axios.post(`/user/createOne`, {
+        await axios.post(`/auth/createOne`, {
             name: name,
             mail: mail,
             password: password
         }).then(u => {dispatch(login(u.data)); setActivePage('start'); setActive(false); localStorage.setItem("_auth", JSON.stringify(u.data.token))})
     }
 
+
     const logInUser = async () => {
-        const res = await axios.post(`/user/login`, {
+        await axios.post(`/auth/login`, {
             mail, password
         })
         .then(u => {

@@ -35,7 +35,10 @@ const SearchRecipe = () => {
     const [reset, setReset] = useState(false)
     const [nutrition, setNutrition] = useState("")
     const [noResults, setNoResults] = useState(false)
-
+    // state settings
+    window.history.replaceState({}, searchValue)
+    const PF = process.env.REACT_APP_BASE_URL;
+    
     useEffect(() => {
         setIngredients(recipes.flatMap(r => r.ingredients.us.map(i => i.ingredient)).filter((value, index, array) => array.indexOf(value) === index).sort((a, b) => 0.5 - Math.random()))
     }, [recipes])
@@ -66,10 +69,6 @@ const SearchRecipe = () => {
         }, 0);
     }
 
-    useEffect(() => {
-        ( nutrition || allowed || banned) && recipes.length === 0 ? setNoResults(true) : setNoResults(false)
-    }, [nutrition, allowed, banned, recipes])
-
     // title and scroll
     useEffect(() => {
         document.title = "Recipes | Vummly"
@@ -81,9 +80,6 @@ const SearchRecipe = () => {
         recipes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.tag.toLowerCase().includes(searchValue.toLowerCase())) || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))))
     }, [recipes, searchValue, nutrition])
 
-    // state settings
-    window.history.replaceState({}, searchValue)
-    const PF = process.env.REACT_APP_BASE_URL;
     // filter by menu
     useEffect(() => {
         const filter = () => {

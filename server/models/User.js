@@ -30,7 +30,13 @@ const userSchema = users.model('User', new mongoose.Schema({
     country: {
         type: String, 
         default: ''
-    }
+    },
+    // collections: [
+    //     {
+    //         type: mongoose.Schema.Types.ObjectId,
+    //         ref: 'Collection'
+    //     }
+    // ]
 }))
 
 module.exports = userSchema

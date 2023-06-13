@@ -42,6 +42,7 @@ const Profile = () => {
                 setUser(user.data);
                 setNotLoggedInUser(user.data)
             })
+            setLoaded(true)   
         }
         fetch()
     }, [id])
@@ -60,7 +61,6 @@ const Profile = () => {
             await axios.get(`/collections/all/${user._id}`).then((collections) => {
                 setVums(collections.data)
             })
-            setLoaded(true)
         }
         user && fetchVums()
     }, [user])
@@ -132,7 +132,7 @@ const Profile = () => {
                                 }
                             </div> 
                         </div>}
-                        {isMe && <div className={s.navigation}>
+                        {isMe ? <div className={s.navigation}>
                             <ul className={s.navbar}>
                                 <li onClick={() => setSection('saved recipes')} className={section === 'saved recipes' ? `${s.navbar__item} ${s.active}` : s.navbar__item}>saved recipes</li>
                                 <li onClick={() => setSection('preferences')} className={section === 'preferences' ? `${s.navbar__item} ${s.active}` : s.navbar__item}>preferences</li>
@@ -140,13 +140,13 @@ const Profile = () => {
                             </ul>
                             <div className={s.section}>
                                 {
-                                    section === 'saved recipes' ? <SavedRecipes setFoundRecipes={setFoundRecipes} foundRecipes={foundRecipes} vums={vums}/> :
+                                    section === 'saved recipes' ? <SavedRecipes user={user}/> :
                                     section === 'preferences' ? <Preferences user={user}/> : 
                                     section === 'settings' ? <Settings user={user} /> :
                                     null
                                 }
                             </div>
-                        </div>}
+                        </div> : <SavedRecipes user={user} isMe={isMe}/>}
                 </div>
             </div>
         </div>
