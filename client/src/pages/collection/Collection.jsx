@@ -1,16 +1,16 @@
 import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import s from './collection.module.css'
 import RecipeSkeleton from './../../components/recipeSkeleton/RecipeSkeleton'
 import RecipeItem from './../../components/recipeItem/RecipeItem'
 
 const Collection = () => {
     const {userId, collectionName} = useParams()
+    const [user] = useOutletContext()
     const [activeTrash, setActiveTrash] = useState(false)
     const [activeName, setActiveName] = useState(false)
     const [activeDescription, setActiveDescription] = useState(false)
-    const [user, setUser] = useState({})
     const [collection, setCollection] = useState({})
     const [recipes, setRecipes] = useState([])
     const [name, setName] = useState("")
@@ -43,14 +43,9 @@ const Collection = () => {
     }, [collection])
 
     useEffect(() => {
-        const fetchuser = async () => {
-            await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((u) => {
-                u.data?._id === userId.split("-")[1] ? setIsMe(true) : setIsMe(false)
-                setUser(u.data)
-            })
-        }   
-        localStorage.getItem('_auth') && fetchuser()
-    }, [])
+        user?._id === userId.split("-")[1] ? setIsMe(true) : setIsMe(false)
+    }, [user])
+
 
     useEffect(() => {
         if(activeName) {
@@ -78,20 +73,20 @@ const Collection = () => {
             <div className={s.header} style={{backgroundImage: recipes.length !== 0 ? `url(${PF}images/img/recipes/${recipes.at(-1).id}.webp)` : `url(${PF}images/img/collections/default.jpg)`}}>
                 <div className={s.headerContent}>
                     <div className={s.collectionInfo}>
-                        <div className={s.changeBox} onClick={() => setActiveName(true)}>
+                        {isMe ? <div className={s.changeBox} onClick={() => setActiveName(true)}>
                             <p className={!activeName ? s.displayName : `${s.displayName} ${s.hidden}`}>{name}</p>
-                            <input maxLength={20} ref={nameInput} className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput } type="text" value={name} onChange={(e) => setName(e.target.value)} />
-                        </div>
+                            <input maxLength={20} ref={nameInput} className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput } type="text" value={name || ''} onChange={(e) => setName(e.target.value)} />
+                        </div> : <p className={s.displayName}>{name}</p>}
                         {recipes.length !== 0 && <p className={s.stat}>{recipes.length} Recipes</p>}
-                        <div className={s.changeBox} onClick={() => setActiveDescription(true)}>
+                        {isMe ? <div className={s.changeBox} onClick={() => setActiveDescription(true)}>
                             <p className={!activeDescription ? s.displayDescription : `${s.displayDescription} ${s.hidden}`}>{description || 'Tell us more about your collection.'}</p>
-                            <textarea maxLength={60} ref={descInput} className={activeDescription ? `${s.descInput} ${s.active}` : s.descInput } type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-                        </div>
+                            <textarea maxLength={60} ref={descInput} className={activeDescription ? `${s.descInput} ${s.active}` : s.descInput } type="text" value={description || ''} onChange={(e) => setDescription(e.target.value)} />
+                        </div> : <p className={s.displayDescription}>{description}</p>}
                     </div>
-                    <div className={s.delete} onMouseOver={() => setActiveTrash(true)} onMouseOut={() => setActiveTrash(false)}>
+                    {isMe && <div className={s.delete} onMouseOver={() => setActiveTrash(true)} onMouseOut={() => setActiveTrash(false)}>
                         <img src={activeTrash ? `${PF}images/icons/profile/trashActive.svg` : `${PF}images/icons/profile/trash.svg`} alt="trashIcon" />
                         <p className={s.deleteText}>delete collection</p>
-                    </div>
+                    </div>}
                 </div>
             </div>
             <div className={s.main}>  

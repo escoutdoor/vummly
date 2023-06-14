@@ -21,7 +21,6 @@ const Profile = () => {
     const [foundRecipes, setFoundRecipes] = useState([])
     const [loaded, setLoaded] = useState(false)
     const [section, setSection] = useState("saved recipes")
-    const [vums, setVums] = useState([])
 
     const [activeName, setActiveName] = useState(false)
     const [activeDescription, setActiveDescription] = useState(false)
@@ -65,17 +64,6 @@ const Profile = () => {
     useEffect(() => {
         loggedInUser?._id === user?._id ? setIsMe(true) : setIsMe(false)
     }, [user, loggedInUser])
-
-    
-    useEffect(() => {
-        const fetchVums = async () => {
-            await axios.get(`/collections/all/${user._id}`).then((collections) => {
-                setVums(collections.data)
-            })
-        }
-        user && fetchVums()
-    }, [user])
-
 
     const logOut = () => {
         dispatch(logout())
