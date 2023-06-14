@@ -109,5 +109,30 @@ router.get('/getCollection/:userId/:collectionName', async (req, res) => {
 })
 
 
+// change collection name
+
+
+router.put('/name/:collectionId/:userId', async (req, res) => {
+    try {
+        const collection = await Collection.findOneAndUpdate({_id: req.params.collectionId, userId: req.params.userId}, {$set: {name: req.body.name}}, {new: true})
+        res.status(200).json(collection)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+
+// change collection description
+
+router.put('/description/:collectionId/:userId', async (req, res) => {
+    try {
+        const collection = await Collection.findOneAndUpdate({_id: req.params.collectionId, userId: req.params.userId}, {$set: {description: req.body.description}}, {new: true})
+        res.status(200).json(collection)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+
 
 module.exports = router

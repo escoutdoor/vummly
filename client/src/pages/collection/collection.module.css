@@ -26,6 +26,74 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 8px;
+}
+
+.changeBox {
+    display: flex; 
+    flex-direction: column;
+    min-width: 342px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.displayName {
+    font-size: 32px;
+    color: #fff;
+    line-height: 48px;
+    font-weight: 100;
+}
+
+.displayName.hidden {
+    display: none;
+}
+
+.nameInput {
+    color: #fff;
+    font-weight: 100;
+    line-height: 48px;
+    text-align: center;
+    font-size: 32px;
+    border-bottom: 1px solid #bababa;
+    padding-bottom: 5px;
+    display: none;
+}
+
+.nameInput.active {
+    display: block;
+}
+
+.stat {
+    color: #fff;
+}
+
+.displayDescription {
+    color: #fff;
+    line-height: 22.4px;
+    display: block;
+}
+
+.displayDescription.hidden {
+    display: none;
+}
+
+.descInput {
+    min-width: 324px;
+    font-size: 16px;
+    line-height: 22.4px;
+    color: #fff;
+    text-align: center;
+    display: none;
+    padding-bottom: 5px;
+    outline: none;
+    border: 1px solid #bababa;
+    border-style: none none solid none;
+    background: transparent;
+    resize: none;
+}
+
+.descInput.active {
+    display: block;
 }
 
 .delete {
@@ -38,24 +106,25 @@
     cursor: pointer;
 }
 
+.delete img {
+    transition: all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
 .delete:hover .deleteText {
-    color: #3a9691;
+    color: #fff;
 }
 
 .deleteText {
     text-transform: uppercase;
     font-size: 12px;
-    color: #fff;
+    color: #bababa;
     font-weight: 700;
     transition: all .2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-
 .main {
     margin-top: 32px;
 }
-
-
 
 .recipes {
     display: flex;

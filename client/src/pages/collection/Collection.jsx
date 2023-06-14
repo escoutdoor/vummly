@@ -1,19 +1,27 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import s from './collection.module.css'
 import RecipeSkeleton from './../../components/recipeSkeleton/RecipeSkeleton'
 import RecipeItem from './../../components/recipeItem/RecipeItem'
 
 const Collection = () => {
     const {userId, collectionName} = useParams()
-    const [recipes, setRecipes] = useState([])
+    const [activeTrash, setActiveTrash] = useState(false)
+    const [activeName, setActiveName] = useState(false)
+    const [activeDescription, setActiveDescription] = useState(false)
+    const [user, setUser] = useState({})
     const [collection, setCollection] = useState({})
+    const [recipes, setRecipes] = useState([])
     const [name, setName] = useState("")
     const [description, setDescription] = useState("")
     const [loaded, setLoaded] = useState(false)
     const [isMe, setIsMe] = useState(false)
+    const nav = useNavigate()
     const PF = process.env.REACT_APP_BASE_URL;
+
+    const nameInput = useRef()
+    const descInput = useRef()
 
     useEffect(() => {
         const fetchCollection = async () => {
@@ -27,25 +35,61 @@ const Collection = () => {
     }, [])
 
     useEffect(() => {
+        document.title = collection?.name ? `${collection.name} by ${userId.split("-")[0]} on Vummly` : 'Vummly'
+        if(collection) {
+            setName(collection.name)
+            setDescription(collection.description)
+        }
+    }, [collection])
+
+    useEffect(() => {
         const fetchuser = async () => {
             await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((u) => {
                 u.data?._id === userId.split("-")[1] ? setIsMe(true) : setIsMe(false)
+                setUser(u.data)
             })
         }   
         localStorage.getItem('_auth') && fetchuser()
     }, [])
 
+    useEffect(() => {
+        if(activeName) {
+            nameInput.current.focus()
+        } else if(activeDescription) {
+            descInput.current.focus()
+        }
+    }, [activeName, activeDescription])
+
+
+    const handleChanges = async () => {
+        if(collection.name !== name && name.length !== 0 && user._id) {
+            await axios.put(`/collections/name/${collection._id}/${user._id}`, {
+                name: name
+            }).then((c) => {nav(`/profile/${userId}/collections/${c.data.name}`); setCollection(c.data)})
+        } else if(collection.description !== description && user._id) {
+            await axios.put(`/collections/description/${collection._id}/${user._id}`, {
+                description: description
+            }).then((c) => setCollection(c.data))
+        }
+    }
+
     return (
-        <div className={s.collection} >
+        <div className={s.collection} onBlur={() => {setActiveName(false); setActiveDescription(false); handleChanges()}}>
             <div className={s.header} style={{backgroundImage: recipes.length !== 0 ? `url(${PF}images/img/recipes/${recipes.at(-1).id}.webp)` : `url(${PF}images/img/collections/default.jpg)`}}>
                 <div className={s.headerContent}>
                     <div className={s.collectionInfo}>
-                        <div className={s.name}>
-                            <p></p>
+                        <div className={s.changeBox} onClick={() => setActiveName(true)}>
+                            <p className={!activeName ? s.displayName : `${s.displayName} ${s.hidden}`}>{name}</p>
+                            <input maxLength={20} ref={nameInput} className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput } type="text" value={name} onChange={(e) => setName(e.target.value)} />
+                        </div>
+                        {recipes.length !== 0 && <p className={s.stat}>{recipes.length} Recipes</p>}
+                        <div className={s.changeBox} onClick={() => setActiveDescription(true)}>
+                            <p className={!activeDescription ? s.displayDescription : `${s.displayDescription} ${s.hidden}`}>{description || 'Tell us more about your collection.'}</p>
+                            <textarea maxLength={60} ref={descInput} className={activeDescription ? `${s.descInput} ${s.active}` : s.descInput } type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
                         </div>
                     </div>
-                    <div className={s.delete}>
-                        <img src={`${PF}images/icons/profile/trash.svg`} alt="trashIcon" />
+                    <div className={s.delete} onMouseOver={() => setActiveTrash(true)} onMouseOut={() => setActiveTrash(false)}>
+                        <img src={activeTrash ? `${PF}images/icons/profile/trashActive.svg` : `${PF}images/icons/profile/trash.svg`} alt="trashIcon" />
                         <p className={s.deleteText}>delete collection</p>
                     </div>
                 </div>
@@ -54,7 +98,7 @@ const Collection = () => {
                 <div className="wrap1160">
                     <div className={s.mainContent}>
                         <div className={s.mainHeader}>
-
+                            
                         </div>
                         <div className={s.recipes}>
                             {!loaded && <RecipeSkeleton recipes={6}/>}
