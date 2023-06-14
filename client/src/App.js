@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
-import { MyFeed, Overview, Activate, Support, Category, Article, SearchSupport, SubmitRequest, Recipe, SearchRecipe, Resource, Profile} from './pages/pages'
+import { MyFeed, Overview, Activate, Support, Category, Article, SearchSupport, SubmitRequest, Recipe, SearchRecipe, Resource, Profile, Collection} from './pages/pages'
 import SupportLayout from "./layouts/support/SupportLayout";
 import MainLayout from "./layouts/main/MainLayout";
 
@@ -33,6 +33,7 @@ function App() {
                     <Route path={''} element={<MyFeed/>} />
                     <Route path={'page/:id'} element={<Resource />}/>
                     <Route path={'profile/:id'} element={<Profile />}/> 
+                    <Route path={'profile/:userId/collections/:collectionName'} element={<Collection />}/> 
                 </Route>
 
             </Routes>

@@ -1,7 +1,6 @@
 .savedRecipes {
     display: flex;
     flex-direction: column;
-    gap: 40px;
 }
 
 .findRecipes {
@@ -58,11 +57,17 @@
     color: #3a9691;
     font-weight: 700;
     line-height: 36px;
+}
 
+.allYums {
+    margin-top: 24px;
+    padding: 5px 0px;
 }
 
 .allRecipes {
     display: flex;
     gap: 20.8px;
     margin: 30px 0px;
+    flex-wrap: wrap;
 }
+

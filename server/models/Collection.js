@@ -10,7 +10,11 @@ const collectionSchema = collections.model('Collection', new mongoose.Schema({
         type: String,
         required: true
     },
-    recipes: [{type: String, unique: true}]
+    description: {
+        type: String,
+        default: ''
+    },
+    recipes: [{type: String}]
 },
 {timestamps: true}))
 

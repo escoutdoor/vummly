@@ -39,4 +39,43 @@ router.get('/:id', async (req, res) => {
 })
 
 
+// change username
+
+
+router.put('/username/:userId/:mail', async (req, res) => {
+    try {
+        const user = await User.findOneAndUpdate({_id: req.params.userId, mail: req.params.mail}, {$set: {name: req.body.name}}, {new: true})  
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+router.put('/description/:userId/:mail', async (req, res) => {
+    try {
+        const user = await User.findOneAndUpdate({_id: req.params.userId, mail: req.params.mail}, {$set: {description: req.body.description}}, {new: true})  
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+router.put('/city/:userId/:mail', async (req, res) => {
+    try {
+        const user = await User.findOneAndUpdate({_id: req.params.userId, mail: req.params.mail}, {$set: {city: req.body.city}}, {new: true})  
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+router.put('/country/:userId/:mail', async (req, res) => {
+    try {
+        const user = await User.findOneAndUpdate({_id: req.params.userId, mail: req.params.mail}, {$set: {country: req.body.country}}, {new: true})  
+        res.status(200).json(user)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
 module.exports = router

@@ -43,10 +43,10 @@ router.put('/:userId/:recipeId', async (req, res) => {
 
         if(existsColl) {
             if(!existsColl.recipes.includes(req.params.recipeId)) {
-                const updated = await Collection.findOneAndUpdate({userId: req.params.userId, name: req.body.collectionName}, {$push: {recipes: req.params.recipeId}})
+                const updated = await Collection.findOneAndUpdate({userId: req.params.userId, name: req.body.collectionName}, {$push: {recipes: req.params.recipeId}}, {new: true})
                 res.status(200).json(updated)
             } else {
-                const deleted = await Collection.findOneAndUpdate({userId: req.params.userId, name: req.body.collectionName}, {$pull: {recipes: req.params.recipeId}})
+                const deleted = await Collection.findOneAndUpdate({userId: req.params.userId, name: req.body.collectionName}, {$pull: {recipes: req.params.recipeId}}, {new: true})
                 res.status(200).json(deleted)
             }
         } else {
@@ -73,6 +73,36 @@ router.get('/:userId', async (req, res) => {
         const recipeIds = collections.flatMap((c) => c.recipes);
         const recipes = await Recipe.find({_id: {$in : recipeIds}})
         res.status(200).json({recipes, collections})
+    } catch (err) {
+        res.status(404).json(err)
+    }
+})
+
+
+// create a new collection 
+
+router.post('/:userId', async (req, res) => {
+    try {
+        const collection = new Collection({
+            userId: req.params.userId,
+            name: req.body.name,
+            recipes: []
+        }) 
+        const savedCollection =  await collection.save()
+        res.status(200).json(savedCollection)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+
+// get collection and collection recipes
+
+router.get('/getCollection/:userId/:collectionName', async (req, res) => {
+    try {
+        const collection = await Collection.findOne({userId : req.params.userId, name: req.params.collectionName})
+        const recipes = await Recipe.find({_id: {$in: collection.recipes}})
+        res.status(200).json({collection: collection, recipes: recipes})
     } catch (err) {
         res.status(404).json(err)
     }

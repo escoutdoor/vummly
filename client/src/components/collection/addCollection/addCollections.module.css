@@ -1,0 +1,80 @@
+.box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 176px;
+    height: 176px;
+    border: 2px dashed #bababa;
+    cursor: pointer;
+}
+
+.title {
+    font-size: 14px;
+    color: #3a9691;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.notActiveMode {
+    gap: 14px;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.notActiveMode.hidden {
+    visibility: hidden;
+    opacity: 0;
+    display: none;
+}
+
+.notActiveMode, .activeMode {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.activeMode.hidden {
+    display: none;
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+}
+
+.saveButton {
+    color: #3a9691;
+    position: relative;
+}
+
+.saveButton::after {
+    content: '';
+    background: #bababa;
+    width: 1px;
+    height: 15px;
+    position: absolute;
+    right: 0;
+}
+
+.cancelButton {
+    color: #bababa;
+}
+
+.saveButton,
+.cancelButton {
+    font-size: 13px;
+    padding: 13px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.collectionInput {
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    color: #3a9691;
+    text-align: center;
+}
