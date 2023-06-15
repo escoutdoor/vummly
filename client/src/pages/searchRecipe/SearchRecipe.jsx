@@ -1,7 +1,6 @@
 import { Link, useLocation} from 'react-router-dom';
 import s from './searchRecipe.module.css'
-import { useState, useEffect, useRef } from 'react';
-import Sidebar from '../../components/sidebar/Sidebar';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import RecipeItem from '../../components/recipeItem/RecipeItem'
 import RecipeSkeleton from '../../components/recipeSkeleton/RecipeSkeleton';
@@ -9,7 +8,7 @@ import { navbar } from '../../helpers/searchRecipe/navbar';
 import Inputs from '../../components/filterSearch/inputs/Inputs'
 import Buttons from '../../components/filterSearch/buttons/Buttons';
 import TitleAndDesc from '../../components/filterSearch/titles/TitleAndDesc';
-import { nutrition as nutr, nutrition } from '../../helpers/searchRecipe/filter';
+import { nutrition as nutr} from '../../helpers/searchRecipe/filter';
 import NoResults from '../../components/noResults/NoResults';
 
 
@@ -34,7 +33,6 @@ const SearchRecipe = () => {
     const [minutes, setMinutes] = useState()
     const [reset, setReset] = useState(false)
     const [nutrition, setNutrition] = useState("")
-    const [noResults, setNoResults] = useState(false)
     // state settings
     window.history.replaceState({}, searchValue)
     const PF = process.env.REACT_APP_BASE_URL;

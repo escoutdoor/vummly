@@ -1,6 +1,4 @@
-import { Link, useParams, useNavigate } from 'react-router-dom';
-import SuppNavbar from './../../components/suppNavbar/SuppNavbar'
-import SuppFooter from './../../components/suppFooter/SuppFooter'
+import { Link, useParams} from 'react-router-dom';
 import './category.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios'

@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import SuppNavbar from './../../components/suppNavbar/SuppNavbar'
-import SuppFooter from './../../components/suppFooter/SuppFooter'
 import styles from './search.module.css'
 import { useLocation, Link} from "react-router-dom";
 import axios from 'axios';
@@ -8,7 +6,6 @@ import moment from 'moment';
 
 // loading
 import SkewLoader from "react-spinners/SkewLoader";
-import SearchInput from '../../components/searchInput/SearchInput';
 
 const SearchSupport = () => {
 

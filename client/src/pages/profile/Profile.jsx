@@ -2,7 +2,6 @@ import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import s from './profile.module.css'
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
-import Skeleton from 'react-loading-skeleton'
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/features/userSlice';
 import ProfileSkeleton from '../../components/profileSkeleton/ProfileSkeleton';

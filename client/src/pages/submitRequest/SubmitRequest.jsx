@@ -1,7 +1,5 @@
-import SuppNavbar from './../../components/suppNavbar/SuppNavbar'
-import SuppFooter from './../../components/suppFooter/SuppFooter'
 import styles from './submitRequest.module.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import Select from 'react-select'
 import emailjs from '@emailjs/browser'

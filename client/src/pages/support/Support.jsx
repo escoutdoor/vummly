@@ -1,8 +1,6 @@
 import {Link} from 'react-router-dom';
 import './support.css'
 import { useLocation, useNavigate } from 'react-router-dom';
-import SuppNavbar from './../../components/suppNavbar/SuppNavbar'
-import SuppFooter from './../../components/suppFooter/SuppFooter'
 import { useState, useEffect } from 'react';
 
 const Support = () => {

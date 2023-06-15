@@ -1,6 +1,5 @@
 import { useParams, Link, useOutletContext } from 'react-router-dom';
 import s from './recipe.module.css'
-import Sidebar from '../../components/sidebar/Sidebar';
 import { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
 import axios from 'axios'
@@ -143,9 +142,6 @@ const Recipe = () => {
     const addOnKey = (e) => {
         e.key === 'Enter' && collectionName && addToCollection()
     }
-
-
-    console.log(collectionsInclude);
 
     return (
         <>

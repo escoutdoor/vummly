@@ -1,5 +1,4 @@
 import './activate.css'
-import Sidebar from './../../components/sidebar/Sidebar'
 import Navbar from './../../components/navbar/Navbar'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'

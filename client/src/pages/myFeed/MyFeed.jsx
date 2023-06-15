@@ -1,6 +1,5 @@
 import styles from './myFeed.module.css'
-import Sidebar from '../../components/sidebar/Sidebar';
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchRecipes from '../../components/searchRecipes/SearchRecipes';
 import axios from 'axios';
 import RecipeItem from '../../components/recipeItem/RecipeItem';
