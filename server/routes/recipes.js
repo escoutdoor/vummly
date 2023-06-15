@@ -11,6 +11,31 @@ router.post('/add-recipe', async (req, res) => {
     }
 })
 
+// get all recipe info
+
+router.get('/one/:recipeId', async (req, res) => {
+    try {
+        const recipe = await Recipe.findOne({id: req.params.recipeId})
+        // const relatedRecipes = await Recipe.find({tags : {$in : [...recipe.tags]}})
+        const relatedRecipes = await Recipe.aggregate([
+            {$match: {tags: { $in: [...recipe.tags]}, _id: {$ne: recipe._id}}},
+            {$sample: {size: 4}}
+        ]);
+        const moreFromResource = await Recipe.aggregate([
+            {$match: {"resource.link": recipe.resource.link, "resource.name": recipe.resource.name, _id: {$ne: recipe._id}}},
+            {$sample: {size: 4}}
+        ])
+        res.status(200).json({recipe: recipe, related: relatedRecipes, more: moreFromResource})
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
+
+
+
+
+// 
+
 router.get('/getOne/:id', async (req, res) => {
     try {
         const recipe = await Recipe.findOne({id: req.params.id})
@@ -20,15 +45,30 @@ router.get('/getOne/:id', async (req, res) => {
     }
 })
 
-router.get('/getByIds/:recipes', async (req, res) => {
+// related
+
+router.get('/related/:array', async (req, res) => {
     try {
-        const params = req.params.recipes.split("-")
-        const recipes = await Recipe.find({_id: {$in: params}})
-        res.status(200).json(recipes)
-    } catch (error) {
-        res.status(400).json(error)    
+        const params = await req.params.array.replace("_", " ").split("-")
+        const related = await Recipe.find({"tags.tag" : {$in : params}})
+        res.status(200).json(related)
+    } catch (err) {
+        res.status(400).json(err)
     }
 })
+
+
+router.get('/moreFrom/:resource', async (req, res) => {
+    try {
+        const more = await Recipe.find({"resource.link" : req.params.resource})
+        res.status(200).json(more)
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
+
+// 
+
 
 router.get(`/all`, async (req, res) => {
     try {
@@ -112,27 +152,6 @@ router.get(`/all/:withArray/:without/:nutrition`, async (req, res) => {
     }
 })
 
-// related
-
-router.get('/related/:array', async (req, res) => {
-    try {
-        const params = await req.params.array.replace("_", " ").split("-")
-        const related = await Recipe.find({"tags.tag" : {$in : params}})
-        res.status(200).json(related)
-    } catch (err) {
-        res.status(400).json(err)
-    }
-})
-
-
-router.get('/moreFrom/:resource', async (req, res) => {
-    try {
-        const more = await Recipe.find({"resource.link" : req.params.resource})
-        res.status(200).json(more)
-    } catch (err) {
-        res.status(500).json(err)
-    }
-})
 
 
 // page

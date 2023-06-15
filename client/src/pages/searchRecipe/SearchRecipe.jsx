@@ -77,7 +77,7 @@ const SearchRecipe = () => {
 
     // search recipes
     useEffect(() => {
-        recipes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.tag.toLowerCase().includes(searchValue.toLowerCase())) || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))))
+        recipes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())) || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))))
     }, [recipes, searchValue, nutrition])
 
     // filter by menu
@@ -103,7 +103,7 @@ const SearchRecipe = () => {
     }, [])
 
     useEffect(() => {
-        minutes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.tag.toLowerCase().includes(searchValue.toLowerCase())) && recipe || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))).filter(t => t.time <= minutes))
+        minutes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())) && recipe || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))).filter(t => t.time <= minutes))
     }, [minutes])
 
     return (

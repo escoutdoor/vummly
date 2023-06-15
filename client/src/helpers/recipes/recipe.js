@@ -6,7 +6,7 @@ const recipes = [
         "time": 110,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 760}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Meatloaf"}, {"tag": "Low Sugar"}, {"tag": "Low Carb"}],
+        "tags": ["Main Dishes", "Meatloaf", "Low Sugar", "Low Carb"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -51,7 +51,7 @@ const recipes = [
         "time": 20,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 790}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick and easy"}, {"tag": "Cookies"}, {"tag": "Quick"}, {"tag": "Easy"}],
+        "tags": [ "Desserts",  "Quick and easy",  "Cookies",  "Quick", "Easy"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -83,7 +83,7 @@ const recipes = [
         "time": 20,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 740}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick and easy"}, {"tag": "Microwaving"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Boiling"}],
+        "tags": [ "Desserts", "Quick and easy", "Microwaving", "Quick", "Easy", "Boiling"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -111,7 +111,7 @@ const recipes = [
         "time": 5,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 110}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Beverages"}, {"tag": "Quick"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
+        "tags": [ "Beverages", "Quick", "Smoothie", "Blending"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -139,7 +139,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 320}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Easy"}, {"tag": "Salads"}],
+        "tags": [ "Easy", "Salads"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -175,7 +175,7 @@ const recipes = [
         "time": 10,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 220}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Beverages"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
+        "tags": [ "Beverages", "Smoothie", "Blending"],
         "servings": 2,
         "ingredients": {
             "us": [
@@ -199,7 +199,7 @@ const recipes = [
         "time": 45,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 190}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Mexican"}, {"tag": "Casserole"}, {"tag": "Low Sugar"}, {"tag": "Sauteeing"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Browning"}, {"tag": "Baking"}],
+        "tags": [ "Main Dishes", "Mexican", "Casserole", "Low Sugar", "Sauteeing", "Low Carb", "Low Calorie", "Browning", "Baking"],
         "servings": 10,
         "ingredients": {
             "us": [
@@ -242,7 +242,7 @@ const recipes = [
         "time": 40,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 1010}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Casserole"}, {"tag": "Boiling"}, {"tag": "Low Sugar"}, {"tag": "Low Carb"}],
+        "tags": [ "Main Dishes", "Casserole", "Boiling", "Low Sugar", "Low Carb"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -279,7 +279,7 @@ const recipes = [
         "time": 20,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 360}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Quick"}, {"tag": "Marinade"}, {"tag": "Low Sugar"}, {"tag": "Grilling"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Main Dishes", "Quick", "Marinade", "Low Sugar", "Grilling", "Low Carb", "Low Calorie"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -314,7 +314,7 @@ const recipes = [
         "time": 50,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 410}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Quiche"}, {"tag": "Browning"}, {"tag": "Baking"}],
+        "tags": [ "Main Dishes", "Quiche", "Browning", "Baking"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -347,7 +347,7 @@ const recipes = [
         "time": 10,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 110}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Quick And Easy"}, {"tag": "Browning"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Baking"}],
+        "tags": [ "Quick And Easy", "Browning", "Quick", "Easy", "Baking"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -372,7 +372,7 @@ const recipes = [
         "time": 40,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 290}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Fried Chicken"}, {"tag": "Baking"}, {"tag": "Low Sugar"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Main Dishes", "Fried Chicken", "Baking", "Low Sugar", "Low Carb", "Low Calorie"],
         "servings": 8,
         "ingredients": {
             "us": [
@@ -407,7 +407,7 @@ const recipes = [
         "time": 60,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 510}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Low Carb"}, {"tag": "Baking"}],
+        "tags": [ "Main Dishes", "Low Carb", "Baking"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -436,7 +436,7 @@ const recipes = [
         "time": 10,
         "resource": { "link": "the-little-pine", "name": "The Little Pine"},
         "nutrition": [{"label": "calories", "value": 230}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Appetizers"}, {"tag": "Quick"}, {"tag": "Low Sugar"}, {"tag" : "Low Carb"}],
+        "tags": [ "Appetizers", "Quick", "Low Sugar", "Low Carb"],
         "servings": 12,
         "ingredients": {
             "us": [
@@ -467,7 +467,7 @@ const recipes = [
         "time": 45,
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 100}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Microwaving"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Desserts", "Microwaving", "Low Sugar", "Low Sodium", "Low Carb", "Low Calorie"],
         "servings": 5,
         "ingredients": {
             "us": [
@@ -494,7 +494,7 @@ const recipes = [
         "time": 20,
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 90}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Fries"}, {"tag": "Low Sugar"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Side Dishes", "Quick And Easy", "Fries", "Low Sugar", "Quick", "Easy", "Low Carb", "Low Calorie"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -525,7 +525,7 @@ const recipes = [
         "time": 10,
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 340}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Beverages"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
+        "tags": [ "Beverages", "Smoothie", "Blending"],
         "servings": 2,
         "ingredients": {
             "us": [
@@ -552,7 +552,7 @@ const recipes = [
         "time": 60,
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 40}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Cocktails"}, {"tag": "Tiramisu"}, {"tag": "Microwaving"}],
+        "tags": [ "Cocktails", "Tiramisu", "Microwaving"],
         "servings": 2,
         "ingredients": {
             "us": [
@@ -571,7 +571,7 @@ const recipes = [
         "time": 15,
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 420}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick And Easy"}, {"tag": "Mousse"}, {"tag": "Quick"}, {"tag": "Easy"}],
+        "tags": [ "Desserts", "Quick And Easy", "Mousse", "Quick", "Easy"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -598,7 +598,7 @@ const recipes = [
         "time": 10,
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 230}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Breakfast And Brunch"}, {"tag": "Quick"}, {"tag": "Pancakes"}, {"tag": "Low Sugar"}, {"tag": "Blending"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Breakfast And Brunch", "Quick", "Pancakes", "Low Sugar", "Blending", "Low Sodium", "Low Carb", "Low Calorie"],
         "servings": 2,
         "ingredients": {
             "us": [
@@ -625,7 +625,7 @@ const recipes = [
         "time": 480,
         "resource": { "link": "keto-karma", "name": "Keto Karma"},
         "nutrition": [{"label": "calories", "value": 200}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Easy"}, {"tag": "Chili"}, {"tag": "Low Sugar"}, {"tag": "Slow Cooking"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Browning"}],
+        "tags": [ "Main Dishes", "Easy", "Chili", "Low Sugar", "Slow Cooking", "Low Sodium", "Low Carb", "Low Calorie", "Browning"],
         "servings": 6,
         "ingredients": {
             "us": [
@@ -660,7 +660,7 @@ const recipes = [
         "time": 5,
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 160}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Beverages"}, {"tag": "Quick"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
+        "tags": [ "Beverages", "Quick", "Smoothie", "Blending"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -694,7 +694,7 @@ const recipes = [
         "time": 10,
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 50}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Salads"}, {"tag": "Quick And Easy"}, {"tag": "Low Sugar"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Sodium"}, {"tag": "Low Fat"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Salads", "Quick And Easy", "Low Sugar", "Quick", "Easy", "Low Sodium", "Low Fat", "Low Carb", "Low Calorie"],
         "servings": 6,
         "ingredients": {
             "us": [
@@ -724,7 +724,7 @@ const recipes = [
         "time": 5,
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 400}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Beverages"}, {"tag": "Quick"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
+        "tags": [ "Beverages", "Quick", "Smoothie", "Blending"],
         "servings": 2,
         "ingredients": {
             "us": [
@@ -756,7 +756,7 @@ const recipes = [
         "time": 120,
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 50}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Snacks"}, {"tag": "Boiling"}, {"tag": "Lunch"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Baking"}],
+        "tags": [ "Snacks", "Boiling", "Lunch", "Low Sugar", "Low Sodium", "Low Carb", "Low Calorie", "Baking"],
         "servings": 40,
         "ingredients": {
             "us": [
@@ -790,7 +790,7 @@ const recipes = [
         "time": 4,
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 180}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Beverages"}, {"tag": "Quick"}, {"tag": "Boiling"}, {"tag": "Blending"}],
+        "tags": [ "Beverages", "Quick", "Boiling", "Blending"],
         "servings": 2,
         "ingredients": {
             "us": [
@@ -818,7 +818,7 @@ const recipes = [
         "time": 25,
         "resource": { "link": "low-carb-spark", "name": "Low Carb Spark"},
         "nutrition": [{"label": "calories", "value": 510}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Easy"}, {"tag": "Low Sugar"}, {"tag": "Sauteeing"}, {"tag": "Low Carb"}, {"tag": "Browning"}, {"tag": "Boiling"}],
+        "tags": [ "Main Dishes", "Easy", "Low Sugar", "Sauteeing", "Low Carb", "Browning", "Boiling"],
         "servings": 6,
         "ingredients": {
             "us": [
@@ -870,7 +870,7 @@ const recipes = [
         "time": 20,
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 950}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Frosting"}],
+        "tags": [ "Desserts", "Quick", "Frosting"],
         "servings": 2,
         "ingredients": {
             "us": [
@@ -894,7 +894,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 220}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Cookies"}, {"tag": "Browning"}, {"tag": "Baking"}],
+        "tags": [ "Desserts", "Quick", "Cookies", "Browning", "Baking"],
         "servings": 18,
         "ingredients": {
             "us": [
@@ -922,7 +922,7 @@ const recipes = [
         "time": 60,
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 610}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Crisp"}, {"tag": "Browning"}, {"tag": "Baking"}],
+        "tags": [ "Desserts", "Crisp", "Browning", "Baking"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -956,7 +956,7 @@ const recipes = [
         "time": 11,
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 160}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Cake"}, {"tag": "Microwaving"}],
+        "tags": [ "Desserts", "Quick", "Cake", "Microwaving"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -990,7 +990,7 @@ const recipes = [
         "time": 80,
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 370}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Sweet Potato Casserole"}, {"tag": "Thanksgiving"}, {"tag": "Low Sodium"}, {"tag": "Browning"}, {"tag": "Casserole"}, {"tag": "High Fiber"}, {"tag": "Baking"}],
+        "tags": [ "Side Dishes", "Sweet Potato Casserole", "Thanksgiving", "Low Sodium", "Browning", "Casserole", "High Fiber", "Baking"],
         "servings": 12,
         "ingredients": {
             "us": [
@@ -1032,7 +1032,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 350}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Quick"}, {"tag": "Casserole"}, {"tag": "Low Sugar"}, {"tag": "Baking"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "High Fiber"}],
+        "tags": [ "Main Dishes", "Quick", "Casserole", "Low Sugar", "Baking", "Low Carb", "Low Calorie", "High Fiber"],
         "servings": 6,
         "ingredients": {
             "us": [
@@ -1058,7 +1058,7 @@ const recipes = [
         "time": 75,
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 280}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Breads"}, {"tag": "Glazing"}, {"tag": "Baking"}],
+        "tags": [ "Breads", "Glazing", "Baking"],
         "servings": 12,
         "ingredients": {
             "us": [
@@ -1100,7 +1100,7 @@ const recipes = [
         "time": 360,
         "resource": { "link": "live-well-bake-often", "name": "Live Well Bake Often"},
         "nutrition": [{"label": "calories", "value": 390}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Chili"}, {"tag": "Slow Cooking"}, {"tag": "Low Calorie"}, {"tag": "High Fiber"}],
+        "tags": [ "Main Dishes", "Chili", "Slow Cooking", "Low Calorie", "High Fiber"],
         "servings": 6,
         "ingredients": {
             "us": [
@@ -1140,7 +1140,7 @@ const recipes = [
         "time": 90,
         "resource": { "link": "jonna's-get-off-your-butt-and-bake", "name": "Jonna's Get Off Your Butt and Bake"},
         "nutrition": [{"label": "calories", "value": 420}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Oven"}, {"tag": "Low Sugar"}, {"tag": "Frying"}, {"tag": "High Fiber"}, {"tag": "Browning"}, {"tag": "Boiling"}, {"tag": "Baking"}],
+        "tags": [ "Side Dishes", "Oven", "Low Sugar", "Frying", "High Fiber", "Browning", "Boiling", "Baking"],
         "servings": 6,
         "ingredients": {
             "us": [
@@ -1170,7 +1170,7 @@ const recipes = [
         "time": 70,
         "resource": { "link": "jonna's-get-off-your-butt-and-bake", "name": "Jonna's Get Off Your Butt and Bake"},
         "nutrition": [{"label": "calories", "value": 1500}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Breads"}, {"tag": "Oven"}, {"tag": "Frying"}],
+        "tags": [ "Breads", "Oven", "Frying"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -1202,7 +1202,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "jonna's-get-off-your-butt-and-bake", "name": "Jonna's Get Off Your Butt and Bake"},
         "nutrition": [{"label": "calories", "value": 630}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick And Easy"}, {"tag": "Cheesecake"}, {"tag": "Quick"}, {"tag": "Easy"}],
+        "tags": [ "Desserts", "Quick And Easy", "Cheesecake", "Quick", "Easy"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -1234,7 +1234,7 @@ const recipes = [
         "time": 55,
         "resource": { "link": "jonna's-get-off-your-butt-and-bake", "name": "Jonna's Get Off Your Butt and Bake"},
         "nutrition": [{"label": "calories", "value": 750}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Oven"}],
+        "tags": [ "Desserts", "Easy", "Oven"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -1258,7 +1258,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "jonna's-get-off-your-butt-and-bake", "name": "Jonna's Get Off Your Butt and Bake"},
         "nutrition": [{"label": "calories", "value": 390}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Quick And Easy"}, {"tag": "Side Dishes"}],
+        "tags": [ "Quick And Easy", "Side Dishes"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -1298,7 +1298,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "barilla", "name": "Barilla"},
         "nutrition": [{"label": "calories", "value": 35}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Salads"}, {"tag": "Easy"}, {"tag": "Pasta Salad"}, {"tag": "Boiling"}],
+        "tags": [ "Salads", "Easy", "Pasta Salad", "Boiling"],
         "servings": 8,
         "ingredients": {
             "us": [
@@ -1334,7 +1334,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "barilla", "name": "Barilla"},
         "nutrition": [{"label": "calories", "value": 370}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Appetizers"}, {"tag": "Easy"}, {"tag": "Dips And Spreads"}, {"tag": "Baking"}],
+        "tags": [ "Appetizers", "Easy", "Dips And Spreads", "Baking"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -1362,7 +1362,7 @@ const recipes = [
         "time": 35,
         "resource": { "link": "barilla", "name": "Barilla"},
         "nutrition": [{"label": "calories", "value": 470}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Browning"}, {"tag": "Boiling"}, {"tag": "Baking"}],
+        "tags": [ "Browning", "Boiling", "Baking"],
         "servings": 8,
         "ingredients": {
             "us": [
@@ -1398,7 +1398,7 @@ const recipes = [
         "time": 5,
         "resource": { "link": "barilla", "name": "Barilla"},
         "nutrition": [{"label": "calories", "value": 370}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Lunch"}, {"tag": "Quick And Easy"}, {"tag": "Quick"}, {"tag": "Easy"}],
+        "tags": [ "Lunch", "Quick And Easy", "Quick", "Easy"],
         "servings": 6,
         "ingredients": {
             "us": [
@@ -1428,7 +1428,7 @@ const recipes = [
         "time": 80,
         "resource": { "link": "barilla", "name": "Barilla"},
         "nutrition": [{"label": "calories", "value": 170}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Easy"}, {"tag": "Marinating"}, {"tag": "Browning"}, {"tag": "Baking"}],
+        "tags": [ "Main Dishes", "Easy", "Marinating", "Browning", "Baking"],
         "servings": 6,
         "ingredients": {
             "us": [
@@ -1454,7 +1454,7 @@ const recipes = [
         "time": 10,
         "resource": { "link": "drAxe.com", "name": "DrAxe.com"},
         "nutrition": [{"label": "calories", "value": 100}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Beverages"}, {"tag": "Easy"}, {"tag": "Smoothie"}],
+        "tags": [ "Beverages", "Easy", "Smoothie"],
         "servings": 4,
         "ingredients": {
             "us": [
@@ -1479,7 +1479,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "drAxe.com", "name": "DrAxe.com"},
         "nutrition": [{"label": "calories", "value": 600}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Easy"}, {"tag": "Gravy"}],
+        "tags": [ "Easy", "Gravy"],
         "servings": 2,
         "ingredients": {
             "us": [                
@@ -1509,7 +1509,7 @@ const recipes = [
         "time": 8,
         "resource": { "link": "drAxe.com", "name": "DrAxe.com"},
         "nutrition": [{"label": "calories", "value": 310}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Beverages"}, {"tag": "Easy"}, {"tag": "Fall"}],
+        "tags": [ "Beverages", "Easy", "Fall"],
         "servings": 2,
         "ingredients": {
             "us": [                
@@ -1537,7 +1537,7 @@ const recipes = [
         "time": 50,
         "resource": { "link": "drAxe.com", "name": "DrAxe.com"},
         "nutrition": [{"label": "calories", "value": 250}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Oven"}, {"tag": "Low Sugar"}, {"tag": "Browning"}, {"tag": "Low Sodium"}, {"tag": "High Fiber"}, {"tag": "Boiling"}, {"tag": "Baking"}],
+        "tags": [ "Side Dishes", "Oven", "Low Sugar", "Browning", "Low Sodium", "High Fiber", "Boiling", "Baking"],
         "servings": 4,
         "ingredients": {
             "us": [                
@@ -1567,7 +1567,7 @@ const recipes = [
         "time": 5,
         "resource": { "link": "drAxe.com", "name": "DrAxe.com"},
         "nutrition": [{"label": "calories", "value": 520}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Appetizers"}, {"tag": "Quick"}, {"tag": "Hummus"}, {"tag": "High Fiber"}],
+        "tags": [ "Appetizers", "Quick", "Hummus", "High Fiber"],
         "servings": 4,
         "ingredients": {
             "us": [                
@@ -1598,12 +1598,12 @@ const recipes = [
         "time": 15,
         "resource": { "link": "love-and-lemons", "name": "Love and Lemons"},
         "nutrition": [{"label": "calories", "value": 240}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Low Sugar"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "High Fiber"}],
+        "tags": [ "Side Dishes", "Quick And Easy", "Low Sugar", "Quick", "Easy", "High Fiber"],
         "servings": 4,
         "ingredients": {
             "us": [       
-                {"ingredient": "extra-virgin olive oil"},         
-                {"quantity": 1, "measurement": "lb.", "ingredient": "spinach"},         
+                {"ingredient": "extra-virgin olive oil"},        
+                {"quantity": 1, "measurement": "lb.", "ingredient": "spinach"},        
                 {"quantity": 1, "ingredient": "shallot", "technique": "chopped"},
                 {"quantity": 0.25, "measurement": "tsp.", "ingredient": "sea salt", "technique": "more to taste"},
                 {"quantity": 2, "ingredient": "garlic cloves", "technique": "minced"},
@@ -1615,8 +1615,8 @@ const recipes = [
                 {"ingredient": "freshly ground black pepper"}
             ], 
             "metric": [
-                {"ingredient": "extra-virgin olive oil"},         
-                {"quantity": 454, "measurement": "grams", "ingredient": "spinach"},         
+                {"ingredient": "extra-virgin olive oil"},        
+                {"quantity": 454, "measurement": "grams", "ingredient": "spinach"},        
                 {"quantity": 1, "ingredient": "shallot", "technique": "chopped"},
                 {"quantity": 0.25, "measurement": "tsp.", "ingredient": "sea salt", "technique": "more to taste"},
                 {"quantity": 2, "ingredient": "garlic cloves", "technique": "minced"},
@@ -1637,7 +1637,7 @@ const recipes = [
         "time": 55,
         "resource": { "link": "love-and-lemons", "name": "Love and Lemons"},
         "nutrition": [{"label": "calories", "value": 340}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Breads"}, {"tag": "Banana Bread"}, {"tag": "Baking"}],
+        "tags": [ "Breads", "Banana Bread", "Baking"],
         "servings": 8,
         "ingredients": {
             "us": [       
@@ -1686,7 +1686,7 @@ const recipes = [
         "time": 65,
         "resource": { "link": "love-and-lemons", "name": "Love and Lemons"},
         "nutrition": [{"label": "calories", "value": 60}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Breads"}],
+        "tags": [ "Breads"],
         "servings": 16,
         "ingredients": {
             "us": [       
@@ -1711,7 +1711,7 @@ const recipes = [
         "time": 45,
         "resource": { "link": "love-and-lemons", "name": "Love and Lemons"},
         "nutrition": [{"label": "calories", "value": 290}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Easy"}, {"tag": "Roasting"}],
+        "tags": [ "Side Dishes", "Easy", "Roasting"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -1743,7 +1743,7 @@ const recipes = [
         "time": 5,
         "resource": { "link": "love-and-lemons", "name": "Love and Lemons"},
         "nutrition": [{"label": "calories", "value": 340}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Salads"}, {"tag": "Quick"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Salads", "Quick", "Low Sugar", "Low Sodium", "Low Carb", "Low Calorie"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -1775,7 +1775,7 @@ const recipes = [
         "time": 60,
         "resource": { "link": "CDKitchen", "name": "CDKitchen"},
         "nutrition": [{"label": "calories", "value": 5}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Salads"}],
+        "tags": [ "Salads"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -1805,7 +1805,7 @@ const recipes = [
         "time": 29,
         "resource": { "link": "CDKitchen", "name": "CDKitchen"},
         "nutrition": [{"label": "calories", "value": 280}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Fat"}],
+        "tags": [ "Side Dishes", "Quick And Easy", "Quick", "Easy", "Low Sugar", "Low Sodium", "Low Fat"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -1829,7 +1829,7 @@ const recipes = [
         "time": 60,
         "resource": { "link": "CDKitchen", "name": "CDKitchen"},
         "nutrition": [{"label": "calories", "value": 230}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Easy"}],
+        "tags": [ "Desserts", "Easy"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -1857,7 +1857,7 @@ const recipes = [
         "time": 20,
         "resource": { "link": "CDKitchen", "name": "CDKitchen"},
         "nutrition": [{"label": "calories", "value": 70}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Condiments And Sauces"}, {"tag": "Easy"}, {"tag": "Low Fat"}],
+        "tags": [ "Condiments And Sauces", "Easy", "Low Fat"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -1881,7 +1881,7 @@ const recipes = [
         "time": 15,
         "resource": { "link": "CDKitchen", "name": "CDKitchen"},
         "nutrition": [{"label": "calories", "value": 320}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Alfredo"}, {"tag": "Low Sugar"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Calorie"}],
+        "tags": [ "Main Dishes", "Quick And Easy", "Alfredo", "Low Sugar", "Quick", "Easy", "Low Calorie"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -1914,7 +1914,7 @@ const recipes = [
         "time": 24,
         "resource": { "link": "the-sugar-free-diva", "name": "The Sugar Free Diva"},
         "nutrition": [{"label": "calories", "value": 60}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Cookies"}, {"tag": "Baking"}],
+        "tags": [ "Desserts", "Quick", "Cookies", "Baking"],
         "servings": 24,
         "ingredients": {
             "us": [       
@@ -1942,7 +1942,7 @@ const recipes = [
         "time": 70,
         "resource": { "link": "the-sugar-free-diva", "name": "The Sugar Free Diva"},
         "nutrition": [{"label": "calories", "value": 460}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Pie"}, {"tag": "Baking"}],
+        "tags": [ "Desserts", "Easy", "Pie", "Baking"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -1968,7 +1968,7 @@ const recipes = [
         "time": 70,
         "resource": { "link": "the-sugar-free-diva", "name": "The Sugar Free Diva"},
         "nutrition": [{"label": "calories", "value": 160}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Icing"}],
+        "tags": [ "Desserts", "Easy", "Icing"],
         "servings": 11,
         "ingredients": {
             "us": [       
@@ -1994,7 +1994,7 @@ const recipes = [
         "time": 20,
         "resource": { "link": "the-sugar-free-diva", "name": "The Sugar Free Diva"},
         "nutrition": [{"label": "calories", "value": 520}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Ice Cream"}],
+        "tags": [ "Desserts", "Quick", "Ice Cream"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2018,7 +2018,7 @@ const recipes = [
         "time": 480,
         "resource": { "link": "the-sugar-free-diva", "name": "The Sugar Free Diva"},
         "nutrition": [{"label": "calories", "value": 200}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Quick"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Quick", "Low Sugar", "Low Sodium", "Low Carb", "Low Calorie"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2038,7 +2038,7 @@ const recipes = [
         "time": 50,
         "resource": { "link": "add-a-pinch", "name": "Add a Pinch"},
         "nutrition": [{"label": "calories", "value": 70}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Easy"}, {"tag": "Low Sugar"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Side Dishes", "Easy", "Low Sugar", "Low Carb", "Low Calorie"],
         "servings": 2,
         "ingredients": {
             "us": [       
@@ -2060,7 +2060,7 @@ const recipes = [
         "time": 2,
         "resource": { "link": "add-a-pinch", "name": "Add a Pinch"},
         "nutrition": [{"label": "calories", "value": 60}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick"}],
+        "tags": [ "Desserts", "Quick"],
         "servings": 16,
         "ingredients": {
             "us": [       
@@ -2082,7 +2082,7 @@ const recipes = [
         "time": 70,
         "resource": { "link": "add-a-pinch", "name": "Add a Pinch"},
         "nutrition": [{"label": "calories", "value": 390}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Shortbread"}],
+        "tags": [ "Desserts", "Shortbread"],
         "servings": 8,
         "ingredients": {
             "us": [       
@@ -2106,7 +2106,7 @@ const recipes = [
         "time": 5,
         "resource": { "link": "add-a-pinch", "name": "Add a Pinch"},
         "nutrition": [{"label": "calories", "value": 250}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Quick"}, {"tag": "Slow Cooking"}, {"tag": "Microwaving"}],
+        "tags": [ "Quick", "Slow Cooking", "Microwaving"],
         "servings": 2,
         "ingredients": {
             "us": [       
@@ -2130,7 +2130,7 @@ const recipes = [
         "time": 55,
         "resource": { "link": "add-a-pinch", "name": "Add a Pinch"},
         "nutrition": [{"label": "calories", "value": 380}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Crisp"}, {"tag": "Browning"}, {"tag": "Baking"}],
+        "tags": [ "Desserts", "Crisp", "Browning", "Baking"],
         "servings": 12,
         "ingredients": {
             "us": [       
@@ -2172,7 +2172,7 @@ const recipes = [
         "time": 15,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 230}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Soups"}, {"tag": "Quick And Easy"}, {"tag": "Quick"}, {"tag": "Easy"}],
+        "tags": [ "Soups", "Quick And Easy", "Quick", "Easy"],
         "servings": 8,
         "ingredients": {
             "us": [       
@@ -2204,7 +2204,7 @@ const recipes = [
         "time": 25,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 570}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Enchiladas"}, {"tag": "Low Sugar"}, {"tag": "Baking"}, {"tag": "Quick"}, {"tag": "Easy"}],
+        "tags": [ "Main Dishes", "Quick And Easy", "Enchiladas", "Low Sugar", "Baking", "Quick", "Easy"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2228,7 +2228,7 @@ const recipes = [
         "time": 25,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 250}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Fries"}, {"tag": "Oven"}, {"tag": "Low Sugar"}, {"tag": "Baking"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Sodium"}, {"tag": "Low Fat"}, {"tag": "High Fiber"}],
+        "tags": [ "Side Dishes", "Quick And Easy", "Fries", "Oven", "Low Sugar", "Baking", "Quick", "Easy", "Low Sodium", "Low Fat", "High Fiber"],
         "servings": 8,
         "ingredients": {
             "us": [       
@@ -2256,7 +2256,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 170}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Turkey Burger"}, {"tag": "Grilling"}, {"tag": "Burger"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}, {"tag": "Low Fat"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Baking"}],
+        "tags": [ "Main Dishes", "Turkey Burger", "Grilling", "Burger", "Low Sugar", "Low Sodium", "Low Fat", "Low Carb", "Low Calorie", "Baking"],
         "servings": 8,
         "ingredients": {
             "us": [       
@@ -2288,7 +2288,7 @@ const recipes = [
         "time": 15,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 310}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Korean"}, {"tag": "Quick And Easy"}, {"tag": "Low Carb"}, {"tag": "Frying"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Calorie"}, {"tag": "Browning"}],
+        "tags": [ "Main Dishes", "Korean", "Quick And Easy", "Low Carb", "Frying", "Quick", "Easy", "Low Calorie", "Browning"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2316,7 +2316,7 @@ const recipes = [
         "time": 45,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 320}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Soups"}, {"tag": "Low Sugar"}, {"tag": "Sauteeing"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Boiling"}],
+        "tags": [ "Soups", "Low Sugar", "Sauteeing", "Low Sodium", "Low Carb", "Low Calorie", "Boiling"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2361,7 +2361,7 @@ const recipes = [
         "time": 35,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 90}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Microwaving"}],
+        "tags": [ "Desserts", "Easy", "Microwaving"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2394,7 +2394,7 @@ const recipes = [
         "time": 20,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 690}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick And Easy"}, {"tag": "Frosting"}, {"tag": "Quick"}, {"tag": "Easy"}],
+        "tags": [ "Desserts", "Quick And Easy", "Frosting", "Quick", "Easy"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2420,7 +2420,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 370}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Quick"}, {"tag": "Enchiladas"}, {"tag": "Baking"}],
+        "tags": [ "Main Dishes", "Quick", "Enchiladas", "Baking"],
         "servings": 6,
         "ingredients": {
             "us": [       
@@ -2448,7 +2448,7 @@ const recipes = [
         "time": 5,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 860}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick"}],
+        "tags": [ "Desserts", "Quick"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2482,7 +2482,7 @@ const recipes = [
         "time": 15,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 140}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Beverages"}, {"tag": "Smoothie"}, {"tag": "Blending"}],
+        "tags": [ "Beverages", "Smoothie", "Blending"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2506,7 +2506,7 @@ const recipes = [
         "time": 5,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 670}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick And Easy"}, {"tag": "Quick"}, {"tag": "Easy"}],
+        "tags": [ "Desserts", "Quick And Easy", "Quick", "Easy"],
         "servings": 2,
         "ingredients": {
             "us": [       
@@ -2532,7 +2532,7 @@ const recipes = [
         "time": 120,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 470}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Mousse"}, {"tag": "Thanksgiving"}],
+        "tags": [ "Desserts", "Easy", "Mousse", "Thanksgiving"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2560,7 +2560,7 @@ const recipes = [
         "time": 15,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 530}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Quick And Easy"}, {"tag": "Low Sugar"}, {"tag": "Steaming"}, {"tag" : "Quick"}, {"tag": "Easy"}, {"tag": "Low Sodium"}, {"tag": "Low Carb"}, {"tag": "Frying"}, {"tag" : "Browning"}],
+        "tags": [ "Main Dishes", "Quick And Easy", "Low Sugar", "Steaming", "Quick", "Easy", "Low Sodium", "Low Carb", "Frying", "Browning"],
         "servings": 2,
         "ingredients": {
             "us": [       
@@ -2591,7 +2591,7 @@ const recipes = [
         "time": 120,
         "resource": { "link": "homan-at-home", "name": "Homan At Home"},
         "nutrition": [{"label": "calories", "value": 170}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Easy"}, {"tag": "Kebab"}, {"tag": "Low Sugar"}, {"tag" : "Marinating"}, {"tag": "Low Fat"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}, {"tag": "Grilling"}, {"tag" : "Baking"}],
+        "tags": [ "Main Dishes", "Easy", "Kebab", "Low Sugar", "Marinating", "Low Fat", "Low Carb", "Low Calorie", "Grilling", "Baking"],
         "servings": 6,
         "ingredients": {
             "us": [       
@@ -2629,7 +2629,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 1410}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Lunch"}, {"tag": "Easy"}, {"tag": "Sandwich"}, {"tag": "Low Sugar"}, {"tag" : "Grilled Cheese"}],
+        "tags": [ "Lunch", "Easy", "Sandwich", "Low Sugar", "Grilled Cheese"],
         "servings": 2,
         "ingredients": {
             "us": [       
@@ -2657,7 +2657,7 @@ const recipes = [
         "time": 75,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 80}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Cocktails"}, {"tag": "Easy"}, {"tag": "Sangria"}, {"tag": "Beverages"}],
+        "tags": [ "Cocktails", "Easy", "Sangria", "Beverages"],
         "servings": 6,
         "ingredients": {
             "us": [       
@@ -2681,7 +2681,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 350}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Asian"}, {"tag": "Low Sugar"}, {"tag": "Sauteeing"}, {"tag": "Low Calorie"}, {"tag": "Boiling"}],
+        "tags": [ "Main Dishes", "Asian", "Low Sugar", "Sauteeing", "Low Calorie", "Boiling"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2717,7 +2717,7 @@ const recipes = [
         "time": 70,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 280}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Asian"}, {"tag": "Low Sugar"}, {"tag": "Sauteeing"}, {"tag": "Low Calorie"}, {"tag": "Boiling"}],
+        "tags": [ "Main Dishes", "Asian", "Low Sugar", "Sauteeing", "Low Calorie", "Boiling"],
         "servings": 10,
         "ingredients": {
             "us": [       
@@ -2753,7 +2753,7 @@ const recipes = [
         "time": 30,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 1080}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Quick"}, {"tag": "Ice Cream"}],
+        "tags": [ "Desserts", "Quick", "Ice Cream"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2775,7 +2775,7 @@ const recipes = [
         "time": 60,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 650}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Beef Stroganoff"}, {"tag": "Low Sugar"}, {"tag": "Low Sodium"}],
+        "tags": [ "Main Dishes", "Beef Stroganoff", "Low Sugar", "Low Sodium"],
         "servings": 6,
         "ingredients": {
             "us": [       
@@ -2817,7 +2817,7 @@ const recipes = [
         "time": 80,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 520}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Bars"}],
+        "tags": [ "Desserts", "Bars"],
         "servings": 12,
         "ingredients": {
             "us": [       
@@ -2855,7 +2855,7 @@ const recipes = [
         "time": 35,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 360}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Sloppy Joes"}, {"tag": "Low Carb"}, {"tag": "Sauteeing"}, {"tag": "Low Calorie"}, {"tag": "Browning"}],
+        "tags": [ "Main Dishes", "Sloppy Joes", "Low Carb", "Sauteeing", "Low Calorie", "Browning"],
         "servings": 6,
         "ingredients": {
             "us": [       
@@ -2901,7 +2901,7 @@ const recipes = [
         "time": 70,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 820}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Desserts"}, {"tag": "Easy"}, {"tag": "Tart"}, {"tag": "Browning"}, {"tag": "Baking"}],
+        "tags": [ "Desserts", "Easy", "Tart", "Browning", "Baking"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -2942,7 +2942,7 @@ const recipes = [
         "time": 180,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 160}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Low Sugar"}, {"tag": "Low Fat"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Main Dishes", "Low Sugar", "Low Fat", "Low Carb", "Low Calorie"],
         "servings": 8,
         "ingredients": {
             "us": [       
@@ -2980,7 +2980,7 @@ const recipes = [
         "time": 55,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 200}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Side Dishes"}, {"tag": "Easy"}, {"tag": "Low Sodium"}, {"tag": "Browning"}, {"tag": "Low Calorie"}],
+        "tags": [ "Side Dishes", "Easy", "Low Sodium", "Browning", "Low Calorie"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -3008,7 +3008,7 @@ const recipes = [
         "time": 65,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 320}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Main Dishes"}, {"tag": "Ramen"}, {"tag": "Low Sugar"}, {"tag": "Low Fat"}, {"tag": "Low Carb"}, {"tag": "Low Calorie"}],
+        "tags": [ "Main Dishes", "Ramen", "Low Sugar", "Low Fat", "Low Carb", "Low Calorie"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -3046,7 +3046,7 @@ const recipes = [
         "time": 5,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 260}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Cocktails"}, {"tag": "Quick And Easy"}, {"tag": "Margarita"}, {"tag": "Beverages"}, {"tag": "Quick"}, {"tag": "Easy"}],
+        "tags": [ "Cocktails", "Quick And Easy", "Margarita", "Beverages", "Quick", "Easy"],
         "servings": 1,
         "ingredients": {
             "us": [       
@@ -3076,7 +3076,7 @@ const recipes = [
         "time": 80,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 1360}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Breads"}],
+        "tags": [ "Breads"],
         "servings": 4,
         "ingredients": {
             "us": [       
@@ -3114,7 +3114,7 @@ const recipes = [
         "time": 15,
         "resource": { "link": "kj-and-company", "name": "KJ and Company"},
         "nutrition": [{"label": "calories", "value": 280}, {"label": "sodium", "value": 790}, {"label": "fat", "value": 790}, {"label": "carbs", "value": 790}, {"label": "fiber", "value": 790}, {"label": "potassium", "value": 790}],
-        "tags": [{"tag": "Appetizers"}, {"tag": "Quick And Easy"}, {"tag": "Guacamole"}, {"tag": "Low Sugar"}, {"tag": "Quick"}, {"tag": "Easy"}, {"tag": "Low Sodium"}, {"tag": "High Fiber"}],
+        "tags": [ "Appetizers", "Quick And Easy", "Guacamole", "Low Sugar", "Quick", "Easy", "Low Sodium", "High Fiber"],
         "servings": 6,
         "ingredients": {
             "us": [       

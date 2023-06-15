@@ -3,24 +3,20 @@ const Collection = require('../models/Collection')
 const Recipe = require('../models/Recipe')
 
 
-router.get('/all/:id', async (req, res) => {
+router.get('/all/:id/:recipeId', async (req, res) => {
     try {
-        const collections = await Collection.find({userId: req.params.id})
-        res.status(200).json(collections)
+        const include = await Collection.find({userId: req.params.id, recipes: {$elemMatch: {$eq: req.params.recipeId}}}).exec();
+        const notinclude = await Collection.find({userId: req.params.id, recipes: {$nin : [req.params.recipeId]}}).exec();
+        res.status(200).json({include : include, notinclude : notinclude})
     } catch (error) {
         res.status(404).json(error)
     }
 })
 
-router.put('/createOne', async (req, res) => {
+router.get('/all/:id', async (req, res) => {
     try {
-        const collection = new Collection({
-            userId: req.body.userId,
-            name: req.body.name,
-            recipes: [req.body?.recipeId]
-        })
-        await collection.save()
-        res.status(200).json(collection)
+        const collections = await Collection.find({userId: req.params.id})
+        res.status(200).json(collections)
     } catch (error) {
         res.status(404).json(error)
     }
@@ -70,9 +66,15 @@ router.put('/:userId/:recipeId', async (req, res) => {
 router.get('/:userId', async (req, res) => {
     try {
         const collections = await Collection.find({userId: req.params.userId})
-        const recipeIds = collections.flatMap((c) => c.recipes);
+        const recipeIds = await collections.flatMap((c) => c.recipes).filter((value, index, self) => self.indexOf(value) === index)
         const recipes = await Recipe.find({_id: {$in : recipeIds}})
-        res.status(200).json({recipes, collections})
+        const sortedLastAdded = recipeIds.map((recipeId) => {
+            return recipes.find((r) => r._id.toString() === recipeId);
+        }).reverse()
+        const collectionsLastModified = await Collection.find({userId: req.params.userId}).sort({updatedAt: -1})
+        const collectionsLastCreated = await Collection.find({userId: req.params.userId}).sort({createdAt: -1})
+        const collectionsName = await Collection.find({userId: req.params.userId}).sort({name: -1})
+        res.status(200).json({recipes: sortedLastAdded, collectionsLastModified, collectionsLastCreated, collectionsName})
     } catch (err) {
         res.status(404).json(err)
     }
@@ -101,12 +103,17 @@ router.post('/:userId', async (req, res) => {
 router.get('/getCollection/:userId/:collectionName', async (req, res) => {
     try {
         const collection = await Collection.findOne({userId : req.params.userId, name: req.params.collectionName})
-        const recipes = await Recipe.find({_id: {$in: collection.recipes}})
-        res.status(200).json({collection: collection, recipes: recipes})
+        const recipes = await Recipe.find({_id: {$in: collection.recipes}}).sort({name: -1})
+        const sortedLastAdded = collection.recipes.map((recipeId) => {
+            return recipes.find((r) => r._id.toString() === recipeId);
+        })
+        res.status(200).json({collection, recipesLast: sortedLastAdded, recipesName: recipes})
     } catch (err) {
         res.status(404).json(err)
     }
 })
+
+
 
 
 // change collection name
@@ -133,6 +140,17 @@ router.put('/description/:collectionId/:userId', async (req, res) => {
     }
 })
 
+
+// delete collection
+
+router.delete('/deleteOne/:collectionId', async (req, res) => {
+    try {
+        const deleted = await Collection.findOneAndDelete({_id: req.params.collectionId})
+        res.status(200).json(deleted)
+    } catch (err) {
+        res.status(400).json(err)
+    }
+})
 
 
 module.exports = router

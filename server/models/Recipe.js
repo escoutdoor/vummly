@@ -32,9 +32,7 @@ const recipeSchema = book.model('Recipe', new mongoose.Schema({
     ],
     tags: [
         {
-            tag: {
                 type: String,
-            }
         }
     ],
     servings: {

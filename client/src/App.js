@@ -28,7 +28,7 @@ function App() {
                 </Route>
 
                 <Route path={'/'} element={<MainLayout />}>
-                    <Route path={'recipe/:recipe'} element={<Recipe />} />
+                    <Route path={'recipe/:recipeId'} element={<Recipe />} />
                     <Route path={'recipes'} element={<SearchRecipe />} />
                     <Route path={''} element={<MyFeed/>} />
                     <Route path={'page/:id'} element={<Resource />}/>

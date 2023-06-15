@@ -18,7 +18,6 @@ const Profile = () => {
     const {id} = useParams()
     const [loggedInUser, setNotLoggedInUser] = useOutletContext()
     const [user, setUser] = useState({})
-    const [foundRecipes, setFoundRecipes] = useState([])
     const [loaded, setLoaded] = useState(false)
     const [section, setSection] = useState("saved recipes")
 
@@ -50,15 +49,15 @@ const Profile = () => {
 
     useEffect(() => {
         if(user) {
-            setDescription(user.description)
-            setName(user.name)
-            setCountry(user.country)
-            setCity(user.city)
+            setDescription(user?.description)
+            setName(user?.name)
+            setCountry(user?.country)
+            setCity(user?.city)
         }
     }, [user])
 
     useEffect(() => {
-        document.title = user.name ? `${user.name} on Vummly` : 'Vummly'
+        document.title = user?.name ? `${user.name} on Vummly` : 'Vummly'
     }, [user])
 
     useEffect(() => {
@@ -88,7 +87,7 @@ const Profile = () => {
         if(user.name !== name && name?.length !== 0) {
             await axios.put(`/user/username/${user._id}/${user.mail}`, {
                 name: name
-            }).then((u) => setUser(u.data))
+            }).then((u) => {nav(`/profile/${u.data.name}-${u.data._id}`); setUser(u.data)})
         }
         if(user.description !== description) {
             await axios.put(`/user/description/${user._id}/${user.mail}`, {
@@ -110,14 +109,14 @@ const Profile = () => {
 
 
     return (
-        <div className={s.profile} onBlur={() => {setActiveDescription(false); setActiveName(false); setActiveCity(false); setActiveCountry(false); handleChanges()}}>
+        <div className={s.profile} onClick={() => {setActiveCity(false); setActiveCountry(false);}} onBlur={() => {setActiveDescription(false); setActiveName(false); handleChanges()}}>
             <div className="wrap1160">
                 <div className={s.content}>
                     {!loaded ? <ProfileSkeleton /> : 
                         <div className={s.user}>
                             <div className={s.userLeft}>
                                 <div className={s.userAvatar}>
-                                    <img className={s.image} src={user.avatar ? `${PF}images/avatars/${user.avatar}` : `${PF}images/avatars/no-avatar.webp`}/>
+                                    <img className={s.image} src={user?.avatar ? `${PF}images/avatars/${user.avatar}` : `${PF}images/avatars/no-avatar.webp`}/>
                                     {isMe && <div className={s.avatarClick}>
                                         <input className={s.inputAvatar} type="file" accept="image/*"  onChange={() => {}}/>
                                     </div>}

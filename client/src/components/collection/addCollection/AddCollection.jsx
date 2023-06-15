@@ -19,7 +19,7 @@ const AddCollection = ({setCollections, collections, user}) => {
         if(collectionName.length !== 0 && !collections.some(c => c.name === collectionName)) {
             await axios.post(`/collections/${user._id}`, {
                 name : collectionName,
-            }).then(u => setCollections([...collections, u.data]))
+            }).then(u => setCollections([u.data, ...collections]))
             setActiveAddCollection(false)
             setCollectionName("")
         }
@@ -29,10 +29,6 @@ const AddCollection = ({setCollections, collections, user}) => {
         e.key === 'Enter' && createCollection()
     }
 
-    console.log(collectionName);
-
-    console.log(activeAddCollection);
-
     return (
         <div title='New Collection' className={s.box} onKeyDown={handleEnter}> 
             <div className={s.content}>
@@ -41,7 +37,7 @@ const AddCollection = ({setCollections, collections, user}) => {
                     <h1 className={s.title}>New Collection</h1>
                 </div>
                 <div className={activeAddCollection ? s.activeMode : `${s.activeMode} ${s.hidden}`} >
-                    <input style={{color: error ? 'red' : '#3a9691'}} placeholder='Collection Name' ref={collectionInput} type="text" className={s.collectionInput} value={collectionName} onChange={e => setCollectionName(e.target.value)}/>
+                    <input maxLength={40} style={{color: error ? 'red' : '#3a9691'}} placeholder='Collection Name' ref={collectionInput} type="text" className={s.collectionInput} value={collectionName} onChange={e => setCollectionName(e.target.value)}/>
                     <div className={s.buttons}>
                         <button className={s.saveButton} onClick={createCollection}>save</button>
                         <button className={s.cancelButton} onClick={() => {setActiveAddCollection(false); setCollectionName("")}}>cancel</button>

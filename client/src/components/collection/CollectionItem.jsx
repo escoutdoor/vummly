@@ -11,7 +11,7 @@ const CollectionItem = ({collection, image}) => {
                 <div className={s.collectionInfo}>
                     <p className={s.collectionText}>{collection.name}</p>
                     <div className={s.collectionStat}>
-                        <p className={s.collectionText}>{collection.recipes.length}</p>
+                        <p className={s.collectionText}>{collection.recipes?.length}</p>
                         <span className={s.collectionSmallText}>recipes</span>
                     </div>
                 </div>
