@@ -32,7 +32,7 @@ const recipeSchema = book.model('Recipe', new mongoose.Schema({
     ],
     tags: [
         {
-                type: String,
+            type: String,
         }
     ],
     servings: {
@@ -72,47 +72,25 @@ const recipeSchema = book.model('Recipe', new mongoose.Schema({
             }
         ]
     },
-    directions: {
-        video: {
-            poster: {
-                type: String,
-            },
-            source : {
-                type: String
-            }
-        },
-        steps: [
-            {
-                step: {
-                    type: String
-                }
-            }
-        ]
-    },
-    reviews: [
-        {
-            user: {
-                type: String
-            },
-            link: {
-                type: String
-            },
-            stars: {
-                type: Number
-            },
-            rev: {
-                type: String
-            },
-            likes: {
-                type: Array
-            },
-            time: {
-                type: Date,
-                default: Date.now
-            }
-        }
-    ]
 }, 
 {timestamps: true}))
 
 module.exports = recipeSchema
+
+// directions: {
+//     video: {
+//         poster: {
+//             type: String,
+//         },
+//         source : {
+//             type: String
+//         }
+//     },
+//     steps: [
+//         {
+//             step: {
+//                 type: String
+//             }
+//         }
+//     ]
+// },

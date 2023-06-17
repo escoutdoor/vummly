@@ -27,12 +27,6 @@ const Resource = () => {
         setSearched(page.filter(item => item.title.toLowerCase().includes(searchValue.toLowerCase())) || page)
     }, [searchValue, page])
 
-    // sum for stars
-    const sum = (items) => {
-        return items.reduce(function(a, b){
-            return a + b['stars'];
-        }, 0);
-    }
 
     useEffect(() => {
         document.title = page && loading ? `${page[0].resource.name} on Vummly` : 'Vummly'
@@ -70,7 +64,7 @@ const Resource = () => {
                         <div className={s.recipes}>
                             {!loading && <RecipeSkeleton recipes={50}/>}
                             {searched.map((p) => (
-                                <RecipeItem recipe={p} key={p._id} rating={sum(p.reviews)/p.reviews.length}/>
+                                <RecipeItem recipe={p} key={p._id} rating={p.rating}/>
                             ))}
                             {loading && searched.length === 0 ? <NoResults length={searched.length} searchVal={searchValue}/> : null}
                         </div>

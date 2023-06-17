@@ -14,7 +14,7 @@ const collectionSchema = collections.model('Collection', new mongoose.Schema({
         type: String,
         default: ''
     },
-    recipes: [{type: String}]
+    recipes: [{type: mongoose.Types.ObjectId}]
 },
 {timestamps: true}))
 

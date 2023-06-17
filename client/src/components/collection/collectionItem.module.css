@@ -40,6 +40,8 @@
     font-size: 18px;
     line-height: 27px;
     font-weight: 100;
+    max-width: 110px;
+    word-wrap: break-word;
 }
 
 .collectionSmallText {

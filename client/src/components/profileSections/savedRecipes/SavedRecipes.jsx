@@ -48,13 +48,13 @@ const SavedRecipes = ({user, isMe}) => {
             <div className={s.allYums}>
                 <div className={s.blocks__header}>
                     <h1 className={s.title}>All Vums</h1>
-                    <Link to={'recipes'} className={s.seeAll}>SEE ALL</Link>
+                    <Link to={'collections/all-vums'} className={s.seeAll}>SEE ALL</Link>
                 </div>
                 <div className={s.allRecipes}>
                     {!loaded && <RecipeSkeleton recipes={6}/>}
                     {isMe && loaded && <FindRecipes />}
                     {recipes.slice(0, 5).map((r, index) => (
-                        <RecipeItem key={index} recipe={r} />
+                        <RecipeItem key={index} recipe={r} rating={r.rating}/>
                     ))}
                 </div>
             </div>

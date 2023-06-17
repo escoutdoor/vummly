@@ -5,8 +5,6 @@ import axios from 'axios';
 import RecipeItem from '../../components/recipeItem/RecipeItem';
 import RecipeSkeleton from '../../components/recipeSkeleton/RecipeSkeleton';
 
-// const LazyRecipe = React.lazy(() => import('../../components/recipeItem/RecipeItem'))
-
 const MyFeed = () => {
     const [recipes, setRecipes] = useState([])
     const [loading, setLoading] = useState(false)
@@ -16,12 +14,6 @@ const MyFeed = () => {
         document.title = 'Vummly: Personalized Recipe Recommendations and Search'
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     }, [])
-
-    const sum = (items) => {
-        return items.reduce(function(a, b){
-            return a + b['stars'];
-        }, 0);
-    }
     
     useEffect(() => {
         const fetch = async () => {
@@ -30,6 +22,10 @@ const MyFeed = () => {
         }
         fetch()
     }, [])
+
+
+    console.log(recipes);
+
     return (
         <div className={styles.MyFeed} >
             <SearchRecipes setActive={setActive} active={active} />
@@ -39,7 +35,7 @@ const MyFeed = () => {
                     <div className={active ? styles.myFeed__rec : `${styles.myFeed__rec} ${styles.show}`}>
                         {!loading && <RecipeSkeleton recipes={100}/>}
                         {recipes.map((r) => (
-                            <RecipeItem key={r._id} recipe={r} rating={sum(r.reviews)/r.reviews.length}/>
+                            <RecipeItem key={r._id} recipe={r} rating={r.rating}/>
                         ))}
                     </div>
                 </div>

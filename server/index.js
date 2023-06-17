@@ -14,6 +14,7 @@ const collections = require('./routes/collections');
 const recipes = require('./routes/recipes')
 const users = require('./routes/users')
 const auth  = require('./routes/auth')
+const reviews = require('./routes/reviews')
 
 
 
@@ -41,6 +42,10 @@ app.use('/server/collections', collections)
 // auth
 
 app.use('/server/auth', auth)
+
+// reviews
+
+app.use('/server/reviews', reviews)
 
 // --------------------------------------------
 

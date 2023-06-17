@@ -31,8 +31,10 @@ const SearchRecipe = () => {
     const [banned, setBanned] = useState("")
     const [ingredients, setIngredients] = useState([])
     const [minutes, setMinutes] = useState()
-    const [reset, setReset] = useState(false)
     const [nutrition, setNutrition] = useState("")
+    const [toolTips, setToolTips] = useState([])
+    const [allowedRequest, setAllowedRequest] = useState([])
+    const [bannedRequest, setBannedRequest] = useState([])
     // state settings
     window.history.replaceState({}, searchValue)
     const PF = process.env.REACT_APP_BASE_URL;
@@ -60,12 +62,6 @@ const SearchRecipe = () => {
         }
         fetch()
     }, [allowed, banned, nutrition])
-    // sum for stars
-    const sum = (items) => {
-        return items.reduce(function(a, b){
-            return a + b['stars'];
-        }, 0);
-    }
 
     // title and scroll
     useEffect(() => {
@@ -77,6 +73,8 @@ const SearchRecipe = () => {
     useEffect(() => {
         recipes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())) || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))))
     }, [recipes, searchValue, nutrition])
+
+    
 
     // filter by menu
     useEffect(() => {
@@ -103,6 +101,18 @@ const SearchRecipe = () => {
     useEffect(() => {
         minutes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())) && recipe || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))).filter(t => t.time <= minutes))
     }, [minutes])
+
+    // reset
+
+    const resetEverything = () => {
+        setAllowed([])
+        setBanned([])
+        setToolTips([])
+        setBannedRequest([])
+        setAllowedRequest([])
+        setMinutes(null)
+        setNutrition("")
+    }
 
     return (
         <div onClick={() => {setActiveInput(false); setOpenSort(false);}}>
@@ -135,7 +145,7 @@ const SearchRecipe = () => {
                                             <img src={`${PF}images/icons/recipes/lockFilter.svg`} alt="" />
                                             <h1 className={s.searchRecipe__filterButt__title}>Filter</h1>  
                                         </div>
-                                        <button className={s.searchRecipe__filterResetButt} onClick={() => setReset(true)}>Reset</button>
+                                        <button className={s.searchRecipe__filterResetButt} onClick={() => resetEverything()}>Reset</button>
                                         <ul className={s.searchRecipe__filterOptions}>
                                             
                                             {/* <li className={s.searchRecipe__filterOptions__item}>With {b}</li> */}
@@ -180,9 +190,9 @@ const SearchRecipe = () => {
                                         ))}
                                     </ul>   
                                     <div className={s.advancedFilter__group}>
-                                        <Inputs visibility={filterPage === 'ingredients' ? true : false} clear={reset} setClear={setReset} setWith={setAllowed} setWithout={setBanned} ingredients={ingredients}/> 
-                                        <Buttons visibility={filterPage === 'time' ? true : false} clear={reset} setClear={setReset} setTime={setMinutes} minutes={[5, 10, 15, 20, 30, 45, 60, 120]} bold={false} title={'Cooking time, less than:'}/>
-                                        <TitleAndDesc visibility={filterPage === 'nutrition' ? true : false} clear={reset} setClear={setReset} setActive={setNutrition} active={nutrition} items={nutr}/>
+                                        <Inputs visibility={filterPage === 'ingredients' ? true : false} allowedRequest={allowedRequest} setAllowedRequest={setAllowedRequest} bannedRequest={bannedRequest} setBannedRequest={setBannedRequest} toolTips={toolTips} setToolTips={setToolTips} setWith={setAllowed} setWithout={setBanned} ingredients={ingredients}/> 
+                                        <Buttons visibility={filterPage === 'time' ? true : false}  setTime={setMinutes} minutes={[5, 10, 15, 20, 30, 45, 60, 120]} bold={false} title={'Cooking time, less than:'}/>
+                                        <TitleAndDesc visibility={filterPage === 'nutrition' ? true : false}  setActive={setNutrition} active={nutrition} items={nutr}/>
                                     </div>
                                 </div>
                             </div>
@@ -193,7 +203,7 @@ const SearchRecipe = () => {
                             {<div className={s.recipeList}>
                                 {!loading && <RecipeSkeleton recipes={100}/>}
                                 {sorted.map((r) => (
-                                    <RecipeItem key={r._id} recipe={r} rating={sum(r.reviews)/r.reviews.length}/> 
+                                    <RecipeItem key={r._id} recipe={r} rating={r.rating}/> 
                                 ))}
                             </div>}
                         </div>

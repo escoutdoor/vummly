@@ -1,18 +1,10 @@
-import { useEffect } from 'react';
 import s from './buttons.module.css'
 
-const Buttons = ({bold, title, minutes, setTime, clear, setClear, visibility}) => {
+const Buttons = ({bold, title, minutes, setTime, clear, visibility}) => {
 
     const handleTime = (item) => {
         setTime(item)
     }
-
-    useEffect(() => {
-        if(clear) {
-            setTime(0)
-            setClear(false)
-        }
-    }, [clear])
     
     return (
         <div className={s.buttons} style={{display: visibility ? 'block' : 'none'}}>

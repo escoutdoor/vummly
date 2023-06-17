@@ -1,14 +1,7 @@
 import { useEffect } from 'react';
 import s from './titleAndDesc.module.css'
 
-const TitleAndDesc = ({items, visibility, setActive, active, clear, setClear}) => {
-
-    useEffect(() => {
-        if(clear) {
-            setActive("")
-            setClear(false)
-        }
-    }, [clear])
+const TitleAndDesc = ({items, visibility, setActive, active}) => {
 
     return (
         <div className={s.box} style={{display: visibility ? 'block' : 'none'}}>

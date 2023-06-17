@@ -2,49 +2,38 @@ import { useEffect, useState } from 'react';
 import s from './inputs.module.css'
 
 
-const Inputs = ({ingredients, setWith, setWithout, clear, setClear, visibility}) => {
+const Inputs = ({ingredients, setWith, setWithout, visibility, toolTips, setToolTips, allowedRequest, setAllowedRequest, bannedRequest, setBannedRequest}) => {
     const PF = process.env.REACT_APP_BASE_URL;
     const [searchValue, setSearchValue] = useState("")
     const [searchValueWithout, setSearchValueWithout] = useState("")
-    const [toolTips, setToolTips] = useState([])
     const [activeWith, setActiveWith] = useState(false)
     const [activeWithout, setActiveWithout] = useState(false)
-    const [allowed, setAllowed] = useState([])
-    const [banned, setBanned] = useState([])
+    
 
     useEffect(() => {
-        setToolTips(ingredients.filter((ingredient) => ingredient.toLowerCase().includes(searchValue.toLowerCase()) && !allowed.find(a => a === ingredient) && !banned.find(a => a === ingredient)))
-    }, [searchValue, allowed])
+        setToolTips(ingredients.filter((ingredient) => ingredient.toLowerCase().includes(searchValue.toLowerCase()) && !allowedRequest.find(a => a === ingredient) && !bannedRequest.find(a => a === ingredient)))
+    }, [searchValue, allowedRequest])
 
     const removeIngredient = (i) => {
         setToolTips(toolTips.filter(t => t !== i))
-        setAllowed(allowed.filter(a => a !== i))
+        setAllowedRequest(allowedRequest.filter(a => a !== i))
     }
 
     const removeBanned = (i) => {
         setToolTips(toolTips.filter(t => t !== i))
-        setBanned(banned.filter(a => a !== i))
+        setBannedRequest(bannedRequest.filter(a => a !== i))
     }
 
     useEffect(() => {
-        setToolTips(ingredients.filter((ingredient) => ingredient.toLowerCase().includes(searchValueWithout.toLowerCase()) && !banned.find(a => a === ingredient) && !allowed.find(a => a === ingredient)))
-    }, [searchValueWithout, banned])
+        setToolTips(ingredients.filter((ingredient) => ingredient.toLowerCase().includes(searchValueWithout.toLowerCase()) && !bannedRequest.find(a => a === ingredient) && !allowedRequest.find(a => a === ingredient)))
+    }, [searchValueWithout, bannedRequest])
 
     useEffect(() => {
-        const allowedString = allowed.join("-").replace(" ", "_")
-        const bannedString = banned.join("-").replace(" ", "_")
+        const allowedString = allowedRequest.join("-").replace(" ", "_")
+        const bannedString = bannedRequest.join("-").replace(" ", "_")
         setWith(allowedString)
         setWithout(bannedString)
-    }, [allowed, banned])
-
-    useEffect(() => {
-        if(clear) {
-            setToolTips(ingredients.filter((ingredient) => ingredient.toLowerCase().includes(searchValueWithout.toLowerCase()) && !banned.find(a => a === ingredient) && !allowed.find(a => a === ingredient)))
-            setAllowed([])
-            setBanned([])
-            setClear(false)
-        }
-    }, [clear])
+    }, [allowedRequest, bannedRequest])
 
     return (
         <div className={s.filter} style={{display: visibility ? 'block' : 'none'}}>
@@ -56,14 +45,14 @@ const Inputs = ({ingredients, setWith, setWithout, clear, setClear, visibility})
                     </div>
                     <div className={activeWith ? s.dropList : `${s.dropList} ${s.hidden}`}>
                         {toolTips.slice(0,6).map((t, index) => (
-                            <div onClick={(e) => {setAllowed([...allowed, t]); setActiveWith(false); setSearchValue("")}} className={s.dropList__item} key={index}>
+                            <div onClick={(e) => {setAllowedRequest([...allowedRequest, t]); setActiveWith(false); setSearchValue("")}} className={s.dropList__item} key={index}>
                                 <span className={s.plus}>+</span>
                                 <h1 className={s.suggestText}>{t}</h1>
                             </div>
                         ))}
                     </div>
                     <div className={s.ingredientsList}>
-                        {allowed.map((a, index) => (
+                        {allowedRequest.map((a, index) => (
                             <div className={s.ingredientsList__item} onClick={() => removeIngredient(a)} key={index}>
                                 <span className={s.ingredient}>{a}</span>
                                 <img className={s.removeIcon} src={`${PF}images/icons/recipes/x.svg`} alt="" />
@@ -78,14 +67,14 @@ const Inputs = ({ingredients, setWith, setWithout, clear, setClear, visibility})
                     </div>
                     <div className={activeWithout ? s.dropList : `${s.dropList} ${s.hidden}`}>
                         {toolTips.slice(0,6).map((t, index) => (
-                            <div onClick={(e) => {setBanned([...banned, t]); setActiveWithout(false); setSearchValueWithout("")}} className={s.dropList__item} key={index}>
+                            <div onClick={(e) => {setBannedRequest([...bannedRequest, t]); setActiveWithout(false); setSearchValueWithout("")}} className={s.dropList__item} key={index}>
                                 <span className={s.plus}>+</span>
                                 <h1 className={s.suggestText}>{t}</h1>
                             </div>
                         ))}
                     </div>
                     <div className={s.ingredientsList}>
-                        {banned.map((b, index) => (
+                        {bannedRequest.map((b, index) => (
                             <div className={s.ingredientsList__item} onClick={() => removeBanned(b)} key={index}>
                                 <span className={s.ingredient}>{b}</span>
                                 <img className={s.removeIcon} src={`${PF}images/icons/recipes/x.svg`} alt="" />
