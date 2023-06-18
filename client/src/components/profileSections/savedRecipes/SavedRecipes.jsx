@@ -31,7 +31,7 @@ const SavedRecipes = ({user, isMe}) => {
             })
         }
         fetch()
-    }, [user])
+    }, [collectionsLastModified])
 
     const handleEnter = (event) => {
         event.key === 'Enter' && navigate('recipes', {state: {query: searchVal}})
@@ -78,13 +78,13 @@ const SavedRecipes = ({user, isMe}) => {
                     {!loaded && <RecipeSkeleton recipes={6}/>}
                     {isMe && loaded && <AddCollection setCollections={setCollectionsLastModified} collections={collectionsLastModified} user={user}/>}
                     {sortSettings === 'last modified' ? collectionsLastModified.map((c) => (
-                        <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes?.at(-1))?.id}/>
+                        <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes.at(-1)?.recipeId)?.id}/>
                     )) :
                     sortSettings === 'collection name' ? collectionsLastCreated.map((c) => (
-                        <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes?.at(-1))?.id}/>
+                        <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes?.at(-1)?.recipeId)?.id}/>
                     )) :
                     sortSettings === 'last created' ? collectionsName.map((c) => (
-                        <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes?.at(-1))?.id}/>
+                        <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes?.at(-1)?.recipeId)?.id}/>
                     )) :
                     null}
                 </div>

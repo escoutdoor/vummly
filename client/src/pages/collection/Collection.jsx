@@ -83,6 +83,7 @@ const Collection = () => {
         }
     }
 
+
     return (
         loaded ? <>
             <div className={s.collection} onBlur={() => {setActiveName(false); setActiveDescription(false); setActiveSortMenu(false); handleChanges()}}>
@@ -127,8 +128,7 @@ const Collection = () => {
                                 )) :
                                 sortSettings === 'recipe name' ? recipesByName.map((r) => (
                                     <RecipeItem key={r._id} recipe={r} rating={r.rating}/>
-                                ))
-                                : null}
+                                )) : null}
                                 {recipesLastAdded.length === 0 && loaded ? (
                                     <Link to={'/recipes'} className={s.noRecipes}>
                                         <div className={s.noRecipes__content}>

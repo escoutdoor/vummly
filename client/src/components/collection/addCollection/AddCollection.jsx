@@ -18,7 +18,7 @@ const AddCollection = ({setCollections, collections, user}) => {
     const createCollection = async () => {
         if(collectionName.length !== 0 && !collections.some(c => c.name === collectionName)) {
             await axios.post(`/collections/${user._id}`, {
-                name : collectionName,
+                name : collectionName.trim(),
             }).then(u => setCollections([u.data, ...collections]))
             setActiveAddCollection(false)
             setCollectionName("")

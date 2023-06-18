@@ -3,15 +3,6 @@ const Recipe = require('../models/Recipe');
 const Review = require('../models/Review');
 const User = require('../models/User')
 
-router.post('/add-recipe', async (req, res) => {
-    const newRecipe = await new Recipe(req.body)
-    try {
-        const saved = await newRecipe.save()
-        res.status(200).json(saved)
-    } catch (err) {
-        res.status(500).json(err)
-    }
-})
 
 // get all recipe info
 
@@ -95,23 +86,6 @@ router.get('/one/:recipeId', async (req, res) => {
 })
 
 
-// chat
-
-
-
-
-
-// 
-
-router.get('/getOne/:id', async (req, res) => {
-    try {
-        const recipe = await Recipe.findOne({id: req.params.id})
-        res.status(200).json(recipe)
-    } catch (err) {
-        res.status(500).json(err)
-    }
-})
-
 // 
 
 
@@ -134,7 +108,7 @@ router.get(`/all`, async (req, res) => {
             },
             {
                 $project: {
-                    reviews: 0
+                    reviews: 0,
                 }
             }
         ])
@@ -388,7 +362,10 @@ router.get('/page/:page', async (req, res) => {
             },
             {
                 $project: {
-                    reviews: 0
+                    reviews: 0,
+                    time: 0,
+                    nutrition: 0,
+                    servings: 0,
                 }
             }
         ])

@@ -1,9 +1,7 @@
 import './article.css'
-import SuppNavbar from './../../components/suppNavbar/SuppNavbar'
-import SuppFooter from './../../components/suppFooter/SuppFooter'
 import axios from 'axios'
 import moment from 'moment'
-import { useParams, Link, useNavigate, NavLink} from 'react-router-dom';
+import { useParams, Link} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 // loading
@@ -13,42 +11,41 @@ import SearchInput from '../../components/searchInput/SearchInput'
 const Article = () => {
     const PF = process.env.REACT_APP_BASE_URL;
     const { article, ctgr } = useParams()
-    const [articleInfo, setArticleInfo] = useState([])
-    const [sectionInfo, setSectionInfo] = useState([])
+    const [articleInfo, setArticleInfo] = useState({})
     const [loading, setLoading] = useState(false)
     const [searchVal, setSearchVal] = useState(null)
+    const [current, setCurrent] = useState()
+    const [recentlyViwed, setRecentlyViewed] = useState(null)
+    const [allSections, setAllSections] = useState([])
     const searchHandle = (e) => {
         setSearchVal(e)
     }
     useEffect(() => {
 		const fetch = async () => {
-            await axios.get(`/support/articles/${ctgr}/${article}`).then((res) => {setArticleInfo(res.data);})
-            await axios.get(`/support/sections/${ctgr}/`).then((res) => setSectionInfo(res.data))
+            await axios.get(`/support/articles/one/${article}`).then((res) => {setArticleInfo(res.data.article)})
             setLoading(true)
 		}
-        setTimeout(() => fetch(), 800)
-	}, [article, ctgr])
+        fetch()
+	}, [article])
 
-    const [allSections, setAllSections] = useState([])
     
-    useEffect(() => {
-        const fetchCategories = async () => {
-            await axios.get(`/support/sections`).then((res) => setAllSections(res.data))
-        }
-        // console.log(fetchCategories())
-        fetchCategories()
-    }, [ctgr, article])
+    
+    // useEffect(() => {
+    //     const fetchCategories = async () => {
+    //         await axios.get(`/support/section`).then((res) => setAllSections(res.data))
+    //     }
+    //     // console.log(fetchCategories())
+    //     fetchCategories()
+    // }, [ctgr, article])
 
 
     // page title
     useEffect(() => {
         document.title = `${articleInfo.title ? articleInfo.title : 'Vummly Help Center'}`
-        // setLoading(false)
     }, [articleInfo])
 
     // local storage
-    const [current, setCurrent] = useState()
-    const [recentlyViwed, setRecentlyViewed] = useState(null)
+
     useEffect(() => {
         setCurrent(articleInfo)
         localStorage.getItem('articles') && setRecentlyViewed([...JSON.parse(localStorage.getItem('articles'))])
@@ -64,7 +61,7 @@ const Article = () => {
             const keyExists = infoBefore.some((item) => item.title === infoRecently.title && item.link === infoRecently.link)
             if (!keyExists) {
                 const newStorage = [...infoBefore, infoRecently]
-                infoBefore.length > 4 && newStorage.splice(0, 1)
+                infoBefore?.length > 4 && newStorage.splice(0, 1)
                 localStorage.setItem('articles', JSON.stringify(newStorage))
             }
         };
@@ -83,12 +80,12 @@ const Article = () => {
                         <div className="articleLeft">
                             <h1 className='articleLeft__title'>Articles in this section</h1>
                             <ul className="articleList">
-                                {sectionInfo.list && sectionInfo.list.map(((l, i) => (
-                                    <NavLink onClick={() => {articleInfo.idPage !==  l.link && setLoading(false)}} to={`/support/articles/${ctgr}/${l.link}`}  key={i}  >
+                                {articleInfo.section?.[0].list.map(((l, i) => (
+                                    <Link onClick={() => {articleInfo.idPage !==  l.link && setLoading(false)}} to={`/support/articles/${ctgr}/${l.link}`}  key={i}  >
                                         <li  className={articleInfo.idPage ===  l.link ? "articleList-item active" : "articleList-item"}>
                                             {l.name}
                                         </li>
-                                    </NavLink>
+                                    </Link>
                                 )))}
                             </ul> 
                         </div>
@@ -97,7 +94,7 @@ const Article = () => {
                             <div className="article__update">
                                 <p className="article__updatetime" data-end={articleInfo.updatedAt != articleInfo.createdAt ? 'updated' : null}>{moment(articleInfo.updatedAt).fromNow()}</p>
                             </div>
-                            {articleInfo.data && articleInfo.data.map((item, index) => (
+                            {articleInfo.data.map((item, index) => (
                                 <ul className="article__response" key={index}>
                                     {item.text ? item.text.map((line, i) => (
                                         <li className='article__textline' style={{fontStyle : `${line.fontstyle ? line.fontstyle : 'normal'}`}} key={i}>
@@ -143,21 +140,21 @@ const Article = () => {
                                     <h1>Recently viewed articles</h1>
                                     <ul className='recommendationList'> 
                                         {recentlyViwed ? recentlyViwed.map((rec, index) => (
-                                            rec.title !== articleInfo.title && <NavLink style={{width: 'fit-content'}} onClick={() => {articleInfo.idPage !==  rec.link && setLoading(false)}} to={`/support/articles/${allSections && allSections.find(item => item.list && item.list.some(l => l.link === rec.link))?.own}/${rec.link}`}  key={index}  >
+                                            rec.title !== articleInfo.title && <Link style={{width: 'fit-content'}} onClick={() => {articleInfo.idPage !==  rec.link && setLoading(false)}} to={`/support/articles/${allSections && allSections.find(item => item.list && item.list.some(l => l.link === rec.link))?.own}/${rec.link}`}  key={index}  >
                                                 {rec.title !== articleInfo.title ? <li className='recommendationList-item'>{rec.title}</li> : null}
-                                            </NavLink>
+                                            </Link>
                                         )) : <span className='noRecommendation'>Nothing there now</span>}
                                     </ul>
                                 </div>
                                 <div className="articleRecently__related">
                                     <h1>Related articles</h1>
                                     <ul className='recommendationList'>
-                                        {sectionInfo.list && sectionInfo.list.reverse().slice(sectionInfo.list.length >= 7 ? sectionInfo.list.length/2 : 0).map((listItem, i) => (
-                                            <NavLink style={{maxWidth: 'fit-content'}} onClick={() => {articleInfo.idPage !==  listItem.link && setLoading(false)}} to={`/support/articles/${ctgr}/${listItem.link}`}  key={i}  >
+                                        {articleInfo.section[0].list.reverse().slice(articleInfo.section[0].list?.length >= 7 ? articleInfo.section[0].list?.length/2 : 0).map((listItem, i) => (
+                                            <Link style={{maxWidth: 'fit-content'}} onClick={() => {articleInfo.idPage !==  listItem.link && setLoading(false)}} to={`/support/articles/${ctgr}/${listItem.link}`}  key={i}  >
                                                 {listItem.name !== articleInfo.title ? <li className='recommendationList-item'>{listItem.name}</li> : null}
-                                            </NavLink>
+                                            </Link>
                                         ))}
-                                        {sectionInfo.list.length === 1 ? <span className='noRecommendation'>Nothing there now</span> : null}
+                                        {articleInfo.section[0].list?.length === 1 ? <span className='noRecommendation'>Nothing there now</span> : null}
                                     </ul>
                                 </div>
                             </div>

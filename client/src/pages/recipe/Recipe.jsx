@@ -48,6 +48,7 @@ const Recipe = () => {
         fetch()
     }, [recipeId])
 
+
     
     // hide text in 2 sec
     const [actionText, setActionText] = useState(null)
@@ -126,14 +127,19 @@ const Recipe = () => {
         e.key === 'Enter' && collectionName && addToCollection()
     }
 
+    const fetch = async () => {
+        await axios.get(`/recipe/one/${recipeId}`).then((r) => {
+            setRecipeData(r.data.recipe)
+        })
+    }
+
     const createReview = async () => {
         if(loggedInUser._id && reviewValue.length !== 0) {
             await axios.post(`/reviews/postReview/${loggedInUser._id}/${recipeData._id}`, {
                 rating: reviewRating,
                 text: reviewValue,
             }).then((r) => {
-                const newRev = {...r.data, user: {name: loggedInUser.name, _id: loggedInUser._id, avatar: loggedInUser.avatar}}
-                setRecipeData(prev => ({...prev, reviews: [...prev.reviews,  newRev]}));
+                fetch()
                 setActiveReview(false);
                 setActiveInput(false)
                 setReviewRating(0)
@@ -141,8 +147,6 @@ const Recipe = () => {
             })
         }
     }
-
-    console.log(recipeData);
 
     return (
         <>

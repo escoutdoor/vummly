@@ -27,8 +27,8 @@ const SearchSupport = () => {
     const [secInfo, setSecInfo] = useState([])
 
     useEffect(() => {
-        searchVal === '' && setSearchVal(data)
-    }, [])
+        document.title = `${searchVal ? `Search Results / ${searchVal}` : 'Search for something'}`;
+    }, [searchVal])
 
     useEffect(() => {
         const find = async () => {
@@ -36,9 +36,8 @@ const SearchSupport = () => {
             await axios.get(`/support/sections/`).then(sec => setSecInfo(sec.data))
             setLoading(true)
         }
-        document.title = `${searchVal ? `Search Results / ${searchVal}` : 'Search for something'}`;
-        !loading && setTimeout(() => find(), 400)
-    }, [secInfo, loading, searchVal])
+        find()
+    }, [filter])
 
     return (
         <div className={styles.search}>

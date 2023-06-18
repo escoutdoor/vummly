@@ -3,13 +3,34 @@ const Article = require('./../models/Article');
 
 // get an article
 
-router.get('/:ctgr/:idPage', async (req, res) => {
+router.get('/one/:idPage', async (req, res) => {
 	try {
-		const article = await Article.findOne({idPage: req.params.idPage})
-        res.status(200).json(article)
+		const article = await Article.aggregate([
+            {$match: {idPage: req.params.idPage}},
+            {$lookup: {
+                from: 'sections',
+                localField: 'idPage',
+                foreignField: 'list.link',
+                as: 'section'
+            }},
+            {$limit: 1}
+        ])
+
+        res.status(200).json({
+            article: article[0], 
+        })
 	} catch (err) {
 		res.status(500).json(err)
 	}
+})
+
+router.get('/all', async (req, res) => {
+    try {
+        const article = await Article.find({})
+        res.status(200).json(article)
+    } catch (err) {
+        res.status(404).json(err)
+    }
 })
 
 router.post('/postArticle', async (req, res) => {

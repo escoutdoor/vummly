@@ -24,8 +24,6 @@ const MyFeed = () => {
     }, [])
 
 
-    console.log(recipes);
-
     return (
         <div className={styles.MyFeed} >
             <SearchRecipes setActive={setActive} active={active} />
