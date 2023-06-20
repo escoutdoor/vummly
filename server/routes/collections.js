@@ -49,48 +49,62 @@ router.put('/:userId/:recipeId', async (req, res) => {
 
 router.get('/:userId', async (req, res) => {
     try {
-        const collections = await Collection.find({userId: req.params.userId}).sort({name: 1})
-        const recipeIds = collections.flatMap((c) => c.recipes).sort((a, b) => new Date(b.addedToCollection) - new Date(a.addedToCollection))
-        const uniqueList = recipeIds.flatMap((r) => r.recipeId.toString()).filter((x, i, a) => a.indexOf(x) === i)
-        const recipes = await Recipe.aggregate([
-            {$match: {_id: {$in : [...recipeIds.flatMap((r) => r.recipeId)]}}},
+        const collectionsByName = await Collection.aggregate([
+            {$match: {userId: new ObjectId(req.params.userId)}},
+            {$sort: {name: 1}},
+            {$project: {
+                name: "$name",
+                recipes: "$recipes",
+            }}
+        ])
+        const collectionsLastModified = await Collection.aggregate([
+            {$match: {userId: new ObjectId(req.params.userId)}},
+            {$sort: {updatedAt: -1}},
+            {$project: {
+                name: "$name",
+                recipes: "$recipes",
+            }}
+        ])
+        const collectionsLastCreated = await Collection.aggregate([
+            {$match: {userId: new ObjectId(req.params.userId)}},
+            {$sort: {createdAt: -1}},
+            {$project: {
+                name: "$name",
+                recipes: "$recipes",
+            }}
+        ])
+        const recipes = await Collection.aggregate([
+            {$match: { userId: new ObjectId(req.params.userId)}},
+            {$unwind: { path: "$recipes"}},
             {
                 $lookup: {
-                    from: 'reviews',
-                    localField: '_id',
-                    foreignField: 'recipeId',
-                    as: 'reviews'
-                }
+                    from: "recipes",
+                    localField: "recipes.recipeId",
+                    foreignField: "_id",
+                    as: "recipe"
+            }
             },
-            {   $addFields: {
-                    rating: {
-                        $avg: '$reviews.rating'
-                    }
-                }
-            },
-            {$group: {
-                _id: "$_id",
-                id: {"$first": "$id"},
-                resource: {"$first": "$resource"},
-                title: {"$first" : "$title"},
-                ingredients: {"$first" : "$ingredients"},
-                rating: {"$first" : "$rating"}
-            }},
+            {$unwind: {path: "$recipe"}},
             {
-                $project: {
-                    reviews: 0,
-                    time: 0,
-                    nutrition: 0,
-                    servings: 0,
+                $addFields: {
+                    "recipe.addedToCollection": { $toDate: "$recipes.addedToCollection" }
                 }
             },
-        ])
-        const sortedLastAdded = uniqueList.map((rid) => {
-            return recipes.find((r) => r._id.toString() === rid);
-        })
-        const collectionsLastModified = await Collection.find({userId: req.params.userId}).sort({updatedAt: -1})
-        const collectionsLastCreated = await Collection.find({userId: req.params.userId}).sort({createdAt: -1})
-        res.status(200).json({recipes: sortedLastAdded, collectionsLastModified, collectionsLastCreated, collectionsName: collections})
+            {
+                $group: {
+                    _id: "$recipe._id",
+                    id: {"$first" : "$recipe.id"},
+                    title: {"$first" :"$recipe.title"},
+                    time: {"$first" :"$recipe.time"},
+                    resource: {"$first" :"$recipe.resource",},
+                    nutrition: {"$first" :"$recipe.nutrition",},
+                    ingredients: {"$first" :"$recipe.ingredients",},
+                    addedToCollection: {"$first" :"$recipe.addedToCollection"},
+                }
+            },
+            {$sort: { addedToCollection: -1, _id: 1 }}
+        ]);
+        res.status(200).json({recipes, collectionsLastModified, collectionsLastCreated, collectionsName: collectionsByName})
     } catch (err) {
         res.status(404).json(err)
     }
@@ -119,67 +133,108 @@ router.post('/:userId', async (req, res) => {
 router.get('/getCollection/:userId/:collectionName', async (req, res) => {
     try {
         if(req.params.collectionName === 'all-vums') {
-            const rcpids = await Collection.aggregate([
-                {$match:  {userId: req.params.userId}},
-                {$unwind: {path: "$recipes", preserveNullAndEmptyArrays: false}},
-                {$group: {_id: '$recipes.recipeId', addedToCollection: { "$first": "$recipes.addedToCollection" }}},
-                {$sort : {"addedToCollection" : 1}}
-            ])
-
-            const idsSorted = rcpids.flatMap((r) => r).sort((a, b) => new Date(b.addedToCollection) - new Date(a.addedToCollection)).flatMap((i) => i._id)
-
-            const recipesName = await Recipe.aggregate([
-                {$match: {_id: {$in : idsSorted}}},
-                {$sort: {title: -1}}
-            ])
-
             const collection = {
-                name: 'All Yums',
-                userId: req.params.userId
+                name: 'All Vums',
+                recipeId: req.params.userId
             }
-
-            const recipesLast = idsSorted.map((rci) => {
-                return recipesName.find((r) => r._id.toString() === rci.toString());
-            })
-
-            res.status(200).json({collection, recipesLast, recipesName})
+            const recipes = await Collection.aggregate([
+                {$match: { userId: new ObjectId(req.params.userId)}},
+                {$unwind: { path: "$recipes"}},
+                {
+                    $lookup: {
+                        from: "recipes",
+                        localField: "recipes.recipeId",
+                        foreignField: "_id",
+                        as: "recipe"
+                }
+                },
+                {$unwind: {path: "$recipe"}},
+                {
+                    $addFields: {
+                        "recipe.addedToCollection": { $toDate: "$recipes.addedToCollection" }
+                    }
+                },
+                {
+                    $group: {
+                        _id: "$recipe._id",
+                        id: {"$first" : "$recipe.id"},
+                        title: {"$first" :"$recipe.title"},
+                        time: {"$first" :"$recipe.time"},
+                        resource: {"$first" :"$recipe.resource",},
+                        nutrition: {"$first" :"$recipe.nutrition",},
+                        ingredients: {"$first" :"$recipe.ingredients",},
+                        addedToCollection: {"$first" :"$recipe.addedToCollection"},
+                    }
+                },
+                {$sort: { addedToCollection: -1, _id: 1 }}
+            ]);
+            res.status(200).json({collection, recipesLastAdded : recipes, recipesName : recipes})
         } else {
-            const collection = await Collection.findOne({userId : req.params.userId, name: req.params.collectionName}).sort({name: 1})
-            const recipes = await Recipe.aggregate([
-                {$match: {_id: {$in: [...collection.recipes.flatMap((r) => r.recipeId)]}}},
+            const collection = await Collection.aggregate([
+                {$match: {userId : new ObjectId(req.params.userId), name: req.params.collectionName}},
+                {$project: {
+                    userId: 1,
+                    name: 1,
+                    description: 1
+                }}
+            ])
+            const recipes = await Collection.aggregate([
+                {
+                    $match: {
+                        userId: new ObjectId(req.params.userId),
+                        name: req.params.collectionName
+                    }
+                },
+                {   
+                    $unwind: {
+                        path: '$recipes'
+                    }
+                },
+                {
+                    $lookup: {
+                        from: 'recipes',
+                        localField: 'recipes.recipeId',
+                        foreignField: '_id',
+                        as: 'recipes.recipe'
+                    }
+                },
+                {
+                    $unwind: {
+                        path: '$recipes.recipe'
+                    }
+                },
                 {
                     $lookup: {
                         from: 'reviews',
-                        localField: "_id",
+                        localField: 'recipes.recipeId',
                         foreignField: 'recipeId',
-                        as: 'reviews'
+                        as: 'recipes.recipe.rating'
                     }
                 },
                 {
                     $addFields: {
-                        rating : {
-                            $avg: '$reviews.rating'
+                        "recipes.recipe.rating": {$sum: "$recipes.recipe.rating.rating"}
+                    }
+                },
+                {
+                    $group: {
+                        _id: '$_id',
+                        name: {"$first" : '$name'},
+                        description: {"$first" : '$description'},
+                        recipes: {
+                            $push: '$recipes'
                         }
-                    }
+                    },
                 },
-                {
-                    $sort: {title: 1},
-                },
-                {
-                    $project: {
-                        reviews : 0
-                    }
-                },
+                {$replaceRoot: {newRoot: {recipes: "$recipes.recipe"}}}
             ])
-            const recipesLast = collection.recipes.map((rci) => {
-                return recipes.find((r) => r._id.toString() === rci.recipeId.toString());
-            }).reverse()
-            res.status(200).json({collection, recipesLast, recipesName: recipes})
-        } 
+            // res.status(200).json({recipesLastAdded: recipes[0].recipes.reverse(), recipesName: recipes[0].recipes.reverse(), collection: collection[0]})
+        }
     } catch (err) {
         res.status(404).json(err)
     }
 })
+
 
 
 

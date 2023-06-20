@@ -26,12 +26,14 @@ const SavedRecipes = ({user, isMe}) => {
                 setCollectionsLastModified(c.data.collectionsLastModified)
                 setCollectionsLastCreated(c.data.collectionsLastCreated)
                 setCollectionsName(c.data.collectionsName)
-                setRecipes(c.data.recipes)
+                setRecipes([...c.data.recipes])
                 setLoaded(true)
             })
         }
-        fetch()
-    }, [collectionsLastModified])
+        user._id && fetch()
+    }, [])
+
+    console.log(recipes);
 
     const handleEnter = (event) => {
         event.key === 'Enter' && navigate('recipes', {state: {query: searchVal}})
@@ -54,7 +56,7 @@ const SavedRecipes = ({user, isMe}) => {
                     {!loaded && <RecipeSkeleton recipes={6}/>}
                     {isMe && loaded && <FindRecipes />}
                     {recipes.slice(0, 5).map((r, index) => (
-                        <RecipeItem key={index} recipe={r} rating={r.rating}/>
+                        <RecipeItem key={index} recipe={r}/>
                     ))}
                 </div>
             </div>

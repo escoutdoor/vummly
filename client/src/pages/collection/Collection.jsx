@@ -31,7 +31,7 @@ const Collection = () => {
         const fetchCollection = async () => {
             await axios.get(`/collections/getCollection/${userId.split("-")[1]}/${collectionName}`).then((c) => {
                 setCollection(c.data.collection)
-                setRecipesLastAdded(c.data.recipesLast)
+                setRecipesLastAdded(c.data.recipesLastAdded)
                 setRecipesByName(c.data.recipesName)
             })
             setLoaded(true)
@@ -39,6 +39,7 @@ const Collection = () => {
         fetchCollection()
     }, [])
 
+    console.log(recipesByName);
 
     useEffect(() => {
         document.title = collection?.name ? `${collection.name} by ${userId.split("-")[0]} on Vummly` : 'Vummly'
@@ -87,7 +88,7 @@ const Collection = () => {
     return (
         loaded ? <>
             <div className={s.collection} onBlur={() => {setActiveName(false); setActiveDescription(false); setActiveSortMenu(false); handleChanges()}}>
-                <div className={s.header} style={{backgroundImage: recipesLastAdded.length !== 0 ? `url(${PF}images/img/recipes/${recipesLastAdded.at(-1).id}.webp)` : `url(${PF}images/img/collections/default.jpg)`}}>
+                <div className={s.header} style={{backgroundImage: recipesLastAdded.length !== 0 ? `url(${PF}images/img/recipes/${recipesLastAdded.at(0).id}.webp)` : `url(${PF}images/img/collections/default.jpg)`}}>
                     <div className={s.headerContent}>
                         <div className={s.collectionInfo}>
                             {isMe && collectionName !== 'all-vums' ? <div className={s.changeBox} onClick={() => setActiveName(true)}>
@@ -109,7 +110,7 @@ const Collection = () => {
                 <div className={s.main}>  
                     <div className="wrap1160">
                         <div className={s.mainContent}>
-                            {recipesLastAdded.length !== 0 && <div className={s.mainHeader}>
+                            {recipesLastAdded.length !== 0 && collectionName !== 'all-vums' && <div className={s.mainHeader}>
                                 <div className={s.sortMenu}>
                                     <div className={s.text} onClick={() => setActiveSortMenu(!activeSortMenu)}>
                                         <h1 style={{color: '#bababa'}} className={s.sortTitle}>Sort By</h1>

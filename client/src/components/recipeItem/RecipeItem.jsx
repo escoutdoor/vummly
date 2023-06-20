@@ -22,9 +22,9 @@ const RecipeItem = ({recipe, loading, setLoading, rating}) => {
         triggerOnce: true, 
         delay: 500,
     });
-
+    
     return (
-        <div ref={ref} className={s.recommendationsList__item} key={recipe._id} onClick={() => {loading && setLoading(false)}}>
+        <div ref={ref} className={s.recommendationsList__item}  onClick={() => {loading && setLoading(false)}}>
             {inView ?
                 <div>
                     <Link to={`/recipe/${recipe.id}`}>

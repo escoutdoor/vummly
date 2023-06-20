@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const collections = mongoose.createConnection(process.env.DATABASE_USERS_CONNECTION)
+const collections = mongoose.createConnection(process.env.DATABASE_BOOK_CONNECTION)
 
 const collectionSchema = collections.model('Collection', new mongoose.Schema({
     userId: {
-        type: String,
+        type: mongoose.Types.ObjectId,
         required: true
     },
     name: {
