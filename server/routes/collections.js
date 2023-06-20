@@ -85,9 +85,16 @@ router.get('/:userId', async (req, res) => {
             }
             },
             {$unwind: {path: "$recipe"}},
+            {$lookup: {
+                from : "reviews",
+                localField: "recipes.recipeId",
+                foreignField: "recipeId",
+                as: "review"
+            }},
             {
                 $addFields: {
-                    "recipe.addedToCollection": { $toDate: "$recipes.addedToCollection" }
+                    "recipe.addedToCollection": { $toDate: "$recipes.addedToCollection" },
+                    "recipe.rating": {$avg: "$review.rating"}
                 }
             },
             {
@@ -100,6 +107,7 @@ router.get('/:userId', async (req, res) => {
                     nutrition: {"$first" :"$recipe.nutrition",},
                     ingredients: {"$first" :"$recipe.ingredients",},
                     addedToCollection: {"$first" :"$recipe.addedToCollection"},
+                    rating: {"$first" : "$recipe.rating"}
                 }
             },
             {$sort: { addedToCollection: -1, _id: 1 }}

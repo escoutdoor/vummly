@@ -5,8 +5,12 @@
 
 .findRecipes {
     position: relative;
+}
+
+.searchBar {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .searchIcon {
@@ -144,4 +148,38 @@
     background-image: url(http://localhost:3000/assets/images/icons/recipes/check.svg);
     background-repeat: no-repeat;
     background-position: calc(100% - 10px) center;
+}
+
+/* tooltip */
+
+
+.toolTip {
+    position: absolute;
+    z-index: 99;
+    background: #fff;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    min-width: 450px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 10px;
+}
+
+.toolTip.active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.toolTip__item {
+    font-size: 16px;
+    line-height: 24px;
+    color: #232323;
+    transition: all .2s cubic-bezier(0.23, 1, 0.320, 1) ;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+.toolTip__item:hover {
+    color: #3a9691;
+    background-color: #f1f1f1;
 }

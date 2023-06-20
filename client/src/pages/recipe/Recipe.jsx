@@ -232,7 +232,7 @@ const Recipe = () => {
                                                 </div>
                                             </div> 
                                         </div>
-                                        {/* <span className={s.recipeSummary__addYumm__added}>{recipeData?.recipeCollection.length >= 1000 ? recipeData?.recipeCollection.length / 1000 + 'k' : recipeData?.recipeCollection.length}</span> */}
+                                        <span className={s.recipeSummary__addYumm__added}>{collectionsInclude.length >= 1000 ? collectionsInclude.length / 1000 + 'k' : collectionsInclude.length}</span>
                                     </div>
                                     <div className={s.recipeSummary__addMealPlanner}>
                                         <img className={s.recipeSummary__lock} src={`${PF}images/icons/recipes/lock.svg`} alt="" />

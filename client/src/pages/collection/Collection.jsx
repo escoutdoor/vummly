@@ -39,8 +39,6 @@ const Collection = () => {
         fetchCollection()
     }, [])
 
-    console.log(recipesByName);
-
     useEffect(() => {
         document.title = collection?.name ? `${collection.name} by ${userId.split("-")[0]} on Vummly` : 'Vummly'
         if(collection) {

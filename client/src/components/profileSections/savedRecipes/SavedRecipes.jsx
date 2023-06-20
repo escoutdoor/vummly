@@ -19,6 +19,8 @@ const SavedRecipes = ({user, isMe}) => {
     const [activeSortMenu, setActiveSortMenu] = useState(false)
     const [sortSettings, setSortSettings] = useState("last modified")
     const [loaded, setLoaded] = useState(false)
+    const [toolTip, setToolTip] = useState([])
+    const [activeToolTip, setActiveToolTip] = useState(false)
 
     useEffect(() => {
         const fetch = async () => {
@@ -26,23 +28,38 @@ const SavedRecipes = ({user, isMe}) => {
                 setCollectionsLastModified(c.data.collectionsLastModified)
                 setCollectionsLastCreated(c.data.collectionsLastCreated)
                 setCollectionsName(c.data.collectionsName)
-                setRecipes([...c.data.recipes])
+                setRecipes(c.data.recipes)
                 setLoaded(true)
             })
         }
         user._id && fetch()
-    }, [])
+    }, [collectionsLastModified])
 
-    const handleEnter = (event) => {
-        event.key === 'Enter' && navigate('recipes', {state: {query: searchVal}})
-    }
+    
+    useEffect(() => {
+        if(searchVal.trim().length !== 0) {
+            setActiveToolTip(true)
+            setToolTip(recipes.filter(r => r.title.toLowerCase().includes(searchVal.toLowerCase())))
+        } else {
+            setActiveToolTip(false)
+        }
+    }, [searchVal])
 
     return (
         <div className={s.savedRecipes} onClick={() => setActiveSortMenu(false)}>
             {isMe && 
                 <div className={s.findRecipes}>
-                    <img className={s.searchIcon} src={`${PF}images/icons/recipes/search.svg`} alt="" />
-                    <input onClick={() => fetch()} value={searchVal} onChange={(e) => setSearchVal(e.target.value)} onKeyDown={handleEnter} placeholder='Search My Yums' type="text" className={s.searchInput}/>
+                    <div className={s.searchBar}>
+                        <img className={s.searchIcon} src={`${PF}images/icons/recipes/search.svg`} alt="" />
+                        <input value={searchVal} onChange={(e) => setSearchVal(e.target.value)} placeholder='Search My Vums' type="text" className={s.searchInput}/>
+                    </div>
+                    <div className={activeToolTip ? `${s.toolTip} ${s.active}` : `${s.toolTip}`}>
+                        {toolTip.slice(0, 7).map((item) => (
+                            <Link to={`/recipe/${item.id}`}>
+                                <h1 className={s.toolTip__item}>{item.title}</h1>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             }
             <div className={s.allYums}>
@@ -54,7 +71,7 @@ const SavedRecipes = ({user, isMe}) => {
                     {!loaded && <RecipeSkeleton recipes={6}/>}
                     {isMe && loaded && <FindRecipes />}
                     {recipes.slice(0, 5).map((r, index) => (
-                        <RecipeItem key={index} recipe={r}/>
+                        <RecipeItem key={index} recipe={r} rating={r.rating}/>
                     ))}
                 </div>
             </div>
@@ -80,10 +97,10 @@ const SavedRecipes = ({user, isMe}) => {
                     {sortSettings === 'last modified' ? collectionsLastModified.map((c) => (
                         <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes.at(-1)?.recipeId)?.id}/>
                     )) :
-                    sortSettings === 'collection name' ? collectionsLastCreated.map((c) => (
+                    sortSettings === 'collection name' ? collectionsName.map((c) => (
                         <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes?.at(-1)?.recipeId)?.id}/>
                     )) :
-                    sortSettings === 'last created' ? collectionsName.map((c) => (
+                    sortSettings === 'last created' ? collectionsLastCreated.map((c) => (
                         <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes?.at(-1)?.recipeId)?.id}/>
                     )) :
                     null}

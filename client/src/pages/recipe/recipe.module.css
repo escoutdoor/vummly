@@ -167,6 +167,11 @@
     position: relative;
 }
 
+.recipeSummary__addYumm__added {
+    display: flex;
+    justify-content: center;
+}
+
 .recipeSummary__addYumm:hover .recipeSummary__addYumm__added {
     opacity: 1;
     visibility: visible;

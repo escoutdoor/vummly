@@ -2,91 +2,66 @@ const router = require('express').Router()
 const Recipe = require('../models/Recipe');
 const Review = require('../models/Review');
 const User = require('../models/User')
+const ObjectId = require('mongoose').Types.ObjectId
 
 
 // get all recipe info
 
+
 router.get('/one/:recipeId', async (req, res) => {
-
     try {
-
-        const recipe = await Recipe.findOne({id: req.params.recipeId})
-        const revs = await Review.find({ recipeId: recipe._id });
-
-        const userIds = revs.map(review => review.userId);
-        const users = await User.find({ _id: { $in: userIds } });
-        const reviews =  revs.map(review => {
-            const user = users.find(user => user._id.equals(review.userId));
-                return { ...review.toObject(), user: {
-                    name: user.name,
-                    _id: user._id,
-                    avatar: user?.avatar,
-                }};
-        });
         
-        const relatedRecipes = await Recipe.aggregate([
-            {$match: {tags: { $in: [...recipe.tags]}, _id: {$ne: recipe._id}}},
-            {$sample: {size: 4}},
-            {
-                $lookup: {
-                    from: 'reviews',
-                    localField: '_id',
-                    foreignField: 'recipeId',
-                    as: 'reviews'
-                }
-            },
-            {   $addFields: {
-                    rating: {
-                        $avg: '$reviews.rating'
-                    }
-                }
-            },
-            {
-                $project: {
-                    reviews: 0
-                }
-            }
-        ]);
-        const moreFromResource = await Recipe.aggregate([
-            {$match: {"resource.link": recipe.resource.link, "resource.name": recipe.resource.name, _id: {$ne: recipe._id}}},
-            {$sample: {size: 4}},
-            {
-                $lookup: {
-                    from: 'reviews',
-                    localField: '_id',
-                    foreignField: 'recipeId',
-                    as: 'reviews'
-                }
-            },
-            {   $addFields: {
-                    rating: {
-                        $avg: '$reviews.rating'
-                    }
-                }
-            },
-            {
-                $project: {
-                    reviews: 0
-                }
-            }
+        const recipe = await Recipe.aggregate([
+            {$match: {id: req.params.recipeId}},
+            {$facet: {
+                relatedRecipes: [
+                    {$lookup: {
+                        from: 'recipes',
+                        localField: "tags",
+                        foreignField: "tags",
+                        as: 'recipes'
+                    }},
+                    {$unwind: {path: "$recipes"}},
+                    {$match: {"recipes.id": {$ne: req.params.recipeId}}},
+                    {$replaceRoot: {newRoot: "$recipes"}},
+                    {$sample: {size: 4}}
+                ],
+                moreFromResource: [
+                    {$lookup: {
+                        from: "recipes",
+                        localField: "resource.link",
+                        foreignField: "resource.link",
+                        as: "recipes"
+                    }},
+                    {$unwind: {path: "$recipes"}},
+                    {$match: {"recipes.id" : {$ne: req.params.recipeId}}},
+                    {$replaceRoot: {newRoot: "$recipes"}},
+                    {$sample: {size: 4}}
+                ],
+                recipe: [
+                    {$lookup: {
+                        from : "reviews",
+                        localField: "_id",
+                        foreignField: "recipeId",
+                        as: "reviews"
+                    }},
+                    {$addFields: {
+                        "rating": {$avg: "$reviews.rating"},
+                    }},
+                    {$sort: {"reviews.createdAt": -1, "reviews._id": 1}},
+                ]
+            }}
         ])
-        const rating = reviews.flatMap(r => r.rating).reduce((a, c) => a + c, 0) / reviews.length
-        res.status(200).json({
-            recipe : {
-                ...recipe.toObject(),
-                reviews: reviews,
-                rating: rating
-            }, 
-            related: relatedRecipes, 
-            more: moreFromResource
-        })
+
+        res.status(200).json({recipe: recipe[0].recipe[0], related: recipe[0].relatedRecipes, more: recipe[0].moreFromResource})
     } catch (err) {
-        res.status(400).json(err)
+        res.status(404).json(err)
     }
 })
 
 
-// 
+
+
 
 
 router.get(`/all`, async (req, res) => {
