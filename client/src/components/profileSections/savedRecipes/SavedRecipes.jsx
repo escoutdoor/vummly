@@ -33,8 +33,6 @@ const SavedRecipes = ({user, isMe}) => {
         user._id && fetch()
     }, [])
 
-    console.log(recipes);
-
     const handleEnter = (event) => {
         event.key === 'Enter' && navigate('recipes', {state: {query: searchVal}})
     }

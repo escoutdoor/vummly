@@ -49,30 +49,30 @@ router.put('/:userId/:recipeId', async (req, res) => {
 
 router.get('/:userId', async (req, res) => {
     try {
-        const collectionsByName = await Collection.aggregate([
+        const collections = await Collection.aggregate([
             {$match: {userId: new ObjectId(req.params.userId)}},
-            {$sort: {name: 1}},
-            {$project: {
-                name: "$name",
-                recipes: "$recipes",
+            {$facet : {
+                byName: [
+                    {$sort: {name: 1}},
+                    {$project: {
+                        description: 0
+                    }}
+                ],
+                lastModified: [
+                    {$sort: {updatedAt: -1}},
+                    {$project: {
+                        description: 0
+                    }}
+                ],
+                lastCreated: [
+                    {$sort: {createdAt: -1}},
+                    {$project: {
+                        description: 0
+                    }}
+                ]
             }}
         ])
-        const collectionsLastModified = await Collection.aggregate([
-            {$match: {userId: new ObjectId(req.params.userId)}},
-            {$sort: {updatedAt: -1}},
-            {$project: {
-                name: "$name",
-                recipes: "$recipes",
-            }}
-        ])
-        const collectionsLastCreated = await Collection.aggregate([
-            {$match: {userId: new ObjectId(req.params.userId)}},
-            {$sort: {createdAt: -1}},
-            {$project: {
-                name: "$name",
-                recipes: "$recipes",
-            }}
-        ])
+        
         const recipes = await Collection.aggregate([
             {$match: { userId: new ObjectId(req.params.userId)}},
             {$unwind: { path: "$recipes"}},
@@ -104,7 +104,7 @@ router.get('/:userId', async (req, res) => {
             },
             {$sort: { addedToCollection: -1, _id: 1 }}
         ]);
-        res.status(200).json({recipes, collectionsLastModified, collectionsLastCreated, collectionsName: collectionsByName})
+        res.status(200).json({recipes, collectionsLastModified: collections[0].lastModified, collectionsLastCreated: collections[0].lastCreated, collectionsName: collections[0].byName})
     } catch (err) {
         res.status(404).json(err)
     }
@@ -149,9 +149,21 @@ router.get('/getCollection/:userId/:collectionName', async (req, res) => {
                 }
                 },
                 {$unwind: {path: "$recipe"}},
+                {$lookup: {
+                    from : "reviews",
+                    localField: "recipes.recipeId",
+                    foreignField: "recipeId",
+                    as: "review"
+                }},
                 {
                     $addFields: {
-                        "recipe.addedToCollection": { $toDate: "$recipes.addedToCollection" }
+                        "recipe.addedToCollection": { $toDate: "$recipes.addedToCollection" },
+                        "recipe.rating": {$avg: "$review.rating"}
+                    }
+                },
+                {
+                    $addFields: {
+                        "rating" : {$avg : "$review.rating"}
                     }
                 },
                 {
@@ -164,6 +176,7 @@ router.get('/getCollection/:userId/:collectionName', async (req, res) => {
                         nutrition: {"$first" :"$recipe.nutrition",},
                         ingredients: {"$first" :"$recipe.ingredients",},
                         addedToCollection: {"$first" :"$recipe.addedToCollection"},
+                        rating: {"$first" : "$recipe.rating"}
                     }
                 },
                 {$sort: { addedToCollection: -1, _id: 1 }}
