@@ -64,13 +64,13 @@ const Collection = () => {
 
 
     const handleChanges = async () => {
-        if(collection.name !== name && name.length !== 0 && user._id) {
+        if(collection.name !== name.trim() && name.length !== 0 && user._id) {
             await axios.put(`/collections/name/${collection._id}/${user._id}`, {
-                name: name
+                name: name.trim()
             }).then((c) => {nav(`/profile/${userId}/collections/${c.data.name}`); setCollection(c.data)})
-        } else if(collection.description !== description && user._id) {
+        } else if(collection.description !== description.trim() && user._id) {
             await axios.put(`/collections/description/${collection._id}/${user._id}`, {
-                description: description
+                description: description.trim()
             }).then((c) => setCollection(c.data))
         }
     }

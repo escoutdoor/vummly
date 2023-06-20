@@ -176,59 +176,56 @@ router.get('/getCollection/:userId/:collectionName', async (req, res) => {
                     userId: 1,
                     name: 1,
                     description: 1
-                }}
+                }},
             ])
             const recipes = await Collection.aggregate([
-                {
-                    $match: {
+                {$match: {
                         userId: new ObjectId(req.params.userId),
                         name: req.params.collectionName
-                    }
-                },
-                {   
-                    $unwind: {
-                        path: '$recipes'
-                    }
-                },
-                {
-                    $lookup: {
-                        from: 'recipes',
-                        localField: 'recipes.recipeId',
-                        foreignField: '_id',
-                        as: 'recipes.recipe'
-                    }
-                },
-                {
-                    $unwind: {
-                        path: '$recipes.recipe'
-                    }
-                },
-                {
-                    $lookup: {
-                        from: 'reviews',
-                        localField: 'recipes.recipeId',
-                        foreignField: 'recipeId',
-                        as: 'recipes.recipe.rating'
-                    }
-                },
+                }},
+                {$unwind: {path: "$recipes"}},
+                {$lookup: {
+                    from : "recipes",
+                    localField: "recipes.recipeId",
+                    foreignField: "_id",
+                    as: "recipe"
+                }},
                 {
                     $addFields: {
-                        "recipes.recipe.rating": {$sum: "$recipes.recipe.rating.rating"}
+                        "recipe.addedToCollection" : "$recipes.addedToCollection"
                     }
                 },
+                {$unwind: {
+                    path: "$recipe"
+                }},
+                {$lookup: {
+                    from : "reviews",
+                    localField: "recipes.recipeId",
+                    foreignField: "recipeId",
+                    as: "review"
+                }},
                 {
-                    $group: {
-                        _id: '$_id',
-                        name: {"$first" : '$name'},
-                        description: {"$first" : '$description'},
-                        recipes: {
-                            $push: '$recipes'
-                        }
-                    },
+                    $addFields: {
+                        "recipe.rating" : {$avg : "$review.rating"}
+                    }
                 },
-                {$replaceRoot: {newRoot: {recipes: "$recipes.recipe"}}}
+                {$project: {
+                    review: 0
+                }},
+                {$replaceRoot: {newRoot: "$recipe"}},
+                {$facet: {
+                    "lastAdded" : [
+                        {$sort: {addedToCollection: -1, _id: 1}}
+                    ],
+                    "byName" : [
+                        {$sort: {title: -1, _id: 1}},
+                        {$project: {
+                            addedToCollection: 0
+                        }}
+                    ]
+                }}
             ])
-            // res.status(200).json({recipesLastAdded: recipes[0].recipes.reverse(), recipesName: recipes[0].recipes.reverse(), collection: collection[0]})
+            res.status(200).json({recipesLastAdded: recipes[0].lastAdded, recipesName: recipes[0].byName, collection: collection[0]})
         }
     } catch (err) {
         res.status(404).json(err)
