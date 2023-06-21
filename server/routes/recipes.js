@@ -1,9 +1,9 @@
 const router = require('express').Router()
+const mongoose = require('mongoose');
 const Recipe = require('../models/Recipe');
 const Review = require('../models/Review');
 const User = require('../models/User')
 const ObjectId = require('mongoose').Types.ObjectId
-
 
 // get all recipe info
 
@@ -11,7 +11,7 @@ const ObjectId = require('mongoose').Types.ObjectId
 router.get('/one/:recipeId', async (req, res) => {
     try {
         
-        const recipe = await Recipe.aggregate([
+        const [recipe] = await Recipe.aggregate([
             {$match: {id: req.params.recipeId}},
             {$facet: {
                 relatedRecipes: [
@@ -39,21 +39,51 @@ router.get('/one/:recipeId', async (req, res) => {
                     {$sample: {size: 4}}
                 ],
                 recipe: [
+                    
                     {$lookup: {
                         from : "reviews",
                         localField: "_id",
                         foreignField: "recipeId",
                         as: "reviews"
                     }},
+                    {$unwind: {path: "$reviews", preserveNullAndEmptyArrays: true}},
+                    {$lookup: {
+                        from: "users",
+                        localField: "reviews.userId",
+                        foreignField: "_id",
+                        as: "users"
+                    }},
                     {$addFields: {
                         "rating": {$avg: "$reviews.rating"},
+                        "reviews.user":{$arrayElemAt: ["$users", 0]}
+                    }},
+                    {$group: {
+                        _id: "$_id",
+                        id: {"$first" : "$id"},
+                        title: {"$first" :"$title"},
+                        time: {"$first" :"$time"},
+                        resource: {"$first" :"$resource"},
+                        nutrition: {"$first" :"$nutrition"},
+                        tags: {"$first": "$tags"},
+                        servings: {"$first" : "$servings"},
+                        ingredients: {"$first" :"$ingredients"},
+                        reviews: { $push: "$reviews" },
+                        rating: {"$first" : "$rating"},
                     }},
                     {$sort: {"reviews.createdAt": -1, "reviews._id": 1}},
                 ]
-            }}
+            }},
+            {
+                $project: {
+                    recipe: {$arrayElemAt : ['$recipe', 0]},
+                    related: '$relatedRecipes',
+                    more: '$moreFromResource'
+                }
+            }
         ])
 
-        res.status(200).json({recipe: recipe[0].recipe[0], related: recipe[0].relatedRecipes, more: recipe[0].moreFromResource})
+        res.status(200).json({recipe: recipe.recipe, related: recipe.related, more: recipe.more})
+        // res.status(200).json({recipe: recipe[0].recipe})
     } catch (err) {
         res.status(404).json(err)
     }

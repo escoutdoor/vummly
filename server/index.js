@@ -4,9 +4,9 @@ const dotenv = require('dotenv');
 const app = express()
 app.use(express.json())
 dotenv.config()
+
 // routes --------------------------------------------
 
-// support
 const articles = require('./routes/articles');
 const sections = require('./routes/sections');
 const categories = require('./routes/categories');
@@ -15,12 +15,11 @@ const recipes = require('./routes/recipes')
 const users = require('./routes/users')
 const auth  = require('./routes/auth')
 const reviews = require('./routes/reviews')
-
-
+const preferences = require('./routes/preferences')
 
 // connection --------------------------------------------
 
-const port = 8800
+
 // mongoose.connect('mongodb+srv://PopovIvan:esc@vummly.zagaor4.mongodb.net/support').then(() => console.log('Connected to MongoDB'), (err) => console.log(err))
 
 // support 
@@ -47,8 +46,13 @@ app.use('/server/auth', auth)
 
 app.use('/server/reviews', reviews)
 
+// preferences
+
+app.use('/server/preferences', preferences)
+
+
 // --------------------------------------------
 
-app.listen(port, () => {
+app.listen(process.env.DATABASE_PORT, () => {
     console.log('Back-end server is working well');
 })

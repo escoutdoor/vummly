@@ -71,7 +71,7 @@ const recipeSchema = book.model('Recipe', new mongoose.Schema({
                 }
             }
         ]
-    },
+    }
 }, 
 {timestamps: true}))
 

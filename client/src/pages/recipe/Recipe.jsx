@@ -49,6 +49,10 @@ const Recipe = () => {
     }, [recipeId])
 
 
+    useEffect(() => {
+        document.title =  recipeData.title ? `${recipeData.title} | Vummly` : 'Vummly'
+    }, [recipeData])
+
     
     // hide text in 2 sec
     const [actionText, setActionText] = useState(null)
@@ -145,6 +149,8 @@ const Recipe = () => {
                 setReviewRating(0)
                 setReviewValue("")
             })
+        } else {
+            setActiveLoginModal(true)
         }
     }
 
@@ -160,17 +166,17 @@ const Recipe = () => {
                                 <Link className={s.recipeSummary__resource} to={`/page/${recipeData.resource.link}`}>{recipeData.resource.name}</Link>
                                 <div className={s.recipeSummary__rating}>
                                     <Rating halfFillMode='svg' className={s.ratingStars} readOnly={true} value={recipeData.rating} itemStyles={ratingStars} />
-                                    <p>({recipeData.reviews.length})</p> 
+                                    <p>({recipeData.reviews[0]._id ? recipeData.reviews.length : 0})</p>
                                 </div>
-                                    {recipeData.reviews.length !== 0 && 
+                                    {recipeData.reviews[0]._id ? 
                                         <div className={s.recipeSummary__reviews}>
                                             <div className={s.recipeSummary__review} >
-                                                <Link className={s.recipeSummary__user} to={`/profile/${recipeData.reviews[0]?.user.name}-${recipeData.reviews[0]?.user._id}`}>{recipeData.reviews[0]?.user.name}</Link>
+                                                <Link className={s.recipeSummary__user} to={`/profile/${recipeData.reviews[0]?.user?.name}-${recipeData.reviews[0]?.user?._id}`}>{recipeData.reviews[0]?.user?.name}</Link>
                                                 {`: ${recipeData.reviews[0]?.text}`}
                                             </div>
                                             <button title='Read More' onClick={() => scrollRev()} className={s.recipeSummary__readMore}>Read More</button>
                                         </div>
-                                    }
+                                    : null}
                                 <div className={s.recipeSummary__statistics}>
                                     <div className={s.recipeSummary__statisticsItem}>
                                         <h1 className={s.recipeSummary__statisticsValue}>{recipeData.ingredients.metric.length || recipeData.ingredients.us.length}</h1>
@@ -308,7 +314,7 @@ const Recipe = () => {
                                             <p className={s.nutritionDetails__desc}>Unlock full nutritional details with subscription</p>
                                             <div className={s.nutritionDetailsBubbles}>
                                                 {recipeData.nutrition.map((nutr, i) => (
-                                                    nutr.label === 'calories' ? 
+                                                    loggedInUser._id ? 
                                                     <div key={i} style={{backgroundImage: `linear-gradient(to top, rgb(190, 218, 217) ${(nutr.value / 2500)*100}%, rgb(245, 245, 245) ${(nutr.value / 2500)*100}%)`}} className={s.nutritionDetailsBubbles__item}>
                                                         <span className={s.nutritionValue}>{nutr.value}</span>
                                                         <span className={s.nutritionLabel}>{nutr.label}</span>
@@ -334,7 +340,7 @@ const Recipe = () => {
                                     <div className={s.reviews}>
                                         <div className={s.reviewsTop}>
                                             <h1 className={s.titleBig}>Reviews </h1>
-                                            <span className={s.reviewsHowMany}>({recipeData.reviews.length})</span>
+                                            <span className={s.reviewsHowMany}>({recipeData.reviews[0]._id ? recipeData.reviews.length : 0})</span>
                                             <Rating halfFillMode='svg' className={s.ratingStars} readOnly={true} value={recipeData.rating} itemStyles={ratingStars} />
                                         </div>
                                         <div className={s.reviewsWrite}>
@@ -343,7 +349,7 @@ const Recipe = () => {
                                                     <img className={s.reviewAvatar} src={`${PF}images/no-avatar.webp`} alt="avatarRev" />
                                                     {!activeReview ? <p onClick={(e) => {setActiveReview(true); setReviewValue(e.target.value)}} value={reviewValue} className={s.reviewTarget}>Write your review or comment here</p> : 
                                                         <div className={activeReview ? `${s.reviewPerson} ${s.show}` : `${s.reviewPerson}`}>
-                                                            <h1 className={s.reviewName}>{loggedInUser?.name}</h1>
+                                                            <h1 className={s.reviewName}>{loggedInUser?.name || "Vummly User"}</h1>
                                                             <Rating className={s.ratingStars} value={reviewRating} onChange={setReviewRating} itemStyles={ratingStars} />
                                                         </div>
                                                     }
@@ -359,7 +365,7 @@ const Recipe = () => {
                                         </div>
                                     </div>
                                     <div className={s.usersReviews} ref={usersReviews}>
-                                        {recipeData.reviews.map((rev) => (
+                                        {recipeData.reviews[0]._id && recipeData.reviews.map((rev) => (
                                             <div className={s.usersReviews__item} key={rev._id}>
                                                 <Link to={`/profile/${rev.user.name}-${rev.user._id}`}>
                                                     <img className={s.reviewAvatar} src={rev.user.avatar ? `${PF}images/avatars/${rev.user.avatar}` : `${PF}images/no-avatar.webp`} alt="avatarRev" />

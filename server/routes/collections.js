@@ -93,7 +93,7 @@ router.get('/:userId', async (req, res) => {
             }},
             {
                 $addFields: {
-                    "recipe.addedToCollection": { $toDate: "$recipes.addedToCollection" },
+                    "recipe.addedToCollection": "$recipes.addedToCollection",
                     "recipe.rating": {$avg: "$review.rating"}
                 }
             },
@@ -106,11 +106,11 @@ router.get('/:userId', async (req, res) => {
                     resource: {"$first" :"$recipe.resource",},
                     nutrition: {"$first" :"$recipe.nutrition",},
                     ingredients: {"$first" :"$recipe.ingredients",},
-                    addedToCollection: {"$first" :"$recipe.addedToCollection"},
+                    addedToCollection: {"$max": "$recipe.addedToCollection"} ,
                     rating: {"$first" : "$recipe.rating"}
                 }
             },
-            {$sort: { addedToCollection: -1, _id: 1 }}
+            {$sort: { addedToCollection: -1 }},
         ]);
         res.status(200).json({recipes, collectionsLastModified: collections[0].lastModified, collectionsLastCreated: collections[0].lastCreated, collectionsName: collections[0].byName})
     } catch (err) {
@@ -165,7 +165,7 @@ router.get('/getCollection/:userId/:collectionName', async (req, res) => {
                 }},
                 {
                     $addFields: {
-                        "recipe.addedToCollection": { $toDate: "$recipes.addedToCollection" },
+                        "recipe.addedToCollection": "$recipes.addedToCollection",
                         "recipe.rating": {$avg: "$review.rating"}
                     }
                 },
@@ -183,11 +183,11 @@ router.get('/getCollection/:userId/:collectionName', async (req, res) => {
                         resource: {"$first" :"$recipe.resource",},
                         nutrition: {"$first" :"$recipe.nutrition",},
                         ingredients: {"$first" :"$recipe.ingredients",},
-                        addedToCollection: {"$first" :"$recipe.addedToCollection"},
+                        addedToCollection: {"$max" :"$recipe.addedToCollection"},
                         rating: {"$first" : "$recipe.rating"}
                     }
                 },
-                {$sort: { addedToCollection: -1, _id: 1 }}
+                {$sort: { addedToCollection: -1 }}
             ]);
             res.status(200).json({collection, recipesLastAdded : recipes, recipesName : recipes})
         } else {

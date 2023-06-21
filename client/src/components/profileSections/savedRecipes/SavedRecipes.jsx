@@ -29,13 +29,12 @@ const SavedRecipes = ({user, isMe}) => {
                 setCollectionsLastCreated(c.data.collectionsLastCreated)
                 setCollectionsName(c.data.collectionsName)
                 setRecipes(c.data.recipes)
-                setLoaded(true)
             })
+            setLoaded(true)
         }
         user._id && fetch()
-    }, [collectionsLastModified])
+    }, [collectionsLastModified, user._id])
 
-    
     useEffect(() => {
         if(searchVal.trim().length !== 0) {
             setActiveToolTip(true)
@@ -70,7 +69,7 @@ const SavedRecipes = ({user, isMe}) => {
                 <div className={s.allRecipes}>
                     {!loaded && <RecipeSkeleton recipes={6}/>}
                     {isMe && loaded && <FindRecipes />}
-                    {recipes.slice(0, 5).map((r, index) => (
+                    {recipes.slice(0, (isMe ? 5 : 6)).map((r, index) => (
                         <RecipeItem key={index} recipe={r} rating={r.rating}/>
                     ))}
                 </div>
