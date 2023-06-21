@@ -83,7 +83,6 @@ router.get('/one/:recipeId', async (req, res) => {
         ])
 
         res.status(200).json({recipe: recipe.recipe, related: recipe.related, more: recipe.more})
-        // res.status(200).json({recipe: recipe[0].recipe})
     } catch (err) {
         res.status(404).json(err)
     }

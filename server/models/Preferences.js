@@ -13,12 +13,16 @@ const preferencesSchema = book.model('Preferences', new mongoose.Schema({
         }],
         default: [],
     },
-    diets: {
-        type: [{
-            type: String
-        }],
-        default: [],
-    },
+    diets: [
+        {
+            title: {
+                type: String
+            },
+            description: {
+                type: String
+            }
+        }
+    ],
     dislikedIngredients: {
         type: [{
             type: String
