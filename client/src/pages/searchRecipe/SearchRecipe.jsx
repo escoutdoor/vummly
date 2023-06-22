@@ -21,7 +21,7 @@ const SearchRecipe = () => {
     const [loading, setLoading] = useState(false)
     const [openSort, setOpenSort] = useState(false)
     const [sortSettings, setSortSettings] = useState('relevance')
-    const [tagsAndTitle, setTagsAndTitle] = useState([])
+    const [results, setResults] = useState([])
     const [sorted, setSorted] = useState([])
     const [activeFilter, setActiveFilter] = useState(false)
     const [proRecipesOnly, setProRecipesOnly] = useState(false)
@@ -30,7 +30,7 @@ const SearchRecipe = () => {
     const [allowed, setAllowed] = useState("")
     const [banned, setBanned] = useState("")
     const [ingredients, setIngredients] = useState([])
-    const [minutes, setMinutes] = useState()
+    const [time, setTime] = useState()
     const [nutrition, setNutrition] = useState("")
     const [toolTips, setToolTips] = useState([])
     const [allowedRequest, setAllowedRequest] = useState([])
@@ -38,69 +38,38 @@ const SearchRecipe = () => {
     // state settings
     window.history.replaceState({}, searchValue)
     const PF = process.env.REACT_APP_BASE_URL;
-    
-    useEffect(() => {
-        setIngredients(recipes.flatMap(r => r.ingredients.us.map(i => i.ingredient)).filter((value, index, array) => array.indexOf(value) === index).sort((a, b) => 0.5 - Math.random()))
-    }, [recipes])
 
-    // all
-    useEffect(() => {
-        const fetch = async () => {
-            await axios.get(
-                allowed && banned && !nutrition? `/recipe/all/${allowed}/${banned}` : 
-                allowed && !nutrition && !banned ? `/recipe/with/${allowed}` : 
-                banned && !nutrition ? `/recipe/without/${banned}` : 
-                nutrition && !allowed && !banned ? `/recipe/nutrition/${nutrition}` :
-                nutrition && allowed && !banned ? `/recipe/allowedAndNutrition/${allowed}/${nutrition}` :
-                nutrition && banned && !allowed ? `/recipe/bannedAndNutrition/${banned}/${nutrition}` :
-                nutrition && allowed && banned ? `/recipe/all/${allowed}/${banned}/${nutrition}` :
-                `/recipe/all`
-                    ).then(info => {
-                setRecipes(info.data)
-            })
-            setLoading(true)
-        }
-        fetch()
-    }, [allowed, banned, nutrition])
-
-    // title and scroll
     useEffect(() => {
         document.title = "Recipes | Vummly"
         window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
     }, [])
 
-    // search recipes
     useEffect(() => {
-        recipes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())) || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))))
-    }, [recipes, searchValue, nutrition])
+        const fetch = async () => {
+            setLoading(false)
+            await axios.get(`/recipe/recipes?allowed=${allowed}&banned=${banned}&nutrition=${nutrition}&sort=${sortSettings}&time=${time}`).then((a) => {
+                setRecipes(a.data)
+            })
+            setTimeout(() => setLoading(true), 100)
+        }
+        fetch()
+    }, [allowed, banned, nutrition, sortSettings, time])
 
-    
-
-    // filter by menu
     useEffect(() => {
-        const filter = () => {
-            let filteredRecipes = [...tagsAndTitle];
-            if (sortSettings === 'popular') {
-                filteredRecipes.sort((a, b) => b.recipeCollection.length - a.recipeCollection.length);
-            } else if (sortSettings === 'time') {
-                filteredRecipes.sort((a, b) => a.time - b.time);
-            } else if (sortSettings === 'relevance') {
-                filteredRecipes = tagsAndTitle
-            }
-            setSorted([...filteredRecipes]);
-        };
-        filter()
-    }, [sortSettings, tagsAndTitle])
-    // search history
+        setIngredients(recipes.flatMap(r => r.ingredients.us.map(i => i.ingredient)).filter((value, index, array) => array.indexOf(value) === index))
+    }, [recipes])
+
+    useEffect(() => {
+        recipes && setResults(recipes.filter((recipe => recipe.tags.find((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())) || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))))
+    }, [recipes, searchValue])
+
+
     useEffect(() => {
         const prev = JSON.parse(localStorage.getItem('search-history')) || []
         const act = prev ? JSON.stringify([query, ...prev.slice(0, 5)].filter((value, index, array) => array.indexOf(value) === index)) : []
         query && query !== "" && localStorage.setItem('search-history', act)
     }, [])
 
-    useEffect(() => {
-        minutes && setTagsAndTitle(recipes.filter((recipe => recipe.tags.find((tag) => tag.toLowerCase().includes(searchValue.toLowerCase())) && recipe || recipe.title.toLowerCase().includes(searchValue.toLowerCase()) || recipe.resource.name.toLowerCase().includes(searchValue.toLowerCase()))).filter(t => t.time <= minutes))
-    }, [minutes])
 
     // reset
 
@@ -110,7 +79,8 @@ const SearchRecipe = () => {
         setToolTips([])
         setBannedRequest([])
         setAllowedRequest([])
-        setMinutes(null)
+        setResults([])
+        setTime(null)
         setNutrition("")
     }
 
@@ -125,11 +95,11 @@ const SearchRecipe = () => {
                                     <img className={s.searchRecipe__inputBoxIcon} src={`${PF}images/img/myFeed/searchIcon.svg`} alt="searchIcon" />
                                     <input onClick={() => setActiveInput(true)} placeholder='Search recipes' className={s.searchRecipe__inputBoxInput} type="text" onChange={(e) => setSearchValue(e.target.value)} value={searchValue}/>
                                 </div>
-                                {recipes ? <div className={(searchValue && activeInput && tagsAndTitle.find((by => by.title))) ? s.searchRecipe__drop : `${s.searchRecipe__drop} ${s.hide}`}>
+                                {recipes ? <div className={(searchValue && activeInput && results.find((by => by.title))) ? s.searchRecipe__drop : `${s.searchRecipe__drop} ${s.hide}`}>
                                 <div className={(searchValue && activeInput) ? s.searchRecipe__dropContent : `${s.searchRecipe__dropContent} ${s.hide}`}>
                                     <p className={s.searchRecipe__dropTitle}>recipe suggestions</p>
                                     <ul className={s.searchRecipe__dropList}>
-                                        {tagsAndTitle && tagsAndTitle.slice(0, 6).map((recipe) => (
+                                        {results && results.slice(0, 6).map((recipe) => (
                                             <Link to={`/recipe/${recipe.id}`} key={recipe._id}>
                                                 <li className={s.searchRecipe__dropList__item}>{recipe.title}</li> 
                                             </Link>
@@ -191,18 +161,18 @@ const SearchRecipe = () => {
                                     </ul>   
                                     <div className={s.advancedFilter__group}>
                                         <Inputs visibility={filterPage === 'ingredients' ? true : false} allowedRequest={allowedRequest} setAllowedRequest={setAllowedRequest} bannedRequest={bannedRequest} setBannedRequest={setBannedRequest} toolTips={toolTips} setToolTips={setToolTips} setWith={setAllowed} setWithout={setBanned} ingredients={ingredients}/> 
-                                        <Buttons visibility={filterPage === 'time' ? true : false}  setTime={setMinutes} minutes={[5, 10, 15, 20, 30, 45, 60, 120]} bold={false} title={'Cooking time, less than:'}/>
+                                        <Buttons visibility={filterPage === 'time' ? true : false}  setTime={setTime} minutes={[5, 10, 15, 20, 30, 45, 60, 120]} bold={false} title={'Cooking time, less than:'}/>
                                         <TitleAndDesc visibility={filterPage === 'nutrition' ? true : false}  setActive={setNutrition} active={nutrition} items={nutr}/>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className={s.recipesMain}>
-                            {tagsAndTitle.length !== 0 && <h1 className={s.suggestedRecipes__title}>{tagsAndTitle.length} suggested recipes</h1>}
-                            {(tagsAndTitle.length === 0 && loading) ? <NoResults length={tagsAndTitle.length} searchVal={searchValue}/> : null}
+                            {results.length !== 0 && <h1 className={s.suggestedRecipes__title}>{results.length} suggested recipes</h1>}
+                            {(results.length === 0 && loading) ? <NoResults length={results.length} searchVal={searchValue}/> : null}
                             {<div className={s.recipeList}>
                                 {!loading && <RecipeSkeleton recipes={100}/>}
-                                {sorted.map((r) => (
+                                {results.map((r) => (
                                     <RecipeItem key={r._id} recipe={r} rating={r.rating}/> 
                                 ))}
                             </div>}

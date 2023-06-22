@@ -30,7 +30,7 @@ const Inputs = ({ingredients, setWith, setWithout, visibility, toolTips, setTool
 
     useEffect(() => {
         const allowedString = allowedRequest.join("-").replace(" ", "_")
-        const bannedString = bannedRequest.join("-").replace(" ", "_")
+        const bannedString = bannedRequest.join("-").replaceAll(" ", "_")
         setWith(allowedString)
         setWithout(bannedString)
     }, [allowedRequest, bannedRequest])
