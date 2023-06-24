@@ -39,7 +39,6 @@ router.get('/one/:recipeId', async (req, res) => {
                     {$sample: {size: 4}}
                 ],
                 recipe: [
-                    
                     {$lookup: {
                         from : "reviews",
                         localField: "_id",
@@ -71,13 +70,13 @@ router.get('/one/:recipeId', async (req, res) => {
                         rating: {"$first" : "$rating"},
                     }},
                     {$sort: {"reviews.createdAt": -1, "reviews._id": 1}},
-                ]
+                ],
             }},
             {
                 $project: {
                     recipe: {$arrayElemAt : ['$recipe', 0]},
                     related: '$relatedRecipes',
-                    more: '$moreFromResource'
+                    more: '$moreFromResource',
                 }
             }
         ])

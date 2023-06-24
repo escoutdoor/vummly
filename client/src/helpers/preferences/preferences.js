@@ -27,8 +27,4 @@ const allergiesMenu = [
 
 
 
-
-
-
-
 export {dietsMenu, allergiesMenu}

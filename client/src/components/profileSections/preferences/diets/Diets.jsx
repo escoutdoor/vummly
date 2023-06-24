@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import s from './diets.module.css'
 import axios from 'axios';
 import { dietsMenu } from '../../../../helpers/preferences/preferences';
+import Skeleton from 'react-loading-skeleton';
 
-const Diets = ({user, active, setActive, diets, setDiets}) => {
+const Diets = ({user, active, setActive, diets, setDiets, loaded}) => {
     const PF = process.env.REACT_APP_BASE_URL;
     const [defaultDiets, setDefaultDiets] = useState([])
 
@@ -42,6 +43,7 @@ const Diets = ({user, active, setActive, diets, setDiets}) => {
             </div>
             <div className={s.main}>
                 <div className={s.topbar}>
+                    {!loaded && new Array(3).fill(0).map((s, i) => (<Skeleton key={i} height={150} width={150} circle={true}/>))}
                     {diets.map((d) => (
                         <div className={s.bubble} style={{width: '150px', height: '150px'}} key={d._id} onClick={() => {deleteDiet(d)}}>
                             <img className={s.bubbleImg} src={`${PF}images/icons/profile/preferences/${d.description !== '' ? `${d.title.toLowerCase()}-${d.description.split(" ").join("-").replace(",", "")}` : `${d.title.toLowerCase().replace(" ", "-")}`}.svg`} alt="dietImg" />

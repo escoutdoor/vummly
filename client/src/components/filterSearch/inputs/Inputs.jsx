@@ -14,6 +14,11 @@ const Inputs = ({ingredients, setWith, setWithout, visibility, toolTips, setTool
         setToolTips(ingredients.filter((ingredient) => ingredient.toLowerCase().includes(searchValue.toLowerCase()) && !allowedRequest.find(a => a === ingredient) && !bannedRequest.find(a => a === ingredient)))
     }, [searchValue, allowedRequest])
 
+    useEffect(() => {
+        setToolTips(ingredients.filter((ingredient) => ingredient.toLowerCase().includes(searchValueWithout.toLowerCase()) && !bannedRequest.find(a => a === ingredient) && !allowedRequest.find(a => a === ingredient)))
+    }, [searchValueWithout, bannedRequest])
+
+
     const removeIngredient = (i) => {
         setToolTips(toolTips.filter(t => t !== i))
         setAllowedRequest(allowedRequest.filter(a => a !== i))
@@ -25,11 +30,7 @@ const Inputs = ({ingredients, setWith, setWithout, visibility, toolTips, setTool
     }
 
     useEffect(() => {
-        setToolTips(ingredients.filter((ingredient) => ingredient.toLowerCase().includes(searchValueWithout.toLowerCase()) && !bannedRequest.find(a => a === ingredient) && !allowedRequest.find(a => a === ingredient)))
-    }, [searchValueWithout, bannedRequest])
-
-    useEffect(() => {
-        const allowedString = allowedRequest.join("-").replace(" ", "_")
+        const allowedString = allowedRequest.join("-").replaceAll(" ", "_")
         const bannedString = bannedRequest.join("-").replaceAll(" ", "_")
         setWith(allowedString)
         setWithout(bannedString)

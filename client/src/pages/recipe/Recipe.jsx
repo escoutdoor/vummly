@@ -48,6 +48,16 @@ const Recipe = () => {
         fetch()
     }, [recipeId])
 
+    useEffect(() => {
+        const fetchCollections = async () => {
+            await axios.get(`/collections/all/${loggedInUser._id}/${recipeData._id}`).then((c) => {
+                setCollectionsNotInclude(c.data.notinclude)
+                setCollectionsInclude(c.data.include)
+            })
+        }
+        loggedInUser._id && recipeData._id && fetchCollections()
+    }, [recipeData])
+
 
     useEffect(() => {
         document.title =  recipeData.title ? `${recipeData.title} | Vummly` : 'Vummly'
@@ -80,16 +90,6 @@ const Recipe = () => {
     }
 
     // add to collection
-
-    useEffect(() => {
-        const fetchCollections = async () => {
-            await axios.get(`/collections/all/${loggedInUser._id}/${recipeData._id}`).then((c) => {
-                setCollectionsNotInclude(c.data.notinclude)
-                setCollectionsInclude(c.data.include)
-            })
-        }
-        loggedInUser._id && recipeData._id && fetchCollections()
-    }, [recipeData])
 
     const addToCollection = () => {
         if(loggedInUser._id && collectionName) {
@@ -266,16 +266,17 @@ const Recipe = () => {
                                         {system === 'us' ? recipeData.ingredients.us.map((ingr, index) => (
                                             <div className={s.recipeIngr__listItem} key={index}>
                                                 <button onClick={() => addIngredient(ingr)} className={s.recipeIngr__addIngrButt} title='Add this ingredient to your shopping list'>{ingredients.includes(ingr) ? '-' : '+'}</button>
-                                                {ingr.quantity && <span>{ingr.quantity}</span>}
-                                                {ingr.measurement && <span>{ingr.measurement}</span>}
+                                                {ingr.quantity ? <span>{ingr.quantity}</span> : null}
+                                                {ingr.measurement ? <span>{ingr.measurement}</span> : null}
                                                 <h1 className={s.recipeIngr__ingr}>{ingr?.ingredient}</h1>
                                                 {ingr.technique && <span style={{fontSize: '14px'}} className={s.techniqueRecipe}>({ingr.technique})</span>}
                                             </div>
-                                        )) : system === 'metric' ? recipeData.ingredients.metric.map((ingr, index) => (
+                                        )) 
+                                        : system === 'metric' ? recipeData.ingredients.metric.map((ingr, index) => (
                                             <div className={s.recipeIngr__listItem} key={index}>
                                                 <button onClick={() => addIngredient(ingr)} className={s.recipeIngr__addIngrButt} title='Add this ingredient to your shopping list'>{ingredients.includes(ingr) ? '-' : '+'}</button>
-                                                {ingr.quantity && <span>{ingr.quantity}</span>}
-                                                {ingr.measurement && <span>{ingr.measurement}</span>}
+                                                {ingr.quantity ? <span>{ingr.quantity}</span> : null}
+                                                <span>{ingr.measurement}</span>
                                                 <h1 className={s.recipeIngr__ingr}>{ingr?.ingredient}</h1>
                                                 {ingr.technique && <span style={{fontSize: '14px'}} className={s.techniqueRecipe}>({ingr.technique})</span>}
                                             </div>
@@ -319,7 +320,7 @@ const Recipe = () => {
                                                         <span className={s.nutritionValue}>{nutr.value}</span>
                                                         <span className={s.nutritionLabel}>{nutr.label}</span>
                                                     </div>
-                                                    : <div key={nutr._id} className={`${s.nutritionDetailsBubbles__item} ${s.locked}`}>
+                                                    : <div key={nutr.label} className={`${s.nutritionDetailsBubbles__item} ${s.locked}`}>
                                                         <img src={`${PF}images/icons/recipes/lockNutr.svg`} alt="" />
                                                         <span style={{margin: '5px 0 0 '}} className={s.nutritionLabel}>{nutr.label}</span>
                                                     </div>
@@ -365,8 +366,8 @@ const Recipe = () => {
                                         </div>
                                     </div>
                                     <div className={s.usersReviews} ref={usersReviews}>
-                                        {recipeData.reviews[0]._id && recipeData.reviews.map((rev) => (
-                                            <div className={s.usersReviews__item} key={rev._id}>
+                                        {recipeData.reviews[0]?._id && recipeData.reviews?.map((rev, index) => (
+                                            <div className={s.usersReviews__item} key={index}>
                                                 <Link to={`/profile/${rev.user.name}-${rev.user._id}`}>
                                                     <img className={s.reviewAvatar} src={rev.user.avatar ? `${PF}images/avatars/${rev.user.avatar}` : `${PF}images/no-avatar.webp`} alt="avatarRev" />
                                                 </Link>

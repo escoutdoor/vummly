@@ -2,8 +2,9 @@ import axios from 'axios';
 import { allergiesMenu } from '../../../../helpers/preferences/preferences';
 import s from './allergies.module.css'
 import { useEffect, useState } from 'react';
+import Skeleton from 'react-loading-skeleton'
 
-const Allergies = ({user, active, setActive, allergies, setAllergies}) => {
+const Allergies = ({user, active, setActive, allergies, setAllergies, loaded}) => {
 
     const PF = process.env.REACT_APP_BASE_URL;
     const [defaultAllergies, setDefaultAllergies] = useState([])
@@ -44,7 +45,8 @@ const Allergies = ({user, active, setActive, allergies, setAllergies}) => {
             </div>
             <div className={s.main}>
                 <div className={s.topbar}>
-                    {allergies.map((a, index) => (
+                    {!loaded && new Array(3).fill(0).map((s, i) => (<Skeleton key={i} height={150} width={150} circle={true}/>))}
+                    {loaded && allergies.map((a, index) => (
                         <div className={s.bubble} style={{width: '150px', height: '150px'}} key={index} onClick={() => {deleteAllergy(a)}}>
                             <img className={s.bubbleImg} src={`${PF}images/icons/profile/preferences/${a.toLowerCase().replace(" ", "").split("-")[0]}.svg`} alt="dietImg" />
                             <h3 className={s.bubble__title}>{a}</h3>
