@@ -25,6 +25,14 @@ const allergiesMenu = [
     {id: 10, title: 'Gluten-Free'},
 ]
 
+const goalsMenu = [
+    {id: 1, title: 'learn new skills'},
+    {id: 2, title: 'try new cuisines'},
+    {id: 3, title: 'save time'},
+    {id: 4, title: 'save money'},
+    {id: 5, title: 'eat healthy'}
+]
 
 
-export {dietsMenu, allergiesMenu}
+
+export {dietsMenu, allergiesMenu, goalsMenu}

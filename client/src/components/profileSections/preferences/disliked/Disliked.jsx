@@ -21,8 +21,6 @@ const Disliked = ({user, active, setActive, disliked, setDisliked, loaded, ingre
         }
     }
 
-    console.log(ingredients);
-
     const addDisliked = async (item) => {
         if(user._id && item.trim().length !== 0) {
             await axios.put(`/preferences/addDisliked/${user._id}`, {
@@ -98,7 +96,6 @@ const Disliked = ({user, active, setActive, disliked, setDisliked, loaded, ingre
                             )) : <h2 className={s.header__title}>There are no more disliked ingredients, you can add yours</h2>}
                         </div>
                     </div>
-                    <p className={s.description}>*Consult with a medical or nutrition professional before starting any dietary program to determine if it is right for your needs.</p>
                 </div>
             </div>
 

@@ -29,12 +29,6 @@ const preferencesSchema = book.model('Preferences', new mongoose.Schema({
         }],
         default: [],
     },
-    favoriteCuisines: {
-        type: [{
-            type: String
-        }],
-        default: [],
-    },
     goals: {
         type: [{
             type: String
