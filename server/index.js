@@ -16,11 +16,10 @@ const users = require('./routes/users')
 const auth  = require('./routes/auth')
 const reviews = require('./routes/reviews')
 const preferences = require('./routes/preferences')
+const settings = require('./routes/settings')
 
 // connection --------------------------------------------
 
-
-// mongoose.connect('mongodb+srv://PopovIvan:esc@vummly.zagaor4.mongodb.net/support').then(() => console.log('Connected to MongoDB'), (err) => console.log(err))
 
 // support 
 app.use('/server/support/articles', articles)
@@ -50,6 +49,9 @@ app.use('/server/reviews', reviews)
 
 app.use('/server/preferences', preferences)
 
+// settings
+
+app.use('/server/settings', settings)
 
 // --------------------------------------------
 

@@ -91,6 +91,13 @@ const Recipe = () => {
 
     // add to collection
 
+    const fetch = async () => {
+        await axios.get(`/recipe/one/${recipeId}`).then((r) => {
+            setRecipeData(r.data.recipe)
+        })
+    }
+
+
     const addToCollection = () => {
         if(loggedInUser._id && collectionName) {
             axios.put(`/collections/${loggedInUser._id}/${recipeData._id}`, {
@@ -131,11 +138,6 @@ const Recipe = () => {
         e.key === 'Enter' && collectionName && addToCollection()
     }
 
-    const fetch = async () => {
-        await axios.get(`/recipe/one/${recipeId}`).then((r) => {
-            setRecipeData(r.data.recipe)
-        })
-    }
 
     const createReview = async () => {
         if(loggedInUser._id && reviewValue.length !== 0) {
@@ -238,7 +240,7 @@ const Recipe = () => {
                                                 </div>
                                             </div> 
                                         </div>
-                                        <span className={s.recipeSummary__addYumm__added}>{collectionsInclude.length >= 1000 ? collectionsInclude.length / 1000 + 'k' : collectionsInclude.length}</span>
+                                        <span className={s.recipeSummary__addYumm__added}>{recipeData.collections}</span>
                                     </div>
                                     <div className={s.recipeSummary__addMealPlanner}>
                                         <img className={s.recipeSummary__lock} src={`${PF}images/icons/recipes/lock.svg`} alt="" />

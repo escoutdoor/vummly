@@ -1,0 +1,56 @@
+.information {
+    display: block;
+    width: 100%;
+}
+
+.title {
+    font-size: 24px;
+    color: #232323;
+    line-height: 32px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.bubbles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 0px;
+}
+
+.bubble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    width: 160px;
+    height: 160px;
+    border: 6px solid #dadada;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.bubble:hover {
+    border-color: #3a9691;
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+}
+
+.chosenOption {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    color: #4a4a4a;
+}
+
+.boards {
+    position: relative;
+}

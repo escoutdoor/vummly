@@ -52,9 +52,16 @@ router.get('/one/:recipeId', async (req, res) => {
                         foreignField: "_id",
                         as: "users"
                     }},
+                    {$lookup: {
+                        from: "collections",
+                        localField: "_id",
+                        foreignField: "recipes.recipeId",
+                        as: "collections"
+                    }},
                     {$addFields: {
                         "rating": {$avg: "$reviews.rating"},
-                        "reviews.user":{$arrayElemAt: ["$users", 0]}
+                        "reviews.user":{$arrayElemAt: ["$users", 0]},
+                        "collections" : {$size: "$collections"}
                     }},
                     {$group: {
                         _id: "$_id",
@@ -68,6 +75,7 @@ router.get('/one/:recipeId', async (req, res) => {
                         ingredients: {"$first" :"$ingredients"},
                         reviews: { $push: "$reviews" },
                         rating: {"$first" : "$rating"},
+                        collections: {"$first" : "$collections"}
                     }},
                     {$sort: {"reviews.createdAt": -1, "reviews._id": 1}},
                 ],
