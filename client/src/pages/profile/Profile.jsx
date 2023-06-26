@@ -162,7 +162,7 @@ const Profile = () => {
                                 {
                                     section === 'saved recipes' ? <SavedRecipes isMe={isMe} user={user}/> :
                                     section === 'preferences' ? <Preferences user={user}/> : 
-                                    section === 'settings' ? <Settings user={user} /> :
+                                    section === 'settings' ? <Settings setUser={setUser} user={user} /> :
                                     null
                                 }
                             </div>

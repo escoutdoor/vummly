@@ -4,7 +4,7 @@ import s from './settings.module.css'
 import axios from 'axios';
 import AccountSettings from './accountSettings/AccountSettings';
 
-const Settings = ({user}) => {
+const Settings = ({user, setUser}) => {
     const [gender, setGender] = useState("")
     const [level, setLevel] = useState("")
     const [people, setPeople] = useState({})
@@ -26,7 +26,7 @@ const Settings = ({user}) => {
     return (
         <div className={s.settings}>
             <Information loaded={loaded} user={user} gender={gender} setGender={setGender} level={level} setLevel={setLevel} people={people} setPeople={setPeople}/>
-            <AccountSettings user={user}/>
+            <AccountSettings setUser={setUser} user={user}/>
         </div>
     );
 };

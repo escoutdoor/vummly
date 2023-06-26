@@ -54,7 +54,7 @@ const SavedRecipes = ({user, isMe}) => {
                     </div>
                     <div className={activeToolTip ? `${s.toolTip} ${s.active}` : `${s.toolTip}`}>
                         {toolTip.slice(0, 7).map((item) => (
-                            <Link to={`/recipe/${item.id}`}>
+                            <Link key={item._id} to={`/recipe/${item.id}`}>
                                 <h1 className={s.toolTip__item}>{item.title}</h1>
                             </Link>
                         ))}

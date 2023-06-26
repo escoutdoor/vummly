@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const ObjectId = require('mongoose').Types.ObjectId
 const Settings = require('../models/Settings')
+const User = require('../models/User')
 
 router.get('/:userId', async (req, res) => {
     try {
@@ -81,5 +82,21 @@ router.put('/household/:userId', async (req, res) => {
     }
 })
 
+
+// mail 
+
+router.put('/mail/:userId', async (req, res) => {
+    try {
+        const user = await User.findOneAndUpdate(
+            {_id : new ObjectId(req.params.userId)},
+            {$set: {mail: req.body.mail}},
+            {new: true}
+        )
+
+        res.status(200).json(user)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
 
 module.exports = router

@@ -10,3 +10,116 @@
     color: #232323;
     line-height: 32px;
 }
+
+.boxes {
+    display: flex;
+    gap: 40px;
+}
+
+.box {
+    display: flex;
+    width: 42%;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit {
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid #e3e3e3;
+    position: relative;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    cursor: pointer;
+}
+
+.edit.active {
+    border-bottom-color: #3a9691;
+    cursor: text;
+}
+
+.box:hover .inputName{ color: #3a9691; }
+
+.box:hover .edit { border-bottom-color: #3a9691; }
+
+.box:hover .inputValue { color: #3a9691;  }
+
+
+.target {
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 10px 0;
+    width: 100%;
+}
+
+.inputValue {
+    font-size: 16px;
+    line-height: 20px;
+    color: #707070;
+}
+
+.inputValue.active {
+    display: none;
+}
+
+.input {
+    display: none;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #707070;
+    width: 100%;
+    padding-right: 30px;
+}
+
+.input.active {
+    display: block;
+}
+
+.inputName {
+    text-transform: uppercase;
+    font-size: 14px;    
+    line-height: 14px;
+    letter-spacing: 1px;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    color: #707070;
+}
+
+.inputName.active {
+    color: #3a9691;
+}
+
+.closeIcon,
+.confirm {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    z-index: 99;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.confirm {
+    right: 20px;
+}
+
+.closeIcon.active:hover {
+    background-color: rgb(143, 75, 75)
+}
+
+.confirm:hover {
+    background-color: #2d3f3e;
+}
+
+.error {
+    width: 100%;
+    height: 0;
+    background-color: #3a9691;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.error.active {
+    height: auto;
+    padding: 10px 0px;
+}
