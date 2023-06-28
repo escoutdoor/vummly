@@ -2,6 +2,7 @@ const router = require('express').Router();
 const ObjectId = require('mongoose').Types.ObjectId
 const Settings = require('../models/Settings')
 const User = require('../models/User')
+const bcrypt = require('bcrypt')
 
 router.get('/:userId', async (req, res) => {
     try {
@@ -94,6 +95,39 @@ router.put('/mail/:userId', async (req, res) => {
         )
 
         res.status(200).json(user)
+    } catch (error) {
+        res.status(400).json(error)
+    }
+})
+
+
+// password 
+
+router.put('/password/:userId', async (req, res) => {
+    try {
+        const user = await User.findOne({_id: new ObjectId(req.params.userId)})
+        const pass = await bcrypt.compare(req.body.oldPassword, user.password)
+
+        if(pass) {
+            const newPass = bcrypt.hashSync(req.body.newPassword, 10);
+            const user = await User.findOneAndUpdate(
+                {_id: new ObjectId(req.params.userId)},
+                {$set: {
+                    password: newPass 
+                }},
+                {new: true}
+            )
+            res.status(200).json(user)
+        } else {
+            res.status(404).json("incorrect password")
+        }
+
+        // const user = await User.findOneAndUpdate(
+        //     {_id : new ObjectId(req.params.userId)},
+        //     {$set: {mail: req.body.mail}},
+        //     {new: true}
+        // )
+
     } catch (error) {
         res.status(400).json(error)
     }

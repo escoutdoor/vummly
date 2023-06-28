@@ -349,7 +349,7 @@ const Recipe = () => {
                                         <div className={s.reviewsWrite}>
                                             <div className={activeReview ? `${s.reviewsWrite__content}` : `${s.reviewsWrite__content} ${s.hideContent}`}>
                                                 <div className={s.reviewsWriteTop}>
-                                                    <img className={s.reviewAvatar} src={`${PF}images/no-avatar.webp`} alt="avatarRev" />
+                                                    <img className={s.reviewAvatar} src={loggedInUser.avatar ? `${PF}images/avatars/${loggedInUser.avatar}` : `${PF}images/avatars/no-avatar.webp`} alt="avatarRev" />
                                                     {!activeReview ? <p onClick={(e) => {setActiveReview(true); setReviewValue(e.target.value)}} value={reviewValue} className={s.reviewTarget}>Write your review or comment here</p> : 
                                                         <div className={activeReview ? `${s.reviewPerson} ${s.show}` : `${s.reviewPerson}`}>
                                                             <h1 className={s.reviewName}>{loggedInUser?.name || "Vummly User"}</h1>

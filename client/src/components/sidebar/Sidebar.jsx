@@ -35,7 +35,7 @@ const Sidebar = ({setActive, activeLoginModal}) => {
             })
         }
         localStorage.getItem('_auth') && getUser()
-    }, [activeLoginModal])
+    }, [activeLoginModal, user])
 
     return (
         <div className='sidebar'>

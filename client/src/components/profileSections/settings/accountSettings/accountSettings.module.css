@@ -37,11 +37,19 @@
     cursor: text;
 }
 
-.box:hover .inputName{ color: #3a9691; }
 
-.box:hover .edit { border-bottom-color: #3a9691; }
 
-.box:hover .inputValue { color: #3a9691;  }
+.edit:hover ~ .inputName { 
+    color: #3a9691; 
+}
+
+.edit:hover { 
+    border-bottom-color: #3a9691; 
+}
+
+.edit:hover  .inputValue { 
+    color: #3a9691;  
+}
 
 
 .target {
@@ -112,14 +120,70 @@
 .error {
     width: 100%;
     height: 0;
-    background-color: #3a9691;
+    background-color: #FFCCCB;
     color: #fff;
     font-size: 16px;
     text-align: center;
     transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    border-radius: 4px;
 }
 
 .error.active {
     height: auto;
     padding: 10px 0px;
+}
+
+.passwordInputs__item {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.passwordInputs__item.active {
+    display: flex;
+}
+
+.showButton {
+    text-transform: uppercase;
+    color: #3a9691;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.buttons {
+    margin-top: 30px;
+    display: none;
+    gap: 10px;
+    align-items: center;
+    justify-content: right;
+}
+
+.buttons.active {
+    display: flex;
+}
+
+.saveButton,
+.cancelButton {
+    cursor: pointer;
+    color: #707070;
+    font-size: 14px;
+    text-transform: capitalize;
+    padding: 5px 14px;
+    font-weight: 700;
+}
+
+.saveButton {
+    border: 2px solid #3a9691;
+    border-radius: 42px;
+    transition: all .2s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.saveButton:hover {
+    color: #fff;
+    background: #3a9691;
+}
+
+.cancelButton {
+    line-height: 24px;
 }

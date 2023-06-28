@@ -1,6 +1,6 @@
 import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import s from './profile.module.css'
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../redux/features/userSlice';
@@ -29,6 +29,24 @@ const Profile = () => {
     const [name, setName] = useState("")
     const [city, setCity] = useState("")
     const [country, setCountry] = useState("")
+
+    const [avatar, setAvatar] = useState(null)
+
+    const updateAvatar = React.useCallback(async () => {
+        const data = new FormData()
+
+        data.append('avatar', avatar)
+
+        await axios.put(`/upload/avatar/${user._id}`, data, {
+            headers: {
+                'content-type' : 'multipart/form-data'
+            }
+        }).then((d) => setUser(d.data))
+    })
+
+    useEffect(() => {
+        avatar && updateAvatar()
+    }, [avatar])
 
     const descInput = useRef()
     const nameInput = useRef()
@@ -117,7 +135,7 @@ const Profile = () => {
                                 <div className={s.userAvatar}>
                                     <img className={s.image} src={user?.avatar ? `${PF}images/avatars/${user.avatar}` : `${PF}images/avatars/no-avatar.webp`}/>
                                     {isMe && <div className={s.avatarClick}>
-                                        <input className={s.inputAvatar} type="file" accept="image/*"  onChange={() => {}}/>
+                                        <input className={s.inputAvatar} type="file" onChange={(e) => setAvatar(e.target.files[0])}/>
                                     </div>}
                                 </div>
                                 {isMe && <button onClick={() => logOut()} className={s.logout}>Log Out</button>}
