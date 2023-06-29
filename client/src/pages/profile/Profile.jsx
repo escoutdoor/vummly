@@ -32,7 +32,7 @@ const Profile = () => {
 
     const [avatar, setAvatar] = useState(null)
 
-    const updateAvatar = React.useCallback(async () => {
+    const updateAvatar = async () => {
         const data = new FormData()
 
         data.append('avatar', avatar)
@@ -42,7 +42,7 @@ const Profile = () => {
                 'content-type' : 'multipart/form-data'
             }
         }).then((d) => setUser(d.data))
-    })
+    }
 
     useEffect(() => {
         avatar && updateAvatar()
@@ -105,6 +105,8 @@ const Profile = () => {
             await axios.put(`/user/username/${user._id}/${user.mail}`, {
                 name: name
             }).then((u) => {nav(`/profile/${u.data.name}-${u.data._id}`); setUser(u.data)})
+        } else {
+            setName(user.name)
         }
         if(user.description !== description) {
             await axios.put(`/user/description/${user._id}/${user.mail}`, {

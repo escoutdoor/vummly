@@ -51,7 +51,6 @@ const Overview = () => {
 
     return (
         <div className='overview'>
-            <Sidebar />
             <div className="overview__content">
                 <Navbar value={true} badge={badge}/>
                 <div className="overview__inside">

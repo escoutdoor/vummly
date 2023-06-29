@@ -122,12 +122,6 @@ router.put('/password/:userId', async (req, res) => {
             res.status(404).json("incorrect password")
         }
 
-        // const user = await User.findOneAndUpdate(
-        //     {_id : new ObjectId(req.params.userId)},
-        //     {$set: {mail: req.body.mail}},
-        //     {new: true}
-        // )
-
     } catch (error) {
         res.status(400).json(error)
     }

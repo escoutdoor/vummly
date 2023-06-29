@@ -1,32 +1,23 @@
-import './sidebar.css'
+import s from './sidebar.module.css'
 import { useEffect, useState } from 'react';
-import { sideInf as sideData, aboutYumm as aboutUs, privacy, social} from './../../helpers/thermometer/sidebar'
-import { Link } from 'react-router-dom';
+import { sideInf as list, about, privacy} from './../../helpers/thermometer/sidebar'
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
 
 const Sidebar = ({setActive, activeLoginModal}) => {
     const PF = process.env.REACT_APP_BASE_URL;
+    const location = useLocation()
+
+    const [selected, setSelected] = useState("")
+    const [activeAbout, setActiveAbout] = useState(false)
+
     const [user, setUser] = useState({})
     const year = new Date().getFullYear()
-    const [selected, setSelected] = useState(null)
-    const [about, setAbout] = useState(false)
-    const aboutClick = () => {
-        about ?  setAbout(false) : setAbout(true)
-    }
-    const clicked = (e) => {
-        selected ? setSelected(null) : setSelected(e)
-    }
-    const [hover, setHovered] = useState(null)
-    const Hover = (e) => {
-        hover ? setHovered(null) : setHovered(e)
-    }
-    const [activeLink, setActiveLink] = useState()
-    useEffect(() => {
-        const act = sideData.flatMap(data => data.downtitles.filter(d => d.link === window.location.pathname))
-        setActiveLink(...act)
-    }, [])
 
+    useEffect(() => {
+        list[0].dropdown && setSelected(list.find(l => l.dropdown?.find(d => d.link === location.pathname))?.title)
+    }, [location.pathname])
 
     useEffect(() => {
         const getUser = async () => {
@@ -38,94 +29,61 @@ const Sidebar = ({setActive, activeLoginModal}) => {
     }, [activeLoginModal, user])
 
     return (
-        <div className='sidebar'>
-            <div className="sidebar-container">
-                <div className="sidebarUpgrade">
-                    <Link to={'/'}>
-                        <img className='logo' src={`${PF}images/logo/yummlyLogo.svg`} alt="logoYummly" />
-                    </Link>
-                    {user?._id ? <>
+        <div className={s.sidebar}>
+            <div className={s.header}>
+                <Link to={'/'}>
+                    <img src={`${PF}images/logo/yummlyLogo.svg`} alt="logoIcon" />
+                </Link>
+                {user._id ? 
                         <Link to={`/profile/${user.name}-${user._id}`}>
-                            <img title='Profile' className='avatar' src={user.avatar ? `${PF}images/avatars/${user.avatar}` : `${PF}images/no-avatar.webp`} alt="avatar" />
+                            {user.avatar ? <img className={s.avatar} src={`${PF}images/avatars/${user.avatar}`} alt="avatar" /> : <img className={s.avatar} src={`${PF}images/avatars/no-avatar.webp`} alt="avatar" />}
                         </Link>
-                        <Link to={'/'}>
-                            <button title='Upgrade' className='upgradeButt'>Upgrade</button>
-                        </Link>
-                    </> : <button onClick={() => setActive(true)} className={'logButton'}>Sign Up / Log In</button>}
-                </div>
-                <div className="sidebarNav">
-                    {sideData.map((part) => (
-                        <div className={part.id < 7 ? "sidebarNav-item" : "sidebarNav-item brnone"} title={part.title} key={part.id}>
-                            <div className={"sidebarAbove"} onClick={() => clicked(part.id)}>
-                                {part.downtitles.length <= 1 ? part.downtitles.map((ttl, index) => (
-                                    <Link key={index} to={ttl.link}>
-                                        <div className='sidebar-click'><h1 className='sidebar-title'>{part.title}</h1></div>
-                                    </Link>
-                                )) : 
-                                <div className='sidebar-click'><h1  className='sidebar-title'>{part.title}</h1><img src={selected === part.id ? `${PF}images/icons/arrows/sidebar/downLightGreen.svg` : `${PF}images/icons/arrows/sidebar/rightLightGreen.svg`} alt="arrDropSideBar" /></div>}
-                            </div>
-                            <ul className={selected === part.id ? 'sidebarDrop show' : 'sidebarDrop'}>
-                                {part.downtitles.length > 1 ? part.downtitles.map((downItm, index) => (
-                                    <Link title={downItm.label} to={downItm.link} style={{color: activeLink && activeLink.link === downItm.link && downItm.label === activeLink.label ? '#3a9691' : '#707070', fontWeight: activeLink && activeLink.link === downItm.link && downItm.label === activeLink.label ? '700' : '400'}} className={selected === part.id ? 'sidebarDrop-item show' : 'sidebarDrop-item'} key={index}>{downItm.label}</Link>
-                                )) : null}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="sidebarContacts">
-                    <div className="aboutUs">
-                        {aboutUs.map((i, index) => (
-                            <div className={about ? "aboutUs-container active" : "aboutUs-container"} key={index}>
-                                <div className="aboutUs_clickable" onClick={() => aboutClick()}>
-                                    <h1 className='click__title'>{i.title}</h1>
-                                    <img src={about ? `${PF}images/icons/arrows/sidebar/downLightGreen.svg` : `${PF}images/icons/arrows/sidebar/rightLightGreen.svg`} alt="arrAbout" />
-                                </div>
-                                <ul className={about ? 'links active': 'links'}>
-                                    {i.downtitles.map((down, index) => (
-                                        <Link className='links-item' to={down.link} key={index}>
-                                            {down.label}
-                                        </Link>
-                                    ))}
-                                </ul>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="privacy">
-                        {privacy.map((pr, index) => (
-                            <ul className="privacy-content" key={index}>
-                                {pr.docs.map((i, ind) => (
-                                    <Link className='privacy-content__item' key={ind} to={i.link}>
-                                        <li>{i.label}</li>
-                                    </Link>
-                                ))}
-                            </ul>
-                        ))}
-                    </div>
-                    <div className="bottom__social">
-                        {social.map((soc) => (
-                            <ul className='social' key={soc.id}>
-                                {soc.item.map((item) => (
-                                    <Link target="_blank" to={item.link} onMouseEnter={() => Hover(soc.id)} onMouseOut={() => Hover(null)} key={soc.id}> 
-                                        <img className='socialItem' src={hover === soc.id ? `${PF}` + item.hover : `${PF}`+ item.logo } alt="iconSoc"/>
-                                    </Link>
-                                ))}
-                            </ul>
-                        ))}
-                    </div>
-                    <div className="ummlyYear">
-                        <p className='rights'>{`®/™©${year} Yummly. All rights reserved.`}</p>
-                        <Link to={'/whirlpool'}>
-                            <div className="part">
-                                <p>Part of</p>
-                                <img src={`${PF}images/icons/social/whirlpool-logo.webp`} alt="partOf" />
-                            </div>
-                        </Link>
-                    </div>
-                </div>
+                    : 
+                        <button onClick={() => setActive(true)} className={s.loginButton}>Sign Up / Log In</button>
+                }
             </div>
-        </div>
-    );
+            <div className={s.list}>
+                {list.map((item) => (
+                    <div className={s.list__item} key={item.id} >
+                        <div title={item.title} className={s.list__itemTarget} onClick={() => {setSelected(selected === item.title ? "" : item.title); setActiveAbout(false)}}>
+                            {<h1 className={selected === item.title ? `${s.title} ${s.active}` : s.title}>{item.title}</h1>}
+                            {item.dropdown && <img className={s.arrow} src={selected === item.title ? `${PF}images/icons/arrows/sidebar/downLightGreen.svg` : `${PF}images/icons/arrows/sidebar/rightLightGreen.svg`} alt="rightArrow/downArrow" />}
+                        </div>
+                        <div className={selected === item.title ? `${s.dropdown} ${s.active}` :  s.dropdown}>
+                            {item.dropdown && item.dropdown.map((d, index) => (
+                                <Link title={d.label}  style={{color: d.link === location.pathname && '#3a9691'}}  key={index} to={d.link} className={selected === item.title ? `${s.subtitle} ${s.active}` : s.subtitle}>{d.label}</Link>
+                            ))}
+                        </div>
+                    </div>
+                ))}
+            </div>
+            <div className={s.footer}>
+                <div className={s.about}>
+                    <div title={'About Vummly'} className={activeAbout ? `${s.aboutTarget} ${s.active}` : s.aboutTarget} onClick={() => {setActiveAbout(!activeAbout); setSelected("")}}>
+                        <h1 className={s.title}>About Vummly</h1>
+                        <img className={s.arrow} src={activeAbout ?`${PF}images/icons/arrows/sidebar/downLightGreen.svg` : `${PF}images/icons/arrows/sidebar/rightLightGreen.svg`} alt="rightArrow/downArrow" />
+                    </div>
+                    <div className={activeAbout ? `${s.aboutList} ${s.active}` : s.aboutList}>
+                        {about.map((a, index) => (
+                            <Link title={a.label} style={{color: a.link === location.pathname && '#3a9691'}} key={index} to={a.link} className={activeAbout ? `${s.subtitle} ${s.active}` :  s.subtitle}>
+                                {a.label}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+                <ul className={s.docs}>
+                    {privacy.map((p) => (
+                        <li className={s.docs__item} title={p.label}>
+                            <Link to={p.link}>
+                                {p.label}
+                            </Link>
+                        </li>
+                    ))}
+                </ul>
+                <p className={s.rights}>®/™${year} Vummly. All rights reserved.</p>
+            </div>
+        </div>    
+    )
 };
 
 export default Sidebar;
