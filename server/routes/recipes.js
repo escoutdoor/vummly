@@ -4,8 +4,10 @@ const Recipe = require('../models/Recipe');
 const Review = require('../models/Review');
 const User = require('../models/User')
 const ObjectId = require('mongoose').Types.ObjectId
+const Collection = require('../models/Collection');
 
 // get all recipe info
+
 
 
 router.get('/one/:recipeId', async (req, res) => {
@@ -61,8 +63,10 @@ router.get('/one/:recipeId', async (req, res) => {
                     {$addFields: {
                         "rating": {$avg: "$reviews.rating"},
                         "reviews.user":{$arrayElemAt: ["$users", 0]},
-                        "collections" : {$size: "$collections"}
+                        "collections" : {$size: "$collections"},
+                        // "reviews.likesCount": { $size: "$reviews.likes" }
                     }},
+                    {$sort: {"reviews.createdAt" : -1}},
                     {$group: {
                         _id: "$_id",
                         id: {"$first" : "$id"},
@@ -74,10 +78,9 @@ router.get('/one/:recipeId', async (req, res) => {
                         servings: {"$first" : "$servings"},
                         ingredients: {"$first" :"$ingredients"},
                         reviews: { $push: "$reviews" },
-                        rating: {"$first" : "$rating"},
+                        rating: {"$avg" : "$rating"},
                         collections: {"$first" : "$collections"}
                     }},
-                    {$sort: {"reviews.createdAt": -1, "reviews._id": 1}},
                 ],
             }},
             {
@@ -88,10 +91,22 @@ router.get('/one/:recipeId', async (req, res) => {
                 }
             }
         ])
-
+        
         res.status(200).json({recipe: recipe.recipe, related: recipe.related, more: recipe.more})
+
+
     } catch (err) {
         res.status(404).json(err)
+    }
+})
+
+router.get('/all/:id/:recipeId', async (req, res) => {
+    try {
+        const include = await Collection.find({userId: req.params.id, 'recipes.recipeId':  req.params.recipeId})
+        const notinclude = await Collection.find({userId: req.params.id, 'recipes.recipeId': {$nin : [req.params.recipeId]}})
+        res.status(200).json({include : include, notinclude : notinclude})
+    } catch (error) {
+        res.status(404).json(error)
     }
 })
 

@@ -4,29 +4,36 @@ import s from './mainLayout.module.css'
 import { useEffect, useState } from "react";
 import Main from "../../components/signUpOrLogIn/main/Main";
 import axios from "axios";
+import {useDispatch} from "react-redux"
+import { login, logout } from "../../redux/features/userSlice";
 
 const MainLayout = () => {
     const [activeLoginModal, setActiveLoginModal] = useState(false)
+    const dispatch = useDispatch()
+
     useEffect(() => {
         document.body.style.overflow = activeLoginModal ? 'hidden' : 'visible'
     }, [activeLoginModal])
-    const [loggedInUser, setLoggedInUser] = useState({})
-    const [notLoggedInUser, setNotLoggedInUser] = useState({})
 
     useEffect(() => {
         const fetchme = async () => {
-            await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((me) => {
-                setLoggedInUser(me.data)
-            })
+            try {
+                await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((me) => {
+                    dispatch(login(me.data))
+                })
+            } catch (error) {
+                localStorage.removeItem('_auth')
+                dispatch(logout({}))
+            }
         }
         localStorage.getItem('_auth') && fetchme()
-    }, [notLoggedInUser])
+    }, [])
     
     return (
         <div>
             <Sidebar setActive={setActiveLoginModal} activeLoginModal={activeLoginModal}/>
             <div className={s.main}>
-                <Outlet context={[loggedInUser, setNotLoggedInUser, setActiveLoginModal]}/>
+                <Outlet context={[setActiveLoginModal]}/>
                 <Main active={activeLoginModal} setActive={setActiveLoginModal}/>
             </div>
         </div>

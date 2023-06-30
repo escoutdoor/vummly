@@ -3,32 +3,43 @@ import s from './recipe.module.css'
 import { useEffect, useRef, useState } from 'react';
 import moment from 'moment';
 import axios from 'axios'
+import { useSelector } from 'react-redux'
 // rating
 import { Rating, Star } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import RecipeItem from '../../components/recipeItem/RecipeItem';
 import RecipeSkeleton from '../../components/recipeSkeleton/RecipeSkeleton';
+import { selectUser } from '../../redux/features/userSlice';
+import emailjs from '@emailjs/browser';
 
 const Recipe = () => {
     const PF = process.env.REACT_APP_BASE_URL;
     const {recipeId} = useParams()
-    const [loggedInUser, setNotLoggedInUser, setActiveLoginModal] = useOutletContext()
+    const [setActiveLoginModal] = useOutletContext()
+
+    const loggedInUser = useSelector(selectUser)
+
     const [collectionsNotInclude, setCollectionsNotInclude] = useState([])
     const [activeModalCollection, setActiveModalCollection] = useState(false)
     const [activeNewCollection, setActiveNewCollection] = useState(false)
     const [collectionsInclude, setCollectionsInclude] = useState([])
+
     const [recipeData, setRecipeData] = useState({})
     const [system, setSystem] = useState('us')
     const [ingredients, setIngredients] = useState([])
-    const [made, setMade] = useState(false)
-    const [loading, setLoading] = useState(false)
     const [more, setMore] = useState([])
     const [related, setRelated] = useState([])
+
+    const [loading, setLoading] = useState(false)
+
     const [activeReview, setActiveReview] = useState(false)
     const [activeInput, setActiveInput] = useState(false)
     const [reviewValue, setReviewValue] = useState('')
     const [reviewRating, setReviewRating] = useState(0)
+
     const [collectionName, setCollectionName] = useState("")
+    
+    const [activeReportMenu, setActiveReportMenu] = useState("")
 
     // add Ingr
     const addIngredient = (ingredient) => {
@@ -36,40 +47,34 @@ const Recipe = () => {
         !ingredients.includes(ingredient) ? setIngredients([...ingredients, ingredient]) : setIngredients(newList)
     }
 
+
     useEffect(() => {
         const fetch = async () => {
             await axios.get(`/recipe/one/${recipeId}`).then((r) => {
                 setRecipeData(r.data.recipe)
                 setMore(r.data.more)
                 setRelated(r.data.related)
+                setLoading(true)
             })
-            setLoading(true)
         }
         fetch()
     }, [recipeId])
 
+
     useEffect(() => {
         const fetchCollections = async () => {
-            await axios.get(`/collections/all/${loggedInUser._id}/${recipeData._id}`).then((c) => {
-                setCollectionsNotInclude(c.data.notinclude)
-                setCollectionsInclude(c.data.include)
-            })
+            if(loggedInUser) {
+                await axios.get(`/collections/all/${loggedInUser?._id}/${recipeData._id}`).then((c) => {
+                    setCollectionsNotInclude(c.data.notinclude)
+                    setCollectionsInclude(c.data.include)
+                })
+            } 
         }
-        loggedInUser._id && recipeData._id && fetchCollections()
-    }, [recipeData])
-
-
-    useEffect(() => {
+        recipeData._id && fetchCollections()
         document.title =  recipeData.title ? `${recipeData.title} | Vummly` : 'Vummly'
-    }, [recipeData])
+    }, [recipeData, loggedInUser])
 
-    
-    // hide text in 2 sec
-    const [actionText, setActionText] = useState(null)
-    useEffect(() => {
-        setTimeout(() => setActionText(!actionText), 2000)
-    }, [made])
-    // 
+
 
     // scroll onclick
     const usersReviews = useRef()
@@ -98,8 +103,8 @@ const Recipe = () => {
     }
 
 
-    const addToCollection = () => {
-        if(loggedInUser._id && collectionName) {
+    const addToCollection = (collectionName) => {
+        if(loggedInUser && collectionName) {
             axios.put(`/collections/${loggedInUser._id}/${recipeData._id}`, {
                 collectionName: collectionName
             }).then((c) => {
@@ -113,7 +118,7 @@ const Recipe = () => {
     }
 
     const addToCollectionNotIncluded = async (item) => {
-        if(loggedInUser._id && item.name) {
+        if(loggedInUser && item.name) {
             await axios.put(`/collections/${loggedInUser._id}/${recipeData._id}`, {
                 collectionName: item.name
             }).then((c) => {
@@ -124,7 +129,7 @@ const Recipe = () => {
     }
 
     const deletFromCollectionIncluded = async (item) => {
-        if(loggedInUser._id && item.name) {
+        if(loggedInUser && item.name) {
             await axios.put(`/collections/${loggedInUser._id}/${recipeData._id}`, {
                 collectionName: item.name
             }).then((c) => {
@@ -134,13 +139,8 @@ const Recipe = () => {
         }
     }
 
-    const addOnKey = (e) => {
-        e.key === 'Enter' && collectionName && addToCollection()
-    }
-
-
     const createReview = async () => {
-        if(loggedInUser._id && reviewValue.length !== 0) {
+        if(loggedInUser && reviewValue.length !== 0) {
             await axios.post(`/reviews/postReview/${loggedInUser._id}/${recipeData._id}`, {
                 rating: reviewRating,
                 text: reviewValue,
@@ -156,10 +156,55 @@ const Recipe = () => {
         }
     }
 
+    const addOnKey = (e) => {
+        e.key === 'Enter' && addToCollection(collectionName)
+    }
+
+    const handleLike = async (reviewId) => {
+        if(loggedInUser) {
+            await axios.put(`/reviews/like/${loggedInUser._id}`, {
+                reviewId
+            }).then((r) => {
+                fetch()
+            })
+        } else {
+            setActiveLoginModal(true)
+        }
+    }
+
+    const handleReport = async (revData) => {
+        const { message, userId, reviewId } = revData
+
+        if(loggedInUser) {  
+
+            const complaint = {
+                name: loggedInUser.name,
+                complainantEmail: loggedInUser.mail,
+                recipeId: recipeData._id,
+                reviewId,
+                userId: userId,
+                message
+            }
+
+            emailjs.send('service_h7toabu', 'template_rap0pxo', complaint, 'dQJDPMl6oL-bM1aSW')
+                .then(() => {
+                    setActiveReportMenu("")
+                    alert("Your complaint was successfully sent")
+                })
+
+        } else {
+            setActiveLoginModal(true)
+        }
+    }
+
+    const scheduledAndMade = (name) => {
+        
+    }
+
     return (
         <>
             {loading ?
-            <div className={s.recipe} onClick={() => setActiveModalCollection(false)}>
+            <div className={s.recipe} onClick={() => {setActiveModalCollection(false); setActiveReportMenu("")}}>
                 <div className={s.recipeWrapper}>
                     <div className={s.recipe__content}>
                         <div className={s.recipeSummary}>
@@ -168,13 +213,13 @@ const Recipe = () => {
                                 <Link className={s.recipeSummary__resource} to={`/page/${recipeData.resource.link}`}>{recipeData.resource.name}</Link>
                                 <div className={s.recipeSummary__rating}>
                                     <Rating halfFillMode='svg' className={s.ratingStars} readOnly={true} value={recipeData.rating} itemStyles={ratingStars} />
-                                    <p>({recipeData.reviews[0]._id ? recipeData.reviews.length : 0})</p>
+                                    <p>({recipeData?.reviews[0]._id ? recipeData?.reviews.length : 0})</p>
                                 </div>
                                     {recipeData.reviews[0]._id ? 
                                         <div className={s.recipeSummary__reviews}>
                                             <div className={s.recipeSummary__review} >
                                                 <Link className={s.recipeSummary__user} to={`/profile/${recipeData.reviews[0]?.user?.name}-${recipeData.reviews[0]?.user?._id}`}>{recipeData.reviews[0]?.user?.name}</Link>
-                                                {`: ${recipeData.reviews[0]?.text}`}
+                                                {`: ${recipeData.reviews[0].text}`}
                                             </div>
                                             <button title='Read More' onClick={() => scrollRev()} className={s.recipeSummary__readMore}>Read More</button>
                                         </div>
@@ -198,7 +243,7 @@ const Recipe = () => {
                                 <div className={s.recipeSummary__buttons}>
                                     <button title='Read Directions' className={s.recipeSummary__readDir}>Read Directions</button>
                                     <div className={s.recipeSummary__addYumm} onClick={e => e.stopPropagation() }>
-                                        <button onClick={() => loggedInUser._id ? setActiveModalCollection(!activeModalCollection) : setActiveLoginModal(true)} title='Add Recipe' className={s.recipeSummary__addRecipe} />
+                                        <button onClick={() => loggedInUser ? setActiveModalCollection(!activeModalCollection) : setActiveLoginModal(true)} title='Add Recipe' className={s.recipeSummary__addRecipe} />
                                         <div className={activeModalCollection ? `${s.dropdown} ${s.active}` : s.dropdown} onClick={(e) => e.stopPropagation()}>
                                             <div className={s.dropdownHeader}>
                                                 <p style={{color : '#232323'}} className={s.modalText}>add to collection</p>
@@ -210,7 +255,7 @@ const Recipe = () => {
                                                     <p style={{lineHeight: '28px'}} className={s.modalText}>new collection</p>
                                                 </div>
                                                 <div className={activeNewCollection ? `${s.createCollection} ${s.active}` : s.createCollection}>
-                                                    <img onClick={() => addToCollection()} className={s.folderIcon} src={`${PF}images/icons/recipes/folder-plus.svg`} alt="folderNameCollection" />
+                                                    <img onClick={() => addToCollection(collectionName)} className={s.folderIcon} src={`${PF}images/icons/recipes/folder-plus.svg`} alt="folderNameCollection" />
                                                     <input onKeyDown={addOnKey} maxLength={40} placeholder='Name Collection' className={s.nameCollectionInput} value={collectionName} onChange={(e) => setCollectionName(e.target.value)} type="text" />
                                                     <img style={{marginRight: '7px'}} onClick={() => setActiveNewCollection(false)} className={s.closeIcon} src={`${PF}images/icons/recipes/x.svg`} alt="closeNameCollection" />
                                                 </div>
@@ -289,11 +334,15 @@ const Recipe = () => {
                                             <img src={`${PF}images/icons/recipes/shopping-bag.svg`} alt="" />
                                             Order Ingredients
                                         </Link>
-                                        <button onClick={() => {setMade(!made); setActionText(true)}} className={s.recipeIngr__didYou}>
-                                            <span className={s.recipeIngr__didYou__text}>{made ? 'Made it' : 'Did you make this?'}</span>
-                                            <img src={made ? `${PF}images/icons/recipes/check-circleActive.svg` : `${PF}images/icons/recipes/check-circle.svg`} alt="checkedRecipe" />
-                                        </button>
-                                        <span className={actionText && made ? `${s.recipeIngr__action}` : `${s.recipeIngr__action} ${s.hide}`}>{made && 'This recipe has been added to your collection Scheduled and Made'}</span>
+                                        <button 
+                                            onClick={() => {
+                                                scheduledAndMade("Scheduled and Made")
+                                            }} 
+                                            className={s.recipeIngr__didYou}>
+                                                <span className={s.recipeIngr__didYou__text}>{collectionsInclude.find(c => c.name === "Scheduled and Made") ? 'Made it' : 'Did you make this?'}</span>
+                                                <img src={collectionsInclude.find(c => c.name === "Scheduled and Made")  ? `${PF}images/icons/recipes/check-circleActive.svg` : `${PF}images/icons/recipes/check-circle.svg`} alt="checkedRecipe" />
+                                            </button>
+                                            {collectionsInclude.find(c => c.name === "Scheduled and Made") ? <span className={s.recipeIngr__action}>This recipe has been added to your collection Scheduled and Made</span> : null}
                                     </div>
                                     <div className={s.recipeIngr__all}>
                                         <div className={s.recipeIngr__addButton}>
@@ -317,7 +366,7 @@ const Recipe = () => {
                                             <p className={s.nutritionDetails__desc}>Unlock full nutritional details with subscription</p>
                                             <div className={s.nutritionDetailsBubbles}>
                                                 {recipeData.nutrition.map((nutr, i) => (
-                                                    loggedInUser._id ? 
+                                                    loggedInUser?._id ? 
                                                     <div key={i} style={{backgroundImage: `linear-gradient(to top, rgb(190, 218, 217) ${(nutr.value / 2500)*100}%, rgb(245, 245, 245) ${(nutr.value / 2500)*100}%)`}} className={s.nutritionDetailsBubbles__item}>
                                                         <span className={s.nutritionValue}>{nutr.value}</span>
                                                         <span className={s.nutritionLabel}>{nutr.label}</span>
@@ -349,7 +398,7 @@ const Recipe = () => {
                                         <div className={s.reviewsWrite}>
                                             <div className={activeReview ? `${s.reviewsWrite__content}` : `${s.reviewsWrite__content} ${s.hideContent}`}>
                                                 <div className={s.reviewsWriteTop}>
-                                                    <img className={s.reviewAvatar} src={loggedInUser.avatar ? `${PF}images/avatars/${loggedInUser.avatar}` : `${PF}images/avatars/no-avatar.webp`} alt="avatarRev" />
+                                                    <img className={s.reviewAvatar} src={loggedInUser?.avatar ? `${PF}images/avatars/${loggedInUser.avatar}` : `${PF}images/avatars/no-avatar.webp`} alt="avatarRev" />
                                                     {!activeReview ? <p onClick={(e) => {setActiveReview(true); setReviewValue(e.target.value)}} value={reviewValue} className={s.reviewTarget}>Write your review or comment here</p> : 
                                                         <div className={activeReview ? `${s.reviewPerson} ${s.show}` : `${s.reviewPerson}`}>
                                                             <h1 className={s.reviewName}>{loggedInUser?.name || "Vummly User"}</h1>
@@ -384,9 +433,17 @@ const Recipe = () => {
                                                         <Rating halfFillMode='svg' className={s.ratingStars} readOnly={true} value={rev.rating} itemStyles={ratingStars} />
                                                         <p className={s.reviewDetails__text}>{rev.text}</p>
                                                     </div>
-                                                    <div className={s.reviewDetails__socActions}>
-                                                        <img className={s.reviewDetails__socActions__icon} src={`${PF}images/icons/recipes/flag.svg`} alt="" />
-                                                        <img className={s.reviewDetails__socActions__icon} src={`${PF}images/icons/recipes/like.svg`} alt="" />
+                                                    <div className={s.reviewDetails__socActions} onClick={(e) => e.stopPropagation()}>
+                                                        <div className={s.reviewDetails__icons}>
+                                                            <img onClick={() => loggedInUser ? setActiveReportMenu(activeReportMenu === rev._id ? "" : rev._id) : setActiveLoginModal(true)} className={s.reviewDetails__socActions__icon} src={`${PF}images/icons/recipes/flag.svg`} alt="reportIcon" />
+                                                            <img onClick={() => {handleLike(rev._id); }} className={s.reviewDetails__socActions__icon} src={`${PF}images/icons/recipes/${rev.likes.includes(loggedInUser?._id) ? 'likeActive.svg' : 'like.svg'}`} alt="likeIcon" />
+                                                            {rev.likes.length > 0 ? <p className={s.likesCount}>{rev.likes.length}</p> : null}
+                                                        </div>
+                                                        <ul className={rev._id === activeReportMenu ? `${s.reportMenu} ${s.active}` : s.reportMenu}>
+                                                            <li onClick={() => handleReport({message : "SPAM (not the meat)", userId: rev.user._id, reviewId: rev._id})} className={s.reportMenu__item}>SPAM (not the meat)</li>
+                                                            <li onClick={() => handleReport({message : "Off the menu (irrelevant)", userId: rev.user._id, reviewId: rev._id})} className={s.reportMenu__item}>Off the menu (irrelevant)</li>
+                                                            <li onClick={() => handleReport({message : "Tasteless (inappropriate)", userId: rev.user._id, reviewId: rev._id})} className={s.reportMenu__item}>Tasteless (inappropriate)</li>
+                                                        </ul>
                                                     </div>
                                                 </div>
                                             </div>

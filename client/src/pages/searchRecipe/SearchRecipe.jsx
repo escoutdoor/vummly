@@ -46,11 +46,10 @@ const SearchRecipe = () => {
 
     useEffect(() => {
         const fetch = async () => {
-            setLoading(false)
             await axios.get(`/recipe/recipes?allowed=${allowed}&banned=${banned}&nutrition=${nutrition}&sort=${sortSettings}&time=${time}`).then((a) => {
                 setRecipes(a.data)
             })
-            setTimeout(() => setLoading(true), 100)
+            setLoading(true)
         }
         fetch()
     }, [allowed, banned, nutrition, sortSettings, time])

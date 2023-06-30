@@ -19,7 +19,7 @@ const reviewSchema = book.model('Review', new mongoose.Schema({
         required: true,
         default: ''
     },
-    likes: [{type: String}]
+    likes: [{type: mongoose.Schema.ObjectId}]
 },
 {timestamps: true}))
 

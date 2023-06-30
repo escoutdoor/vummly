@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { sideInf as list, about, privacy} from './../../helpers/thermometer/sidebar'
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux'
+import { login, selectUser } from '../../redux/features/userSlice';
 
 
 const Sidebar = ({setActive, activeLoginModal}) => {
@@ -12,21 +14,13 @@ const Sidebar = ({setActive, activeLoginModal}) => {
     const [selected, setSelected] = useState("")
     const [activeAbout, setActiveAbout] = useState(false)
 
-    const [user, setUser] = useState({})
+    const user = useSelector(selectUser)
+
     const year = new Date().getFullYear()
 
     useEffect(() => {
         list[0].dropdown && setSelected(list.find(l => l.dropdown?.find(d => d.link === location.pathname))?.title)
     }, [location.pathname])
-
-    useEffect(() => {
-        const getUser = async () => {
-            await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((user) => {
-                setUser(user.data)
-            })
-        }
-        localStorage.getItem('_auth') && getUser()
-    }, [activeLoginModal, user])
 
     return (
         <div className={s.sidebar}>
@@ -34,8 +28,8 @@ const Sidebar = ({setActive, activeLoginModal}) => {
                 <Link to={'/'}>
                     <img src={`${PF}images/logo/yummlyLogo.svg`} alt="logoIcon" />
                 </Link>
-                {user._id ? 
-                        <Link to={`/profile/${user.name}-${user._id}`}>
+                {user?._id ? 
+                        <Link to={`/profile/${user.name}-${user?._id}`}>
                             {user.avatar ? <img className={s.avatar} src={`${PF}images/avatars/${user.avatar}`} alt="avatar" /> : <img className={s.avatar} src={`${PF}images/avatars/no-avatar.webp`} alt="avatar" />}
                         </Link>
                     : 
@@ -72,8 +66,8 @@ const Sidebar = ({setActive, activeLoginModal}) => {
                     </div>
                 </div>
                 <ul className={s.docs}>
-                    {privacy.map((p) => (
-                        <li className={s.docs__item} title={p.label}>
+                    {privacy.map((p, index) => (
+                        <li key={index} className={s.docs__item} title={p.label}>
                             <Link to={p.link}>
                                 {p.label}
                             </Link>

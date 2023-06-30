@@ -3,11 +3,12 @@ import s from './profile.module.css'
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { logout } from '../../redux/features/userSlice';
+import { logout, selectUser } from '../../redux/features/userSlice';
 import ProfileSkeleton from '../../components/profileSkeleton/ProfileSkeleton';
 import SavedRecipes from '../../components/profileSections/savedRecipes/SavedRecipes';
 import Preferences from '../../components/profileSections/preferences/Preferences';
 import Settings from '../../components/profileSections/settings/Settings';
+import {useSelector} from 'react-redux'
 
 const Profile = () => {
     const PF = process.env.REACT_APP_BASE_URL;
@@ -15,7 +16,9 @@ const Profile = () => {
     const dispatch = useDispatch()
     const [isMe, setIsMe] = useState(false)
     const {id} = useParams()
-    const [loggedInUser, setNotLoggedInUser] = useOutletContext()
+
+    const loggedInUser = useSelector(selectUser)
+
     const [user, setUser] = useState({})
     const [loaded, setLoaded] = useState(false)
     const [section, setSection] = useState("saved recipes")
@@ -57,7 +60,6 @@ const Profile = () => {
         const fetch = async () => {
             await axios.get(`/user/${id.split("-")[1]}`).then((user) => {
                 setUser(user.data);
-                setNotLoggedInUser(user.data)
             })
             setLoaded(true)   
         }
