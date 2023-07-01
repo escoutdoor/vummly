@@ -2,8 +2,8 @@ import { Link, useLocation} from 'react-router-dom';
 import s from './searchRecipe.module.css'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import RecipeItem from '../../components/recipeItem/RecipeItem'
-import RecipeSkeleton from '../../components/recipeSkeleton/RecipeSkeleton';
+import RecipeItem from '../../components/recipeElements/recipeItem/RecipeItem'
+import RecipeItemSkeleton from '../../components/recipeElements/recipeItemSkeleton/RecipeItemSkeleton'
 import { navbar } from '../../helpers/searchRecipe/navbar';
 import Inputs from '../../components/filterSearch/inputs/Inputs'
 import Buttons from '../../components/filterSearch/buttons/Buttons';
@@ -170,7 +170,7 @@ const SearchRecipe = () => {
                             {results.length !== 0 && <h1 className={s.suggestedRecipes__title}>{results.length} suggested recipes</h1>}
                             {(results.length === 0 && loading) ? <NoResults length={results.length} searchVal={searchValue}/> : null}
                             {<div className={s.recipeList}>
-                                {!loading && <RecipeSkeleton recipes={100}/>}
+                                {!loading && <RecipeItemSkeleton recipes={100}/>}
                                 {results.map((r) => (
                                     <RecipeItem key={r._id} recipe={r} rating={r.rating}/> 
                                 ))}

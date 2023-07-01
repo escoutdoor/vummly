@@ -11,10 +11,11 @@ router.get('/getUser/:token', async(req, res) => {
         const decoded = jwt.verify(req.params.token, process.env.JWT_SECRET)
 
         if(!decoded) {
-            res.status(404).json("Something went wrong...")
-        } 
-        const user = await User.findOne({_id: decoded.id})
-        decoded && res.status(200).json(user)
+            localStorage.removeItem('_auth')    
+        } else {
+            const user = await User.findOne({_id: decoded.id})
+            res.status(200).json(user)
+        }
     } catch (error) {
         res.status(400).json(error)
     }

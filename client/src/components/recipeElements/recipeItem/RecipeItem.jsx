@@ -5,7 +5,7 @@ import '@smastrom/react-rating/style.css'
 import { useInView } from 'react-intersection-observer';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
-import RecipeSkeleton from '../recipeSkeleton/RecipeSkeleton';
+import RecipeItemSkeleton from '../recipeItemSkeleton/RecipeItemSkeleton';
 import { useEffect, useState } from 'react';
 
 const RecipeItem = ({recipe, loading, setLoading, rating}) => {
@@ -47,7 +47,7 @@ const RecipeItem = ({recipe, loading, setLoading, rating}) => {
                     </div>
                     <Rating halfFillMode='svg' className={s.ratingStars} readOnly={true} value={rating || 0} itemStyles={ratingStars} />
                 </div> 
-            : <RecipeSkeleton />}
+            : <RecipeItemSkeleton />}
         </div>
     );
 };

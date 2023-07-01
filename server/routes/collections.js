@@ -19,20 +19,20 @@ router.get('/all/:id/:recipeId', async (req, res) => {
 
 router.put('/:userId/:recipeId', async (req, res) => {
     try {
-        const existsColl = await Collection.findOne({userId: req.params.userId, name: req.body.collectionName})
+        const existsColl = await Collection.findOne({userId: req.params.userId, name: req.body.name})
 
         if(existsColl) {
             if(!existsColl.recipes.find(r => r.recipeId.toString() === req.params.recipeId)) {
-                const updated = await Collection.findOneAndUpdate({userId: req.params.userId, name: req.body.collectionName}, {$push: {recipes : {recipeId: req.params.recipeId}}}, {new: true})
+                const updated = await Collection.findOneAndUpdate({userId: req.params.userId, name: req.body.name}, {$push: {recipes : {recipeId: req.params.recipeId}}}, {new: true})
                 res.status(200).json(updated)
             } else {
-                const deleted = await Collection.findOneAndUpdate({userId: req.params.userId, name: req.body.collectionName}, {$pull: {recipes : {recipeId: req.params.recipeId}}}, {new: true})
+                const deleted = await Collection.findOneAndUpdate({userId: req.params.userId, name: req.body.name}, {$pull: {recipes : {recipeId: req.params.recipeId}}}, {new: true})
                 res.status(200).json(deleted)
             }
         } else {
             const newColl = await new Collection({
                 userId: req.params.userId,
-                name: req.body.collectionName,
+                name: req.body.name,
                 recipes: [{recipeId: req.params?.recipeId}]
             })
             const savedColl = await newColl.save()

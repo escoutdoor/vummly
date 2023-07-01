@@ -2,12 +2,14 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate, useOutletContext, useParams } from 'react-router-dom';
 import s from './collection.module.css'
-import RecipeItem from './../../components/recipeItem/RecipeItem'
 import DeleteCollection from '../../components/deleteCollectionModa/DeleteCollection';
+import RecipeItem from '../../components/recipeElements/recipeItem/RecipeItem';
+import { selectUser } from '../../redux/features/userSlice';
+import {useSelector} from 'react-redux'
 
 const Collection = () => {
     const {userId, collectionName} = useParams()
-    const [user] = useOutletContext()
+    const user = useSelector(selectUser)
     const [activeModal, setActiveModal] = useState(false)
     const [activeSortMenu, setActiveSortMenu] = useState(false)
     const [sortSettings, setSortSettings] = useState("last added")

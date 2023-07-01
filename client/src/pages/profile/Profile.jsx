@@ -3,7 +3,7 @@ import s from './profile.module.css'
 import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import { logout, selectUser } from '../../redux/features/userSlice';
+import { login, logout, selectUser } from '../../redux/features/userSlice';
 import ProfileSkeleton from '../../components/profileSkeleton/ProfileSkeleton';
 import SavedRecipes from '../../components/profileSections/savedRecipes/SavedRecipes';
 import Preferences from '../../components/profileSections/preferences/Preferences';
@@ -44,7 +44,10 @@ const Profile = () => {
             headers: {
                 'content-type' : 'multipart/form-data'
             }
-        }).then((d) => setUser(d.data))
+        }).then((d) => {
+            setUser(d.data)
+            dispatch(login(d.data))
+        })
     }
 
     useEffect(() => {

@@ -1,0 +1,123 @@
+.ingredients {
+    display: block;
+    width: 100%;
+    color: #4a4a4a;
+    margin-bottom: 28px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title {
+    color: #242424;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.measurementSelect {
+    display: flex;
+    align-items: center;
+}
+
+.measurementSelect__item {
+    font-weight: 700;
+    font-size: 12px;
+    color: #bababa;
+    text-transform: uppercase;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+
+.measurementSelect__item:first-child {
+    border-right: 1px solid #bababa;
+}
+
+.measurementSelect__item.active {
+    color: #3a9691;
+}
+
+.servings {
+    text-transform: uppercase;  
+    font-size: 12px;
+    letter-spacing: 1;
+}
+
+.list {
+    padding: 20px 0px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.orderButton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0px 32px;
+    height: 40px;
+    color: #fff;
+    background: #3a9691;
+    width: fit-content;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 42px;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+.orderButton:hover {
+    filter: brightness(90%);
+}
+
+.checkButton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.checkButton__status {
+    font-size: 14px;
+    color: #242424;
+    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.checkButton:hover .checkButton__status {
+    color: #3a9691;
+}
+
+.manage {
+    padding: 14px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #bababa;
+    border-bottom: 1px solid #bababa;
+}
+
+.mealPlanner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mealPlanner__button {
+    font-size: 14px;
+    color: #4a4a4a;
+    line-height: 24px;
+    font-weight: 700;
+    cursor: pointer;
+}

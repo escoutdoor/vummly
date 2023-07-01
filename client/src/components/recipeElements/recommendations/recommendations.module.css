@@ -1,0 +1,33 @@
+.recommendations {
+    display: flex;
+    flex-direction: column;
+    margin: 36px 0px;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.category__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.title,
+.light__title {
+    font-size: 24px;
+    color: #707070;
+    line-height: 32px;
+}
+
+.light__title {
+    font-weight: 100;
+}
+
+.list {
+    display: flex;
+    justify-content: space-between;
+}

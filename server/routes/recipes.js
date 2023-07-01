@@ -10,7 +10,7 @@ const Collection = require('../models/Collection');
 
 
 
-router.get('/one/:recipeId', async (req, res) => {
+router.get('/getOne/:recipeId', async (req, res) => {
     try {
         
         const [recipe] = await Recipe.aggregate([
@@ -64,7 +64,6 @@ router.get('/one/:recipeId', async (req, res) => {
                         "rating": {$avg: "$reviews.rating"},
                         "reviews.user":{$arrayElemAt: ["$users", 0]},
                         "collections" : {$size: "$collections"},
-                        // "reviews.likesCount": { $size: "$reviews.likes" }
                     }},
                     {$sort: {"reviews.createdAt" : -1}},
                     {$group: {
@@ -92,8 +91,7 @@ router.get('/one/:recipeId', async (req, res) => {
             }
         ])
         
-        res.status(200).json({recipe: recipe.recipe, related: recipe.related, more: recipe.more})
-
+        res.status(200).json(recipe)
 
     } catch (err) {
         res.status(404).json(err)

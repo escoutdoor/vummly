@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import s from './resource.module.css'
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom';
-import RecipeItem from '../../components/recipeItem/RecipeItem';
 import Skeleton from 'react-loading-skeleton';
-import RecipeSkeleton from '../../components/recipeSkeleton/RecipeSkeleton';
 import NoResults from '../../components/noResults/NoResults';
+import RecipeItem from '../../components/recipeElements/recipeItem/RecipeItem'
+import RecipeItemSkeleton from '../../components/recipeElements/recipeItemSkeleton/RecipeItemSkeleton'
 
 const Resource = () => {
     const [page, setPage] = useState([])
@@ -62,7 +62,7 @@ const Resource = () => {
                             </div>
                         </div>
                         <div className={s.recipes}>
-                            {!loading && <RecipeSkeleton recipes={50}/>}
+                            {!loading && <RecipeItemSkeleton recipes={50}/>}
                             {searched.map((p) => (
                                 <RecipeItem recipe={p} key={p._id} rating={p.rating}/>
                             ))}

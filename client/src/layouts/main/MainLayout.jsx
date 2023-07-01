@@ -17,14 +17,9 @@ const MainLayout = () => {
 
     useEffect(() => {
         const fetchme = async () => {
-            try {
-                await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((me) => {
-                    dispatch(login(me.data))
-                })
-            } catch (error) {
-                localStorage.removeItem('_auth')
-                dispatch(logout({}))
-            }
+            await axios.get(`/user/getUser/${JSON.parse(localStorage.getItem('_auth'))}`).then((me) => {
+                dispatch(login(me.data))
+            })
         }
         localStorage.getItem('_auth') && fetchme()
     }, [])

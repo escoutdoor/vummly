@@ -1,8 +1,8 @@
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import s from './recipeSkeleton.module.css'
+import s from './recipeItemSkeleton.module.css'
 
-const RecipeSkeleton = ({recipes}) => {
+const RecipeItemSkeleton = ({recipes}) => {
     return (
         Array(recipes).fill(0).map((recipe, i) => (
             <div className={s.recipe} key={i}>
@@ -16,4 +16,4 @@ const RecipeSkeleton = ({recipes}) => {
     ); 
 };
 
-export default RecipeSkeleton;
+export default RecipeItemSkeleton;

@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import s from './savedRecipes.module.css'
 import {Link, useNavigate} from 'react-router-dom'
-import RecipeItem from '../../recipeItem/RecipeItem'
+import RecipeItem from '../../recipeElements/recipeItem/RecipeItem'
+import RecipeItemSkeleton from '../../recipeElements/recipeItemSkeleton/RecipeItemSkeleton'
+
 import axios from 'axios';
 import CollectionItem from '../../collection/CollectionItem';
-import RecipeSkeleton from '../../recipeSkeleton/RecipeSkeleton';
 import AddCollection from '../../collection/addCollection/AddCollection';
 import FindRecipes from '../../findRecipes/FindRecipes';
 
@@ -67,7 +68,7 @@ const SavedRecipes = ({user, isMe}) => {
                     <Link to={'collections/all-vums'} className={s.seeAll}>SEE ALL</Link>
                 </div>
                 <div className={s.allRecipes}>
-                    {!loaded && <RecipeSkeleton recipes={6}/>}
+                    {!loaded && <RecipeItemSkeleton recipes={6}/>}
                     {isMe && loaded && <FindRecipes />}
                     {recipes.slice(0, (isMe ? 5 : 6)).map((r, index) => (
                         <RecipeItem key={index} recipe={r} rating={r.rating}/>
@@ -91,7 +92,7 @@ const SavedRecipes = ({user, isMe}) => {
                     </div>
                 </div>
                 <div className={s.allRecipes}>
-                    {!loaded && <RecipeSkeleton recipes={6}/>}
+                    {!loaded && <RecipeItemSkeleton recipes={6}/>}
                     {isMe && loaded && <AddCollection setCollections={setCollectionsLastModified} collections={collectionsLastModified} user={user}/>}
                     {sortSettings === 'last modified' ? collectionsLastModified.map((c) => (
                         <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes.at(-1)?.recipeId)?.id}/>
