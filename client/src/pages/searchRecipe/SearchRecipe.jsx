@@ -22,17 +22,20 @@ const SearchRecipe = () => {
     const [openSort, setOpenSort] = useState(false)
     const [sortSettings, setSortSettings] = useState('relevance')
     const [results, setResults] = useState([])
-    const [sorted, setSorted] = useState([])
     const [activeFilter, setActiveFilter] = useState(false)
     const [proRecipesOnly, setProRecipesOnly] = useState(false)
     const [guidedRecipesOnly, setGuidedRecipesOnly] = useState(false)
     const [filterPage, setFilterPage] = useState("ingredients")
+
     const [allowed, setAllowed] = useState("")
     const [banned, setBanned] = useState("")
+
     const [ingredients, setIngredients] = useState([])
+
     const [time, setTime] = useState()
     const [nutrition, setNutrition] = useState("")
     const [toolTips, setToolTips] = useState([])
+
     const [allowedRequest, setAllowedRequest] = useState([])
     const [bannedRequest, setBannedRequest] = useState([])
     // state settings
@@ -70,7 +73,6 @@ const SearchRecipe = () => {
     }, [])
 
 
-    // reset
 
     const resetEverything = () => {
         setAllowed([])

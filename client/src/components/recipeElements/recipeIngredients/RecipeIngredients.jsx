@@ -46,7 +46,7 @@ const RecipeIngredients = ({ user, setActiveModal, recipe, loaded, include, addT
                     <img src={`${PF}images/icons/recipes/shopping-bag.svg`} alt="" />
                     add all to shopping list
                 </button>
-                <div className={s.checkButton} onClick={() => madeIt ? deleteFromCollection("Scheduled and Made") : addToCollection("Scheduled and Made")}>
+                <div className={s.checkButton} onClick={() => user ? madeIt ? deleteFromCollection("Scheduled and Made") : addToCollection("Scheduled and Made") : setActiveModal(true)}>
                     <h1 className={s.checkButton__status}>{madeIt ? "Made it!" : "Did you make this?"}</h1>
                     <img src={madeIt ? `${PF}images/icons/recipes/check-circleActive.svg` : `${PF}images/icons/recipes/check-circle.svg`} alt="checkedRecipe" />
                 </div>

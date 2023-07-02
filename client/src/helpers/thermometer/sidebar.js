@@ -1,7 +1,6 @@
 
 
-
-let sideInf = [
+let list = [
     {
         id:1,
         title: 'Smart Thermometer',
@@ -24,15 +23,11 @@ let sideInf = [
     {
         id:5,
         title: 'Saved Recipes',
-    },
-    {
-        id:6,
-        title: 'More Tools',
-        dropdown: [{label : 'Bookmarklet', link: '/bookMarklet'},{label : 'Yum Button', link: '/yumButt'}],
+        dropdown: []
     },
 ]
 
-export {sideInf};
+export {list}
 
 let about = [
     {label : 'Careers', link: '/careers'},

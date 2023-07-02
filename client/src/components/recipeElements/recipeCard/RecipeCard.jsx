@@ -68,7 +68,8 @@ const RecipeCard = ({user, setActiveModal, recipe, loaded, include, setInclude, 
                         <div className={s.review}>
                             <Link to={`/profile/${recipe.reviews[0].user.name}-${recipe.reviews[0].user._id}`}>
                                 <h1 className={s.review__username}>{recipe.reviews[0].user.name}</h1> 
-                            </Link> : {recipe.reviews[0].text}
+                            </Link> 
+                            : {recipe.reviews[0].text}
                         </div>
                     :
                         null

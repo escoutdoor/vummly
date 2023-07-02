@@ -27,7 +27,7 @@ const Main = ({active, setActive}) => {
 
     useEffect(() => {
         const fetch = async () => {
-            await axios.get(`/user/getAll`).then(users => setUsers(users.data))
+            await axios.get(`/user/getAll`).then(users => setUsers(users.data)) 
         }
         active && fetch()
     }, [active])
@@ -78,14 +78,14 @@ const Main = ({active, setActive}) => {
             name: name,
             mail: mail,
             password: password
-        }).then(u => {dispatch(login(u.data)); setActivePage('start'); setActive(false); localStorage.setItem("_auth", JSON.stringify(u.data.token))})
+        }, {withCredentials: true}).then(u => {dispatch(login(u.data)); setActivePage('start'); setActive(false); localStorage.setItem("_auth", JSON.stringify(u.data.token))})
     }
 
 
     const logInUser = async () => {
         await axios.post(`/auth/login`, {
             mail, password
-        })
+        }, { withCredentials: true })
         .then(u => {
             dispatch(login(u.data)); 
             setActivePage('start'); 

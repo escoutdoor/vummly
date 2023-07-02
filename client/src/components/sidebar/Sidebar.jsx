@@ -1,6 +1,6 @@
 import s from './sidebar.module.css'
 import { useEffect, useState } from 'react';
-import { sideInf as list, about, privacy} from './../../helpers/thermometer/sidebar'
+import { list, about, privacy} from './../../helpers/thermometer/sidebar'
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,6 +10,7 @@ import { login, selectUser } from '../../redux/features/userSlice';
 const Sidebar = ({setActive, activeLoginModal}) => {
     const PF = process.env.REACT_APP_BASE_URL;
     const location = useLocation()
+    const path = decodeURIComponent(location.pathname)
 
     const [selected, setSelected] = useState("")
     const [activeAbout, setActiveAbout] = useState(false)
@@ -19,8 +20,28 @@ const Sidebar = ({setActive, activeLoginModal}) => {
     const year = new Date().getFullYear()
 
     useEffect(() => {
-        list[0].dropdown && setSelected(list.find(l => l.dropdown?.find(d => d.link === location.pathname))?.title)
+        setSelected(list.find(l => l.dropdown?.find(d => d.link === path))?.title)
     }, [location.pathname])
+
+    const fetch = async () => {
+        await axios.get(`/collections/getAll/${user._id}`).then((collections) => {
+            list.find(l => l.title === "Saved Recipes").dropdown = collections.data.map((c) => {
+                return {
+                    label: c.name,
+                    link: `/profile/${user.name}-${user._id}/collections/${c.name}`
+                }
+            })
+            // setSelected(list.find(l => l.dropdown?.find(d => d.link === path))?.title)
+        })
+    }
+
+    useEffect(() => {
+        if(user) {
+            fetch()
+        }   
+    }, [user])
+
+
 
     return (
         <div className={s.sidebar}>
@@ -45,7 +66,7 @@ const Sidebar = ({setActive, activeLoginModal}) => {
                         </div>
                         <div className={selected === item.title ? `${s.dropdown} ${s.active}` :  s.dropdown}>
                             {item.dropdown && item.dropdown.map((d, index) => (
-                                <Link title={d.label}  style={{color: d.link === location.pathname && '#3a9691'}}  key={index} to={d.link} className={selected === item.title ? `${s.subtitle} ${s.active}` : s.subtitle}>{d.label}</Link>
+                                <Link title={d.label}  style={{color: d.link === path && '#3a9691'}}  key={index} to={d.link} className={selected === item.title ? `${s.subtitle} ${s.active}` : s.subtitle}>{d.label}</Link>
                             ))}
                         </div>
                     </div>
@@ -59,7 +80,7 @@ const Sidebar = ({setActive, activeLoginModal}) => {
                     </div>
                     <div className={activeAbout ? `${s.aboutList} ${s.active}` : s.aboutList}>
                         {about.map((a, index) => (
-                            <Link title={a.label} style={{color: a.link === location.pathname && '#3a9691'}} key={index} to={a.link} className={activeAbout ? `${s.subtitle} ${s.active}` :  s.subtitle}>
+                            <Link title={a.label} style={{color: a.link === path && '#3a9691'}} key={index} to={a.link} className={activeAbout ? `${s.subtitle} ${s.active}` :  s.subtitle}>
                                 {a.label}
                             </Link>
                         ))}

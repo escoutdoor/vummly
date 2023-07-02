@@ -150,7 +150,7 @@ const Profile = () => {
                             <div className={s.userRight}>
                                 {isMe ? <div className={s.editName} onClick={(e) => e.stopPropagation()}>
                                     <h1 onClick={() => setActiveName(true)} className={activeName ? `${s.username} ${s.active}` :  s.username}>{name}</h1>
-                                    <input ref={nameInput} type="text" value={name} className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput} onChange={(e) => setName(e.target.value)} />
+                                    <input ref={nameInput} type="text" value={name || ""} className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput} onChange={(e) => setName(e.target.value)} />
                                 </div> : <h1 className={`${s.username} ${s.me}`}>{user?.name}</h1>}
                                 {isMe ? <div className={s.editText} onClick={(e) => e.stopPropagation()}>
                                     <p onClick={() => setActiveDescription(true)} className={!activeDescription ? `${s.editText__target} ${s.active}` : s.editText__target}>{user?.description || 'Tell us about yourself here'}</p>
@@ -161,11 +161,11 @@ const Profile = () => {
                                 </div> : user.description ?  <p className={`${s.editText__target} ${s.me}`}>{user.description}</p> : null}
                                 {isMe ? <div className={s.location} onClick={(e) => e.stopPropagation()}>
                                     <div className={s.locationItem} >
-                                        <input ref={cityInput} placeholder='City' type="text" className={activeCity ? `${s.editLocation} ${s.active}` : s.editLocation} onChange={(e) => setCity(e.target.value)} value={city}/>
+                                        <input ref={cityInput} placeholder='City' type="text" className={activeCity ? `${s.editLocation} ${s.active}` : s.editLocation} onChange={(e) => setCity(e.target.value)} value={city || ""}/>
                                         <p onClick={() => { setActiveCity(true);}} className={activeCity ? `${s.locationTextCity} ${s.active}` : s.locationTextCity} >{city || 'City'}</p>
                                     </div>,
                                     <div className={s.locationItem}  >
-                                        <input ref={countryInput} placeholder='Country' type="text" className={activeCountry ? `${s.editLocation} ${s.active}` : s.editLocation} onChange={(e) => setCountry(e.target.value)} value={country}/>
+                                        <input ref={countryInput} placeholder='Country' type="text" className={activeCountry ? `${s.editLocation} ${s.active}` : s.editLocation} onChange={(e) => setCountry(e.target.value)} value={country || ""}/>
                                         <p onClick={() => { setActiveCountry(true)}} className={activeCountry ? `${s.locationTextCountry} ${s.active}` : s.locationTextCountry}>{country || 'Country'}</p>
                                     </div>
                                 </div> : 

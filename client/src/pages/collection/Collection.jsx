@@ -39,7 +39,7 @@ const Collection = () => {
             setLoaded(true)
         }
         fetchCollection()
-    }, [])
+    }, [collectionName])
 
     useEffect(() => {
         document.title = collection?.name ? `${collection.name} by ${userId.split("-")[0]} on Vummly` : 'Vummly'
