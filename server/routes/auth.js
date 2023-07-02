@@ -3,6 +3,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Collection = require('../models/Collection');
+const { generateToken } = require('../middleware/verifyUser');
 
 
 router.post('/createOne', async (req, res) => {
@@ -15,7 +16,9 @@ router.post('/createOne', async (req, res) => {
             password: hashedPass,
         });
 
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {expiresIn: '72h'})
+        if(user) {
+            const token = generateToken(user)
+        }
 
         const saved = await user.save()
         res.status(200).json({token})
@@ -36,8 +39,11 @@ router.post('/login', async (req, res) => {
         const pass = await bcrypt.compare(password, user.password)
 
         if(pass) {
-            const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {expiresIn: '72h'})
+
+            const token = generateToken(user)
+
             res.status(200).json({token})
+
         } else {
             res.status(404).json("Something went wrong")
         }

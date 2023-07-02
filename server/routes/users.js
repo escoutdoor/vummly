@@ -10,16 +10,18 @@ router.get('/getUser/:token', async(req, res) => {
     try {
         const decoded = jwt.verify(req.params.token, process.env.JWT_SECRET)
 
-        if(!decoded) {
-            localStorage.removeItem('_auth')    
-        } else {
+        if(decoded) {
             const user = await User.findOne({_id: decoded.id})
             res.status(200).json(user)
+        } else {
+            res.status(404).json("nothing")
         }
+
     } catch (error) {
         res.status(400).json(error)
     }
 })
+
 
 router.get('/getAll', async (req, res) => {
     try {
@@ -29,6 +31,7 @@ router.get('/getAll', async (req, res) => {
         res.status(500).json(error)
     }
 })
+
 
 router.get('/:id', async (req, res) => {
     try {

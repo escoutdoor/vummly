@@ -4,6 +4,21 @@ const Recipe = require('../models/Recipe')
 const ObjectId = require('mongoose').Types.ObjectId
 
 
+
+router.get('/getAll/:userId', async (req, res) => {
+    try {
+        const collections = await Collection.find(
+            {userId: new ObjectId(req.params.userId)}
+        )
+
+        res.status(200).json(collections)
+    } catch (error) {
+        res.status(404).json(error)
+    }
+})
+
+
+
 // all collections for recipes
 
 router.get('/all/:id/:recipeId', async (req, res) => {
