@@ -1,87 +1,109 @@
 import s from './recipe.module.css'
-import { useParams, useOutletContext } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { selectUser } from '../../redux/features/userSlice';
+import { useParams, useOutletContext } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { selectUser } from '../../redux/features/userSlice'
 import axios from 'axios'
 import { useSelector } from 'react-redux'
 
 import '@smastrom/react-rating/style.css'
 
-import RecipeCard from '../../components/recipeElements/recipeCard/RecipeCard';
-import RecipeIngredients from '../../components/recipeElements/recipeIngredients/RecipeIngredients';
-import Nutrition from '../../components/recipeElements/nutrition/Nutrition';
-import Reviews from '../../components/recipeElements/reviews/Reviews';
-import Recommendations from '../../components/recipeElements/recommendations/Recommendations';
+import RecipeCard from '../../components/recipeElements/recipeCard/RecipeCard'
+import RecipeIngredients from '../../components/recipeElements/recipeIngredients/RecipeIngredients'
+import Nutrition from '../../components/recipeElements/nutrition/Nutrition'
+import Reviews from '../../components/recipeElements/reviews/Reviews'
+import Recommendations from '../../components/recipeElements/recommendations/Recommendations'
 
 const Recipe = () => {
-    const PF = process.env.REACT_APP_BASE_URL;
-    const {recipeId} = useParams()
-    const [setActiveLoginModal] = useOutletContext()
-    const user = useSelector(selectUser)
-    const [loaded, setLoaded] = useState(false)
+	const PF = process.env.REACT_APP_BASE_URL
+	const { recipeId } = useParams()
+	const [setActiveLoginModal] = useOutletContext()
+	const user = useSelector(selectUser)
+	const [loaded, setLoaded] = useState(false)
 
-    const [recipe, setRecipe] = useState({})
-    const [relatedRecipes, setRelatedRecipes] = useState([])
-    const [moreRecipes, setMoreRecipes] = useState([])
+	const [recipe, setRecipe] = useState({})
+	const [relatedRecipes, setRelatedRecipes] = useState([])
+	const [moreRecipes, setMoreRecipes] = useState([])
 
-    const [include, setInclude] = useState([])
-    const [notInclude, setNotInclude] = useState([])
+	const [include, setInclude] = useState([])
+	const [notInclude, setNotInclude] = useState([])
 
+	const fetch = async () => {
+		await axios.get(`/recipe/getOne/${recipeId}`).then(recipe => {
+			setRecipe(recipe.data.recipe)
+			setRelatedRecipes(recipe.data.related)
+			setMoreRecipes(recipe.data.more)
+			document.title = `${recipe.data.recipe.title} | Vummly`
+		})
+	}
 
-    const fetch = async () => {
-        await axios.get(`/recipe/getOne/${recipeId}`).then((recipe) => {
-            setRecipe(recipe.data.recipe)
-            setRelatedRecipes(recipe.data.related)
-            setMoreRecipes(recipe.data.more)
-            document.title = `${recipe.data.recipe.title} | Vummly`
-        })
-    }
+	useEffect(() => {
+		if (recipeId) {
+			fetch()
+			setTimeout(() => setLoaded(true), 500)
+		}
+	}, [recipeId])
 
-    useEffect(() => {
-        if(recipeId) {
-            fetch()
-            setTimeout(() => setLoaded(true), 500)
-        }
-    }, [recipeId])
+	const deleteFromCollection = async name => {
+		if (name) {
+			await axios.put(`/collections/${user._id}/${recipe._id}`, { name }).then(col => {
+				setInclude(include.filter(collection => collection.name !== col.data.name))
+				setNotInclude([...notInclude, col.data])
+			})
+		}
+	}
 
-    const deleteFromCollection = async (name) => {
-        if(name) {
-            await axios.put(`/collections/${user._id}/${recipe._id}`, {name}).then((col) => {
-                setInclude(include.filter(collection => collection.name !== col.data.name))
-                setNotInclude([...notInclude, col.data])
-            })
-        }
-    }
+	const addToCollection = async name => {
+		if (name) {
+			await axios.put(`/collections/${user._id}/${recipe._id}`, { name }).then(col => {
+				setNotInclude(notInclude.filter(collection => collection.name !== col.data.name))
+				setInclude([...include, col.data])
+			})
+		}
+	}
 
-    const addToCollection = async (name) => {
-        if(name) {
-            await axios.put(`/collections/${user._id}/${recipe._id}`, {name}).then((col) => {
-                setNotInclude(notInclude.filter(collection => collection.name !== col.data.name))
-                setInclude([...include, col.data])
-            })
-        }
-    }
+	const addMealPlanner = async () => {
+		if (user) {
+			console.log('addMealPlanner ok')
+		} else {
+			setActiveLoginModal(true)
+		}
+	}
 
-    const addMealPlanner = async () => {
-        if(user) {
-            console.log("addMealPlanner ok");
-        } else {
-            setActiveLoginModal(true)
-        }
-    }
+	return (
+		<div className={s.recipe}>
+			<div className={s.wrapper}>
+				<RecipeCard
+					addMealPlanner={addMealPlanner}
+					addToCollection={addToCollection}
+					deleteFromCollection={deleteFromCollection}
+					user={user}
+					setActiveModal={setActiveLoginModal}
+					recipe={recipe}
+					loaded={loaded}
+					include={include}
+					setInclude={setInclude}
+					notInclude={notInclude}
+					setNotInclude={setNotInclude}
+				/>
+				<RecipeIngredients
+					addMealPlanner={addMealPlanner}
+					addToCollection={addToCollection}
+					deleteFromCollection={deleteFromCollection}
+					user={user}
+					setActiveModal={setActiveLoginModal}
+					recipe={recipe}
+					loaded={loaded}
+					include={include}
+					setInclude={setInclude}
+					notInclude={notInclude}
+					setNotInclude={setNotInclude}
+				/>
+				<Nutrition user={user} loaded={loaded} recipe={recipe} />
+				<Reviews user={user} recipe={recipe} loaded={loaded} setActiveLoginModal={setActiveLoginModal} fetch={fetch} />
+				<Recommendations related={relatedRecipes} more={moreRecipes} />
+			</div>
+		</div>
+	)
+}
 
-
-    return (
-        <div className={s.recipe}>
-            <div className={s.wrapper}>
-                <RecipeCard addMealPlanner={addMealPlanner} addToCollection={addToCollection} deleteFromCollection={deleteFromCollection} user={user} setActiveModal={setActiveLoginModal} recipe={recipe} loaded={loaded} include={include} setInclude={setInclude} notInclude={notInclude} setNotInclude={setNotInclude}/>
-                <RecipeIngredients addMealPlanner={addMealPlanner} addToCollection={addToCollection} deleteFromCollection={deleteFromCollection} user={user} setActiveModal={setActiveLoginModal} recipe={recipe} loaded={loaded} include={include} setInclude={setInclude} notInclude={notInclude} setNotInclude={setNotInclude}/>
-                <Nutrition user={user} loaded={loaded} recipe={recipe}/>
-                <Reviews user={user} recipe={recipe} loaded={loaded} setActiveLoginModal={setActiveLoginModal} fetch={fetch}/>
-                <Recommendations related={relatedRecipes} more={moreRecipes} />
-            </div>
-        </div>
-    )
-};
-
-export default Recipe;
+export default Recipe

@@ -1,143 +1,142 @@
 .navbar {
-    position: fixed;
-    top: 0px;
-    background: #fff;
-    z-index: 99;
-    right: 0;
-    padding: 20px 40px;
-    width: -webkit-calc(100% - 216px);
-    width: calc(100% - 216px);
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	position: fixed;
+	top: 0px;
+	background: #fff;
+	z-index: 99;
+	right: 0;
+	padding: 20px 40px;
+	width: -webkit-calc(100% - 216px);
+	width: calc(100% - 216px);
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .navbar-container {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .navbar__title {
-    cursor: pointer;
-    font-size: 18px;
-    color: #232323;
-    line-height: 18px;
+	cursor: pointer;
+	font-size: 18px;
+	color: #232323;
+	line-height: 18px;
 }
 
 .navbar__buttons {
-    display: flex;
-    margin-top: 10px;
-    gap: 40px;
-    transition: .2s all cubic-bezier(0.075, 0.82, 0.165, 1);
+	display: flex;
+	margin-top: 10px;
+	gap: 40px;
+	transition: 0.2s all cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .navbar__buttons.hide {
-    transform: translateY(-80px);
-    opacity: 0;
-    visibility: hidden;
+	transform: translateY(-80px);
+	opacity: 0;
+	visibility: hidden;
 }
 
 .shipping {
-    opacity: 0;
-    visibility: hidden;
-    position: absolute;
-    color: #232323;
-    font-size: 14px;
-    line-height: 24px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-60%, -50%);
-    margin-top: 60px;
-    transition: margin .2s cubic-bezier(0.075, 0.82, 0.165, 1), opacity .1s ease;
+	opacity: 0;
+	visibility: hidden;
+	position: absolute;
+	color: #232323;
+	font-size: 14px;
+	line-height: 24px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-60%, -50%);
+	margin-top: 60px;
+	transition: margin 0.2s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 0.1s ease;
 }
 
 .shipping.show {
-    opacity: 1;
-    visibility: visible;
-    margin-top: 0px;
+	opacity: 1;
+	visibility: visible;
+	margin-top: 0px;
 }
 
 .navbar__buttons-item {
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #4a4a4a;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 21px;
-    padding-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #4a4a4a;
+	font-weight: 700;
+	font-size: 14px;
+	line-height: 21px;
+	padding-bottom: 10px;
 }
 
-.navbar__buttons-item.selected{
-    border-bottom: 3px solid #3a9691;
-    padding-bottom: 10px;
-    color: #3a9691;
+.navbar__buttons-item.selected {
+	border-bottom: 3px solid #3a9691;
+	padding-bottom: 10px;
+	color: #3a9691;
 }
 
 /* addCart */
 
 .navbar__addTocart {
-    display: flex;
-    width: 250px; 
-    align-items: center;
-    gap: 15px;
+	display: flex;
+	width: 250px;
+	align-items: center;
+	gap: 15px;
 }
 
-.addTocart__price{
-    display: flex;    
-    text-align: center;
-    flex-direction: column;
+.addTocart__price {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
 }
 
 .addTocart__price h1 {
-    color: #e16120;
-    font-size: 20px;
-    line-height: 20px;
+	color: #e16120;
+	font-size: 20px;
+	line-height: 20px;
 }
 
 .addTocart__price p {
-    color: #707070;
-    line-height: 12px;
-    font-size: 12px;
-    text-decoration: line-through;
+	color: #707070;
+	line-height: 12px;
+	font-size: 12px;
+	text-decoration: line-through;
 }
 
 .addToCart__buttons {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
 }
 
 .addTocart__butt {
-    display: inline-block;
-    text-transform: capitalize;
-    padding: 0px 32px;
-    color: #fff;
-    background: #3a9691;
-    cursor: pointer;
-    border-radius: 42px;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 40px;
+	display: inline-block;
+	text-transform: capitalize;
+	padding: 0px 32px;
+	color: #fff;
+	background: #3a9691;
+	cursor: pointer;
+	border-radius: 42px;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 40px;
 }
 .addTocart__cart {
-    display: flex;
-    position: relative;
-    align-items: flex-start;
+	display: flex;
+	position: relative;
+	align-items: flex-start;
 }
 
 .activeBadge {
-    content: '';
-    top: -7px;
-    right: -4px;
-    border-radius: 50%;
-    position: absolute;
-    background-color: #3a9691;
-    width: 7px;
-    height: 7px;
+	content: '';
+	top: -7px;
+	right: -4px;
+	border-radius: 50%;
+	position: absolute;
+	background-color: #3a9691;
+	width: 7px;
+	height: 7px;
 }
 
 .cartImg {
-    width: 20px;
-    height: 20px;
+	width: 20px;
+	height: 20px;
 }
-
