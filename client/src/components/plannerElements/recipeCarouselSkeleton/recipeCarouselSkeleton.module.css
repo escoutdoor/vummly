@@ -1,0 +1,10 @@
+.skeleton {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.recipes {
+	display: flex;
+	justify-content: space-between;
+}

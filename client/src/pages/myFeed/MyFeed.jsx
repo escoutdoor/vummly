@@ -5,6 +5,7 @@ import axios from 'axios'
 
 import RecipeItem from '../../components/recipeElements/recipeItem/RecipeItem'
 import RecipeItemSkeleton from '../../components/recipeElements/recipeItemSkeleton/RecipeItemSkeleton'
+import { useOutletContext } from 'react-router-dom'
 
 const MyFeed = () => {
 	const [recipes, setRecipes] = useState([])
@@ -32,7 +33,7 @@ const MyFeed = () => {
 					<h1 className={styles.myFeed__title}>Just For You</h1>
 					<div className={active ? styles.myFeed__rec : `${styles.myFeed__rec} ${styles.show}`}>
 						{!loading && <RecipeItemSkeleton recipes={100} />}
-						{recipes.map(r => (
+						{recipes?.map(r => (
 							<RecipeItem key={r._id} recipe={r} rating={r.rating} />
 						))}
 					</div>

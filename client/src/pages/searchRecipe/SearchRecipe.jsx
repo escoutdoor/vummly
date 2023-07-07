@@ -102,14 +102,7 @@ const SearchRecipe = () => {
 							<div className={s.searchRecipe__inputBox}>
 								<div className={s.searchRecipe__inputBox__content}>
 									<img className={s.searchRecipe__inputBoxIcon} src={`${PF}images/img/myFeed/searchIcon.svg`} alt="searchIcon" />
-									<input
-										onClick={() => setActiveInput(true)}
-										placeholder="Search recipes"
-										className={s.searchRecipe__inputBoxInput}
-										type="text"
-										onChange={e => setSearchValue(e.target.value)}
-										value={searchValue}
-									/>
+									<input onClick={() => setActiveInput(true)} placeholder="Search recipes" className={s.searchRecipe__inputBoxInput} type="text" onChange={e => setSearchValue(e.target.value)} value={searchValue} />
 								</div>
 								{recipes ? (
 									<div className={searchValue && activeInput && results.find(by => by.title) ? s.searchRecipe__drop : `${s.searchRecipe__drop} ${s.hide}`}>
@@ -192,10 +185,7 @@ const SearchRecipe = () => {
 								<div className={s.advancedFilter__bottom}>
 									<ul className={s.advancedFilter__navbar}>
 										{navbar.map(item => (
-											<li
-												className={filterPage === item.title ? `${s.advancedFilter__navbarItem} ${s.activePage}` : s.advancedFilter__navbarItem}
-												onClick={() => setFilterPage(item.title)}
-												key={item.id}>
+											<li className={filterPage === item.title ? `${s.advancedFilter__navbarItem} ${s.activePage}` : s.advancedFilter__navbarItem} onClick={() => setFilterPage(item.title)} key={item.id}>
 												{item.title}
 											</li>
 										))}
@@ -213,13 +203,7 @@ const SearchRecipe = () => {
 											setWithout={setBanned}
 											ingredients={ingredients}
 										/>
-										<Buttons
-											visibility={filterPage === 'time' ? true : false}
-											setTime={setTime}
-											minutes={[5, 10, 15, 20, 30, 45, 60, 120]}
-											bold={false}
-											title={'Cooking time, less than:'}
-										/>
+										<Buttons visibility={filterPage === 'time' ? true : false} setTime={setTime} minutes={[5, 10, 15, 20, 30, 45, 60, 120]} bold={false} title={'Cooking time, less than:'} />
 										<TitleAndDesc visibility={filterPage === 'nutrition' ? true : false} setActive={setNutrition} active={nutrition} items={nutr} />
 									</div>
 								</div>

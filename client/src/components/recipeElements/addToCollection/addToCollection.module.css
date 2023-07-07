@@ -1,0 +1,150 @@
+.bookmark {
+	position: relative;
+}
+
+.bookmark__stats {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+}
+
+.collectionButton {
+	background-color: #e16120;
+	width: 42px;
+	height: 42px;
+	background-image: url('http://localhost:3000/assets/images/icons/recipes/yum-white.webp');
+	background-position: center;
+	background-size: 40px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+.bookmark__count {
+	font-size: 12px;
+	color: #707070;
+	height: 0;
+}
+
+.menu {
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+	width: 0;
+	transition: opacity 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	position: absolute;
+	z-index: 99;
+	left: 0;
+}
+
+.menu.active {
+	opacity: 1;
+	padding: 20px;
+	visibility: visible;
+	height: auto;
+	width: auto;
+	max-height: 250px;
+	overflow-wrap: normal;
+	overflow-y: scroll;
+	min-width: 300px;
+	background: #fff;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.menu::-webkit-scrollbar {
+	width: 5px;
+}
+
+.menu::-webkit-scrollbar-track {
+	background: #fff;
+}
+
+.menu::-webkit-scrollbar-thumb {
+	background: #bababa;
+	border-radius: 20px;
+}
+
+.menu__content {
+	display: flex;
+	flex-direction: column;
+}
+
+.menu__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.menu__title {
+	font-size: 12px;
+	line-height: 44px;
+	text-transform: uppercase;
+	color: #242424;
+	font-weight: 700;
+}
+
+.close,
+.folderIcon {
+	cursor: pointer;
+}
+
+.create {
+	display: flex;
+	align-items: center;
+}
+
+.create__target {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 12px;
+	line-height: 32px;
+	text-transform: uppercase;
+	color: #3a9691;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.create__target.active {
+	display: none;
+}
+
+.createCollection__box {
+	display: none;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	width: 100%;
+}
+
+.createCollection__box.active {
+	display: flex;
+}
+
+.create__input {
+	font-size: 14px;
+	color: #bababa;
+	width: 100%;
+	line-height: 32px;
+}
+
+.create__input::placeholder {
+	font-weight: 700;
+	color: #e3e3e3;
+}
+
+.collectionList {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.collectionList__item {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: #bababa;
+	font-weight: 700;
+	cursor: pointer;
+	font-size: 15px;
+}

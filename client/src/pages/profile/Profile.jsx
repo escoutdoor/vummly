@@ -46,7 +46,7 @@ const Profile = () => {
 					'content-type': 'multipart/form-data',
 				},
 			})
-			.then((d) => {
+			.then(d => {
 				setUser(d.data)
 				dispatch(login(d.data))
 			})
@@ -63,7 +63,7 @@ const Profile = () => {
 
 	useEffect(() => {
 		const fetch = async () => {
-			await axios.get(`/user/${id.split('-')[1]}`).then((user) => {
+			await axios.get(`/user/${id.split('-')[1]}`).then(user => {
 				setUser(user.data)
 			})
 			setLoaded(true)
@@ -113,7 +113,7 @@ const Profile = () => {
 				.put(`/user/username/${user._id}/${user.mail}`, {
 					name: name,
 				})
-				.then((u) => {
+				.then(u => {
 					nav(`/profile/${u.data.name}-${u.data._id}`)
 					setUser(u.data)
 				})
@@ -125,21 +125,21 @@ const Profile = () => {
 				.put(`/user/description/${user._id}/${user.mail}`, {
 					description: description,
 				})
-				.then((u) => setUser(u.data))
+				.then(u => setUser(u.data))
 		}
 		if (user.city !== city) {
 			await axios
 				.put(`/user/city/${user._id}/${user.mail}`, {
 					city: city,
 				})
-				.then((u) => setUser(u.data))
+				.then(u => setUser(u.data))
 		}
 		if (user.country !== country) {
 			await axios
 				.put(`/user/country/${user._id}/${user.mail}`, {
 					country: country,
 				})
-				.then((u) => setUser(u.data))
+				.then(u => setUser(u.data))
 		}
 	}
 
@@ -166,7 +166,7 @@ const Profile = () => {
 									<img className={s.image} src={user?.avatar ? `${PF}images/avatars/${user.avatar}` : `${PF}images/avatars/no-avatar.webp`} />
 									{isMe && (
 										<div className={s.avatarClick}>
-											<input className={s.inputAvatar} type="file" onChange={(e) => setAvatar(e.target.files[0])} />
+											<input className={s.inputAvatar} type="file" onChange={e => setAvatar(e.target.files[0])} />
 										</div>
 									)}
 								</div>
@@ -178,35 +178,22 @@ const Profile = () => {
 							</div>
 							<div className={s.userRight}>
 								{isMe ? (
-									<div className={s.editName} onClick={(e) => e.stopPropagation()}>
+									<div className={s.editName} onClick={e => e.stopPropagation()}>
 										<h1 onClick={() => setActiveName(true)} className={activeName ? `${s.username} ${s.active}` : s.username}>
 											{name}
 										</h1>
-										<input
-											ref={nameInput}
-											type="text"
-											value={name || ''}
-											className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput}
-											onChange={(e) => setName(e.target.value)}
-										/>
+										<input ref={nameInput} type="text" value={name || ''} className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput} onChange={e => setName(e.target.value)} />
 									</div>
 								) : (
 									<h1 className={`${s.username} ${s.me}`}>{user?.name}</h1>
 								)}
 								{isMe ? (
-									<div className={s.editText} onClick={(e) => e.stopPropagation()}>
+									<div className={s.editText} onClick={e => e.stopPropagation()}>
 										<p onClick={() => setActiveDescription(true)} className={!activeDescription ? `${s.editText__target} ${s.active}` : s.editText__target}>
 											{user?.description || 'Tell us about yourself here'}
 										</p>
 										<div className={activeDescription ? `${s.description} ${s.active}` : s.description}>
-											<textarea
-												ref={descInput}
-												value={description}
-												placeholder="Tell us about yourself here"
-												className={s.descriptionInput}
-												maxLength={80}
-												onChange={(e) => setDescription(e.target.value)}
-											/>
+											<textarea ref={descInput} value={description} placeholder="Tell us about yourself here" className={s.descriptionInput} maxLength={80} onChange={e => setDescription(e.target.value)} />
 											<span>{`${description?.length}/80`}</span>
 										</div>
 									</div>
@@ -214,16 +201,9 @@ const Profile = () => {
 									<p className={`${s.editText__target} ${s.me}`}>{user.description}</p>
 								) : null}
 								{isMe ? (
-									<div className={s.location} onClick={(e) => e.stopPropagation()}>
+									<div className={s.location} onClick={e => e.stopPropagation()}>
 										<div className={s.locationItem}>
-											<input
-												ref={cityInput}
-												placeholder="City"
-												type="text"
-												className={activeCity ? `${s.editLocation} ${s.active}` : s.editLocation}
-												onChange={(e) => setCity(e.target.value)}
-												value={city || ''}
-											/>
+											<input ref={cityInput} placeholder="City" type="text" className={activeCity ? `${s.editLocation} ${s.active}` : s.editLocation} onChange={e => setCity(e.target.value)} value={city || ''} />
 											<p
 												onClick={() => {
 													setActiveCity(true)
@@ -234,14 +214,7 @@ const Profile = () => {
 										</div>
 										,
 										<div className={s.locationItem}>
-											<input
-												ref={countryInput}
-												placeholder="Country"
-												type="text"
-												className={activeCountry ? `${s.editLocation} ${s.active}` : s.editLocation}
-												onChange={(e) => setCountry(e.target.value)}
-												value={country || ''}
-											/>
+											<input ref={countryInput} placeholder="Country" type="text" className={activeCountry ? `${s.editLocation} ${s.active}` : s.editLocation} onChange={e => setCountry(e.target.value)} value={country || ''} />
 											<p
 												onClick={() => {
 													setActiveCountry(true)
@@ -274,15 +247,7 @@ const Profile = () => {
 									settings
 								</li>
 							</ul>
-							<div className={s.section}>
-								{section === 'saved recipes' ? (
-									<SavedRecipes isMe={isMe} user={user} />
-								) : section === 'preferences' ? (
-									<Preferences user={user} />
-								) : section === 'settings' ? (
-									<Settings setUser={setUser} user={user} />
-								) : null}
-							</div>
+							<div className={s.section}>{section === 'saved recipes' ? <SavedRecipes isMe={isMe} user={user} /> : section === 'preferences' ? <Preferences user={user} /> : section === 'settings' ? <Settings setUser={setUser} user={user} /> : null}</div>
 						</div>
 					) : (
 						<SavedRecipes user={user} isMe={isMe} />

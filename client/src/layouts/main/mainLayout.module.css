@@ -1,7 +1,10 @@
-
-
 .main {
-    width: calc(100% - 216px);
-    float:right;
-    min-height: 100vh;
+	width: calc(100% - 216px);
+	float: right;
+	min-height: 100vh;
+	transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.main.full {
+	width: 100%;
 }

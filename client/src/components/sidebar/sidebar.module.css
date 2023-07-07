@@ -1,217 +1,222 @@
 .sidebar {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    background: #fff;
-    height: 100%;
-    width: 216px;
-    z-index: 999;
-    top: 0;
-    left: 0;
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 40px -20px;
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	background: #fff;
+	height: 100%;
+	width: 216px;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 40px -20px;
+	transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.sidebar.hidden {
+	left: -216px;
+	opacity: 0;
+	visibility: hidden;
 }
 
 .header {
-    padding: 40px 0px 24px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+	padding: 40px 0px 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
 }
 
 .avatar {
-    border-radius: 50%;
-    object-fit: cover;
-    width: 60px;
-    height: 60px;
+	border-radius: 50%;
+	object-fit: cover;
+	width: 60px;
+	height: 60px;
 }
 
-
 .loginButton {
-    padding: 0px 32px;
-    background: #3a9691;
-    height: 40px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 14px;
-    border-radius: 42px;
-    cursor: pointer;
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	padding: 0px 32px;
+	background: #3a9691;
+	height: 40px;
+	color: #fff;
+	font-weight: 700;
+	font-size: 14px;
+	border-radius: 42px;
+	cursor: pointer;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .loginButton:hover {
-    filter: brightness(90%);
+	filter: brightness(90%);
 }
 
 .list {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    /* max-width: 562px; */
-    overflow-wrap:break-word;
-    padding: 0px 16px;
-    overflow-wrap: normal;
-    overflow-y:scroll;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	/* max-width: 562px; */
+	overflow-wrap: break-word;
+	padding: 0px 16px;
+	overflow-wrap: normal;
+	overflow-y: scroll;
 }
 
 .list::-webkit-scrollbar {
-    width: 5px;
+	width: 5px;
 }
 
 .list::-webkit-scrollbar-track {
-    background: #fff;
+	background: #fff;
 }
 
 .list::-webkit-scrollbar-thumb {
-    background: #bababa;
-    border-radius: 20px;
+	background: #bababa;
+	border-radius: 20px;
 }
 
 .list__item {
-    padding: 8px 0px;
-    border-bottom: 1px solid #e3e3e3;
-    cursor: pointer;
+	padding: 8px 0px;
+	border-bottom: 1px solid #e3e3e3;
+	cursor: pointer;
 }
 
 .arrow {
-    width: 15px;
-    height: 15px;
+	width: 15px;
+	height: 15px;
 }
 
 .list__item:last-child {
-    border-bottom: 0;
+	border-bottom: 0;
 }
 
 .title,
 .subtitle {
-    font-size: 14px;
-    line-height: 24px;
+	font-size: 14px;
+	line-height: 24px;
 }
 
 .title {
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-.list__item:hover .title{
-    color: #3a9691;
+.list__item:hover .title {
+	color: #3a9691;
 }
 
 .list__itemTarget {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
 }
 
 .dropdown {
-    display: flex;
-    flex-direction: column;
-    visibility: hidden;
-    opacity: 0;
-    height: 0;
-    width: 0;
-    transition: opacity .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	display: flex;
+	flex-direction: column;
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+	width: 0;
+	transition: opacity 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .dropdown.active {
-    opacity: 1;
-    height: auto;
-    width: 100%;
-    visibility: visible;
+	opacity: 1;
+	height: auto;
+	width: 100%;
+	visibility: visible;
 }
 
 .subtitle {
-    padding: 0;
-    color: #707070;
-    transition: padding .3s cubic-bezier(0.445, 0.05, 0.55, 0.95), color .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	padding: 0;
+	color: #707070;
+	transition: padding 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95), color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .subtitle.active {
-    padding: 8px;
+	padding: 8px;
 }
 
 .subtitle:hover {
-    color: #3a9691;
+	color: #3a9691;
 }
 
 /* about */
 
 .footer {
-    background: #f5f5f5;
-    width: 100%;
-    height: auto;
-    padding: 0px 16px;
+	background: #f5f5f5;
+	width: 100%;
+	height: auto;
+	padding: 0px 16px;
 }
 
 .about {
-    display: flex;
-    flex-direction: column;
-    border-bottom: 2px solid #e3e3e3;
+	display: flex;
+	flex-direction: column;
+	border-bottom: 2px solid #e3e3e3;
 }
 
 .aboutList {
-    display: flex;
-    flex-direction: column;
-    visibility: hidden;
-    opacity: 0;
-    height: 0;
-    width: 0;
-    transition: opacity .3s cubic-bezier(0.445, 0.05, 0.55, 0.95), height .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    max-height: 0;
+	display: flex;
+	flex-direction: column;
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+	width: 0;
+	transition: opacity 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95), height 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	max-height: 0;
 }
 
 .aboutList.active {
-    visibility: visible;
-    opacity: 1;
-    height: auto;
-    width: 100%;
-    max-height: 280px;
+	visibility: visible;
+	opacity: 1;
+	height: auto;
+	width: 100%;
+	max-height: 280px;
 }
 
 .aboutTarget {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    cursor: pointer;
-    padding: 8px 0px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+	padding: 8px 0px;
 }
 
 .aboutTarget.active {
-    color: #3a9691;
+	color: #3a9691;
 }
 
 .aboutTarget:hover .title {
-    color: #3a9691;
+	color: #3a9691;
 }
-
 
 /* footer bottom */
 
 .docs {
-    display: flex; 
-    flex-direction: column;
-    justify-self: start;
-    padding: 11px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-self: start;
+	padding: 11px 0px;
 }
 
 .docs__item {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .docs__item a {
-    display: inline-flex;
-    width: 100%;
-    font-size: 12px;
-    color: #707070;
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	display: inline-flex;
+	width: 100%;
+	font-size: 12px;
+	color: #707070;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
-.docs__item:hover a{
-    color: #3a9691;
+.docs__item:hover a {
+	color: #3a9691;
 }
 
 .rights {
-    font-size: 10px;
-    color: #707070;
-    padding: 10px 0px;
+	font-size: 10px;
+	color: #707070;
+	padding: 10px 0px;
 }

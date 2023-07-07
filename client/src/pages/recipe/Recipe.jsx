@@ -48,6 +48,7 @@ const Recipe = () => {
 			await axios.put(`/collections/${user._id}/${recipe._id}`, { name }).then(col => {
 				setInclude(include.filter(collection => collection.name !== col.data.name))
 				setNotInclude([...notInclude, col.data])
+				recipe.collections--
 			})
 		}
 	}
@@ -57,6 +58,7 @@ const Recipe = () => {
 			await axios.put(`/collections/${user._id}/${recipe._id}`, { name }).then(col => {
 				setNotInclude(notInclude.filter(collection => collection.name !== col.data.name))
 				setInclude([...include, col.data])
+				recipe.collections++
 			})
 		}
 	}

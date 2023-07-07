@@ -1,0 +1,9 @@
+.vums {
+	padding: 32px 0px;
+}
+
+.collections {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}

@@ -1,259 +1,259 @@
 .profile {
-    padding: 87px 0 24px 0;
+	padding: 87px 0 24px 0;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .user {
-    display: flex;
-    gap: 42px;
+	display: flex;
+	gap: 42px;
 }
 
 .userLeft {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 
 .userAvatar {
-    position: relative;
+	position: relative;
 }
 
 .image {
-    height: 124px;
-    width: 124px;
-    object-fit: cover;
-    border-radius: 100%;
+	height: 124px;
+	width: 124px;
+	object-fit: cover;
+	border-radius: 100%;
 }
 
 .avatarClick {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 4;
-    height: 100%;
-    width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 4;
+	height: 100%;
+	width: 100%;
 }
 
 .inputAvatar {
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    cursor: pointer;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	cursor: pointer;
 }
 
 .logout {
-    font-size: 14px;
-    padding: 0px 32px 2px;
-    font-weight: 700;
-    color: #3a9691;
-    border: 2px solid #3a9691;
-    border-radius: 42px;
-    height: 30px;
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    cursor: pointer;
+	font-size: 14px;
+	padding: 0px 32px 2px;
+	font-weight: 700;
+	color: #3a9691;
+	border: 2px solid #3a9691;
+	border-radius: 42px;
+	height: 30px;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	cursor: pointer;
 }
 
 .logout:hover {
-    color: #fff;
-    background: #3a9691;
+	color: #fff;
+	background: #3a9691;
 }
 
 .userRight {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .editName {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .username {
-    display: block;
-    line-height: 51px;
-    font-size: 34px;
-    color: #232323;
-    transition: all .2s ease;    
-    cursor: pointer;
+	display: block;
+	line-height: 51px;
+	font-size: 34px;
+	color: #232323;
+	transition: all 0.2s ease;
+	cursor: pointer;
 }
 
 .username.me {
-    cursor: unset;
+	cursor: unset;
 }
 
 .username.me:hover {
-    color: #232323;
+	color: #232323;
 }
 
 .username.active {
-    display: none;
+	display: none;
 }
 
 .username:hover {
-    color: #3a9691;
+	color: #3a9691;
 }
 
 .nameInput {
-    display: none;
-    line-height: 51px;
-    font-size: 34px;
-    color: #232323;   
-    font-weight: 700;
+	display: none;
+	line-height: 51px;
+	font-size: 34px;
+	color: #232323;
+	font-weight: 700;
 }
 
 .nameInput.active {
-    display: block;
+	display: block;
 }
 
 .editText__target {
-    visibility: hidden;
-    opacity: 0;
-    color: #707070;
-    font-size: 16px;
-    line-height: 25px;
-    display: none;
-    cursor: pointer;
-    transition: all .2s ease;
-    margin-bottom: 15px;
+	visibility: hidden;
+	opacity: 0;
+	color: #707070;
+	font-size: 16px;
+	line-height: 25px;
+	display: none;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	margin-bottom: 15px;
 }
 
 .editText__target.me {
-    visibility: visible;
-    opacity: 1;
-    display: block;
-    cursor:unset;
+	visibility: visible;
+	opacity: 1;
+	display: block;
+	cursor: unset;
 }
 
 .editText__target.active {
-    visibility: visible;
-    opacity: 1;
-    display: block;
+	visibility: visible;
+	opacity: 1;
+	display: block;
 }
 
 .editText__target.active:hover {
-    color: #3a9691;
+	color: #3a9691;
 }
 
 .description {
-    flex-direction: column;
-    gap: 3px;
-    visibility: hidden;
-    opacity: 0;
-    display: none;
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	flex-direction: column;
+	gap: 3px;
+	visibility: hidden;
+	opacity: 0;
+	display: none;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .description.active {
-    visibility: visible;
-    opacity: 1;
-    display: flex;
-    margin-bottom: 5px;
+	visibility: visible;
+	opacity: 1;
+	display: flex;
+	margin-bottom: 5px;
 }
 
 .descriptionInput {
-    resize: none;
-    width: 300px;
-    outline: none;
-    border-width:  0px 0px 1px 0px;
-    border-color: #e3e3e3;
+	resize: none;
+	width: 300px;
+	outline: none;
+	border-width: 0px 0px 1px 0px;
+	border-color: #e3e3e3;
 }
 
 .description span {
-    color: #707070;
-    font-size: 11px;
+	color: #707070;
+	font-size: 11px;
 }
 
 .location {
-    display: flex;
-    gap: 2px;
-    color: #bababa;
+	display: flex;
+	gap: 2px;
+	color: #bababa;
 }
 
 .locationTextCity,
 .locationTextCountry {
-    font-size: 14px;
-    visibility: visible;
-    opacity: 1;
-    transition: opacity .1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	font-size: 14px;
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.1s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .locationTextCity.active,
 .locationTextCountry.active {
-    visibility: hidden;
-    opacity:  0;
-    display: none;
+	visibility: hidden;
+	opacity: 0;
+	display: none;
 }
 
 .locationItem {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
 }
 
 .editLocation {
-    visibility: hidden;
-    width: 0;
-    opacity: 0;
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    color: #e3e3e3;
-    font-size: 14px;
+	visibility: hidden;
+	width: 0;
+	opacity: 0;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	color: #e3e3e3;
+	font-size: 14px;
 }
 
 .editLocation::placeholder {
-    font-weight: 700;
-    font-size: 14px;
+	font-weight: 700;
+	font-size: 14px;
 }
 
 .editLocation.active {
-    visibility: visible;
-    opacity: 1;
-    width: 100px;
+	visibility: visible;
+	opacity: 1;
+	width: 100px;
 }
 
 .locationItem:hover .locationTextCity,
-.locationItem:hover .locationTextCountry{
-    color: #3a9691;
+.locationItem:hover .locationTextCountry {
+	color: #3a9691;
 }
 
 /* navbar */
 
 .navigation {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
 }
 
 .navbar {
-    display: flex;
-    gap: 22px;
-    margin: 52px 0px 0;
+	display: flex;
+	gap: 22px;
+	margin: 52px 0px 0;
 }
 
 .navbar__item {
-    text-transform: uppercase;
-    color: #707070;
-    margin-right: 22px;
-    padding-bottom: 10px;
-    letter-spacing: 3px;
-    font-size: 12px;
-    line-height: 12px;
-    transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    cursor: pointer;
+	text-transform: uppercase;
+	color: #707070;
+	margin-right: 22px;
+	padding-bottom: 10px;
+	letter-spacing: 3px;
+	font-size: 12px;
+	line-height: 12px;
+	transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	cursor: pointer;
 }
 
 .navbar__item.active {
-    color: #232323;
-    border-bottom: 3px solid #3a9691;
+	color: #232323;
+	border-bottom: 3px solid #3a9691;
 }
 
 .navbar__item:hover {
-    color: #3a9691;
+	color: #3a9691;
 }
 
 .section {
-    width: 100%;
+	width: 100%;
 }
