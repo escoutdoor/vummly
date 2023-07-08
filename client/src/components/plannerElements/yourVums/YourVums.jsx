@@ -15,8 +15,6 @@ const YourVums = ({ user }) => {
 		})
 	}
 
-	console.log(recipesByCollection)
-
 	useEffect(() => {
 		if (user) {
 			fetchVums()

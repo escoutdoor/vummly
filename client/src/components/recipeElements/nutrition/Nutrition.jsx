@@ -23,9 +23,7 @@ const Nutrition = ({ user, recipe, loaded }) => {
 									className={s.bubble}
 									key={index}
 									style={{
-										backgroundImage: `linear-gradient(to top, rgb(190, 218, 217) ${(nut.value / 2500) * 100}%, rgb(245, 245, 245) ${
-											(nut.value / 2500) * 100
-										}%)`,
+										backgroundImage: `linear-gradient(to top, rgb(190, 218, 217) ${(nut.value / 2500) * 100}%, rgb(245, 245, 245) ${(nut.value / 2500) * 100}%)`,
 									}}>
 									<p className={s.bubble__value}>{nut.value}</p>
 									<p className={s.bubble__title}>{nut.label}</p>

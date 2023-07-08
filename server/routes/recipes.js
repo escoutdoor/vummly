@@ -5,6 +5,7 @@ const Review = require('../models/Review')
 const User = require('../models/User')
 const ObjectId = require('mongoose').Types.ObjectId
 const Collection = require('../models/Collection')
+const Preferences = require('../models/Preferences')
 
 // get all recipe info
 
@@ -291,6 +292,95 @@ router.get('/vums/:userId', async (req, res) => {
 		res.status(200).json(collections)
 	} catch (error) {
 		res.status(500).json(error)
+	}
+})
+
+// recommendations meal planner
+
+router.get('/recommendationsByTags/:userId', async (req, res) => {
+	try {
+		const preferences = await Preferences.findOne({
+			userId: new ObjectId(req.params.userId),
+		})
+
+		const collections = await Recipe.aggregate([
+			{
+				$addFields: {
+					'ingredients.us': {
+						$map: {
+							input: '$ingredients.us',
+							as: 'item',
+							in: {
+								$mergeObjects: ['$$item', { ingredient: { $toLower: '$$item.ingredient' } }],
+							},
+						},
+					},
+				},
+			},
+			{
+				$match: {
+					'ingredients.us.ingredient': {
+						$nin: preferences?.dislikedIngredients || [],
+					},
+				},
+			},
+			{ $unwind: { path: '$tags' } },
+			{
+				$addFields: {
+					name: '$tags',
+				},
+			},
+			{
+				$lookup: {
+					from: 'reviews',
+					localField: '_id',
+					foreignField: 'recipeId',
+					as: 'reviews',
+				},
+			},
+			{
+				$lookup: {
+					from: 'collections',
+					localField: '_id',
+					foreignField: 'recipes.recipeId',
+					as: 'collections',
+				},
+			},
+			{
+				$addFields: {
+					rating: {
+						$avg: '$reviews.rating',
+					},
+					collections: {
+						$size: '$collections.recipes.recipeId',
+					},
+				},
+			},
+			{
+				$group: {
+					_id: '$name',
+					recipes: { $push: '$$ROOT' },
+				},
+			},
+			{
+				$addFields: {
+					name: '$_id',
+				},
+			},
+			{
+				$project: {
+					_id: 0,
+					'recipes.name': 0,
+					'recipes.reviews': 0,
+				},
+			},
+			{ $sort: { name: -1 } },
+			{ $limit: 10 },
+		])
+
+		res.status(200).json(collections)
+	} catch (error) {
+		res.status(404).json(error)
 	}
 })
 

@@ -2,6 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	max-width: 176px;
+	min-height: 300px;
 }
 
 .imgBlock {
@@ -50,10 +51,15 @@
 }
 
 .title {
+	display: -webkit-box;
 	font-size: 16px;
 	line-height: 26px;
 	color: #232323;
 	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .resource {
