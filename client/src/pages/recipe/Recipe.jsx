@@ -64,8 +64,14 @@ const Recipe = () => {
 	}
 
 	const addMealPlanner = async () => {
-		if (user) {
-			console.log('addMealPlanner ok')
+		if (user && recipe._id) {
+			try {
+				await axios.put(`/meal-planner/addOrRemove/${user._id}/${recipe._id}`).then(planner => {
+					console.log(planner.data)
+				})
+			} catch (error) {
+				console.log('addMealPlanner', error)
+			}
 		} else {
 			setActiveLoginModal(true)
 		}

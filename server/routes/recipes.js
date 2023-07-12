@@ -180,41 +180,69 @@ router.get('/recipes', async (req, res) => {
 })
 
 router.get(`/all`, async (req, res) => {
+	const { userId } = req.query
+
 	try {
-		const recipes = await Recipe.aggregate([
-			{
-				$lookup: {
-					from: 'reviews',
-					localField: '_id',
-					foreignField: 'recipeId',
-					as: 'reviews',
-				},
-			},
-			{
-				$lookup: {
-					from: 'collections',
-					localField: '_id',
-					foreignField: 'recipes.recipeId',
-					as: 'collections',
-				},
-			},
-			{
-				$addFields: {
-					rating: {
-						$avg: '$reviews.rating',
-					},
-					collections: {
-						$size: '$collections.recipes.recipeId',
+		if (userId) {
+			const preferences = await Preferences.findOne({ userId: new ObjectId(userId) })
+			const recipes = await Recipe.aggregate([
+				{
+					$addFields: {
+						'ingredients.us': {
+							$map: {
+								input: '$ingredients.us',
+								as: 'item',
+								in: {
+									$mergeObjects: ['$$item', { ingredient: { $toLower: '$$item.ingredient' } }],
+								},
+							},
+						},
 					},
 				},
-			},
-			{
-				$project: {
-					reviews: 0,
+				{
+					$match: {
+						'ingredients.us.ingredient': {
+							$nin: preferences?.dislikedIngredients || [],
+						},
+					},
 				},
-			},
-		])
-		res.status(200).json(recipes)
+				{
+					$lookup: {
+						from: 'reviews',
+						localField: '_id',
+						foreignField: 'recipeId',
+						as: 'reviews',
+					},
+				},
+				{
+					$lookup: {
+						from: 'collections',
+						localField: '_id',
+						foreignField: 'recipes.recipeId',
+						as: 'collections',
+					},
+				},
+				{
+					$addFields: {
+						rating: {
+							$avg: '$reviews.rating',
+						},
+						collections: {
+							$size: '$collections.recipes.recipeId',
+						},
+					},
+				},
+				{
+					$project: {
+						reviews: 0,
+					},
+				},
+			])
+			res.status(200).json(recipes)
+		} else {
+			const recipes = await Recipe.find({})
+			res.status(200).json(recipes)
+		}
 	} catch (err) {
 		res.status(500).json(err)
 	}
@@ -298,6 +326,8 @@ router.get('/vums/:userId', async (req, res) => {
 // recommendations meal planner
 
 router.get('/recommendationsByTags/:userId', async (req, res) => {
+	const { limit } = req.query
+
 	try {
 		const preferences = await Preferences.findOne({
 			userId: new ObjectId(req.params.userId),
@@ -365,6 +395,7 @@ router.get('/recommendationsByTags/:userId', async (req, res) => {
 			{
 				$addFields: {
 					name: '$_id',
+					count: { $size: '$recipes' },
 				},
 			},
 			{
@@ -374,8 +405,8 @@ router.get('/recommendationsByTags/:userId', async (req, res) => {
 					'recipes.reviews': 0,
 				},
 			},
-			{ $sort: { name: -1 } },
-			{ $limit: 10 },
+			{ $sort: { count: -1 } },
+			{ $limit: Number(limit) },
 		])
 
 		res.status(200).json(collections)

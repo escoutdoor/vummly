@@ -5,25 +5,34 @@ import axios from 'axios'
 
 import RecipeItem from '../../components/recipeElements/recipeItem/RecipeItem'
 import RecipeItemSkeleton from '../../components/recipeElements/recipeItemSkeleton/RecipeItemSkeleton'
-import { useOutletContext } from 'react-router-dom'
+import { selectUser } from '../../redux/features/userSlice'
+import { useSelector } from 'react-redux'
 
 const MyFeed = () => {
 	const [recipes, setRecipes] = useState([])
 	const [loading, setLoading] = useState(false)
 	const [active, setActive] = useState(false)
+	const user = useSelector(selectUser)
 
 	useEffect(() => {
 		document.title = 'Vummly: Personalized Recipe Recommendations and Search'
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
 	}, [])
 
-	useEffect(() => {
-		const fetch = async () => {
-			await axios.get('/recipe/all').then(info => setRecipes(info.data))
-			setLoading(true)
+	const fetch = async () => {
+		try {
+			await axios.get(`/recipe/all?userId=${user?._id || ''}`).then(info => {
+				setRecipes(info.data)
+				setTimeout(() => setLoading(true), 400)
+			})
+		} catch (error) {
+			console.log('fetchMyFeed', error)
 		}
+	}
+
+	useEffect(() => {
 		fetch()
-	}, [])
+	}, [user])
 
 	return (
 		<div className={styles.MyFeed}>

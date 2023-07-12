@@ -1,0 +1,45 @@
+.block {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	max-width: 432px;
+	gap: 16px;
+}
+
+.icon {
+	width: 60px;
+	height: 60px;
+}
+
+.title {
+	margin-top: 16px;
+	font-size: 24px;
+	line-height: 32px;
+}
+
+.explanation {
+	text-align: center;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.link {
+	font-weight: 700;
+	color: #3a9691;
+}
+
+.button {
+	padding: 10px;
+	color: #3a9691;
+	font-weight: 700;
+	font-size: 14px;
+	border: 1px solid #3a9691;
+	text-transform: capitalize;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.button:hover {
+	background: #3a9691;
+	border-color: #3a9691;
+	color: #fff;
+}

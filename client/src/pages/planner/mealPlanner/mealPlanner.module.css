@@ -1,0 +1,42 @@
+.planner {
+	display: block;
+	width: 100%;
+	color: #242424;
+	padding: 54px 0px;
+}
+
+.wrapper {
+	max-width: 614px;
+	margin: 0 auto;
+}
+
+.icon {
+	cursor: pointer;
+}
+
+.header {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.buttons {
+	display: flex;
+	justify-content: right;
+	gap: 20px;
+	align-items: center;
+}
+
+.more {
+	position: relative;
+}
+
+.title {
+	text-transform: capitalize;
+	font-size: 40px;
+	line-height: 48px;
+}
+
+.main {
+	padding: 34px 0px;
+}

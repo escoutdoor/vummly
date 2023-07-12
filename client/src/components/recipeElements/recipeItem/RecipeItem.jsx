@@ -1,13 +1,9 @@
 import s from './recipeItem.module.css'
 import { Link } from 'react-router-dom'
 import { Rating, Star } from '@smastrom/react-rating'
-import '@smastrom/react-rating/style.css'
 import { useInView } from 'react-intersection-observer'
 import 'react-loading-skeleton/dist/skeleton.css'
 import RecipeItemSkeleton from '../recipeItemSkeleton/RecipeItemSkeleton'
-import AddToCollection from '../addToCollection/AddToCollection'
-import { useEffect } from 'react'
-import axios from 'axios'
 
 const RecipeItem = ({ recipe, loading, setLoading, rating }) => {
 	const PF = process.env.REACT_APP_BASE_URL

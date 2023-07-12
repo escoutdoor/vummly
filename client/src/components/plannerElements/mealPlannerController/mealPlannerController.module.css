@@ -1,0 +1,42 @@
+.controller {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.buttons {
+	display: flex;
+	gap: 8px;
+}
+
+.button__more,
+.button__clear {
+	font-size: 14px;
+	padding: 3px 32px;
+	border: 2px solid #3a9691;
+	font-weight: 700;
+	border-radius: 42px;
+	text-transform: capitalize;
+	cursor: pointer;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	color: #3a9691;
+}
+
+.button__more:hover,
+.button__clear:hover {
+	color: #fff;
+	background: #3a9691;
+}
+
+.shopping__list {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+}
+
+.shopping__listLabel {
+	font-size: 14px;
+	line-height: 16px;
+	text-transform: capitalize;
+}
