@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate, useOutletContext, useParams } from 'react-router-dom'
 import s from './collection.module.css'
-import DeleteCollection from '../../components/deleteCollectionModa/DeleteCollection'
+import DeleteCollection from '../../components/deleteCollectionModal/DeleteCollection'
 import RecipeItem from '../../components/recipeElements/recipeItem/RecipeItem'
 import { selectUser } from '../../redux/features/userSlice'
 import { useSelector } from 'react-redux'
@@ -109,14 +109,7 @@ const Collection = () => {
 							{isMe && collectionName !== 'all-vums' ? (
 								<div className={s.changeBox} onClick={() => setActiveName(true)}>
 									<p className={!activeName ? s.displayName : `${s.displayName} ${s.hidden}`}>{name}</p>
-									<input
-										maxLength={20}
-										ref={nameInput}
-										className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput}
-										type="text"
-										value={name || ''}
-										onChange={e => setName(e.target.value)}
-									/>
+									<input maxLength={20} ref={nameInput} className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput} type="text" value={name || ''} onChange={e => setName(e.target.value)} />
 								</div>
 							) : (
 								<p className={s.displayName}>{name}</p>
@@ -125,14 +118,7 @@ const Collection = () => {
 							{isMe && collectionName !== 'all-vums' ? (
 								<div className={s.changeBox} onClick={() => setActiveDescription(true)}>
 									<p className={!activeDescription ? s.displayDescription : `${s.displayDescription} ${s.hidden}`}>{description || 'Tell us more about your collection.'}</p>
-									<textarea
-										maxLength={60}
-										ref={descInput}
-										className={activeDescription ? `${s.descInput} ${s.active}` : s.descInput}
-										type="text"
-										value={description || ''}
-										onChange={e => setDescription(e.target.value)}
-									/>
+									<textarea maxLength={60} ref={descInput} className={activeDescription ? `${s.descInput} ${s.active}` : s.descInput} type="text" value={description || ''} onChange={e => setDescription(e.target.value)} />
 								</div>
 							) : (
 								<p className={s.displayDescription}>{description}</p>

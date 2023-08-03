@@ -1,0 +1,12 @@
+.recipe {
+	display: flex;
+	gap: 15px;
+	padding: 16px 25px;
+}
+
+.details {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	width: 100%;
+}

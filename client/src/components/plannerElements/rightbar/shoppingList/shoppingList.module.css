@@ -1,0 +1,25 @@
+.rightbar {
+	background: #fff;
+	position: sticky;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	min-width: 345px;
+	height: 100vh;
+	z-index: 100;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	color: #4a4a4a;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 30px 25px;
+}
+
+.header__title {
+	font-size: 24px;
+	line-height: 32px;
+	text-transform: capitalize;
+}

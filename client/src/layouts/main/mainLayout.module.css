@@ -1,6 +1,10 @@
+.layout {
+	display: flex;
+	width: 100%;
+}
+
 .main {
-	width: calc(100% - 216px);
-	float: right;
+	width: 100%;
 	min-height: 100vh;
 	transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }

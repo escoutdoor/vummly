@@ -20,6 +20,7 @@ const preferences = require('./routes/preferences')
 const settings = require('./routes/settings')
 const upload = require('./routes/upload')
 const planner = require('./routes/planner')
+const shopping = require('./routes/shopping')
 
 // connection --------------------------------------------
 
@@ -56,6 +57,10 @@ app.use('/server/upload', upload)
 // planner
 
 app.use('/server/meal-planner', planner)
+
+// shopping
+
+app.use('/server/shopping', shopping)
 
 // --------------------------------------------
 

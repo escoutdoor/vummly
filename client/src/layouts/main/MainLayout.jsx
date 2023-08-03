@@ -13,7 +13,7 @@ const MainLayout = () => {
 	}, [activeLoginModal])
 
 	return (
-		<div>
+		<div className={s.layout}>
 			<Sidebar setHidden={setHiddenSideBar} hidden={hiddenSideBar} setActive={setActiveLoginModal} activeLoginModal={activeLoginModal} />
 			<div className={hiddenSideBar ? `${s.main} ${s.full}` : s.main}>
 				<Outlet context={[setActiveLoginModal, setHiddenSideBar, hiddenSideBar]} />

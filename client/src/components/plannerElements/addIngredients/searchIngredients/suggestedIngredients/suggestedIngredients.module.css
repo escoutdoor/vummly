@@ -1,0 +1,47 @@
+.suggestedIng {
+	padding: 25px;
+}
+
+.title {
+	font-size: 12px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+}
+
+.list {
+	max-height: 235px;
+	width: 100%;
+	overflow-y: scroll;
+}
+
+.list::-webkit-scrollbar {
+	width: 5px;
+}
+
+.list::-webkit-scrollbar-track {
+	background: #e3e3e3;
+	border-radius: 20px;
+}
+
+.list::-webkit-scrollbar-thumb {
+	background: #bababa;
+	border-radius: 20px;
+}
+
+.list__item {
+	display: inline-block;
+	padding: 11px 10px;
+	margin: 0 10px 12px 0;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	border-radius: 21px;
+	cursor: pointer;
+	text-transform: capitalize;
+	font-weight: 100;
+	font-size: 14px;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.list__item:hover {
+	background: #f1f1f1;
+}

@@ -1,0 +1,32 @@
+.recipe {
+	display: flex;
+	gap: 15px;
+	padding: 15px 25px;
+}
+
+.title {
+	max-width: 200px;
+	overflow: hidden;
+	display: inline-block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.recipe:hover .title {
+	color: #3a9691;
+}
+
+.recipe:hover .image {
+	filter: brightness(100%);
+}
+
+.image {
+	border-radius: 4px;
+	width: 60px;
+	height: 60px;
+	filter: brightness(50%);
+	transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}

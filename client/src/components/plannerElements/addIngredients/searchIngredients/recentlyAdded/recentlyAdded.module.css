@@ -1,0 +1,30 @@
+.recentlyAdded {
+	padding: 25px;
+}
+
+.title {
+	font-size: 12px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin-bottom: 15px;
+}
+
+.list {
+	display: inline;
+}
+
+.list__item {
+	display: inline-block;
+	font-size: 14px;
+	line-height: 34px;
+	text-transform: capitalize;
+}
+
+.list__item::after {
+	content: ',';
+	margin-right: 3px;
+}
+
+.list__item:last-child::after {
+	content: '';
+}

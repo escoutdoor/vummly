@@ -1,0 +1,19 @@
+.list {
+	max-height: 90vh;
+	overflow-wrap: normal;
+	overflow-y: scroll;
+	overscroll-behavior: contain;
+}
+
+.list::-webkit-scrollbar {
+	width: 5px;
+}
+
+.list::-webkit-scrollbar-track {
+	background: #fff;
+}
+
+.list::-webkit-scrollbar-thumb {
+	background: #bababa;
+	border-radius: 20px;
+}

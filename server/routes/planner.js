@@ -7,7 +7,7 @@ router.get('/:userId', async (req, res) => {
 	try {
 		let [planner] = await mealPlanner.aggregate([
 			{ $match: { userId: new ObjectId(req.params.userId) } },
-			{ $unwind: { path: '$recipes' } },
+			{ $unwind: { path: '$recipes', preserveNullAndEmptyArrays: true } },
 			{
 				$lookup: {
 					from: 'recipes',

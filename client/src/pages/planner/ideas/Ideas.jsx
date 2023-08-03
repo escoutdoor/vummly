@@ -5,6 +5,7 @@ import YourVums from '../../../components/plannerElements/yourVums/YourVums'
 import MealRecommendations from '../../../components/plannerElements/mealRecommendations/MealRecommendations'
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../../redux/features/userSlice'
+import MealPlanning from '../../../components/plannerElements/rightbar/mealPlanning/MealPlanning'
 
 const Ideas = () => {
 	const PF = process.env.REACT_APP_BASE_URL
@@ -49,6 +50,7 @@ const Ideas = () => {
 					</div>
 				</div>
 			</div>
+			<MealPlanning user={user} />
 		</div>
 	)
 }

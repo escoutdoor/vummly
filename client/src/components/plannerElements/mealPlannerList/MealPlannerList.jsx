@@ -2,7 +2,7 @@ import s from './mealPlannerList.module.css'
 import MealPlannerItem from '../mealPlannerItem/MealPlannerItem'
 import axios from 'axios'
 
-const MealPlannerList = ({ planner, user, setPlanner }) => {
+const MealPlannerList = ({ planner, user, setPlanner, addToShoppingList }) => {
 	const removeRecipe = async recipeId => {
 		try {
 			await axios.put(`/meal-planner/addOrRemove/${user._id}/${recipeId}`).then(p => {
@@ -17,7 +17,7 @@ const MealPlannerList = ({ planner, user, setPlanner }) => {
 	return (
 		<div className={s.list}>
 			{planner.recipes?.map(recipe => (
-				<MealPlannerItem remove={removeRecipe} key={recipe._id} recipe={recipe} />
+				<MealPlannerItem addToShoppingList={addToShoppingList} remove={removeRecipe} key={recipe._id} recipe={recipe} />
 			))}
 		</div>
 	)
