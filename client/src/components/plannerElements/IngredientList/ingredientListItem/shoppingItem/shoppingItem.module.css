@@ -1,0 +1,93 @@
+.ingredient {
+	padding: 15px 0px;
+	border-bottom: 1px solid #e3e3e3;
+	position: relative;
+}
+
+.header__left {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	cursor: pointer;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.header__left.active,
+.icons.active {
+	display: none;
+}
+
+.checkbox {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.checkbox__input {
+	position: absolute;
+	left: 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	z-index: 99;
+}
+
+.display__check {
+	width: 20px;
+	height: 20px;
+	border: 1px solid #bababa;
+	border-radius: 42px;
+	transition: border-color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95), background-color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	background-position: center;
+}
+
+.display__check.active {
+	border-color: #3a9691;
+	background-color: #3a9691;
+	background-image: url('http://localhost:3000/assets/images/icons/planner/check.svg');
+}
+
+.details {
+	display: flex;
+	align-items: center;
+	position: relative;
+	gap: 3px;
+}
+
+.details.purchased::before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	background: #707070;
+	height: 1px;
+}
+
+.text {
+	font-size: 14px;
+	text-transform: capitalize;
+}
+
+.icons {
+	display: flex;
+	gap: 8px;
+}
+
+.icon {
+	opacity: 0;
+	visibility: hidden;
+	width: 18px;
+	height: 18px;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	cursor: pointer;
+}
+
+.ingredient:hover .icon {
+	opacity: 1;
+	visibility: visible;
+}

@@ -5,6 +5,7 @@
 
 .wrapper {
 	min-width: 614px;
+	max-width: 714px;
 	padding: 54px 0px 60vh;
 	margin: 0 auto;
 }

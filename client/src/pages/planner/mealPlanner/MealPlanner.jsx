@@ -62,19 +62,18 @@ const MealPlanner = () => {
 		}
 	}
 
-	const addToShoppingList = async ingredient => {
+	const addToShoppingList = async (ingredient, recipeId) => {
 		try {
-			console.log(ingredient)
 			await axios
 				.put(`/shopping/${user?._id}`, {
 					name: ingredient.ingredient,
 					measurement: ingredient.measurement === 'grams' ? 'kgs' : ingredient.measurement === 'ml' ? 'ltrs' : '',
 					quantity: Number.isInteger(ingredient.quantity) && !ingredient.measurement ? ingredient.quantity : 0,
+					recipeId: recipeId,
 				})
 				.then(i => {
 					setShoppingList(i.data.shoppingList)
 				})
-			console.log({ quantity: Number.isInteger(ingredient.quantity) && !ingredient.measurement ? ingredient.quantity : 0 })
 		} catch (error) {
 			console.log('addToShoppingList erorr: ', error)
 		}

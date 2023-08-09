@@ -18,6 +18,8 @@ const shoppingListSchema = book.model(
 					type: Date,
 					default: Date.now,
 				},
+				recipeId: { type: mongoose.Types.ObjectId },
+				purchased: { type: Boolean, default: false },
 			},
 		],
 	})

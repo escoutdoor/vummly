@@ -2,6 +2,7 @@ const router = require('express').Router()
 const ShoppingList = require('../models/Shopping')
 const Recipe = require('../models/Recipe')
 const Preferences = require('../models/Preferences')
+const MealPlanner = require('../models/MealPlanner')
 const ObjectId = require('mongoose').Types.ObjectId
 
 router.get('/:userId', async (req, res) => {
@@ -67,7 +68,8 @@ router.get('/:userId', async (req, res) => {
 
 router.put('/:userId', async (req, res) => {
 	try {
-		const { name, measurement, quantity } = req.body
+		const { name, measurement, quantity, recipeId } = req.body
+
 		const userId = new ObjectId(req.params.userId)
 
 		const userList = await ShoppingList.findOne({ userId })
@@ -86,6 +88,7 @@ router.put('/:userId', async (req, res) => {
 						},
 						$set: {
 							'shoppingList.$.addedToShoppingList': Date.now(),
+							'shoppingList.$.recipeId': recipeId ? new ObjectId(recipeId) : undefined,
 						},
 					},
 					{ new: true }
@@ -103,6 +106,7 @@ router.put('/:userId', async (req, res) => {
 								name,
 								quantity: quantity !== 0 ? quantity : 1,
 								measurement,
+								recipeId: recipeId ? new ObjectId(recipeId) : undefined,
 							},
 						},
 					},
@@ -113,13 +117,6 @@ router.put('/:userId', async (req, res) => {
 
 				res.status(200).json(listWithNewIngredient)
 			}
-		} else {
-			const createdList = new ShoppingList({
-				userId,
-				shoppingList: [{ name, measurement, quantity: quantity !== 0 ? quantity : 1 }],
-			})
-			await createdList.save()
-			res.status(200).json(createdList)
 		}
 	} catch (error) {
 		res.status(500).json(error)
@@ -139,6 +136,160 @@ router.put('/clearList/:userId', async (req, res) => {
 			},
 			{ new: true }
 		)
+
+		res.status(200).json(list)
+	} catch (error) {
+		res.status(500).json(error)
+	}
+})
+
+router.put('/delete/:userId', async (req, res) => {
+	try {
+		const userId = new ObjectId(req.params.userId)
+		const { ingredientId } = req.body
+
+		const list = await ShoppingList.findOneAndUpdate(
+			{ userId },
+			{
+				$pull: {
+					shoppingList: { _id: new ObjectId(ingredientId) },
+				},
+			},
+			{ new: true }
+		)
+
+		res.status(200).json(list.shoppingList)
+	} catch (error) {
+		res.status(500).json(error)
+	}
+})
+
+router.put('/purchase/:userId', async (req, res) => {
+	try {
+		const userId = new ObjectId(req.params.userId)
+
+		const { ingredientId } = req.body
+
+		const list = await ShoppingList.findOne({ userId, 'shoppingList._id': new ObjectId(ingredientId) })
+
+		const value = list.shoppingList.find(item => item._id.toString() === ingredientId).purchased
+
+		await ShoppingList.findOneAndUpdate(
+			{ userId, 'shoppingList._id': new ObjectId(ingredientId) },
+			{
+				$set: {
+					'shoppingList.$.purchased': !value,
+				},
+			}
+		)
+
+		const newList = await ShoppingList.aggregate([
+			{
+				$match: {
+					userId,
+				},
+			},
+			{
+				$unwind: {
+					path: '$shoppingList',
+				},
+			},
+			{
+				$lookup: {
+					from: 'recipes',
+					localField: 'shoppingList.recipeId',
+					foreignField: '_id',
+					as: 'recipe',
+				},
+			},
+			{
+				$addFields: {
+					recipe: { $arrayElemAt: ['$recipe', 0] },
+				},
+			},
+			{
+				$group: {
+					_id: '$recipe._id',
+					recipe: { $first: '$recipe' },
+					shoppingList: { $push: '$shoppingList' },
+				},
+			},
+			{
+				$addFields: {
+					listLength: { $size: '$shoppingList' },
+				},
+			},
+			{ $sort: { listLength: 1, _id: 1 } },
+			{
+				$project: {
+					listLength: 0,
+				},
+			},
+		])
+
+		res.status(200).json(newList)
+	} catch (error) {
+		res.status(500).json(error)
+	}
+})
+
+router.put('/uncheck/:userId', async (req, res) => {
+	try {
+		await ShoppingList.findOneAndUpdate(
+			{ userId: new ObjectId(req.params.userId) },
+			{
+				$set: {
+					'shoppingList.$[item].purchased': false,
+				},
+			},
+			{
+				arrayFilters: [{ 'item.purchased': true }],
+			}
+		)
+
+		const list = await ShoppingList.aggregate([
+			{
+				$match: {
+					userId: new ObjectId(req.params.userId),
+				},
+			},
+			{
+				$unwind: {
+					path: '$shoppingList',
+				},
+			},
+			{
+				$lookup: {
+					from: 'recipes',
+					localField: 'shoppingList.recipeId',
+					foreignField: '_id',
+					as: 'recipe',
+				},
+			},
+			{
+				$addFields: {
+					recipe: { $arrayElemAt: ['$recipe', 0] },
+				},
+			},
+			{
+				$group: {
+					_id: '$recipe._id',
+					recipe: { $first: '$recipe' },
+					shoppingList: { $push: '$shoppingList' },
+				},
+			},
+			{
+				$addFields: {
+					listLength: { $size: '$shoppingList' },
+				},
+			},
+			{ $sort: { listLength: 1, _id: 1 } },
+			{
+				$project: {
+					listLength: 0,
+				},
+			},
+		])
 
 		res.status(200).json(list)
 	} catch (error) {
@@ -167,6 +318,61 @@ router.get('/ingredients/:userId', async (req, res) => {
 		])
 
 		res.status(200).json(ingredients.ingredients)
+	} catch (error) {
+		res.status(404).json(error)
+	}
+})
+
+router.get('/shoppingByRecipe/:userId', async (req, res) => {
+	try {
+		const userId = new ObjectId(req.params.userId)
+
+		const ingredients = await ShoppingList.aggregate([
+			{
+				$match: {
+					userId,
+				},
+			},
+			{
+				$unwind: {
+					path: '$shoppingList',
+					preserveNullAndEmptyArrays: true,
+				},
+			},
+			{
+				$lookup: {
+					from: 'recipes',
+					localField: 'shoppingList.recipeId',
+					foreignField: '_id',
+					as: 'recipe',
+				},
+			},
+			{
+				$addFields: {
+					recipe: { $arrayElemAt: ['$recipe', 0] },
+				},
+			},
+			{
+				$group: {
+					_id: '$recipe._id',
+					recipe: { $first: '$recipe' },
+					shoppingList: { $push: '$shoppingList' },
+				},
+			},
+			{
+				$addFields: {
+					listLength: { $size: '$shoppingList' },
+				},
+			},
+			{ $sort: { listLength: 1, _id: 1 } },
+			{
+				$project: {
+					listLength: 0,
+				},
+			},
+		])
+
+		res.status(200).json(ingredients)
 	} catch (error) {
 		res.status(404).json(error)
 	}

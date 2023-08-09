@@ -15,7 +15,7 @@ const MealPlannerItemDetails = ({ recipe, addToShoppingList }) => {
 				</div>
 				<ul className={active ? `${s.menu} ${s.active}` : s.menu}>
 					{recipe.ingredients.metric.map((ingredient, index) => (
-						<div key={index} className={s.menu__item} onClick={() => addToShoppingList(ingredient)}>
+						<div key={index} className={s.menu__item} onClick={() => addToShoppingList(ingredient, recipe?._id)}>
 							<div className={s.ingredient__details}>
 								<h1 className={s.ingredient}>{ingredient.ingredient}</h1>
 								{ingredient.quantity ? <p className={s.text__small}>{ingredient.quantity}</p> : <p className={s.text__small}>1</p>}

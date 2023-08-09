@@ -3,6 +3,8 @@
 	color: #4a4a4a;
 	display: flex;
 	flex-direction: column;
+	background: #fff;
+	z-index: 99;
 }
 
 .button {

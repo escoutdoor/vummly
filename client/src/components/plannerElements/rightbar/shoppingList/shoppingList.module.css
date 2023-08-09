@@ -4,7 +4,8 @@
 	top: 0;
 	bottom: 0;
 	right: 0;
-	min-width: 345px;
+	max-width: 345px;
+	width: 360px;
 	height: 100vh;
 	z-index: 100;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

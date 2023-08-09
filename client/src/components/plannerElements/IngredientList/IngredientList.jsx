@@ -2,17 +2,39 @@ import { useEffect, useState } from 'react'
 import s from './ingredientList.module.css'
 import IngredientListItem from './ingredientListItem/IngredientListItem'
 import IngredientListItemSkeleton from './ingredientListItemSkeleton/IngredientListItemSkeleton'
+import axios from 'axios'
 
-const IngredientList = ({ loaded, ingredients, setIngredients, recipes }) => {
-	const [recipeItems, setRecipeItems] = useState([])
+const IngredientList = ({ ingredientsByRecipe, setIngredientsByRecipe, loaded, ingredients, setIngredients, user }) => {
+	const fetchByRecipe = async () => {
+		try {
+			await axios.get(`/shopping/shoppingByRecipe/${user?._id}`).then(sr => {
+				setIngredientsByRecipe(sr.data)
+			})
+		} catch (error) {
+			console.log('fetchByRecipe error: ', error)
+		}
+	}
 
-	const groupByRecipe = () => {}
+	const deleteIngredient = async ingredient => {
+		try {
+			await axios
+				.put(`/shopping/delete/${user?._id}`, {
+					ingredientId: ingredient?._id,
+				})
+				.then(i => {
+					setIngredients(i.data)
+				})
+			console.log(ingredient?._id)
+		} catch (error) {
+			console.log('deleteIngredient error: ', error)
+		}
+	}
 
 	useEffect(() => {
-		if (loaded) {
-			groupByRecipe()
+		if (user?._id) {
+			fetchByRecipe()
 		}
-	}, [ingredients])
+	}, [user, ingredients])
 
 	return (
 		<div className={s.list}>
@@ -20,7 +42,17 @@ const IngredientList = ({ loaded, ingredients, setIngredients, recipes }) => {
 				Array(5)
 					.fill(0)
 					.map((ingredient, index) => <IngredientListItemSkeleton key={index} />)}
-			{loaded && ingredients?.map(ingredient => <IngredientListItem key={ingredient._id} ingredient={ingredient} />)}
+			{loaded &&
+				ingredientsByRecipe?.map(item => (
+					<IngredientListItem
+						deleteIngredient={deleteIngredient}
+						ingredientsByRecipe={ingredientsByRecipe}
+						setIngredientsByRecipe={setIngredientsByRecipe}
+						key={item._id}
+						recipeGroup={item}
+						user={user}
+					/>
+				))}
 		</div>
 	)
 }

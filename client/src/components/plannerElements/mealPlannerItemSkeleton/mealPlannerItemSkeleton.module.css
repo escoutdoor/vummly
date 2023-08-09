@@ -2,12 +2,10 @@
 	display: flex;
 	align-items: center;
 	gap: 40px;
-	width: 100%;
 }
 
 .text {
 	display: flex;
 	flex-direction: column;
 	gap: 5px;
-	width: 100%;
 }
