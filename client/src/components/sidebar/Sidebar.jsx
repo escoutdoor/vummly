@@ -1,13 +1,14 @@
 import s from './sidebar.module.css'
 import { useEffect, useState } from 'react'
 import { list, about, privacy } from './../../helpers/thermometer/sidebar'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, selectUser } from '../../redux/features/userSlice'
 
 const Sidebar = ({ setActive, activeLoginModal, hidden, setHidden }) => {
 	const PF = process.env.REACT_APP_BASE_URL
+	const nav = useNavigate()
 	const location = useLocation()
 	const path = decodeURIComponent(location.pathname)
 
@@ -47,6 +48,16 @@ const Sidebar = ({ setActive, activeLoginModal, hidden, setHidden }) => {
 		}
 	}, [location.pathname])
 
+	useEffect(() => {
+		if (location.pathname === '/meal-planner/ideas' || location.pathname === '/meal-planner') {
+			if (!user) {
+				setActive(true)
+			} else {
+				setActive(false)
+			}
+		}
+	}, [location.pathname, user])
+
 	return (
 		<div className={!hidden ? s.sidebar : `${s.sidebar} ${s.hidden}`}>
 			<div className={s.header}>
@@ -55,7 +66,11 @@ const Sidebar = ({ setActive, activeLoginModal, hidden, setHidden }) => {
 				</Link>
 				{user?._id ? (
 					<Link to={`/profile/${user.name}-${user?._id}`}>
-						{user.avatar ? <img className={s.avatar} src={`${PF}images/avatars/${user.avatar}`} alt="avatar" /> : <img className={s.avatar} src={`${PF}images/avatars/no-avatar.webp`} alt="avatar" />}
+						{user.avatar ? (
+							<img className={s.avatar} src={`${PF}images/avatars/${user.avatar}`} alt="avatar" />
+						) : (
+							<img className={s.avatar} src={`${PF}images/avatars/no-avatar.webp`} alt="avatar" />
+						)}
 					</Link>
 				) : (
 					<button onClick={() => setActive(true)} className={s.loginButton}>
@@ -72,16 +87,26 @@ const Sidebar = ({ setActive, activeLoginModal, hidden, setHidden }) => {
 							onClick={() => {
 								setSelected(selected === item.title ? '' : item.title)
 								setActiveAbout(false)
+								!item.dropdown && nav(item.link)
 							}}>
 							{<h1 className={selected === item.title ? `${s.title} ${s.active}` : s.title}>{item.title}</h1>}
 							{item.dropdown && (
-								<img className={s.arrow} src={selected === item.title ? `${PF}images/icons/arrows/sidebar/downLightGreen.svg` : `${PF}images/icons/arrows/sidebar/rightLightGreen.svg`} alt="rightArrow/downArrow" />
+								<img
+									className={s.arrow}
+									src={selected === item.title ? `${PF}images/icons/arrows/sidebar/downLightGreen.svg` : `${PF}images/icons/arrows/sidebar/rightLightGreen.svg`}
+									alt="rightArrow/downArrow"
+								/>
 							)}
 						</div>
 						<div className={selected === item.title ? `${s.dropdown} ${s.active}` : s.dropdown}>
 							{item.dropdown &&
 								item.dropdown.map((d, index) => (
-									<Link title={d.label} style={{ color: d.link === path && '#3a9691' }} key={index} to={d.link} className={selected === item.title ? `${s.subtitle} ${s.active}` : s.subtitle}>
+									<Link
+										title={d.label}
+										style={{ color: d.link === path && '#3a9691' }}
+										key={index}
+										to={d.link}
+										className={selected === item.title ? `${s.subtitle} ${s.active}` : s.subtitle}>
 										{d.label}
 									</Link>
 								))}
@@ -99,11 +124,20 @@ const Sidebar = ({ setActive, activeLoginModal, hidden, setHidden }) => {
 							setSelected('')
 						}}>
 						<h1 className={s.title}>About Vummly</h1>
-						<img className={s.arrow} src={activeAbout ? `${PF}images/icons/arrows/sidebar/downLightGreen.svg` : `${PF}images/icons/arrows/sidebar/rightLightGreen.svg`} alt="rightArrow/downArrow" />
+						<img
+							className={s.arrow}
+							src={activeAbout ? `${PF}images/icons/arrows/sidebar/downLightGreen.svg` : `${PF}images/icons/arrows/sidebar/rightLightGreen.svg`}
+							alt="rightArrow/downArrow"
+						/>
 					</div>
 					<div className={activeAbout ? `${s.aboutList} ${s.active}` : s.aboutList}>
 						{about.map((a, index) => (
-							<Link title={a.label} style={{ color: a.link === path && '#3a9691' }} key={index} to={a.link} className={activeAbout ? `${s.subtitle} ${s.active}` : s.subtitle}>
+							<Link
+								title={a.label}
+								style={{ color: a.link === path && '#3a9691' }}
+								key={index}
+								to={a.link}
+								className={activeAbout ? `${s.subtitle} ${s.active}` : s.subtitle}>
 								{a.label}
 							</Link>
 						))}

@@ -6,10 +6,10 @@ import axios from 'axios'
 
 const RecipeIngredients = ({ user, setActiveModal, recipe, loaded, include, addToCollection, deleteFromCollection, addMealPlanner }) => {
 	const PF = process.env.REACT_APP_BASE_URL
-	const madeIt = include?.find((c) => c.name === 'Scheduled and Made')
+	const madeIt = include?.find(c => c.name === 'Scheduled and Made')
 	const [measurement, setMeasurement] = useState('us')
 
-	const orderIngredient = async (ingredient) => {
+	const orderIngredient = async ingredient => {
 		if (user && ingredient) {
 			console.log(ingredient)
 		} else {
@@ -36,7 +36,7 @@ const RecipeIngredients = ({ user, setActiveModal, recipe, loaded, include, addT
 			<div className={s.list}>
 				{loaded
 					? measurement === 'us'
-						? recipe.ingredients.us.map((ingredient, index) => <IngredientListItem key={index} ingredient={ingredient} orderIngredient={orderIngredient} />)
+						? recipe.ingredients.us?.map((ingredient, index) => <IngredientListItem key={index} ingredient={ingredient} orderIngredient={orderIngredient} />)
 						: measurement === 'metric'
 						? recipe.ingredients.metric.map((ingredient, index) => <IngredientListItem key={index} ingredient={ingredient} orderIngredient={orderIngredient} />)
 						: null
@@ -57,14 +57,16 @@ const RecipeIngredients = ({ user, setActiveModal, recipe, loaded, include, addT
 					<img src={`${PF}images/icons/recipes/shopping-bag.svg`} alt="" />
 					add all to shopping list
 				</button>
-				<div className={s.checkButton} onClick={() => (user ? (madeIt ? deleteFromCollection('Scheduled and Made') : addToCollection('Scheduled and Made')) : setActiveModal(true))}>
+				<div
+					className={s.checkButton}
+					onClick={() => (user ? (madeIt ? deleteFromCollection('Scheduled and Made') : addToCollection('Scheduled and Made')) : setActiveModal(true))}>
 					<h1 className={s.checkButton__status}>{madeIt ? 'Made it!' : 'Did you make this?'}</h1>
 					<img src={madeIt ? `${PF}images/icons/recipes/check-circleActive.svg` : `${PF}images/icons/recipes/check-circle.svg`} alt="checkedRecipe" />
 				</div>
 				<div className={s.manage}>
 					<div className={s.mealPlanner} onClick={() => addMealPlanner()}>
-						<img src={`${PF}images/icons/recipes/lock.svg`} alt="lockIcon" />
-						<p className={s.mealPlanner__button}>Add to Meal Planner</p>
+						{!user && <img src={`${PF}images/icons/recipes/lock.svg`} alt="lockIcon" />}
+						<p className={s.mealPlanner__button}>{recipe.isAdded ? 'Remove from Meal Planner' : 'Add to Meal Planner'}</p>
 					</div>
 				</div>
 			</div>

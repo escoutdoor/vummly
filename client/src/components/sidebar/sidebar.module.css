@@ -10,13 +10,15 @@
 	min-width: 216px;
 	z-index: 999;
 	box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 40px -20px;
-	transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	transition: transform 0.4s;
 }
 
 .sidebar.hidden {
-	left: -216px;
+	transform: translateX(-216px);
 	opacity: 0;
 	visibility: hidden;
+	min-width: 0;
+	width: 0;
 }
 
 .header {

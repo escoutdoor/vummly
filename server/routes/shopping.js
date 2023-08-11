@@ -5,6 +5,52 @@ const Preferences = require('../models/Preferences')
 const MealPlanner = require('../models/MealPlanner')
 const ObjectId = require('mongoose').Types.ObjectId
 
+const defaultList = async function (userId) {
+	return await ShoppingList.aggregate([
+		{
+			$match: {
+				userId: userId,
+			},
+		},
+		{
+			$unwind: {
+				path: '$shoppingList',
+			},
+		},
+		{
+			$lookup: {
+				from: 'recipes',
+				localField: 'shoppingList.recipeId',
+				foreignField: '_id',
+				as: 'recipe',
+			},
+		},
+		{
+			$addFields: {
+				recipe: { $arrayElemAt: ['$recipe', 0] },
+			},
+		},
+		{
+			$group: {
+				_id: '$recipe._id',
+				recipe: { $first: '$recipe' },
+				shoppingList: { $push: '$shoppingList' },
+			},
+		},
+		{
+			$addFields: {
+				listLength: { $size: '$shoppingList' },
+			},
+		},
+		{ $sort: { listLength: 1, _id: 1 } },
+		{
+			$project: {
+				listLength: 0,
+			},
+		},
+	])
+}
+
 router.get('/:userId', async (req, res) => {
 	try {
 		const userId = new ObjectId(req.params.userId)
@@ -183,49 +229,7 @@ router.put('/purchase/:userId', async (req, res) => {
 			}
 		)
 
-		const newList = await ShoppingList.aggregate([
-			{
-				$match: {
-					userId,
-				},
-			},
-			{
-				$unwind: {
-					path: '$shoppingList',
-				},
-			},
-			{
-				$lookup: {
-					from: 'recipes',
-					localField: 'shoppingList.recipeId',
-					foreignField: '_id',
-					as: 'recipe',
-				},
-			},
-			{
-				$addFields: {
-					recipe: { $arrayElemAt: ['$recipe', 0] },
-				},
-			},
-			{
-				$group: {
-					_id: '$recipe._id',
-					recipe: { $first: '$recipe' },
-					shoppingList: { $push: '$shoppingList' },
-				},
-			},
-			{
-				$addFields: {
-					listLength: { $size: '$shoppingList' },
-				},
-			},
-			{ $sort: { listLength: 1, _id: 1 } },
-			{
-				$project: {
-					listLength: 0,
-				},
-			},
-		])
+		const newList = await defaultList(userId)
 
 		res.status(200).json(newList)
 	} catch (error) {
@@ -235,6 +239,8 @@ router.put('/purchase/:userId', async (req, res) => {
 
 router.put('/uncheck/:userId', async (req, res) => {
 	try {
+		const userId = new ObjectId(req.params.userId)
+
 		await ShoppingList.findOneAndUpdate(
 			{ userId: new ObjectId(req.params.userId) },
 			{
@@ -247,49 +253,30 @@ router.put('/uncheck/:userId', async (req, res) => {
 			}
 		)
 
-		const list = await ShoppingList.aggregate([
+		const list = await defaultList(userId)
+
+		res.status(200).json(list)
+	} catch (error) {
+		res.status(500).json(error)
+	}
+})
+
+router.put('/quantity/:userId', async (req, res) => {
+	try {
+		const userId = new ObjectId(req.params.userId)
+		const ingredientId = new ObjectId(req.body.ingredientId)
+		const quantity = Number(req.body.quantity)
+
+		await ShoppingList.findOneAndUpdate(
+			{ userId, 'shoppingList._id': ingredientId },
 			{
-				$match: {
-					userId: new ObjectId(req.params.userId),
+				$set: {
+					'shoppingList.$.quantity': quantity,
 				},
-			},
-			{
-				$unwind: {
-					path: '$shoppingList',
-				},
-			},
-			{
-				$lookup: {
-					from: 'recipes',
-					localField: 'shoppingList.recipeId',
-					foreignField: '_id',
-					as: 'recipe',
-				},
-			},
-			{
-				$addFields: {
-					recipe: { $arrayElemAt: ['$recipe', 0] },
-				},
-			},
-			{
-				$group: {
-					_id: '$recipe._id',
-					recipe: { $first: '$recipe' },
-					shoppingList: { $push: '$shoppingList' },
-				},
-			},
-			{
-				$addFields: {
-					listLength: { $size: '$shoppingList' },
-				},
-			},
-			{ $sort: { listLength: 1, _id: 1 } },
-			{
-				$project: {
-					listLength: 0,
-				},
-			},
-		])
+			}
+		)
+
+		const list = await defaultList(userId)
 
 		res.status(200).json(list)
 	} catch (error) {
@@ -327,50 +314,7 @@ router.get('/shoppingByRecipe/:userId', async (req, res) => {
 	try {
 		const userId = new ObjectId(req.params.userId)
 
-		const ingredients = await ShoppingList.aggregate([
-			{
-				$match: {
-					userId,
-				},
-			},
-			{
-				$unwind: {
-					path: '$shoppingList',
-					preserveNullAndEmptyArrays: true,
-				},
-			},
-			{
-				$lookup: {
-					from: 'recipes',
-					localField: 'shoppingList.recipeId',
-					foreignField: '_id',
-					as: 'recipe',
-				},
-			},
-			{
-				$addFields: {
-					recipe: { $arrayElemAt: ['$recipe', 0] },
-				},
-			},
-			{
-				$group: {
-					_id: '$recipe._id',
-					recipe: { $first: '$recipe' },
-					shoppingList: { $push: '$shoppingList' },
-				},
-			},
-			{
-				$addFields: {
-					listLength: { $size: '$shoppingList' },
-				},
-			},
-			{ $sort: { listLength: 1, _id: 1 } },
-			{
-				$project: {
-					listLength: 0,
-				},
-			},
-		])
+		const ingredients = await defaultList(userId)
 
 		res.status(200).json(ingredients)
 	} catch (error) {

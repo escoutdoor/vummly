@@ -24,13 +24,28 @@ const ShoppingItem = ({ ingredient, setIngredientsByRecipe, ingredientsByRecipe,
 		}
 	}
 
+	const changeQuantity = async (ingredientId, quantity) => {
+		try {
+			await axios
+				.put(`/shopping/quantity/${user?._id}`, {
+					ingredientId: ingredient?._id,
+					quantity,
+				})
+				.then(i => {
+					setIngredientsByRecipe(i.data)
+				})
+		} catch (error) {
+			console.log('changeQuanitity :', error)
+		}
+	}
+
 	return (
-		<div className={s.ingredient}>
-			<div
-				className={s.header}
-				onClick={() => {
-					purchase()
-				}}>
+		<div
+			className={s.ingredient}
+			onClick={() => {
+				purchase()
+			}}>
+			<div className={s.header}>
 				<div className={active ? `${s.header__left} ${s.active}` : s.header__left}>
 					<div className={s.checkbox}>
 						<input type="checkbox" className={s.checkbox__input} />
@@ -46,7 +61,7 @@ const ShoppingItem = ({ ingredient, setIngredientsByRecipe, ingredientsByRecipe,
 						<p className={s.text}>{ingredient.name}</p>
 					</div>
 				</div>
-				<div className={s.actions} onClick={e => e.stopPropagation()}>
+				<div className={active ? `${s.actions} ${s.active}` : s.actions} onClick={e => e.stopPropagation()}>
 					<div className={active ? `${s.icons} ${s.active}` : s.icons}>
 						<img
 							className={s.icon}
@@ -66,13 +81,7 @@ const ShoppingItem = ({ ingredient, setIngredientsByRecipe, ingredientsByRecipe,
 							alt="deleteIcon"
 						/>
 					</div>
-					<EditQuantity
-						active={active}
-						setActive={setActive}
-						ingredient={ingredient}
-						ingredientsByRecipe={ingredientsByRecipe}
-						setIngredientsByRecipe={setIngredientsByRecipe}
-					/>
+					<EditQuantity changeQuantity={changeQuantity} active={active} setActive={setActive} ingredient={ingredient} />
 				</div>
 			</div>
 		</div>

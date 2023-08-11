@@ -1,8 +1,5 @@
 const router = require('express').Router()
-const mongoose = require('mongoose')
 const Recipe = require('../models/Recipe')
-const Review = require('../models/Review')
-const User = require('../models/User')
 const ObjectId = require('mongoose').Types.ObjectId
 const Collection = require('../models/Collection')
 const Preferences = require('../models/Preferences')
@@ -11,6 +8,8 @@ const Preferences = require('../models/Preferences')
 
 router.get('/getOne/:recipeId', async (req, res) => {
 	try {
+		const userId = new ObjectId(req.query?.userId) || ''
+
 		const [recipe] = await Recipe.aggregate([
 			{ $match: { id: req.params.recipeId } },
 			{
@@ -91,6 +90,35 @@ router.get('/getOne/:recipeId', async (req, res) => {
 								reviews: { $push: '$reviews' },
 								rating: { $avg: '$rating' },
 								collections: { $first: '$collections' },
+							},
+						},
+						{
+							$lookup: {
+								from: 'mealplanners',
+								localField: '_id',
+								foreignField: 'recipes.recipeId',
+								as: 'planner',
+							},
+						},
+						{
+							$addFields: {
+								usersWithThisRecipe: '$planner.userId',
+							},
+						},
+						{
+							$project: {
+								id: 1,
+								title: 1,
+								time: 1,
+								resource: 1,
+								nutrition: 1,
+								tags: 1,
+								servings: 1,
+								ingredients: 1,
+								reviews: 1,
+								rating: 1,
+								collections: 1,
+								isAdded: { $in: [userId, '$usersWithThisRecipe'] },
 							},
 						},
 					],

@@ -19,6 +19,7 @@ import 'swiper/css/navigation'
 import 'swiper/css/thumbs'
 import { faqs } from '../../helpers/thermometer/faqs'
 import { footerTherm } from '../../helpers/thermometer/footer'
+import Tip from '../../components/tip/Tip'
 
 const Overview = () => {
 	useEffect(() => {
@@ -40,10 +41,7 @@ const Overview = () => {
 			setAmount(e.target.value)
 		}
 	}
-	const [showAnswer, setShowAnswer] = useState(null)
-	const faqsToggle = e => {
-		showAnswer === e ? setShowAnswer(null) : setShowAnswer(e)
-	}
+
 	const year = new Date().getFullYear()
 
 	return (
@@ -130,8 +128,8 @@ const Overview = () => {
 						<div className="overviewVideo">
 							<h1 className="overviewVideo__title">Take the guesswork out of cooking</h1>
 							<p className="overviewVideo__desc">
-								The Yummly wireless meat thermometer sets you up for cooking success. With convenient app-based cooking assistance, timers, and alerts, you can be confident in your
-								cooking — even when you're multitasking.
+								The Yummly wireless meat thermometer sets you up for cooking success. With convenient app-based cooking assistance, timers, and alerts, you can be
+								confident in your cooking — even when you're multitasking.
 							</p>
 							<video className="videoPlayer" controls poster={`${PF}images/videos/poster.jpg`}>
 								<source src={`${PF}images/videos/thermometrVideo.mp4`} type="video/mp4" />
@@ -238,36 +236,8 @@ const Overview = () => {
 							<div className="faqs__container">
 								<h1 className="faqs__topTitle">FAQs</h1>
 								<div className="faqs__boxes">
-									{faqs.map(f => (
-										<div className={showAnswer === f.id ? 'faqs__boxes-item show' : 'faqs__boxes-item'} key={f.id} onClick={() => faqsToggle(f.id)}>
-											<div className="faqs__boxes-itemQ">
-												<span className="showIcon">{showAnswer === f.id ? '-' : '+'}</span>
-												<h1 className="showQuestion">{f.question}</h1>
-											</div>
-											<div className={showAnswer === f.id ? 'faqs__boxes-itemA show' : 'faqs__boxes-itemA'}>
-												{f.text.map(t => (
-													<p className="faqs__text" key={t.id}>
-														{t.t}
-													</p>
-												))}
-												<ul className="faqs__points">
-													{f.points
-														? f.points.map(pnt => (
-																<li className="faqs__points-item" key={pnt.id}>
-																	{pnt.point}
-																</li>
-														  ))
-														: null}
-												</ul>
-												{f.butt
-													? f.butt.map(b => (
-															<Link to={b.link} key={b.id}>
-																<button className="learnMore__btn">{b.t}</button>
-															</Link>
-													  ))
-													: null}
-											</div>
-										</div>
+									{faqs.map(faq => (
+										<Tip key={faq.id} tip={faq} />
 									))}
 								</div>
 							</div>

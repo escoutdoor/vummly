@@ -1,5 +1,5 @@
 import s from './shoppingList.module.css'
-import IngredientList from '../../IngredientList/IngredientList'
+import IngredientList from '../../ingredientList/IngredientList'
 import AddIngredients from '../../addIngredients/AddIngredients'
 import ShoppingListActions from '../../shoppingListActions/ShoppingListActions'
 import axios from 'axios'

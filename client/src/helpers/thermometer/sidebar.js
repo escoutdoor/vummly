@@ -11,10 +11,7 @@ let list = [
 	{
 		id: 2,
 		title: 'Meal Planning',
-		dropdown: [
-			{ label: 'Meal Planner', link: '/meal-planner/ideas' },
-			{ label: 'Meal Planner Guides', link: '/meal-planner-guides' },
-		],
+		link: '/meal-planner/ideas',
 	},
 	{
 		id: 3,
@@ -22,14 +19,7 @@ let list = [
 		dropdown: [
 			{ label: 'My Feed', link: '/' },
 			{ label: 'Browse', link: '/browse' },
-			{ label: 'Pro Recipes', link: '/proRec' },
-			{ label: 'Guided Recipes', link: '/guidedRec' },
-			{ label: 'Pantry Ready', link: '/pantryReady' },
 		],
-	},
-	{
-		id: 4,
-		title: 'Articles',
 	},
 	{
 		id: 5,
@@ -41,8 +31,7 @@ let list = [
 export { list }
 
 let about = [
-	{ label: 'Careers', link: '/careers' },
-	{ label: 'Contact Us', link: '/contactUs' },
+	{ label: 'Contact Us', link: '/contact-us' },
 	{ label: 'FAQs', link: '/support' },
 ]
 

@@ -28,7 +28,7 @@ const Recipe = () => {
 	const [notInclude, setNotInclude] = useState([])
 
 	const fetch = async () => {
-		await axios.get(`/recipe/getOne/${recipeId}`).then(recipe => {
+		await axios.get(`/recipe/getOne/${recipeId}${user ? `?userId=${user?._id}` : ''}`).then(recipe => {
 			setRecipe(recipe.data.recipe)
 			setRelatedRecipes(recipe.data.related)
 			setMoreRecipes(recipe.data.more)
@@ -41,7 +41,7 @@ const Recipe = () => {
 			fetch()
 			setTimeout(() => setLoaded(true), 500)
 		}
-	}, [recipeId])
+	}, [recipeId, user])
 
 	const deleteFromCollection = async name => {
 		if (name) {
@@ -68,6 +68,9 @@ const Recipe = () => {
 			try {
 				await axios.put(`/meal-planner/addOrRemove/${user._id}/${recipe._id}`).then(planner => {
 					console.log(planner.data)
+					const recipeBefore = recipe
+					recipeBefore.isAdded = !recipeBefore.isAdded
+					setRecipe({ ...recipeBefore })
 				})
 			} catch (error) {
 				console.log('addMealPlanner', error)

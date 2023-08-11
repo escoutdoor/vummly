@@ -1,14 +1,32 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
-import { MyFeed, Overview, Activate, Support, Category, Article, SearchSupport, SubmitRequest, Recipe, SearchRecipe, Resource, Profile, Collection, MealPlanner, Ideas, MealPlannerSupport } from './pages/pages'
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom'
+import {
+	MyFeed,
+	Overview,
+	Activate,
+	Support,
+	Category,
+	Article,
+	SearchSupport,
+	SubmitRequest,
+	Recipe,
+	SearchRecipe,
+	Resource,
+	Profile,
+	Collection,
+	MealPlanner,
+	Ideas,
+	MealPlannerSupport,
+} from './pages/pages'
 import SupportLayout from './layouts/support/SupportLayout'
 import MainLayout from './layouts/main/MainLayout'
 import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { login } from './redux/features/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { login, selectUser } from './redux/features/userSlice'
 import axios from 'axios'
 
 function App() {
 	const dispatch = useDispatch()
+	const user = useSelector(selectUser)
 
 	useEffect(() => {
 		const fetchme = async () => {

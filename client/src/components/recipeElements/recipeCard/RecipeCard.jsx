@@ -61,7 +61,7 @@ const RecipeCard = ({ user, setActiveModal, recipe, loaded, include, setInclude,
 							<span className={s.summary__title}>minutes</span>
 						</div>
 						<div className={s.summary__item}>
-							<p className={s.summary__value}>{recipe.nutrition.find(n => n.label === 'calories').value}</p>
+							<p className={s.summary__value}>{recipe.nutrition?.find(n => n.label === 'calories').value}</p>
 							<span className={s.summary__title}>calories</span>
 						</div>
 					</div>
@@ -77,8 +77,8 @@ const RecipeCard = ({ user, setActiveModal, recipe, loaded, include, setInclude,
 							setActiveModal={setActiveModal}
 						/>
 						<div className={s.mealPlanner} onClick={() => addMealPlanner()}>
-							<img src={`${PF}images/icons/recipes/lock.svg`} alt="lockIcon" />
-							<p className={s.mealPlanner__button}>Add to Meal Planner</p>
+							{!user && <img src={`${PF}images/icons/recipes/lock.svg`} alt="lockIcon" />}
+							<p className={s.mealPlanner__button}>{recipe.isAdded ? 'Remove from Meal Planner' : 'Add to Meal Planner'}</p>
 						</div>
 					</div>
 				</div>
