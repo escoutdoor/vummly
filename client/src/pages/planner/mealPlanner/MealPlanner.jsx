@@ -79,6 +79,14 @@ const MealPlanner = () => {
 		}
 	}
 
+	const addAllToShoppingList = async () => {
+		try {
+			// add all
+		} catch (error) {
+			console.log('addAllToShoppingList error: ', error)
+		}
+	}
+
 	return (
 		<div className={s.planner}>
 			<div className={s.wrapper}>

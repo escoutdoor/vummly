@@ -1,184 +1,182 @@
 .savedRecipes {
-    display: block;
+	display: block;
 }
 
 .findRecipes {
-    position: relative;
+	position: relative;
 }
 
 .searchBar {
-    display: flex;
-    align-items: center;
-    position: relative;
+	display: flex;
+	align-items: center;
+	position: relative;
 }
 
 .searchIcon {
-    position: absolute;
-    left: 15px;
+	position: absolute;
+	left: 15px;
 }
 
 .searchInput {
-    font-family: 'europa';
-    line-height: 40px;
-    width: 345px;
-    padding: 8px 1em 8px 48px;
-    border-radius: 36px;
-    background: #fff;
-    color: #707070;
-    cursor: pointer;
-    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-    transition: all .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    font-size: 14px;
-    line-height: 40px;
-    font-weight: 700;
+	font-family: 'europa';
+	line-height: 40px;
+	width: 345px;
+	padding: 8px 1em 8px 48px;
+	border-radius: 36px;
+	background: #fff;
+	color: #707070;
+	cursor: pointer;
+	box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+	transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	font-size: 14px;
+	line-height: 40px;
+	font-weight: 700;
 }
 
 .searchInput::placeholder {
-    font-size: 14px;
-    color: #e3e3e3;
+	font-size: 14px;
+	color: #e3e3e3;
 }
 
 .searchInput:focus {
-    cursor: text;
-    color: #707070;
+	cursor: text;
+	color: #707070;
 }
 
 .blocks__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
 .title {
-    font-size: 24px;
-    color: #232323;
-    line-height: 36px;
+	font-size: 24px;
+	color: #232323;
+	line-height: 36px;
 }
 
 .seeAll {
-    font-size: 14px;
-    color: #3a9691;
-    font-weight: 700;
-    line-height: 36px;
+	font-size: 14px;
+	color: #3a9691;
+	font-weight: 700;
+	line-height: 36px;
 }
 
 .allYums {
-    margin-top: 24px;
-    padding: 5px 0px;
+	margin-top: 24px;
+	padding: 5px 0px;
 }
 
 .allRecipes {
-    display: flex;
-    gap: 20.8px;
-    margin: 30px 0px;
-    flex-wrap: wrap;
+	display: flex;
+	gap: 20.8px;
+	margin: 30px 0px;
+	flex-wrap: wrap;
 }
 
 /* dropdown */
 
-
 .sortMenu {
-    position: relative;
+	position: relative;
 }
 
 .sortMenu__text {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
 }
 
 .sortMenu__title {
-    font-size: 14px;
-    color: #232323;
-    line-height: 16px;
-    text-transform: capitalize;
+	font-size: 14px;
+	color: #232323;
+	line-height: 16px;
+	text-transform: capitalize;
 }
 
 .sortIcon {
-    width: 13px;
-    height: 13px;
+	width: 13px;
+	height: 13px;
 }
 
 .dropdown {
-    display: flex;
-    flex-direction: column;
-    color: #232323;
-    font-size: 14px;
-    min-width: 182px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    background: #fff;
-    position: absolute;
-    right: 0;
-    visibility: hidden;
-    opacity: 0;
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    z-index: 99;
+	display: flex;
+	flex-direction: column;
+	color: #232323;
+	font-size: 14px;
+	min-width: 182px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	background: #fff;
+	position: absolute;
+	right: 0;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	z-index: 99;
 }
 
 .dropdown.active {
-    visibility: visible;
-    opacity: 1;
+	visibility: visible;
+	opacity: 1;
 }
 
 .dropdown__item {
-    padding: 14px 40px 14px 25px;
-    transition: color .2s cubic-bezier(0.445, 0.05, 0.55, 0.95), background-color .2s cubic-bezier(0.445, 0.05, 0.55, 0.95),;
-    font-weight: 700;
-    font-size: 14px;
-    text-transform: capitalize;
+	padding: 14px 40px 14px 25px;
+	transition: color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95), background-color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	font-weight: 700;
+	font-size: 14px;
+	text-transform: capitalize;
 }
 
 .dropdown__item.active {
-    color: #3a9691;
-    background-image: url(http://localhost:3000/assets/images/icons/recipes/check.svg);
-    background-repeat: no-repeat;
-    background-position: calc(100% - 10px) center;
+	color: #3a9691;
+	background-image: url(http://localhost:3000/assets/images/icons/recipes/check.svg);
+	background-repeat: no-repeat;
+	background-position: calc(100% - 10px) center;
 }
 
 .dropdown__item:hover {
-    background-color: #f1f1f1;
-    color: #3a9691;
-    cursor: pointer;
+	background-color: #f1f1f1;
+	color: #3a9691;
+	cursor: pointer;
 }
 
 .dropdown__item.active:hover {
-    background: #f1f1f1;
-    background-image: url(http://localhost:3000/assets/images/icons/recipes/check.svg);
-    background-repeat: no-repeat;
-    background-position: calc(100% - 10px) center;
+	background: #f1f1f1;
+	background-image: url(http://localhost:3000/assets/images/icons/recipes/check.svg);
+	background-repeat: no-repeat;
+	background-position: calc(100% - 10px) center;
 }
 
 /* tooltip */
 
-
 .toolTip {
-    position: absolute;
-    z-index: 99;
-    background: #fff;
-    visibility: hidden;
-    opacity: 0;
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    min-width: 450px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-    border-radius: 10px;
+	position: absolute;
+	z-index: 99;
+	background: #fff;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	min-width: 450px;
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+	border-radius: 10px;
 }
 
 .toolTip.active {
-    visibility: visible;
-    opacity: 1;
+	visibility: visible;
+	opacity: 1;
 }
 
 .toolTip__item {
-    font-size: 16px;
-    line-height: 24px;
-    color: #232323;
-    transition: all .2s cubic-bezier(0.23, 1, 0.320, 1) ;
-    padding: 10px 10px;
-    border-radius: 10px;
+	font-size: 16px;
+	line-height: 24px;
+	color: #232323;
+	transition: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+	padding: 10px 10px;
+	border-radius: 10px;
 }
 
 .toolTip__item:hover {
-    color: #3a9691;
-    background-color: #f1f1f1;
+	color: #3a9691;
+	background-color: #f1f1f1;
 }

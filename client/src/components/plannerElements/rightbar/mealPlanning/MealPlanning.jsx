@@ -4,15 +4,14 @@ import s from './mealPlanning.module.css'
 import axios from 'axios'
 import PlanningList from '../../planningList/PlanningList'
 
-const MealPlanning = ({ user }) => {
+const MealPlanning = ({ user, mealPlanner, setMealPlanner }) => {
 	const PF = process.env.REACT_APP_BASE_URL
-	const [mealPlanner, setMealPlanner] = useState([])
 	const [loaded, setLoaded] = useState(false)
 
 	const clearList = async () => {
 		try {
 			await axios.put(`/meal-planner/clear/${user?._id}`).then(p => {
-				setMealPlanner(p.data)
+				setMealPlanner(p.data.recipes)
 			})
 		} catch (error) {
 			console.log('clearList', error)
@@ -22,7 +21,7 @@ const MealPlanning = ({ user }) => {
 	const fetch = async () => {
 		try {
 			await axios.get(`/meal-planner/${user?._id}`).then(p => {
-				setMealPlanner(p.data)
+				setMealPlanner(p.data.recipes)
 				setLoaded(true)
 			})
 		} catch (error) {
@@ -43,7 +42,7 @@ const MealPlanning = ({ user }) => {
 				<MoreMenu normal={true} user={user} planner={mealPlanner} clear={clearList} />
 			</div>
 			<div className={s.main}>
-				<PlanningList loaded={loaded} planner={mealPlanner.recipes || mealPlanner} setPlanner={setMealPlanner} user={user} />
+				<PlanningList loaded={loaded} planner={mealPlanner} setPlanner={setMealPlanner} user={user} />
 			</div>
 		</div>
 	)

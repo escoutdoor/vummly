@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import RecipeCarouselSkeleton from '../recipeCarouselSkeleton/RecipeCarouselSkeleton'
 import RecipeCarousel from '../recipeCarousel/RecipeCarousel'
 
-const MealRecommendations = ({ user }) => {
+const MealRecommendations = ({ user, addAllToMealPlanner, recipes }) => {
 	const [collectionsByTags, setCollectionsByTags] = useState([])
 	const [loaded, setLoaded] = useState(false)
 	const [limit, setLimit] = useState(5)
@@ -30,7 +30,14 @@ const MealRecommendations = ({ user }) => {
 		<div className={s.recommendations}>
 			<div className={s.collections}>
 				{loaded
-					? collectionsByTags.map((collection, index) => <RecipeCarousel key={index} collection={collection} />)
+					? collectionsByTags.map((collection, index) => (
+							<RecipeCarousel
+								isAdded={collection.recipes.every(c => recipes?.some(recipe => c._id === recipe._id))}
+								key={index}
+								addAllToMealPlanner={addAllToMealPlanner}
+								collection={collection}
+							/>
+					  ))
 					: Array(5)
 							.fill(0)
 							.map((c, index) => <RecipeCarouselSkeleton key={index} />)}

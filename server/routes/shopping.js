@@ -163,6 +163,20 @@ router.put('/:userId', async (req, res) => {
 
 				res.status(200).json(listWithNewIngredient)
 			}
+		} else {
+			const list = new ShoppingList({
+				userId,
+				shoppingList: {
+					name,
+					quantity: quantity !== 0 ? quantity : 1,
+					measurement,
+					recipeId: recipeId ? new ObjectId(recipeId) : undefined,
+				},
+			})
+
+			await list.save()
+
+			res.status(200).json(list)
 		}
 	} catch (error) {
 		res.status(500).json(error)
@@ -279,6 +293,45 @@ router.put('/quantity/:userId', async (req, res) => {
 		const list = await defaultList(userId)
 
 		res.status(200).json(list)
+	} catch (error) {
+		res.status(500).json(error)
+	}
+})
+
+router.put('/addAll/:userId', async (req, res) => {
+	try {
+		const userId = new ObjectId(req.params.userId)
+		const ingredients = req.body.ingredients
+
+		const userList = await ShoppingList.findOne({ userId })
+
+		const shoppingList = userList.shoppingList.map(item => {
+			return {
+				name: item.name,
+				measurement: item.measurement,
+				quantity: item.quantity,
+				recipeId: item.recipeId.toString(),
+			}
+		})
+
+		if (userList) {
+			if (shoppingList.map(element => ingredients.every(i => i.recipeId === element.recipeId))) {
+				res.status(200).json(userId)
+			} else {
+				res.status(200).json(shoppingList)
+			}
+		} else {
+			const list = new ShoppingList({
+				userId,
+				shoppingList: ingredients,
+			})
+
+			await list.save()
+
+			res.status(200).json(list)
+		}
+
+		res.status(200).json(ingredients)
 	} catch (error) {
 		res.status(500).json(error)
 	}

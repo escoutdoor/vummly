@@ -6,11 +6,31 @@ import MealRecommendations from '../../../components/plannerElements/mealRecomme
 import { useSelector } from 'react-redux'
 import { selectUser } from '../../../redux/features/userSlice'
 import MealPlanning from '../../../components/plannerElements/rightbar/mealPlanning/MealPlanning'
+import axios from 'axios'
 
 const Ideas = () => {
 	const PF = process.env.REACT_APP_BASE_URL
 	const [section, setSection] = useState('recommendations')
+	const [mealPlanner, setMealPlanner] = useState([])
 	const user = useSelector(selectUser)
+
+	const addAllToMealPlanner = async recipes => {
+		try {
+			if (user) {
+				await axios
+					.put(`/meal-planner/addAll/${user._id}`, {
+						recipes: recipes.map(recipe => {
+							return { recipeId: recipe._id }
+						}),
+					})
+					.then(m => {
+						setMealPlanner([...m.data.recipes])
+					})
+			}
+		} catch (error) {
+			console.log('addMealPlanner error :', error)
+		}
+	}
 
 	return (
 		<div className={s.ideas}>
@@ -48,11 +68,15 @@ const Ideas = () => {
 								</li>
 							</ul>
 						</div>
-						{section === 'recommendations' ? <MealRecommendations user={user} /> : <YourVums user={user} />}
+						{section === 'recommendations' ? (
+							<MealRecommendations recipes={mealPlanner} addAllToMealPlanner={addAllToMealPlanner} user={user} />
+						) : (
+							<YourVums recipes={mealPlanner} addAllToMealPlanner={addAllToMealPlanner} user={user} />
+						)}
 					</div>
 				</div>
 			</div>
-			<MealPlanning user={user} />
+			<MealPlanning mealPlanner={mealPlanner} setMealPlanner={setMealPlanner} user={user} />
 		</div>
 	)
 }

@@ -9,7 +9,13 @@ const MoreMenu = ({ user, planner, clear, normal }) => {
 
 	return (
 		<div className={s.more}>
-			<img className={s.icon} style={{ width: normal ? '25px' : 'auto', height: normal ? '25px' : 'auto' }} onClick={() => setActive(!active)} src={`${PF}images/icons/planner/more.svg`} alt="dotsIcon" />
+			<img
+				className={s.icon}
+				style={{ width: normal ? '25px' : 'auto', height: normal ? '25px' : 'auto' }}
+				onClick={() => setActive(!active)}
+				src={`${PF}images/icons/planner/more.svg`}
+				alt="dotsIcon"
+			/>
 			<ul className={active ? `${s.menu} ${s.active}` : s.menu}>
 				<li className={s.menu__item} onClick={() => nav('/meal-planner/ideas')}>
 					add recipes

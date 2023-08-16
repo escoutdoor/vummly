@@ -24,7 +24,6 @@ const IngredientList = ({ ingredientsByRecipe, setIngredientsByRecipe, loaded, i
 				.then(i => {
 					setIngredients(i.data)
 				})
-			console.log(ingredient?._id)
 		} catch (error) {
 			console.log('deleteIngredient error: ', error)
 		}

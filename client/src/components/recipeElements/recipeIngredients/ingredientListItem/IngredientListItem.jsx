@@ -1,9 +1,9 @@
 import s from './ingredientListItem.module.css'
 
-const IngredientListItem = ({ ingredient, orderIngredient }) => {
+const IngredientListItem = ({ ingredient, addToShoppingList }) => {
 	return (
 		<div className={s.ingredientItem}>
-			<span onClick={() => orderIngredient(ingredient)} className={s.plus}>
+			<span onClick={() => addToShoppingList(ingredient)} className={s.plus}>
 				+
 			</span>
 

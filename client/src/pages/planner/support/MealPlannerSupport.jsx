@@ -12,7 +12,7 @@ const MealPlannerSupport = () => {
 					<h1 className={s.title}>Meal Planner Tips & FAQs</h1>
 					<div className={s.tips}>
 						{tips.map(tip => (
-							<Tip tip={tip} />
+							<Tip key={tip.id} tip={tip} />
 						))}
 					</div>
 				</div>

@@ -9,11 +9,49 @@ const RecipeIngredients = ({ user, setActiveModal, recipe, loaded, include, addT
 	const madeIt = include?.find(c => c.name === 'Scheduled and Made')
 	const [measurement, setMeasurement] = useState('us')
 
-	const orderIngredient = async ingredient => {
-		if (user && ingredient) {
-			console.log(ingredient)
-		} else {
-			setActiveModal(true)
+	const addToShoppingList = async ingredient => {
+		try {
+			if (user && recipe) {
+				await axios
+					.put(`/shopping/${user?._id}`, {
+						name: ingredient.ingredient,
+						measurement: ingredient.measurement === 'grams' ? 'kgs' : ingredient.measurement === 'ml' ? 'ltrs' : '',
+						quantity: Number.isInteger(ingredient.quantity) && !ingredient.measurement ? ingredient.quantity : 1,
+						recipeId: recipe._id,
+					})
+					.then(i => {
+						console.log(i.data)
+					})
+			} else {
+				setActiveModal(true)
+			}
+		} catch (error) {
+			console.log('addToShoppingList error: ', error)
+		}
+	}
+
+	const addAllToShoppingList = async ingredients => {
+		try {
+			if (user && recipe) {
+				await axios
+					.put(`/shopping/addAll/${user?._id}`, {
+						ingredients: ingredients.map(ingredient => {
+							return {
+								name: ingredient.ingredient,
+								measurement: ingredient.measurement === 'grams' ? 'kgs' : ingredient.measurement === 'ml' ? 'ltrs' : '',
+								quantity: Number.isInteger(ingredient.quantity) && !ingredient.measurement ? ingredient.quantity : 1,
+								recipeId: recipe._id,
+							}
+						}),
+					})
+					.then(i => {
+						console.log(i.data)
+					})
+			} else {
+				setActiveModal(true)
+			}
+		} catch (error) {
+			console.log('addAllToShoppingList error: ', error)
 		}
 	}
 
@@ -36,9 +74,9 @@ const RecipeIngredients = ({ user, setActiveModal, recipe, loaded, include, addT
 			<div className={s.list}>
 				{loaded
 					? measurement === 'us'
-						? recipe.ingredients.us?.map((ingredient, index) => <IngredientListItem key={index} ingredient={ingredient} orderIngredient={orderIngredient} />)
+						? recipe.ingredients.us?.map((ingredient, index) => <IngredientListItem key={index} ingredient={ingredient} addToShoppingList={addToShoppingList} />)
 						: measurement === 'metric'
-						? recipe.ingredients.metric.map((ingredient, index) => <IngredientListItem key={index} ingredient={ingredient} orderIngredient={orderIngredient} />)
+						? recipe.ingredients.metric.map((ingredient, index) => <IngredientListItem key={index} ingredient={ingredient} addToShoppingList={addToShoppingList} />)
 						: null
 					: Array(8)
 							.fill(0)
@@ -53,7 +91,7 @@ const RecipeIngredients = ({ user, setActiveModal, recipe, loaded, include, addT
 							))}
 			</div>
 			<div className={s.buttons}>
-				<button onClick={() => orderIngredient(recipe.ingredients.metric || recipe.ingredients.us)} className={s.orderButton}>
+				<button onClick={() => addAllToShoppingList(recipe.ingredients.metric)} className={s.orderButton}>
 					<img src={`${PF}images/icons/recipes/shopping-bag.svg`} alt="" />
 					add all to shopping list
 				</button>

@@ -4,7 +4,7 @@ import axios from 'axios'
 import RecipeCarousel from '../recipeCarousel/RecipeCarousel'
 import RecipeCarouselSkeleton from '../recipeCarouselSkeleton/RecipeCarouselSkeleton'
 
-const YourVums = ({ user }) => {
+const YourVums = ({ user, addAllToMealPlanner, recipes }) => {
 	const [loaded, setLoaded] = useState(false)
 	const [recipesByCollection, setRecipesByCollection] = useState([])
 
@@ -21,13 +21,18 @@ const YourVums = ({ user }) => {
 		}
 	}, [user])
 
-	const addMealPlanner = async () => {}
-
 	return (
 		<div className={s.vums}>
 			<div className={s.collections}>
 				{loaded
-					? recipesByCollection.map(collection => <RecipeCarousel addMealPlanner={addMealPlanner} key={collection._id} collection={collection} />)
+					? recipesByCollection.map(collection => (
+							<RecipeCarousel
+								isAdded={collection.recipes.every(c => recipes.some(recipe => c._id === recipe._id))}
+								addAllToMealPlanner={addAllToMealPlanner}
+								key={collection._id}
+								collection={collection}
+							/>
+					  ))
 					: Array(5)
 							.fill(0)
 							.map((c, index) => <RecipeCarouselSkeleton key={index} />)}

@@ -316,14 +316,20 @@ router.get('/page/:page', async (req, res) => {
 
 router.get('/vums/:userId', async (req, res) => {
 	try {
+		const userId = new ObjectId(req.params.userId)
+
 		const collections = await Collection.aggregate([
-			{ $match: { userId: new ObjectId(req.params.userId) } },
+			{ $match: { userId } },
 			{
 				$project: {
 					description: 0,
 				},
 			},
-			{ $unwind: { path: '$recipes' } },
+			{
+				$unwind: {
+					path: '$recipes',
+				},
+			},
 			{
 				$lookup: {
 					from: 'recipes',
@@ -332,7 +338,33 @@ router.get('/vums/:userId', async (req, res) => {
 					as: 'recipes',
 				},
 			},
-			{ $unwind: { path: '$recipes' } },
+			{
+				$addFields: {
+					recipes: {
+						$arrayElemAt: ['$recipes', 0],
+					},
+				},
+			},
+			{
+				$lookup: {
+					from: 'reviews',
+					localField: 'recipes._id',
+					foreignField: 'recipeId',
+					as: 'recipes.reviews',
+				},
+			},
+			{
+				$addFields: {
+					'recipes.rating': {
+						$avg: '$recipes.reviews.rating',
+					},
+				},
+			},
+			{
+				$project: {
+					'recipes.reviews': 0,
+				},
+			},
 			{
 				$group: {
 					_id: '$_id',

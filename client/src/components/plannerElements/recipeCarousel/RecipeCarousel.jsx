@@ -9,7 +9,7 @@ import SwiperRecipeCarouselButtons from '../swiperRecipeCarouselButtons/SwiperRe
 import { useInView } from 'react-intersection-observer'
 import RecipeCarouselSkeleton from '../recipeCarouselSkeleton/RecipeCarouselSkeleton'
 
-const RecipeCarousel = ({ collection, addMealPlanner }) => {
+const RecipeCarousel = ({ collection, addAllToMealPlanner, isAdded }) => {
 	const PF = process.env.REACT_APP_BASE_URL
 
 	const { ref, inView } = useInView({
@@ -24,9 +24,8 @@ const RecipeCarousel = ({ collection, addMealPlanner }) => {
 				<>
 					<div className={s.header}>
 						<h1 className={s.title}>{collection.name}</h1>
-						<div onClick={() => addMealPlanner(collection._id)} className={s.button}>
-							<img src={`${PF}images/icons/planner/lock.svg`} alt="lockIcon" />
-							<h1 className={s.button__title}>Add All To Meal Plan</h1>
+						<div onClick={() => addAllToMealPlanner(collection.recipes)} className={s.button}>
+							<h1 className={s.button__title}>{isAdded ? 'Remove All From Meal Plan' : 'Add All To Meal Plan'}</h1>
 						</div>
 					</div>
 					<Swiper slidesPerView={5} spaceBetween={10} modules={[Pagination, Navigation]} className={s.swiper}>
