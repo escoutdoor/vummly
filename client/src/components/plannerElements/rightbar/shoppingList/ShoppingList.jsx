@@ -5,9 +5,17 @@ import ShoppingListActions from '../../shoppingListActions/ShoppingListActions'
 import axios from 'axios'
 import { useState } from 'react'
 
-const ShoppingList = ({ ingredients, addToShoppingList, setIngredients, user, suggestions, loaded, recipes }) => {
-	const [ingredientsByRecipe, setIngredientsByRecipe] = useState([])
-
+const ShoppingList = ({
+	ingredientsByRecipe,
+	setIngredientsByRecipe,
+	ingredients,
+	addToShoppingList,
+	setIngredients,
+	user,
+	suggestions,
+	loaded,
+	recipes,
+}) => {
 	const clearList = async () => {
 		try {
 			await axios.put(`/shopping/clearList/${user?._id}`).then(list => {
@@ -34,7 +42,12 @@ const ShoppingList = ({ ingredients, addToShoppingList, setIngredients, user, su
 				<h1 className={s.header__title}>shopping list</h1>
 				<ShoppingListActions clearList={clearList} uncheckAll={uncheckAll} />
 			</div>
-			<AddIngredients suggestions={suggestions} ingredients={ingredients} user={user} addToShoppingList={addToShoppingList} />
+			<AddIngredients
+				suggestions={suggestions}
+				ingredients={ingredients}
+				user={user}
+				addToShoppingList={addToShoppingList}
+			/>
 			<IngredientList
 				ingredientsByRecipe={ingredientsByRecipe}
 				setIngredientsByRecipe={setIngredientsByRecipe}

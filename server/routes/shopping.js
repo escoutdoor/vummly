@@ -121,7 +121,9 @@ router.put('/:userId', async (req, res) => {
 		const userList = await ShoppingList.findOne({ userId })
 
 		const sortByDate = arr => {
-			return arr.shoppingList.sort((a, b) => new Date(b.addedToShoppingList) - new Date(a.addedToShoppingList)).slice(0, 5)
+			return arr.shoppingList
+				.sort((a, b) => new Date(b.addedToShoppingList) - new Date(a.addedToShoppingList))
+				.slice(0, 5)
 		}
 
 		if (userList) {
@@ -305,33 +307,42 @@ router.put('/addAll/:userId', async (req, res) => {
 
 		const userList = await ShoppingList.findOne({ userId })
 
-		const shoppingList = userList.shoppingList.map(item => {
+		const shoppingList = ingredients.map(item => {
 			return {
 				name: item.name,
 				measurement: item.measurement,
 				quantity: item.quantity,
-				recipeId: item.recipeId.toString(),
+				recipeId: new ObjectId(item.recipeId),
 			}
 		})
 
 		if (userList) {
-			if (shoppingList.map(element => ingredients.every(i => i.recipeId === element.recipeId))) {
-				res.status(200).json(userId)
-			} else {
-				res.status(200).json(shoppingList)
-			}
+			const ingredientsToAdd = shoppingList.filter(
+				ingredient => !userList.shoppingList.find(item => item.name === ingredient.name)
+			)
+
+			await ShoppingList.findOneAndUpdate(
+				{ userId },
+				{
+					$addToSet: {
+						shoppingList: {
+							$each: ingredientsToAdd.map(ingredient => ingredient),
+						},
+					},
+				}
+			)
 		} else {
 			const list = new ShoppingList({
 				userId,
-				shoppingList: ingredients,
+				shoppingList,
 			})
 
 			await list.save()
-
-			res.status(200).json(list)
 		}
 
-		res.status(200).json(ingredients)
+		const list = await defaultList(userId)
+
+		res.status(200).json(list)
 	} catch (error) {
 		res.status(500).json(error)
 	}

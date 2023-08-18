@@ -35,8 +35,13 @@
 	cursor: pointer;
 }
 
+.shopping__list:hover .shopping__listLabel {
+	color: #3a9691;
+}
+
 .shopping__listLabel {
 	font-size: 14px;
 	line-height: 16px;
 	text-transform: capitalize;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }

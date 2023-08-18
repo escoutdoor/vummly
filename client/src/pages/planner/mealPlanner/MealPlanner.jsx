@@ -17,6 +17,8 @@ const MealPlanner = () => {
 	const [loaded, setLoaded] = useState(false)
 	const [shoppingList, setShoppingList] = useState([])
 	const [suggestions, setSuggestions] = useState([])
+	const [ingredientsByRecipe, setIngredientsByRecipe] = useState([])
+
 	const user = useSelector(selectUser)
 
 	const fetchPlanner = async () => {
@@ -67,8 +69,10 @@ const MealPlanner = () => {
 			await axios
 				.put(`/shopping/${user?._id}`, {
 					name: ingredient.ingredient,
-					measurement: ingredient.measurement === 'grams' ? 'kgs' : ingredient.measurement === 'ml' ? 'ltrs' : '',
-					quantity: Number.isInteger(ingredient.quantity) && !ingredient.measurement ? ingredient.quantity : 0,
+					measurement:
+						ingredient.measurement === 'grams' ? 'kgs' : ingredient.measurement === 'ml' ? 'ltrs' : '',
+					quantity:
+						Number.isInteger(ingredient.quantity) && !ingredient.measurement ? ingredient.quantity : 0,
 					recipeId: recipeId,
 				})
 				.then(i => {
@@ -82,6 +86,34 @@ const MealPlanner = () => {
 	const addAllToShoppingList = async () => {
 		try {
 			// add all
+			const ingredients = mealPlanner.recipes
+				?.flatMap(recipe =>
+					recipe.ingredients.metric.map(ingredient => {
+						return {
+							name: ingredient.ingredient,
+							measurement:
+								ingredient.measurement === 'grams'
+									? 'kgs'
+									: ingredient.measurement === 'ml'
+									? 'ltrs'
+									: '',
+							quantity:
+								Number.isInteger(ingredient.quantity) && !ingredient.measurement
+									? ingredient.quantity
+									: 1,
+							recipeId: recipe._id,
+						}
+					})
+				)
+				.filter((ingredient, index, arr) => index === arr.findIndex(i => i.name === ingredient.name))
+
+			await axios
+				.put(`/shopping/addAll/${user._id}`, {
+					ingredients,
+				})
+				.then(ing => {
+					setIngredientsByRecipe(ing.data)
+				})
 		} catch (error) {
 			console.log('addAllToShoppingList error: ', error)
 		}
@@ -98,12 +130,29 @@ const MealPlanner = () => {
 						<MoreMenu user={user} planner={mealPlanner} clear={clearList} />
 					</div>
 					<h1 className={s.title}>meal planner</h1>
-					{mealPlanner.recipes?.length !== 0 && <MealPlannerController clearList={clearList} addToShoppingList={addToShoppingList} />}
+					{mealPlanner.recipes?.length !== 0 && (
+						<MealPlannerController
+							isAdded={mealPlanner.recipes
+								?.flatMap(item => item.ingredients.metric.map(ingredient => ingredient.ingredient))
+								.every(name =>
+									ingredientsByRecipe
+										?.flatMap(item => item.shoppingList.map(listItem => listItem.name === name))
+										.some(Boolean)
+								)}
+							clearList={clearList}
+							addAllToShoppingList={addAllToShoppingList}
+						/>
+					)}
 				</div>
 				<div className={s.main}>
 					{loaded ? (
 						mealPlanner.recipes?.length !== 0 ? (
-							<MealPlannerList addToShoppingList={addToShoppingList} user={user} setPlanner={setMealPlanner} planner={mealPlanner} />
+							<MealPlannerList
+								addToShoppingList={addToShoppingList}
+								user={user}
+								setPlanner={setMealPlanner}
+								planner={mealPlanner}
+							/>
 						) : (
 							<EmptyMealPlanner user={user} />
 						)
@@ -127,6 +176,8 @@ const MealPlanner = () => {
 				ingredients={shoppingList}
 				addToShoppingList={addToShoppingList}
 				clearList={clearList}
+				ingredientsByRecipe={ingredientsByRecipe}
+				setIngredientsByRecipe={setIngredientsByRecipe}
 			/>
 		</div>
 	)
