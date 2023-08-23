@@ -1,0 +1,94 @@
+.menu {
+	visibility: hidden;
+	opacity: 0;
+	height: 0;
+	width: 0;
+	transition: background 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.menu.active {
+	position: fixed;
+	top: 0;
+	background: rgba(0, 0, 0, 0.4);
+	visibility: visible;
+	opacity: 1;
+	height: 100%;
+	width: 100%;
+}
+
+.menu__content {
+	width: 100%;
+	background: #fff;
+	padding: 40px 0px 30px;
+}
+
+.menu__centered {
+	display: flex;
+	justify-content: center;
+	margin-right: 10%;
+}
+
+.searchbar {
+	position: relative;
+	border-bottom: 2px solid #bababa;
+	width: 30%;
+	margin-bottom: 40px;
+}
+
+.icon {
+	position: absolute;
+	margin-bottom: 15px;
+	bottom: 0;
+	width: 20px;
+	height: 20px;
+}
+
+.input {
+	width: 100%;
+	padding: 24px 36px 15px;
+	font-weight: 700;
+	color: #bababa;
+	font-size: 16px;
+}
+
+.input::placeholder {
+	color: #bababa;
+}
+
+.recentSearches {
+	display: flex;
+	align-items: center;
+	margin-left: 10%;
+}
+
+.title {
+	color: #bababa;
+	font-size: 16px;
+	text-transform: capitalize;
+	margin-right: 14px;
+}
+
+.list {
+	display: flex;
+}
+
+.list__item {
+	display: inline-block;
+	transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+	cursor: pointer;
+	font-size: 16px;
+	color: #707070;
+}
+
+.list__item::after {
+	content: ', ';
+	margin-right: 4px;
+}
+
+.list__item:last-child::after {
+	content: '';
+}
+
+.list__item:hover {
+	color: #3a9691;
+}

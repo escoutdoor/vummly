@@ -33,10 +33,12 @@
 	font-weight: 700;
 	cursor: pointer;
 	text-transform: capitalize;
+	pointer-events: none;
 }
 
 .menu.active .menu__item {
 	padding: 12px 30px;
+	pointer-events: auto;
 }
 
 .menu__item:hover {

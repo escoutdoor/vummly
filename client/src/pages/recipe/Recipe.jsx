@@ -110,7 +110,13 @@ const Recipe = () => {
 					setNotInclude={setNotInclude}
 				/>
 				<Nutrition user={user} loaded={loaded} recipe={recipe} />
-				<Reviews user={user} recipe={recipe} loaded={loaded} setActiveLoginModal={setActiveLoginModal} fetch={fetch} />
+				<Reviews
+					user={user}
+					recipe={recipe}
+					loaded={loaded}
+					setActiveLoginModal={setActiveLoginModal}
+					fetch={fetch}
+				/>
 				<Recommendations related={relatedRecipes} more={moreRecipes} />
 			</div>
 		</div>

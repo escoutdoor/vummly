@@ -1,240 +1,230 @@
 .block {
-    width: 100%;
-    display: block;
-    color: #4a4a4a;
+	width: 100%;
+	display: block;
+	color: #4a4a4a;
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .header__title {
-    font-size: 24px;
-    line-height: 48px;
-    font-weight: 400;
+	font-size: 24px;
+	line-height: 48px;
+	font-weight: 400;
 }
 
 .description {
-    font-size: 14px;
-    line-height: 24px;
-    font-weight: 100;
+	font-size: 14px;
+	line-height: 24px;
+	font-weight: 100;
 }
 
 .topbar {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding: 20px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+	padding: 20px;
 }
 
-
 .menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
-    background: #f5f5f5;
-    visibility: hidden;
-    opacity: 0;
-    transition: all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    padding: 32px 144px;
-    height: 0;
+	display: none;
 }
 
 .menu.active {
-    visibility: visible;
-    opacity: 1;
-    height: 550px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 32px 144px;
+	max-height: 550px;
+	background: #f5f5f5;
 }
 
 .menu__content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .bubbles {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	flex-wrap: wrap;
 }
-
 
 .bubble,
 .addButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-    width: 132px;
-    height: 132px;
-    border: 6px solid #dadada;
-    border-radius: 50%;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 5px;
+	width: 132px;
+	height: 132px;
+	border: 6px solid #dadada;
+	border-radius: 50%;
+	text-transform: uppercase;
+	cursor: pointer;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	position: relative;
 }
 
 .bubble:hover,
 .addButton:hover {
-    border-color: #3a9691;
-    background-color: #f1f1f1;
+	border-color: #3a9691;
+	background-color: #f1f1f1;
 }
 
 .addButton {
-    width: 150px;
-    height: 150px;
+	width: 150px;
+	height: 150px;
 }
 
 .plusIcon {
-    width: 50px;
-    height: 50px;
+	width: 50px;
+	height: 50px;
 }
 
 .bubble__title {
-    text-align: center;
-    font-size: 14px;
-    font-weight: 700;
+	text-align: center;
+	font-size: 14px;
+	font-weight: 700;
 }
 
 .bubble__description {
-    font-size: 10px;
-    line-height: 10px;
+	font-size: 10px;
+	line-height: 10px;
 }
 
 .bubbleImg {
-    width: 36px;
-    height: 36px;
+	width: 36px;
+	height: 36px;
 }
 
 /* delete */
 
 .delete {
-    opacity: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 99;
-    border-radius: 72px;
-    transition: all .2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	opacity: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	gap: 5px;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+	border-radius: 72px;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 
 .delete:hover {
-    opacity: 1;
-    backdrop-filter: brightness(50%);
+	opacity: 1;
+	backdrop-filter: brightness(50%);
 }
 
 .delete h1 {
-    color: #fff;
-    font-size: 14px;
+	color: #fff;
+	font-size: 14px;
 }
 
 /* drop */
 
 .addDisliked__choose {
-    position: relative;
+	position: relative;
 }
 
-
 .dropdown {
-    min-width: 300px;
-    background: #fff;
-    position: absolute;
-    z-index: 99;
-    visibility: hidden;
-    opacity: 0;
-    transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    border-radius: 10px;
+	min-width: 300px;
+	background: #fff;
+	position: absolute;
+	z-index: 99;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+	border-radius: 10px;
 }
 
 .dropdown.active {
-    visibility: visible;
-    opacity: 1;
+	visibility: visible;
+	opacity: 1;
 }
 
-.dropdown__item { 
-    font-size: 14px;
-    padding: 10px 20px;
-    font-size: 14px;
-    line-height: 24px;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: 700;
-    transition: all .2s cubic-bezier(0.39, 0.575, 0.565, 1);
-    border-radius: 10px;
+.dropdown__item {
+	font-size: 14px;
+	padding: 10px 20px;
+	font-size: 14px;
+	line-height: 24px;
+	cursor: pointer;
+	text-transform: uppercase;
+	font-weight: 700;
+	transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+	border-radius: 10px;
 }
-
 
 .dropdown__item:hover {
-    background-color: #f1f1f1;
+	background-color: #f1f1f1;
 }
 
 .addDisliked {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 25px 0px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 25px 0px;
 }
 
 .addDisliked__target {
-    display: flex;
-    align-items: flex-end;
-    gap: 5px;
-    cursor: pointer;
+	display: flex;
+	align-items: flex-end;
+	gap: 5px;
+	cursor: pointer;
 }
 
 .addDisliked__target.active {
-    display: none;
+	display: none;
 }
 
 .addDisliked__target h1 {
-    font-size: 14px;
-    text-transform: uppercase;
+	font-size: 14px;
+	text-transform: uppercase;
 }
 
 .addDisliked__target span {
-    color: #3a9691;
-    font-size: 18px;
-    font-weight: 700;
+	color: #3a9691;
+	font-size: 18px;
+	font-weight: 700;
 }
 
 .inputBox {
-    display: none;
-    /* position: relative; */
+	display: none;
+	/* position: relative; */
 }
 
 .inputBox.active {
-    display: flex;
-    align-items: flex-end;
+	display: flex;
+	align-items: flex-end;
 }
 
 .newIngredient__input {
-    display: block;
-    color: #707070;
-    font-size: 18px;
-    font-weight: 700;
-    text-align: center;
+	display: block;
+	color: #707070;
+	font-size: 18px;
+	font-weight: 700;
+	text-align: center;
 }
 
 .newIngredient__input::placeholder {
-    text-transform: capitalize;
+	text-transform: capitalize;
 }
 
 .close {
-    position: absolute;
-    right: -20px;
-    cursor: pointer;
-    padding-bottom: 2px;
+	position: absolute;
+	right: -20px;
+	cursor: pointer;
+	padding-bottom: 2px;
 }

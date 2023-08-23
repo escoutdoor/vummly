@@ -1,31 +1,37 @@
 .ingredientItem {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 8px 0px;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	padding: 8px 0px;
 }
 
 .plus {
-    width: 16px;    
-    height: 16px;
-    border: 2px solid #3a9691;
-    border-radius: 50%;
-    color: #3a9691;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 0px 5px 1px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-right: 8px;
+	width: 16px;
+	height: 16px;
+	border: 2px solid #3a9691;
+	border-radius: 50%;
+	color: #3a9691;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0px 0px 5px 1px;
+	font-weight: 700;
+	cursor: pointer;
+	margin-right: 8px;
+	transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.plus.active {
+	background: #3a9691;
+	color: #fff;
 }
 
 .text,
 .technique {
-    font-size: 16px;
-    line-height: 24px;
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .technique {
-    opacity: 0.5;
+	opacity: 0.5;
 }

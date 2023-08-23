@@ -42,7 +42,9 @@ const Resource = () => {
 							<div className={s.info}>
 								<img className={s.icon} src={`${PF}images/icons/resource/pageIcon.png`} alt="icon" />
 								<div className={s.details}>
-									<h1 className={s.title}>{page && loading ? page[0].resource.name : <Skeleton width={220} />}</h1>
+									<h1 className={s.title}>
+										{page && loading ? page[0].resource.name : <Skeleton width={220} />}
+									</h1>
 									<p className={s.description}>
 										{page && loading ? (
 											`${page[0].resource.name}, it's what's cooking online! Over 100,000 recipes for any cuisine imaginable. For home cooks and gourmets alike.`
@@ -51,14 +53,41 @@ const Resource = () => {
 										)}
 									</p>
 									<div className={s.socials}>
-										<Link onMouseOut={() => setIcon('')} onMouseOver={() => setIcon('mail')} to={'mailto:vanap387@gmail.com'}>
-											<img className={s.social} src={`${PF}images/icons/resource/${icon === 'mail' ? `${icon}Active.svg` : 'mail.svg'}`} alt="mail" />
+										<Link
+											onMouseOut={() => setIcon('')}
+											onMouseOver={() => setIcon('mail')}
+											to={'mailto:vanap387@gmail.com'}>
+											<img
+												className={s.social}
+												src={`${PF}images/icons/resource/${
+													icon === 'mail' ? `${icon}Active.svg` : 'mail.svg'
+												}`}
+												alt="mail"
+											/>
 										</Link>
-										<Link onMouseOut={() => setIcon('')} onMouseOver={() => setIcon('github')} to={'https://github.com/escoutdoor'}>
-											<img className={s.social} src={`${PF}images/icons/resource/${icon === 'github' ? `${icon}Active.svg` : 'github.svg'}`} alt="github" />
+										<Link
+											onMouseOut={() => setIcon('')}
+											onMouseOver={() => setIcon('github')}
+											to={'https://github.com/escoutdoor'}>
+											<img
+												className={s.social}
+												src={`${PF}images/icons/resource/${
+													icon === 'github' ? `${icon}Active.svg` : 'github.svg'
+												}`}
+												alt="github"
+											/>
 										</Link>
-										<Link onMouseOut={() => setIcon('')} onMouseOver={() => setIcon('linkedin')} to={'https://www.linkedin.com/in/ivan-popov-015b61252/'}>
-											<img className={s.social} src={`${PF}images/icons/resource/${icon === 'linkedin' ? `${icon}Active.svg` : 'linkedin.svg'}`} alt="linkedin" />
+										<Link
+											onMouseOut={() => setIcon('')}
+											onMouseOver={() => setIcon('linkedin')}
+											to={'https://www.linkedin.com/in/ivan-popov-015b61252/'}>
+											<img
+												className={s.social}
+												src={`${PF}images/icons/resource/${
+													icon === 'linkedin' ? `${icon}Active.svg` : 'linkedin.svg'
+												}`}
+												alt="linkedin"
+											/>
 										</Link>
 									</div>
 								</div>
@@ -66,18 +95,33 @@ const Resource = () => {
 							<div className={s.search}>
 								<div className={s.search__container}>
 									<div className={s.searchbar}>
-										<img className={s.searchIcon} src={`${PF}images/icons/recipes/search.svg`} alt="search" />
-										<input className={s.searchInput} placeholder="Profile Search" value={searchValue} onChange={e => setSearchValue(e.target.value)} type="text" />
+										<img
+											className={s.searchIcon}
+											src={`${PF}images/icons/recipes/search.svg`}
+											alt="search"
+										/>
+										<input
+											className={s.searchInput}
+											placeholder="Profile Search"
+											value={searchValue}
+											onChange={e => setSearchValue(e.target.value)}
+											type="text"
+										/>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div className={s.recipes}>
-							{!loading && <RecipeItemSkeleton recipes={50} />}
+							{!loading &&
+								Array(50)
+									.fill(0)
+									.map((item, index) => <RecipeItemSkeleton key={index} />)}
 							{searched.map(p => (
 								<RecipeItem recipe={p} key={p._id} rating={p.rating} />
 							))}
-							{loading && searched.length === 0 ? <NoResults length={searched.length} searchVal={searchValue} /> : null}
+							{loading && searched.length === 0 ? (
+								<NoResults length={searched.length} searchVal={searchValue} />
+							) : null}
 						</div>
 					</div>
 				</div>

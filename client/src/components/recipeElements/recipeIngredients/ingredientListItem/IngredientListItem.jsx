@@ -1,9 +1,16 @@
+import { useState } from 'react'
 import s from './ingredientListItem.module.css'
 
-const IngredientListItem = ({ ingredient, addToShoppingList }) => {
+const IngredientListItem = ({ ingredient, addToShoppingList, user }) => {
+	const [added, setAdded] = useState(false)
+
 	return (
 		<div className={s.ingredientItem}>
-			<span onClick={() => addToShoppingList(ingredient)} className={s.plus}>
+			<span
+				onClick={() => {
+					addToShoppingList(ingredient).then(() => user && setAdded(true))
+				}}
+				className={added ? `${s.plus} ${s.active}` : s.plus}>
 				+
 			</span>
 

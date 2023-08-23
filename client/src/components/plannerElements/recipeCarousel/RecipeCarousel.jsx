@@ -25,7 +25,9 @@ const RecipeCarousel = ({ collection, addAllToMealPlanner, isAdded }) => {
 					<div className={s.header}>
 						<h1 className={s.title}>{collection.name}</h1>
 						<div onClick={() => addAllToMealPlanner(collection.recipes)} className={s.button}>
-							<h1 className={s.button__title}>{isAdded ? 'Remove All From Meal Plan' : 'Add All To Meal Plan'}</h1>
+							<h1 className={s.button__title}>
+								{isAdded ? 'Remove All From Meal Plan' : 'Add All To Meal Plan'}
+							</h1>
 						</div>
 					</div>
 					<Swiper slidesPerView={5} spaceBetween={10} modules={[Pagination, Navigation]} className={s.swiper}>

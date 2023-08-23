@@ -1,4 +1,4 @@
-import styles from './myFeed.module.css'
+import s from './myFeed.module.css'
 import React, { useEffect, useState } from 'react'
 import SearchRecipes from '../../components/searchRecipes/SearchRecipes'
 import axios from 'axios'
@@ -11,7 +11,6 @@ import { useSelector } from 'react-redux'
 const MyFeed = () => {
 	const [recipes, setRecipes] = useState([])
 	const [loading, setLoading] = useState(false)
-	const [active, setActive] = useState(false)
 	const user = useSelector(selectUser)
 
 	useEffect(() => {
@@ -35,16 +34,19 @@ const MyFeed = () => {
 	}, [user])
 
 	return (
-		<div className={styles.MyFeed}>
-			<SearchRecipes setActive={setActive} active={active} />
-			<div className="wrap1160">
-				<div className={styles.myFeed__content}>
-					<h1 className={styles.myFeed__title}>Just For You</h1>
-					<div className={active ? styles.myFeed__rec : `${styles.myFeed__rec} ${styles.show}`}>
-						{!loading && <RecipeItemSkeleton recipes={100} />}
-						{recipes?.map(r => (
-							<RecipeItem key={r._id} recipe={r} rating={r.rating} />
-						))}
+		<div className={s.myFeed}>
+			<SearchRecipes />
+			<div className={s.recipes}>
+				<div className="wrap1160">
+					<div className={s.recipes__content}>
+						<h1 className={s.title}>just for you</h1>
+						<div className={s.list}>
+							{loading
+								? recipes.map(recipe => <RecipeItem key={recipe._id} recipe={recipe} />)
+								: Array(100)
+										.fill(0)
+										.map((item, index) => <RecipeItemSkeleton key={index} />)}
+						</div>
 					</div>
 				</div>
 			</div>

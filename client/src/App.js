@@ -16,6 +16,7 @@ import {
 	MealPlanner,
 	Ideas,
 	MealPlannerSupport,
+	Browse,
 } from './pages/pages'
 import SupportLayout from './layouts/support/SupportLayout'
 import MainLayout from './layouts/main/MainLayout'
@@ -65,9 +66,11 @@ function App() {
 					<Route path={'profile/:id'} element={<Profile />} />
 					<Route path={'profile/:userId/collections/:collectionName'} element={<Collection />} />
 
-					<Route path="meal-planner" element={<MealPlanner />} />
-					<Route path="meal-planner/ideas" element={<Ideas />} />
-					<Route path="meal-planner/support" element={<MealPlannerSupport />} />
+					<Route path={'meal-planner'} element={<MealPlanner />} />
+					<Route path={'meal-planner/ideas'} element={<Ideas />} />
+					<Route path={'meal-planner/support'} element={<MealPlannerSupport />} />
+
+					<Route path={'browse'} element={<Browse />} />
 				</Route>
 			</Routes>
 		</Router>

@@ -51,7 +51,13 @@ const SavedRecipes = ({ user, isMe }) => {
 				<div className={s.findRecipes}>
 					<div className={s.searchBar}>
 						<img className={s.searchIcon} src={`${PF}images/icons/recipes/search.svg`} alt="" />
-						<input value={searchVal} onChange={e => setSearchVal(e.target.value)} placeholder="Search My Vums" type="text" className={s.searchInput} />
+						<input
+							value={searchVal}
+							onChange={e => setSearchVal(e.target.value)}
+							placeholder="Search My Vums"
+							type="text"
+							className={s.searchInput}
+						/>
 					</div>
 					<div className={activeToolTip ? `${s.toolTip} ${s.active}` : `${s.toolTip}`}>
 						{toolTip.slice(0, 7).map(item => (
@@ -70,7 +76,10 @@ const SavedRecipes = ({ user, isMe }) => {
 					</Link>
 				</div>
 				<div className={s.allRecipes}>
-					{!loaded && <RecipeItemSkeleton recipes={6} />}
+					{!loaded &&
+						Array(6)
+							.fill(0)
+							.map((item, index) => <RecipeItemSkeleton key={index} />)}
 					{isMe && loaded && <FindRecipes />}
 					{recipes.slice(0, isMe ? 5 : 6).map((r, index) => (
 						<RecipeItem key={index} recipe={r} rating={r.rating} />
@@ -86,7 +95,11 @@ const SavedRecipes = ({ user, isMe }) => {
 								sort by
 							</h1>
 							<h1 className={s.sortMenu__title}>{sortSettings}</h1>
-							<img className={s.sortIcon} src={`${PF}images/icons/recipes/chevron-down.svg`} alt="sortIcon" />
+							<img
+								className={s.sortIcon}
+								src={`${PF}images/icons/recipes/chevron-down.svg`}
+								alt="sortIcon"
+							/>
 						</div>
 						<ul className={activeSortMenu ? `${s.dropdown} ${s.active}` : s.dropdown}>
 							<li
@@ -94,7 +107,11 @@ const SavedRecipes = ({ user, isMe }) => {
 									setSortSettings('last modified')
 									setActiveSortMenu(false)
 								}}
-								className={sortSettings === 'last modified' ? `${s.dropdown__item}  ${s.active}` : s.dropdown__item}>
+								className={
+									sortSettings === 'last modified'
+										? `${s.dropdown__item}  ${s.active}`
+										: s.dropdown__item
+								}>
 								last modified
 							</li>
 							<li
@@ -102,7 +119,11 @@ const SavedRecipes = ({ user, isMe }) => {
 									setSortSettings('collection name')
 									setActiveSortMenu(false)
 								}}
-								className={sortSettings === 'collection name' ? `${s.dropdown__item}  ${s.active}` : s.dropdown__item}>
+								className={
+									sortSettings === 'collection name'
+										? `${s.dropdown__item}  ${s.active}`
+										: s.dropdown__item
+								}>
 								collection name
 							</li>
 							<li
@@ -110,21 +131,52 @@ const SavedRecipes = ({ user, isMe }) => {
 									setSortSettings('last created')
 									setActiveSortMenu(false)
 								}}
-								className={sortSettings === 'last created' ? `${s.dropdown__item}  ${s.active}` : s.dropdown__item}>
+								className={
+									sortSettings === 'last created'
+										? `${s.dropdown__item}  ${s.active}`
+										: s.dropdown__item
+								}>
 								last created
 							</li>
 						</ul>
 					</div>
 				</div>
 				<div className={s.allRecipes}>
-					{!loaded && <RecipeItemSkeleton recipes={6} />}
-					{isMe && loaded && <AddCollection setCollections={setCollectionsLastModified} collections={collectionsLastModified} user={user} />}
+					{!loaded &&
+						Array(6)
+							.fill(0)
+							.map((item, index) => <RecipeItemSkeleton key={index} />)}
+					{isMe && loaded && (
+						<AddCollection
+							setCollections={setCollectionsLastModified}
+							collections={collectionsLastModified}
+							user={user}
+						/>
+					)}
 					{sortSettings === 'last modified'
-						? collectionsLastModified.map(c => <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes.at(-1)?.recipeId)?.id} />)
+						? collectionsLastModified.map(c => (
+								<CollectionItem
+									key={c._id}
+									collection={c}
+									image={recipes.find(r => r?._id === c.recipes.at(-1)?.recipeId)?.id}
+								/>
+						  ))
 						: sortSettings === 'collection name'
-						? collectionsName.map(c => <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes?.at(-1)?.recipeId)?.id} />)
+						? collectionsName.map(c => (
+								<CollectionItem
+									key={c._id}
+									collection={c}
+									image={recipes.find(r => r?._id === c.recipes?.at(-1)?.recipeId)?.id}
+								/>
+						  ))
 						: sortSettings === 'last created'
-						? collectionsLastCreated.map(c => <CollectionItem key={c._id} collection={c} image={recipes.find(r => r?._id === c.recipes?.at(-1)?.recipeId)?.id} />)
+						? collectionsLastCreated.map(c => (
+								<CollectionItem
+									key={c._id}
+									collection={c}
+									image={recipes.find(r => r?._id === c.recipes?.at(-1)?.recipeId)?.id}
+								/>
+						  ))
 						: null}
 				</div>
 			</div>

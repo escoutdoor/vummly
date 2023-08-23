@@ -1,33 +1,22 @@
 .myFeed {
-	display: flex;
-	flex-direction: column;
+	display: block;
+	width: 100%;
 }
 
-.myFeed__content {
-	display: flex;
-	flex-direction: column;
-}
-
-.myFeed__title {
-	color: #232323;
+.title {
 	font-size: 24px;
-	line-height: 32px;
+	color: #242424;
+	line-height: 36px;
+	text-transform: capitalize;
 }
 
-.myFeed__rec {
+.recipes {
+	margin-top: 19px;
+}
+
+.list {
+	padding: 35px 0px;
 	display: flex;
 	flex-wrap: wrap;
-	padding: 30px 0px;
 	gap: 30px 20.8px;
-	z-index: -1;
-}
-
-.myFeed__rec.show {
-	z-index: 1;
-}
-
-.loader {
-	width: 300px;
-	height: 300px;
-	margin: 0 auto;
 }
