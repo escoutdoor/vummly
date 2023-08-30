@@ -1,0 +1,27 @@
+.menu {
+	margin: 2em 0 1em;
+}
+
+.title {
+	font-size: 24px;
+	line-height: 36px;
+	text-transform: capitalize;
+	margin-bottom: 20px;
+}
+
+.list {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.list__item {
+	flex: 0 0 25%;
+	line-height: 40px;
+	font-weight: 100;
+	cursor: pointer;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.list__item:hover {
+	color: #3a9691;
+}

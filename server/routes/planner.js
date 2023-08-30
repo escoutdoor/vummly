@@ -130,9 +130,13 @@ router.put('/addAll/:userId', async (req, res) => {
 
 			await newPlanner.save()
 		} else {
-			const recipesToRemove = recipes.filter(recipe => isExists.recipes.find(r => r.recipeId.toString() === recipe.recipeId))
+			const recipesToRemove = recipes.filter(recipe =>
+				isExists.recipes.find(r => r.recipeId.toString() === recipe.recipeId)
+			)
 
-			const recipesToAdd = recipes.filter(recipe => !isExists.recipes.find(r => r.recipeId.toString() === recipe.recipeId))
+			const recipesToAdd = recipes.filter(
+				recipe => !isExists.recipes.find(r => r.recipeId.toString() === recipe.recipeId)
+			)
 
 			if (recipesToAdd.length > 0) {
 				await mealPlanner.findOneAndUpdate(
@@ -152,7 +156,9 @@ router.put('/addAll/:userId', async (req, res) => {
 					{ userId },
 					{
 						$pull: {
-							recipes: { recipeId: { $in: recipesToRemove.map(recipe => new ObjectId(recipe.recipeId)) } },
+							recipes: {
+								recipeId: { $in: recipesToRemove.map(recipe => new ObjectId(recipe.recipeId)) },
+							},
 						},
 					}
 				)

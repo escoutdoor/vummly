@@ -1,0 +1,30 @@
+.ingredient {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	align-items: center;
+	cursor: pointer;
+}
+
+.img {
+	width: 128px;
+	height: 128px;
+	object-fit: cover;
+	border-radius: 50%;
+	filter: brightness(50%);
+	transition: all 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.title {
+	text-transform: capitalize;
+	font-weight: 100;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.ingredient:hover .title {
+	color: #3a9691;
+}
+
+.ingredient:hover .img {
+	filter: brightness(100%);
+}

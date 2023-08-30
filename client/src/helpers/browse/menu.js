@@ -1,0 +1,27 @@
+const menu = [
+	'Asparagus',
+	'Beef',
+	'Chicken',
+	'Duck',
+	'Pasta',
+	'Salmon',
+	'Avocado',
+	'Bread',
+	'Chicken Breasts',
+	'Egg',
+	'Pork Chops',
+	'Shrimp',
+	'Bacon',
+	'Cauliflower',
+	'Chicken Thighs',
+	'Ground Beef',
+	'Potato',
+	'Tofu',
+	'Beans',
+	'Cheese',
+	'Chicken Wing',
+	'Pork',
+	'Rice',
+]
+
+export { menu }

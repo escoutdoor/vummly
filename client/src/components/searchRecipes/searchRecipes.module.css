@@ -1,6 +1,4 @@
 .search {
-	background-position: top;
 	background-image: url('http://localhost:3000/assets/images/img/myFeed/background.webp');
 	background-size: cover;
-	z-index: 999;
 }

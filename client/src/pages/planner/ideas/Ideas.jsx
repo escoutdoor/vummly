@@ -74,7 +74,8 @@ const Ideas = () => {
 									onClick={() => setSection('vums')}
 									className={
 										section === 'vums' ? `${s.navigation__item} ${s.active}` : s.navigation__item
-									}>
+									}
+								>
 									your vums
 								</li>
 								<li
@@ -83,7 +84,8 @@ const Ideas = () => {
 										section === 'recommendations'
 											? `${s.navigation__item} ${s.active}`
 											: s.navigation__item
-									}>
+									}
+								>
 									your recommendations
 								</li>
 							</ul>
