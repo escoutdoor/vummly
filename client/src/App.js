@@ -24,6 +24,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { login, selectUser } from './redux/features/userSlice'
 import axios from 'axios'
+import Ingredient from './pages/ingredient/Ingredient'
 
 function App() {
 	const dispatch = useDispatch()
@@ -71,6 +72,8 @@ function App() {
 					<Route path={'meal-planner/support'} element={<MealPlannerSupport />} />
 
 					<Route path={'browse'} element={<Browse />} />
+
+					<Route path={'ingredient/:name'} element={<Ingredient />} />
 				</Route>
 			</Routes>
 		</Router>

@@ -1,15 +1,16 @@
-import s from './recipeCarousel.module.css'
+import s from './tagCarousel.module.css'
 import { Pagination, Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import RecipeItem from '../../recipeElements/recipeItem/RecipeItem'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/navigation'
-import SwiperRecipeCarouselButtons from '../swiperRecipeCarouselButtons/SwiperRecipeCarouselButtons'
+import SwiperRecipeCarouselButtons from '../../plannerElements/swiperRecipeCarouselButtons/SwiperRecipeCarouselButtons'
 import { useInView } from 'react-intersection-observer'
-import RecipeCarouselSkeleton from '../recipeCarouselSkeleton/RecipeCarouselSkeleton'
+import RecipeCarouselSkeleton from '../../plannerElements/recipeCarouselSkeleton/RecipeCarouselSkeleton'
+import { Link } from 'react-router-dom'
 
-const RecipeCarousel = ({ collection, addAllToMealPlanner, isAdded }) => {
+const TagCarousel = ({ collection }) => {
 	const { ref, inView } = useInView({
 		threshold: 0.3,
 		triggerOnce: true,
@@ -22,26 +23,24 @@ const RecipeCarousel = ({ collection, addAllToMealPlanner, isAdded }) => {
 				<>
 					<div className={s.header}>
 						<h1 className={s.title}>{collection.name}</h1>
-						<div onClick={() => addAllToMealPlanner(collection.recipes)} className={s.button}>
-							<h1 className={s.button__title}>
-								{isAdded ? 'Remove All From Meal Plan' : 'Add All To Meal Plan'}
-							</h1>
-						</div>
+						<Link to={'/recipes'} state={{ query: collection.name }}>
+							<h1 className={s.seeAll__button}>see all</h1>
+						</Link>
 					</div>
-					<Swiper slidesPerView={5} spaceBetween={10} modules={[Pagination, Navigation]} className={s.swiper}>
+					<Swiper slidesPerView={6} spaceBetween={10} modules={[Pagination, Navigation]} className={s.swiper}>
 						{collection.recipes.map(recipe => (
 							<SwiperSlide className={s.swiper__item} key={recipe._id}>
 								<RecipeItem recipe={recipe} rating={recipe.rating} />
 							</SwiperSlide>
 						))}
-						{collection.recipes.length > 5 && <SwiperRecipeCarouselButtons />}
+						{collection.recipes.length > 6 && <SwiperRecipeCarouselButtons />}
 					</Swiper>
 				</>
 			) : (
-				<RecipeCarouselSkeleton recipes={5} />
+				<RecipeCarouselSkeleton recipes={6} />
 			)}
 		</div>
 	)
 }
 
-export default RecipeCarousel
+export default TagCarousel

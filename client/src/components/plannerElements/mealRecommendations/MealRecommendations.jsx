@@ -40,7 +40,7 @@ const MealRecommendations = ({ user, addAllToMealPlanner, recipes }) => {
 					  ))
 					: Array(5)
 							.fill(0)
-							.map((c, index) => <RecipeCarouselSkeleton key={index} />)}
+							.map((c, index) => <RecipeCarouselSkeleton recipes={5} key={index} />)}
 			</div>
 			<footer>
 				<button className={s.loadMore} onClick={() => setLimit(limit + 5)}>

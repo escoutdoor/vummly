@@ -1,11 +1,9 @@
-.home {
-}
-
 .title {
 	color: #242424;
 	font-size: 48px;
 	letter-spacing: 1px;
 	line-height: 56px;
+	text-transform: capitalize;
 }
 
 .paragraphs {

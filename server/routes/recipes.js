@@ -142,7 +142,10 @@ router.get('/getOne/:recipeId', async (req, res) => {
 router.get('/all/:id/:recipeId', async (req, res) => {
 	try {
 		const include = await Collection.find({ userId: req.params.id, 'recipes.recipeId': req.params.recipeId })
-		const notinclude = await Collection.find({ userId: req.params.id, 'recipes.recipeId': { $nin: [req.params.recipeId] } })
+		const notinclude = await Collection.find({
+			userId: req.params.id,
+			'recipes.recipeId': { $nin: [req.params.recipeId] },
+		})
 		res.status(200).json({ include: include, notinclude: notinclude })
 	} catch (error) {
 		res.status(404).json(error)
@@ -199,7 +202,16 @@ router.get('/recipes', async (req, res) => {
 					reviews: 0,
 				},
 			},
-			{ $sort: sort === 'relevance' ? { rating: -1 } : sort === 'popular' ? { collections: -1 } : sort === 'time' ? { time: 1 } : {} },
+			{
+				$sort:
+					sort === 'relevance'
+						? { rating: -1 }
+						: sort === 'popular'
+						? { collections: -1 }
+						: sort === 'time'
+						? { time: 1 }
+						: {},
+			},
 		])
 		res.status(200).json(recipes)
 	} catch (err) {
@@ -467,6 +479,170 @@ router.get('/recommendationsByTags/:userId', async (req, res) => {
 			},
 			{ $sort: { count: -1 } },
 			{ $limit: Number(limit) },
+		])
+
+		res.status(200).json(collections)
+	} catch (error) {
+		res.status(404).json(error)
+	}
+})
+
+router.get('/bytags', async (req, res) => {
+	try {
+		const { limit } = req.query
+
+		const collections = await Recipe.aggregate([
+			{
+				$addFields: {
+					'ingredients.us': {
+						$map: {
+							input: '$ingredients.us',
+							as: 'item',
+							in: {
+								$mergeObjects: ['$$item', { ingredient: { $toLower: '$$item.ingredient' } }],
+							},
+						},
+					},
+				},
+			},
+			{ $unwind: { path: '$tags' } },
+			{
+				$addFields: {
+					name: '$tags',
+				},
+			},
+			{
+				$lookup: {
+					from: 'reviews',
+					localField: '_id',
+					foreignField: 'recipeId',
+					as: 'reviews',
+				},
+			},
+			{
+				$lookup: {
+					from: 'collections',
+					localField: '_id',
+					foreignField: 'recipes.recipeId',
+					as: 'collections',
+				},
+			},
+			{
+				$addFields: {
+					rating: {
+						$avg: '$reviews.rating',
+					},
+					collections: {
+						$size: '$collections.recipes.recipeId',
+					},
+				},
+			},
+			{
+				$group: {
+					_id: '$name',
+					recipes: { $push: '$$ROOT' },
+				},
+			},
+			{
+				$addFields: {
+					name: '$_id',
+					count: { $size: '$recipes' },
+				},
+			},
+			{
+				$project: {
+					_id: 0,
+					'recipes.name': 0,
+					'recipes.reviews': 0,
+				},
+			},
+			{ $sort: { count: -1 } },
+			{ $limit: Number(limit) },
+		])
+
+		res.status(200).json(collections)
+	} catch (error) {
+		res.status(404).json(error)
+	}
+})
+
+router.get('/byIngredients/:name', async (req, res) => {
+	const name = req.params.name
+
+	try {
+		const collections = await Recipe.aggregate([
+			{
+				$addFields: {
+					'ingredients.us': {
+						$map: {
+							input: '$ingredients.us',
+							as: 'item',
+							in: {
+								$mergeObjects: ['$$item', { ingredient: { $toLower: '$$item.ingredient' } }],
+							},
+						},
+					},
+				},
+			},
+			{
+				$match: {
+					'ingredients.us.ingredient': {
+						$in: [name],
+					},
+				},
+			},
+			{ $unwind: { path: '$tags' } },
+			{
+				$addFields: {
+					name: '$tags',
+				},
+			},
+			{
+				$lookup: {
+					from: 'reviews',
+					localField: '_id',
+					foreignField: 'recipeId',
+					as: 'reviews',
+				},
+			},
+			{
+				$lookup: {
+					from: 'collections',
+					localField: '_id',
+					foreignField: 'recipes.recipeId',
+					as: 'collections',
+				},
+			},
+			{
+				$addFields: {
+					rating: {
+						$avg: '$reviews.rating',
+					},
+					collections: {
+						$size: '$collections.recipes.recipeId',
+					},
+				},
+			},
+			{
+				$group: {
+					_id: '$name',
+					recipes: { $push: '$$ROOT' },
+				},
+			},
+			{
+				$addFields: {
+					name: '$_id',
+					count: { $size: '$recipes' },
+				},
+			},
+			{
+				$project: {
+					_id: 0,
+					'recipes.name': 0,
+					'recipes.reviews': 0,
+				},
+			},
+			{ $sort: { count: -1, _id: 1 } },
 		])
 
 		res.status(200).json(collections)

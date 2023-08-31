@@ -17,3 +17,25 @@
 .section {
 	margin-top: 24px;
 }
+
+.footer {
+	display: flex;
+	justify-content: center;
+}
+
+.button {
+	display: inline-block;
+	text-transform: uppercase;
+	font-weight: 700;
+	color: #707070;
+	cursor: pointer;
+	padding: 10px 32px;
+	border: 1px solid #707070;
+	transition: all 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.button:hover {
+	border-color: #ccc;
+	background: #ccc;
+	color: #fff;
+}

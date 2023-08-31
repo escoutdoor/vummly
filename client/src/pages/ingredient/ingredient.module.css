@@ -1,0 +1,12 @@
+.ingredient {
+	display: block;
+	width: 100%;
+}
+
+.ingredient__content {
+	width: 100%;
+}
+
+.collections {
+	margin: 32px 0px;
+}

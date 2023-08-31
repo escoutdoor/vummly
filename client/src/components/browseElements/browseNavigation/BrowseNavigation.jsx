@@ -1,6 +1,6 @@
 import s from './browseNavigation.module.css'
 
-const BrowseNavigation = ({ active, setActive }) => {
+const BrowseNavigation = ({ active, setActive, setLimit, setShowMore }) => {
 	const navigation = [
 		{ id: 1, tab: 'home' },
 		{ id: 2, tab: 'ingredients' },
@@ -17,7 +17,11 @@ const BrowseNavigation = ({ active, setActive }) => {
 			{navigation.map(item => (
 				<li
 					key={item.id}
-					onClick={() => setActive(item.tab)}
+					onClick={() => {
+						setActive(item.tab)
+						setLimit(5)
+						setShowMore(false)
+					}}
 					className={active === item.tab ? `${s.navigation__item} ${s.active}` : s.navigation__item}
 				>
 					{item.tab}
