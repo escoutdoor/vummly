@@ -1,0 +1,29 @@
+.feature {
+	display: flex;
+	gap: 10px;
+}
+
+.icon {
+	width: 60px;
+	height: 60px;
+}
+
+.text {
+	display: flex;
+	text-align: left;
+	width: 230px;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.title {
+	color: #232323;
+	font-size: 16px;
+	line-height: 16px;
+}
+
+.description {
+	color: #707070;
+	font-size: 14px;
+	line-height: 24px;
+}

@@ -1,56 +1,39 @@
 import { Link } from 'react-router-dom'
-import './navbar.css'
+import s from './navbar.module.css'
 import { useScrollPosition } from '../../hooks/scrollPosition'
 
 const Navbar = money => {
 	const PF = process.env.REACT_APP_BASE_URL
-	const price = [
-		{
-			now: '79.99',
-			was: '99.99',
-		},
-	]
 
 	const scrollPos = useScrollPosition()
 
 	return (
-		<div className="navbar">
-			<div className="navbar-container">
-				<Link to={'/thermometer/overview'}>
-					<h1 className="navbar__title">SMART THERMOMETER</h1>
-				</Link>
-				<ul className={scrollPos < 40 ? 'navbar__buttons' : 'navbar__buttons hide'}>
-					<Link title="Overview" className={money.value ? 'navbar__buttons-item selected' : 'navbar__buttons-item'} to={'/thermometer/overview'}>
-						<li>Overview</li>
+		<div className={s.navbar}>
+			<h1 className={s.title}>smart thermometer</h1>
+			<div className={s.centered}>
+				<div className={scrollPos > 40 ? `${s.buttons} ${s.active}` : s.buttons}>
+					<Link
+						className={
+							window.location.pathname === '/thermometer/overview' ? `${s.button} ${s.active}` : s.button
+						}
+						to={'/thermometer/overview'}
+					>
+						overview
 					</Link>
-					<Link title="Support" className="navbar__buttons-item" to={'/support/categories/thermometer'}>
-						<li>Support</li>
+					<Link className={s.button} to={'/support/categories/thermometer'}>
+						support
 					</Link>
-				</ul>
-				<p className={scrollPos < 40 ? 'shipping' : 'shipping show'}>FREE SHIPPING & FREE 30-DAY RETURN!</p>
-				{money.value ? (
-					<div className="navbar__addTocart">
-						{price.map((i, index) => (
-							<div className="addTocart__price" key={index}>
-								<h1>${i.now}</h1>
-								<p>Was ${i.was}</p>
-							</div>
-						))}
-						<Link to={'/addtoCart'}>
-							<div className="addToCart__buttons">
-								<button title="Add to Cart" className="addTocart__butt">
-									Add to cart
-								</button>
-								<div className="addTocart__cart">
-									<img className="cartImg" src={`${PF}images/icons/navbar/cart-icon.webp`} alt="" />
-									{money.badge ? <span className="activeBadge"></span> : null}
-								</div>
-							</div>
-						</Link>
-					</div>
-				) : (
-					<div className="navbar__addTocart"></div>
-				)}
+				</div>
+				<p className={scrollPos > 40 ? `${s.shipping} ${s.active}` : s.shipping}>
+					FREE SHIPPING & FREE 30-DAY RETURN!
+				</p>
+			</div>
+			<div className={s.right}>
+				<div className={s.cart}>
+					<h1 className={s.title}>$99.99</h1>
+					<button className={s.cart__button}>add to cart</button>
+					<img className={s.icon} src={`${PF}images/icons/navbar/cart-icon.webp`} alt="" />
+				</div>
 			</div>
 		</div>
 	)

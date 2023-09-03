@@ -1,0 +1,18 @@
+.overview {
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.features {
+	padding: 90px 0px;
+	background: #ebf6f4;
+	margin-bottom: 80px;
+}
+
+.bottom__container {
+	width: 100%;
+}

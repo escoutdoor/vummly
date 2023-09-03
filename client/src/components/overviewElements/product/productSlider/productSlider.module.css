@@ -1,0 +1,16 @@
+.mainSwiper,
+.mainSwiper__image {
+	max-width: 480px;
+	max-height: 480px;
+}
+
+.bottomSwiper__image {
+	max-height: 64.98px;
+	max-width: 64.98px;
+}
+
+.bottomSwiper {
+	display: flex;
+	cursor: pointer;
+	max-width: 480px;
+}

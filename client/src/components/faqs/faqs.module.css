@@ -1,0 +1,11 @@
+.title {
+	color: #232323;
+	font-size: 24px;
+	line-height: 32px;
+	margin-bottom: 11px;
+	text-transform: uppercase;
+}
+
+.list {
+	border-top: 2px solid #232323;
+}

@@ -98,18 +98,32 @@ const Collection = () => {
 					setActiveDescription(false)
 					setActiveSortMenu(false)
 					handleChanges()
-				}}>
+				}}
+			>
 				<div
 					className={s.header}
 					style={{
-						backgroundImage: recipesLastAdded.length !== 0 ? `url(${PF}images/img/recipes/${recipesLastAdded.at(0).id}.webp)` : `url(${PF}images/img/collections/default.jpg)`,
-					}}>
+						backgroundImage:
+							recipesLastAdded.length !== 0
+								? `url(${PF}images/img/recipes/${recipesLastAdded.at(0).id}.webp)`
+								: `url(${PF}images/img/collections/default.jpg)`,
+					}}
+				>
 					<div className={s.headerContent}>
 						<div className={s.collectionInfo}>
 							{isMe && collectionName !== 'all-vums' ? (
 								<div className={s.changeBox} onClick={() => setActiveName(true)}>
-									<p className={!activeName ? s.displayName : `${s.displayName} ${s.hidden}`}>{name}</p>
-									<input maxLength={20} ref={nameInput} className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput} type="text" value={name || ''} onChange={e => setName(e.target.value)} />
+									<p className={!activeName ? s.displayName : `${s.displayName} ${s.hidden}`}>
+										{name}
+									</p>
+									<input
+										maxLength={40}
+										ref={nameInput}
+										className={activeName ? `${s.nameInput} ${s.active}` : s.nameInput}
+										type="text"
+										value={name || ''}
+										onChange={e => setName(e.target.value)}
+									/>
 								</div>
 							) : (
 								<p className={s.displayName}>{name}</p>
@@ -117,16 +131,42 @@ const Collection = () => {
 							<p className={s.stat}>{recipesLastAdded.length} Recipes</p>
 							{isMe && collectionName !== 'all-vums' ? (
 								<div className={s.changeBox} onClick={() => setActiveDescription(true)}>
-									<p className={!activeDescription ? s.displayDescription : `${s.displayDescription} ${s.hidden}`}>{description || 'Tell us more about your collection.'}</p>
-									<textarea maxLength={60} ref={descInput} className={activeDescription ? `${s.descInput} ${s.active}` : s.descInput} type="text" value={description || ''} onChange={e => setDescription(e.target.value)} />
+									<p
+										className={
+											!activeDescription
+												? s.displayDescription
+												: `${s.displayDescription} ${s.hidden}`
+										}
+									>
+										{description || 'Tell us more about your collection.'}
+									</p>
+									<textarea
+										maxLength={60}
+										ref={descInput}
+										className={activeDescription ? `${s.descInput} ${s.active}` : s.descInput}
+										type="text"
+										value={description || ''}
+										onChange={e => setDescription(e.target.value)}
+									/>
 								</div>
 							) : (
 								<p className={s.displayDescription}>{description}</p>
 							)}
 						</div>
 						{isMe && collectionName !== 'all-vums' && (
-							<div className={s.delete} onMouseOver={() => setActiveTrash(true)} onMouseOut={() => setActiveTrash(false)}>
-								<img src={activeTrash ? `${PF}images/icons/profile/trashActive.svg` : `${PF}images/icons/profile/trash.svg`} alt="trashIcon" />
+							<div
+								className={s.delete}
+								onMouseOver={() => setActiveTrash(true)}
+								onMouseOut={() => setActiveTrash(false)}
+							>
+								<img
+									src={
+										activeTrash
+											? `${PF}images/icons/profile/trashActive.svg`
+											: `${PF}images/icons/profile/trash.svg`
+									}
+									alt="trashIcon"
+								/>
 								<p onClick={() => setActiveModal(true)} className={s.deleteText}>
 									delete collection
 								</p>
@@ -145,23 +185,37 @@ const Collection = () => {
 												Sort By
 											</h1>
 											<h1 className={s.sortTitle}>{sortSettings}</h1>
-											<img className={s.sortIcon} src={`${PF}images/icons/recipes/chevron-down.svg`} alt="sortIcon" />
+											<img
+												className={s.sortIcon}
+												src={`${PF}images/icons/recipes/chevron-down.svg`}
+												alt="sortIcon"
+											/>
 										</div>
 										<ul className={activeSortMenu ? `${s.dropdown} ${s.active}` : s.dropdown}>
 											<li
-												className={sortSettings === 'last added' ? `${s.dropdown__item} ${s.active}` : s.dropdown__item}
+												className={
+													sortSettings === 'last added'
+														? `${s.dropdown__item} ${s.active}`
+														: s.dropdown__item
+												}
 												onClick={() => {
 													setSortSettings('last added')
 													setActiveSortMenu(false)
-												}}>
+												}}
+											>
 												last added
 											</li>
 											<li
-												className={sortSettings === 'recipe name' ? `${s.dropdown__item} ${s.active}` : s.dropdown__item}
+												className={
+													sortSettings === 'recipe name'
+														? `${s.dropdown__item} ${s.active}`
+														: s.dropdown__item
+												}
 												onClick={() => {
 													setSortSettings('recipe name')
 													setActiveSortMenu(false)
-												}}>
+												}}
+											>
 												recipe name
 											</li>
 										</ul>
@@ -178,8 +232,12 @@ const Collection = () => {
 									<Link to={'/recipes'} className={s.noRecipes}>
 										<div className={s.noRecipes__content}>
 											<img src={`${PF}images/icons/profile/searchGray.svg`} alt="searchIcon" />
-											<h1 className={s.noRecipes__title}>Search for {`${collectionName}`} on Vummly</h1>
-											<h2 className={s.noRecipes__sub}>You have yet to add any recipes to this collection</h2>
+											<h1 className={s.noRecipes__title}>
+												Search for {`${collectionName}`} on Vummly
+											</h1>
+											<h2 className={s.noRecipes__sub}>
+												You have yet to add any recipes to this collection
+											</h2>
 										</div>
 									</Link>
 								) : null}

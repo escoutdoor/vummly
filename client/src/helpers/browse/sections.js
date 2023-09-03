@@ -33,7 +33,7 @@ const home = [
 			{
 				id: 1,
 				textline:
-					"Everyone is short on time but Yummly is long on recipes for quick and easy recipes. If sheet pan dinners dominate weeknight meals, we've got your back. Sweet potatoes with sunset hues and meatloaf flavored with fragrant aromatics that command center-of-the-plate attention can be on the table in an hour. Need something lighter? There are healthy recipes for soup that will make your spoon swoon. Quick and easy can also come in the form of a make-ahead veggie casserole to partner with pasta for a well-balanced meal.",
+					"Everyone is short on time but Vummly is long on recipes for quick and easy recipes. If sheet pan dinners dominate weeknight meals, we've got your back. Sweet potatoes with sunset hues and meatloaf flavored with fragrant aromatics that command center-of-the-plate attention can be on the table in an hour. Need something lighter? There are healthy recipes for soup that will make your spoon swoon. Quick and easy can also come in the form of a make-ahead veggie casserole to partner with pasta for a well-balanced meal.",
 			},
 		],
 	},
@@ -44,7 +44,7 @@ const home = [
 			{
 				id: 1,
 				textline:
-					'Breakfast, lunch, or dinner -- never miss a meal with Yummly. Feed your mango madness in the morning with a smoothie or toss together mango salsa for your tacos at lunch. Green beans can be a simple side dish to turn a chicken recipe into a superior main course. Turkey rollups for an afternoon snack or chocolate cake for your after-dinner delight -- every meal is covered.',
+					'Breakfast, lunch, or dinner -- never miss a meal with Vummly. Feed your mango madness in the morning with a smoothie or toss together mango salsa for your tacos at lunch. Green beans can be a simple side dish to turn a chicken recipe into a superior main course. Turkey rollups for an afternoon snack or chocolate cake for your after-dinner delight -- every meal is covered.',
 			},
 		],
 	},
@@ -55,7 +55,7 @@ const home = [
 			{
 				id: 1,
 				textline:
-					'If your hunger pangs want to take you on a trip around the world, let Yummly draw you a map. The magic of Mexican food is guided by superior spices from south of the Rio Grande and simplicity represents the radiant flavors of the Mediterranean meal. From an uncomplicated Italian Insalata Caprese to the noble noodles of Chinese cuisine, you can deepen your global culinary sensibilities from your own oven.',
+					'If your hunger pangs want to take you on a trip around the world, let Vummly draw you a map. The magic of Mexican food is guided by superior spices from south of the Rio Grande and simplicity represents the radiant flavors of the Mediterranean meal. From an uncomplicated Italian Insalata Caprese to the noble noodles of Chinese cuisine, you can deepen your global culinary sensibilities from your own oven.',
 			},
 		],
 	},
@@ -77,7 +77,7 @@ const home = [
 			{
 				id: 1,
 				textline:
-					"Delivering on a diet that narrows your cooking canvas to certain ingredients is a welcome challenge to strong cooks but with Yummly as a guide, recipes are not out of reach for beginning cooks with dietary restrictions. Making gluten-free bread is no longer limited to professional bakers and making diabetic dinners don't have to be difficult! Whether you follow a keto diet and need recipes with protein power, or plant-based foods direct your meal-planning, there's a recipe with the maximum flavor impact to match any diet.",
+					"Delivering on a diet that narrows your cooking canvas to certain ingredients is a welcome challenge to strong cooks but with Vummly as a guide, recipes are not out of reach for beginning cooks with dietary restrictions. Making gluten-free bread is no longer limited to professional bakers and making diabetic dinners don't have to be difficult! Whether you follow a keto diet and need recipes with protein power, or plant-based foods direct your meal-planning, there's a recipe with the maximum flavor impact to match any diet.",
 			},
 		],
 	},
@@ -91,7 +91,7 @@ const ingredients = [
 			{
 				id: 1,
 				textline:
-					"Have a fridge full of food and need to make sense of it? We've got you covered. Browse recipes by ingredients with Yummly to make the most of what you already have at home.",
+					"Have a fridge full of food and need to make sense of it? We've got you covered. Browse recipes by ingredients with Vummly to make the most of what you already have at home.",
 			},
 		],
 	},
@@ -102,7 +102,7 @@ const ingredients = [
 			{
 				id: 1,
 				textline:
-					"After a full summer of farmers' market finds, a freezer full of meat might have you scratching your head, but with a few key ingredients you can whip up smothered pork chops or honey-mustard slow cooker chicken wings. Rosemary abounds year-round in some states -- baked in shortbread or sprinkled on pita chips brightens snacktime. Too many bottles of ketchup to count? Turn them into a tangy barbecue sauce to brush on chicken thighs with a side of mac and cheese for a simple weeknight dinner. Tomato paste and potatoes can be transformed into patatas bravas for a Spanish spin on a common side dish. What you have will be what you want with Yummly's help.",
+					"After a full summer of farmers' market finds, a freezer full of meat might have you scratching your head, but with a few key ingredients you can whip up smothered pork chops or honey-mustard slow cooker chicken wings. Rosemary abounds year-round in some states -- baked in shortbread or sprinkled on pita chips brightens snacktime. Too many bottles of ketchup to count? Turn them into a tangy barbecue sauce to brush on chicken thighs with a side of mac and cheese for a simple weeknight dinner. Tomato paste and potatoes can be transformed into patatas bravas for a Spanish spin on a common side dish. What you have will be what you want with Vummly's help.",
 			},
 		],
 	},
@@ -129,7 +129,7 @@ const ingredients = [
 			{
 				id: 2,
 				textline:
-					'Turn cabbage into kimchi or make peanut butter into a Thai dipping sauce for chicken skewers -- whatever ingredients are on your list, there are thousands of recipes to discover on Yummly.',
+					'Turn cabbage into kimchi or make peanut butter into a Thai dipping sauce for chicken skewers -- whatever ingredients are on your list, there are thousands of recipes to discover on Vummly.',
 			},
 		],
 	},
@@ -143,7 +143,7 @@ const cuisines = [
 			{
 				id: 1,
 				textline:
-					"Wanderlust is not limited to escaping on an airplane -- globetrotters need not leave the kitchen to explore other cultures. Edible excursions can lead you to the far corners of the earth and you don't even need your passport. Pack your sheet pans and chef's knife and let Yummly be your travel guide!",
+					"Wanderlust is not limited to escaping on an airplane -- globetrotters need not leave the kitchen to explore other cultures. Edible excursions can lead you to the far corners of the earth and you don't even need your passport. Pack your sheet pans and chef's knife and let Vummly be your travel guide!",
 			},
 		],
 	},
@@ -195,7 +195,7 @@ const diets = [
 			{
 				id: 1,
 				textline:
-					"Following special diets limit what you can eat, but it doesn't limit what you can make! Healthy eating means something different for everyone and that means we all get different meal plans. Gluten-free or vegan, diabetic or paleo, Yummly makes meal-planning effortless for any type of special diet.",
+					"Following special diets limit what you can eat, but it doesn't limit what you can make! Healthy eating means something different for everyone and that means we all get different meal plans. Gluten-free or vegan, diabetic or paleo, Vummly makes meal-planning effortless for any type of special diet.",
 			},
 		],
 	},
@@ -233,7 +233,7 @@ const diets = [
 			{
 				id: 2,
 				textline:
-					"Whatever you can or can't have, want or don't want, there are thousands of recipes to discover for any dietary preference or restriction on Yummly.",
+					"Whatever you can or can't have, want or don't want, there are thousands of recipes to discover for any dietary preference or restriction on Vummly.",
 			},
 		],
 	},
@@ -318,7 +318,7 @@ const courses = [
 			{
 				id: 2,
 				textline:
-					'As you map out your menu, there are many directions you can take. Start your search for the right recipes with Yummly.',
+					'As you map out your menu, there are many directions you can take. Start your search for the right recipes with Vummly.',
 			},
 		],
 	},
@@ -370,7 +370,7 @@ const techniques = [
 			{
 				id: 2,
 				textline:
-					"You don't need a culinary arts degree from a French cooking school to be a master in your kitchen -- you just need the right recipes to help you learn cooking techniques and you can find them all on Yummly!",
+					"You don't need a culinary arts degree from a French cooking school to be a master in your kitchen -- you just need the right recipes to help you learn cooking techniques and you can find them all on Vummly!",
 			},
 		],
 	},
@@ -422,7 +422,7 @@ const quickneasy = [
 			{
 				id: 2,
 				textline:
-					"Quick and easy doesn't mean you have to sacrifice nutrition! Search Yummly for thousands of healthy recipes for fast and delicious meals any day of the week.",
+					"Quick and easy doesn't mean you have to sacrifice nutrition! Search Vummly for thousands of healthy recipes for fast and delicious meals any day of the week.",
 			},
 		],
 	},

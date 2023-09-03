@@ -1,0 +1,34 @@
+.footer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 32px;
+	color: #707070;
+	margin-bottom: 80px;
+}
+
+.navigation {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+}
+
+.navigation__item {
+	font-size: 12px;
+	line-height: 12px;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.navigation__item:hover {
+	color: #3a9691;
+}
+
+.rights {
+	line-height: 11px;
+	font-size: 11px;
+}
+
+.location {
+	font-size: 11px;
+}

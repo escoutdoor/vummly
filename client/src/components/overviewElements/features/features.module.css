@@ -1,0 +1,30 @@
+.features {
+	width: 100%;
+	text-align: center;
+}
+
+.header {
+	margin-bottom: 64px;
+}
+
+.bigTitle {
+	color: #232323;
+	font-size: 34px;
+	line-height: 42px;
+}
+
+.title {
+	color: #707070;
+	font-size: 12px;
+	line-height: 1px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+}
+
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 48px 0;
+}

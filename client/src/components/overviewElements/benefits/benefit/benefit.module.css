@@ -1,0 +1,51 @@
+.benefit {
+	display: flex;
+	width: 100%;
+	gap: 64px;
+	align-items: center;
+}
+
+.benefit__image {
+	width: 480px;
+	height: 454px;
+}
+
+.benefit__text {
+	max-width: 356px;
+}
+
+.benefit__made {
+	line-height: 1px;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 12px;
+	color: #707070;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+
+.title {
+	color: #232323;
+	font-size: 34px;
+	line-height: 42px;
+	margin: 10px 0;
+}
+
+.description {
+	color: #707070;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.benefit__extra {
+	font-size: 14px;
+	line-height: 24px;
+	color: #707070;
+}
+
+.benefit__details {
+	margin-top: 10px;
+	font-size: 10px;
+	line-height: 10px;
+	color: #bababa;
+}
