@@ -29,15 +29,16 @@ const Collection = () => {
 	const nameInput = useRef()
 	const descInput = useRef()
 
+	const fetchCollection = async () => {
+		await axios.get(`/collections/getCollection/${userId.split('-')[1]}/${collectionName}`).then(c => {
+			setCollection(c.data.collection)
+			setRecipesLastAdded(c.data.recipesLastAdded)
+			setRecipesByName(c.data.recipesName)
+		})
+		setLoaded(true)
+	}
+
 	useEffect(() => {
-		const fetchCollection = async () => {
-			await axios.get(`/collections/getCollection/${userId.split('-')[1]}/${collectionName}`).then(c => {
-				setCollection(c.data.collection)
-				setRecipesLastAdded(c.data.recipesLastAdded)
-				setRecipesByName(c.data.recipesName)
-			})
-			setLoaded(true)
-		}
 		fetchCollection()
 	}, [collectionName])
 

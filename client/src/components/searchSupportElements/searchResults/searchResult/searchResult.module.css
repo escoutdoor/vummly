@@ -1,0 +1,43 @@
+.result {
+	padding: 20px 0px;
+	border-bottom: 1px solid #ddd;
+}
+
+.title {
+	font-size: 16px;
+	color: #3a9691;
+	font-weight: 700;
+	line-height: 24px;
+}
+
+.title:hover {
+	text-decoration: underline;
+}
+
+.result__details {
+	margin-top: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.breadcrumbs {
+	display: flex;
+	color: #666;
+	font-size: 13px;
+	align-items: center;
+	gap: 5px;
+}
+
+.breadcrumbs a {
+	text-overflow: ellipsis;
+	max-width: 360px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.result__date {
+	font-size: 12px;
+	line-height: 12px;
+	font-weight: 400;
+}

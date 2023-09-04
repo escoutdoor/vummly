@@ -52,8 +52,8 @@ function App() {
 
 				{/* Support */}
 				<Route path={'/support/'} element={<SupportLayout />}>
-					<Route path={'categories/:categories'} element={<Category />} />
-					<Route path={'articles/:ctgr/:article'} element={<Article />} />
+					<Route path={'categories/:categoryId'} element={<Category />} />
+					<Route path={'articles/:articleId'} element={<Article />} />
 					<Route path={'search'} element={<SearchSupport />} />
 					<Route path={''} element={<Support />} />
 					<Route path={'submit-request'} element={<SubmitRequest />} />

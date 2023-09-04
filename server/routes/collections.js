@@ -18,7 +18,10 @@ router.get('/getAll/:userId', async (req, res) => {
 router.get('/all/:id/:recipeId', async (req, res) => {
 	try {
 		const include = await Collection.find({ userId: req.params.id, 'recipes.recipeId': req.params.recipeId })
-		const notinclude = await Collection.find({ userId: req.params.id, 'recipes.recipeId': { $nin: [req.params.recipeId] } }).exec()
+		const notinclude = await Collection.find({
+			userId: req.params.id,
+			'recipes.recipeId': { $nin: [req.params.recipeId] },
+		}).exec()
 		res.status(200).json({ include: include, notinclude: notinclude })
 	} catch (error) {
 		res.status(404).json(error)
@@ -31,10 +34,18 @@ router.put('/:userId/:recipeId', async (req, res) => {
 
 		if (existsColl) {
 			if (!existsColl.recipes.find(r => r.recipeId.toString() === req.params.recipeId)) {
-				const updated = await Collection.findOneAndUpdate({ userId: req.params.userId, name: req.body.name }, { $push: { recipes: { recipeId: req.params.recipeId } } }, { new: true })
+				const updated = await Collection.findOneAndUpdate(
+					{ userId: req.params.userId, name: req.body.name },
+					{ $push: { recipes: { recipeId: req.params.recipeId } } },
+					{ new: true }
+				)
 				res.status(200).json(updated)
 			} else {
-				const deleted = await Collection.findOneAndUpdate({ userId: req.params.userId, name: req.body.name }, { $pull: { recipes: { recipeId: req.params.recipeId } } }, { new: true })
+				const deleted = await Collection.findOneAndUpdate(
+					{ userId: req.params.userId, name: req.body.name },
+					{ $pull: { recipes: { recipeId: req.params.recipeId } } },
+					{ new: true }
+				)
 				res.status(200).json(deleted)
 			}
 		} else {
@@ -128,7 +139,12 @@ router.get('/:userId', async (req, res) => {
 			},
 			{ $sort: { addedToCollection: -1 } },
 		])
-		res.status(200).json({ recipes, collectionsLastModified: collections[0].lastModified, collectionsLastCreated: collections[0].lastCreated, collectionsName: collections[0].byName })
+		res.status(200).json({
+			recipes,
+			collectionsLastModified: collections[0].lastModified,
+			collectionsLastCreated: collections[0].lastCreated,
+			collectionsName: collections[0].byName,
+		})
 	} catch (err) {
 		res.status(404).json(err)
 	}
@@ -276,7 +292,11 @@ router.get('/getCollection/:userId/:collectionName', async (req, res) => {
 					},
 				},
 			])
-			res.status(200).json({ recipesLastAdded: recipes[0].lastAdded, recipesName: recipes[0].byName, collection: collection[0] })
+			res.status(200).json({
+				recipesLastAdded: recipes[0].lastAdded,
+				recipesName: recipes[0].byName,
+				collection: collection[0],
+			})
 		}
 	} catch (err) {
 		res.status(404).json(err)
@@ -287,7 +307,11 @@ router.get('/getCollection/:userId/:collectionName', async (req, res) => {
 
 router.put('/name/:collectionId/:userId', async (req, res) => {
 	try {
-		const collection = await Collection.findOneAndUpdate({ _id: req.params.collectionId, userId: req.params.userId }, { $set: { name: req.body.name } }, { new: true })
+		const collection = await Collection.findOneAndUpdate(
+			{ _id: req.params.collectionId, userId: req.params.userId },
+			{ $set: { name: req.body.name } },
+			{ new: true }
+		)
 		res.status(200).json(collection)
 	} catch (err) {
 		res.status(400).json(err)
@@ -298,7 +322,11 @@ router.put('/name/:collectionId/:userId', async (req, res) => {
 
 router.put('/description/:collectionId/:userId', async (req, res) => {
 	try {
-		const collection = await Collection.findOneAndUpdate({ _id: req.params.collectionId, userId: req.params.userId }, { $set: { description: req.body.description } }, { new: true })
+		const collection = await Collection.findOneAndUpdate(
+			{ _id: req.params.collectionId, userId: req.params.userId },
+			{ $set: { description: req.body.description } },
+			{ new: true }
+		)
 		res.status(200).json(collection)
 	} catch (err) {
 		res.status(400).json(err)

@@ -1,64 +1,44 @@
 import { Link, useParams } from 'react-router-dom'
-import './category.css'
+import s from './category.module.css'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 // loading
 import SkewLoader from 'react-spinners/SkewLoader'
 import SearchInput from '../../components/searchInput/SearchInput'
+import Sections from '../../components/categoryElements/sections/Sections'
 
 const Category = () => {
-	const PF = process.env.REACT_APP_BASE_URL
-	const { categories } = useParams()
-
+	const { categoryId } = useParams()
 	const [searchVal, setSearchVal] = useState(null)
-	const [loading, setLoading] = useState(false)
-
-	const searchHandle = e => {
-		setSearchVal(e)
-	}
 
 	const [category, setCategory] = useState([])
+	const [loaded, setLoaded] = useState(false)
+
+	const fetch = async () => {
+		await axios.get(`/support/sections/${categoryId}`).then(res => {
+			setCategory(res.data)
+			setLoaded(true)
+		})
+	}
 
 	useEffect(() => {
-		const fetch = async () => {
-			await axios.get(`/support/categories/get-category/${categories}`).then(res => setCategory(res.data))
-			setLoading(true)
-		}
-		setTimeout(() => fetch(), 400)
-		document.title = `${category.title ? category.title : 'Vummly Help Center'} `
-	}, [categories, category.title])
+		fetch()
+		document.title = category.title ? category.title : 'Vummly Help Center'
+	}, [categoryId])
 
-	return (
-		<div className="category">
+	return loaded ? (
+		<div className={s.category}>
 			<div className="wrap1160">
-				{loading ? (
-					<div className="category__content" key={category._id}>
-						<SearchInput title={category.title} />
-						<div className="category__main">
-							<h1 className="category__title">{category.title}</h1>
-							<div className="category__paragraphs">
-								{category.parts &&
-									category.parts.map((part, index) => (
-										<div className="category__paragraphs-item" key={index}>
-											<h1>{part.title}</h1>
-											<ul>
-												{part.links.map((link, index) => (
-													<Link style={{ width: 'fit-content' }} className="paragraph__link" key={index} to={`/support/${link.l}`}>
-														{link.title}
-													</Link>
-												))}
-											</ul>
-										</div>
-									))}
-							</div>
-						</div>
-					</div>
-				) : (
-					<SkewLoader color="#3a9691" size={30} className="loaderSkew" />
-				)}
+				<div className={s.category__content}>
+					<SearchInput title={category[0]?.categoryName} />
+					<h1 className={s.category__title}>{category[0].categoryName}</h1>
+					<Sections sections={category} />
+				</div>
 			</div>
 		</div>
+	) : (
+		<SkewLoader color="#3a9691" size={30} className="loaderSkew" />
 	)
 }
 

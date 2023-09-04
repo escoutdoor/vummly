@@ -1,0 +1,27 @@
+.header {
+}
+
+.title {
+	color: #232323;
+	font-size: 32px;
+	line-height: 39px;
+	margin-bottom: 15px;
+}
+
+.details {
+	display: flex;
+	align-items: center;
+}
+
+.text {
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 400;
+}
+
+.text::after {
+	content: attr(data-end);
+	color: #4a4a4a;
+	margin-left: 8px;
+	font-weight: 700;
+}

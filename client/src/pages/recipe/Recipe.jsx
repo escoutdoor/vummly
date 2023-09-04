@@ -67,7 +67,6 @@ const Recipe = () => {
 		if (user && recipe._id) {
 			try {
 				await axios.put(`/meal-planner/addOrRemove/${user._id}/${recipe._id}`).then(planner => {
-					console.log(planner.data)
 					const recipeBefore = recipe
 					recipeBefore.isAdded = !recipeBefore.isAdded
 					setRecipe({ ...recipeBefore })

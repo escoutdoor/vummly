@@ -1,151 +1,75 @@
-import { useEffect, useState } from 'react'
-import styles from './search.module.css'
+import s from './search.module.css'
 import { useLocation, Link } from 'react-router-dom'
 import axios from 'axios'
 import moment from 'moment'
+import SearchInput from '../../components/searchInput/SearchInput'
 
 // loading
 import SkewLoader from 'react-spinners/SkewLoader'
+import { useEffect, useState } from 'react'
+import SidebarByCategory from '../../components/searchSupportElements/sidebarByCategory/SidebarByCategory'
+import SearchResults from '../../components/searchSupportElements/searchResults/SearchResults'
+import { list } from '../../helpers/help/search'
 
 const SearchSupport = () => {
 	const PF = process.env.REACT_APP_BASE_URL
 	const location = useLocation()
-
 	const data = location.state?.data
+	const [articles, setArticles] = useState([])
+	const [loaded, setLoaded] = useState(false)
 
-	const searchHandle = e => {
-		setSearchVal(e)
+	const [text, setText] = useState(data || '')
+	const [category, setCategory] = useState('')
+	window.history.replaceState({}, text)
+
+	const fetchSupport = async () => {
+		try {
+			await axios.get(`/support/articles/getAll?category=${category}`).then(info => {
+				setArticles(info.data)
+				setLoaded(true)
+			})
+		} catch (error) {
+			console.log('fetchSupport error:', error)
+		}
 	}
 
-	const [all, setAll] = useState(true)
-	const [searchVal, setSearchVal] = useState(data ? data : '')
-	const [filter, setFilter] = useState('')
-	const [artInfo, setArtInfo] = useState([])
-	const [loading, setLoading] = useState(false)
-
-	const [secInfo, setSecInfo] = useState([])
-
 	useEffect(() => {
-		document.title = `${searchVal ? `Search Results / ${searchVal}` : 'Search for something'}`
-	}, [searchVal])
+		fetchSupport()
+	}, [category])
 
-	useEffect(() => {
-		const find = async () => {
-			await axios.get(`/support/articles/${filter !== '' ? `${filter}` : 'all'}`).then(info => setArtInfo(info.data))
-			await axios.get(`/support/sections/`).then(sec => setSecInfo(sec.data))
-			setLoading(true)
-		}
-		find()
-	}, [filter])
+	return loaded ? (
+		<div className={s.search}>
+			<div className="wrap1160">
+				<SearchInput setText={setText} text={text} title={'Search results'} />
+				<div className={s.search__content}>
+					<SidebarByCategory
+						list={list
+							.map(item => {
+								return {
+									...item,
+									results: articles
+										.filter(
+											article => !item.categoryId || article.categoryName === item.categoryName
+										)
+										.filter(article => article.title.toLowerCase().includes(text.toLowerCase()))
+										.length,
+								}
+							})
+							.filter(category => category.results !== 0)}
+						category={category}
+						setCategory={setCategory}
+					/>
 
-	return (
-		<div className={styles.search}>
-			<div className={styles.searchWrapper}>
-				{loading ? (
-					<div className={styles.search__container}>
-						<div className={styles.searchbar}>
-							<div className={styles.way}>
-								<Link to={'/support'} data-end={'>'}>
-									Yummly Help Center
-								</Link>
-								<p>Search results</p>
-							</div>
-							<div className={styles.searchSomething}>
-								<Link className={styles.searchIcon} to={searchVal !== null ? '/support/search' : ''} state={{ data: searchVal }}>
-									<img src={`${PF}images/icons/arrows/support/search.svg`} alt="" />
-								</Link>
-								<input onChange={e => searchHandle(e.target.value)} value={searchVal} type="search" placeholder={'Search'} />
-							</div>
-						</div>
-						<div className={styles.results}>
-							<div className={styles.left}>
-								<h1 className={styles.leftTitle}>By Category</h1>
-								<ul className={styles.nav}>
-									<li
-										onClick={() => {
-											setFilter('all')
-											setAll(true)
-											{
-												!all && setLoading(false)
-											}
-										}}
-										style={{ background: all ? '#e9ebed' : '#fff' }}
-										className={styles.nav__item}>
-										All Categories
-									</li>
-									{[...new Set(artInfo.flatMap(item => item.way.map(way => way.wayname)))].map(
-										wayname =>
-											artInfo.some(item => item.way.some(way => way.wayname === wayname && item.title.toLowerCase().includes(searchVal.toLowerCase()))) && (
-												<li
-													style={{
-														background: `${
-															artInfo
-																.flatMap(item => item.way)
-																.find(way => way.wayname === wayname)
-																?.link.split('/')[1] === filter
-																? '#e9ebed'
-																: '#fff'
-														}`,
-													}}
-													className={styles.nav__item}
-													onClick={() => {
-														setFilter(
-															artInfo
-																.flatMap(item => item.way)
-																.find(way => way.wayname === wayname)
-																?.link.split('/')[1]
-														)
-														setAll(false)
-														setLoading(false)
-													}}
-													key={wayname}>
-													{wayname}
-												</li>
-											)
-									)}
-								</ul>
-							</div>
-							<div className={styles.right}>
-								<div className={styles.rightAmount}>
-									{artInfo && artInfo.filter(inf => inf.title.toLowerCase().includes(searchVal.toLowerCase())).length}
-									{artInfo.filter(inf => inf.title.toLowerCase().includes(searchVal.toLowerCase())).length > 1 ? ' results' : ' result'}
-									{searchVal !== '' ? ` for "${searchVal}"` : ', search for something...'}
-								</div>
-								{artInfo &&
-									artInfo
-										.filter(inf => inf.title.toLowerCase().includes(searchVal.toLowerCase()))
-										.map(el =>
-											secInfo.map(sec =>
-												sec.list
-													.filter(l => l.link === el.idPage)
-													.map(ct =>
-														el.way.map((w, index) => (
-															<div className={styles.searchResult} key={index}>
-																<Link style={{ width: 'fit-content' }} key={index} to={`/support/articles/${sec.own}/${el.idPage}`}>
-																	<h1 className={styles.searchResult__title}>{el.title}</h1>
-																</Link>
-																<div className={styles.searchResult__wayNdate}>
-																	<div className={styles.searchResult__way}>
-																		<Link to={'/support'}>Yummly Help Center</Link> {'>'}
-																		<Link to={`/support/${w.link}`}>{w.wayname}</Link> {'>'}
-																		<Link to={`/support/articles/${sec.own}/${ct.link}`}>{ct.name}</Link>
-																	</div>
-																	<p className={styles.searchResult__date}>{moment(el.updatedAt).format('LLL')}</p>
-																</div>
-																<p>{}</p>
-															</div>
-														))
-													)
-											)
-										)}
-							</div>
-						</div>
-					</div>
-				) : (
-					<SkewLoader color="#3a9691" size={30} className="loaderSkew" />
-				)}
+					<SearchResults
+						searchValue={text}
+						articles={articles.filter(article => article.title.toLowerCase().includes(text.toLowerCase()))}
+						category={list.find(item => item.categoryId === category)?.categoryName}
+					/>
+				</div>
 			</div>
 		</div>
+	) : (
+		<SkewLoader color="#3a9691" size={30} className="loaderSkew" />
 	)
 }
 

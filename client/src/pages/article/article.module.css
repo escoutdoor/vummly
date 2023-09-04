@@ -1,0 +1,16 @@
+.article {
+	display: block;
+	width: 100%;
+	padding: 20px 0px;
+	color: #4a4a4a;
+}
+
+.article__container {
+	display: flex;
+}
+
+.article__main {
+	width: 100%;
+	padding: 0px 30px;
+	max-width: 70%;
+}

@@ -1,0 +1,31 @@
+.modal.active {
+	display: flex;
+	padding: 20px 30px;
+	color: #3a9691;
+	background: #f1f1f1;
+	border-radius: 4px;
+	border: 1px solid #3a9691;
+	position: fixed;
+	right: 10px;
+	margin-top: 10px;
+	margin-right: 0;
+	opacity: 1;
+	font-family: 'europa', sans-serif;
+	transition: margin-right 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) ease;
+}
+
+.modal {
+	margin-right: -100px;
+	opacity: 0;
+	display: none;
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+}
+
+.title {
+	font-size: 16px;
+	line-height: 21px;
+}

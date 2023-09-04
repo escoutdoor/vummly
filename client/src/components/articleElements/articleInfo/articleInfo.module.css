@@ -1,0 +1,47 @@
+.info {
+	margin: 10px 0 40px;
+}
+
+.article__textline {
+	font-size: 16px;
+	line-height: 26px;
+	font-weight: 400;
+	color: #4a4a4a;
+	margin: 5px 0;
+}
+
+.article__point {
+	margin-left: 35px;
+	color: #4a4a4a;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 26px;
+}
+
+.article__point strong {
+	margin-right: 3px;
+}
+
+.article__mail {
+	color: #3a9691;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 26px;
+	margin-left: 3px;
+}
+
+.article__mail:hover {
+	text-decoration: underline;
+}
+
+.article__Image {
+	max-height: 368px;
+	max-width: 419px;
+	margin-right: 10px;
+}
+
+.article__bigImage {
+	max-height: 368px;
+	max-width: 705px;
+	margin-right: 10px;
+}

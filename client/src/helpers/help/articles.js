@@ -7,6 +7,8 @@ const articles = [
 			{ text: [{ textline: 'Please Email us and one of our Support Team members will get right back to you.' }] },
 			{ text: [{ textline: 'Our email : ', mail: 'support@vummly.com' }] },
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'roast-need-to-rest',
@@ -21,6 +23,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'perfect-turkey-guide',
@@ -45,6 +49,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'best-results',
@@ -64,6 +70,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'thermometer-not-found',
@@ -104,6 +112,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'inaccurate-results',
@@ -136,6 +146,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'thermometer-will-not-charge-in-dock',
@@ -177,6 +189,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'disconnected-during-cooking',
@@ -204,6 +218,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'reset-thermometer',
@@ -226,6 +242,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'where-can-i-get-further-assistance',
@@ -238,6 +256,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'connect-thermometer-to-phone',
@@ -274,6 +294,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'what-is-docking-station-for',
@@ -293,6 +315,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'place-dock-coocking-not-coocking',
@@ -307,6 +331,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'install-and-charge-thermometer',
@@ -330,6 +356,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'turnon-turnoff-thermometer',
@@ -348,6 +376,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'bottom-dock-tool',
@@ -362,6 +392,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'phone-tablet-place-when-coocking',
@@ -376,6 +408,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'check-charge-status',
@@ -394,6 +428,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'led-lights-meaning',
@@ -407,6 +443,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'quick-start-guide',
@@ -429,6 +467,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'place-dock-when-coocking',
@@ -443,6 +483,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'anything-other-than-meat',
@@ -457,6 +499,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'coocking-with-metallic-foil',
@@ -471,6 +515,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'can-i-air-fry',
@@ -485,6 +531,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'can-i-deep-fry',
@@ -499,6 +547,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'can-i-sous-vide',
@@ -513,6 +563,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'thermometer-on-bbq-grill',
@@ -527,6 +579,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'thermometer-water-proof',
@@ -541,6 +595,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'thermometer-dishwasher-safe',
@@ -552,6 +608,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'how-to-clean-thermometer',
@@ -566,11 +624,15 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'do-i-need-to-create-an-acc',
 		title: 'Do I need to create an account?',
 		data: [{ text: [{ textline: 'No, an account is not required for using Smart Thermometer.' }] }],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'is-vummly-app-free',
@@ -598,6 +660,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'where-i-can-download-vummly-app',
@@ -611,6 +675,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'do-i-need-to-use-vummly-app-with-thermometer',
@@ -627,6 +693,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'updating-your-iOS-device',
@@ -654,6 +722,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'updating-your-Android-device',
@@ -675,6 +745,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'how-to-add-multiple-thermometers',
@@ -694,6 +766,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'navigationg-while-multiple-thermometers-are-coocking',
@@ -713,6 +787,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'how-to-edit-thermometer-names-while-coocking',
@@ -730,6 +806,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'does-it-matter-which-docks-I-put-my-thermometers-back-into-when-my-food-is-ready',
@@ -744,6 +822,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'reconnect-one-of-my-thermometers-to-its-dock-during-cook-session',
@@ -758,6 +838,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'reconnect-more-than-one-vummly-start-thermometer-at-a-time',
@@ -772,6 +854,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'how-does-temperature-sensor-work',
@@ -792,6 +876,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'what-is-return-policy',
@@ -828,6 +914,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'is-shipping-free',
@@ -842,11 +930,15 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'do-you-ship-internationally',
 		title: 'Do you ship internationally?',
 		data: [{ text: [{ textline: 'Sorry, at this time the Smart Thermometer does not ship outside of the US.' }] }],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'what-is-warranty-policy',
@@ -861,6 +953,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'track-my-order',
@@ -876,6 +970,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'return-thermometer',
@@ -891,6 +987,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'what-model-do-i-have',
@@ -905,6 +1003,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'find-serial-number-thermometer',
@@ -919,6 +1019,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'tech-specifications',
@@ -967,6 +1069,8 @@ const articles = [
 			},
 			{ text: [{ textline: 'Warranty' }], points: [{ point: '1-year limited warranty.' }] },
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'how-long-do-batteries-last',
@@ -981,6 +1085,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'what-type-of-batteries-are-required',
@@ -995,6 +1101,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'find-user-manual',
@@ -1007,6 +1115,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'what-comes-with-thermometer',
@@ -1021,6 +1131,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'requirements-for-using-thermometer',
@@ -1037,6 +1149,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'including-sub',
@@ -1051,6 +1165,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'auto-enrolled-in-paid-sub',
@@ -1073,6 +1189,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'sub-include-thermomter',
@@ -1087,6 +1205,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'do-i-need-a-sub-to-use-thermometer',
@@ -1101,6 +1221,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: "why-sub-isn't-available-in-my-region",
@@ -1115,6 +1237,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'only-for-subs-recipes',
@@ -1137,6 +1261,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'more-about-the-meal-planner',
@@ -1156,6 +1282,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'do-not-want-to-renew-sub',
@@ -1170,6 +1298,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'sub-cost',
@@ -1189,6 +1319,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'free-trial-sub',
@@ -1203,6 +1335,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'if-i-cancel-before-the-free-trial-sub',
@@ -1217,6 +1351,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'does-my-sub-renew-auto',
@@ -1235,6 +1371,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'update-payment-through-the-web',
@@ -1249,6 +1387,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'what-are-vummly-pro-recipes',
@@ -1263,6 +1403,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'how-do-vummly-pro-videos-work',
@@ -1277,6 +1419,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'do-vummly-pro-recipes-work-on-my-device',
@@ -1291,6 +1435,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'work-with-whirlpool',
@@ -1306,6 +1452,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'nift-card-expire',
@@ -1324,6 +1472,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'nift-doing-with-my-info',
@@ -1338,6 +1488,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'what-do-i-do-if-selected-gift-worthless-more-30$',
@@ -1357,6 +1509,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'gift-limited-options',
@@ -1371,6 +1525,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'how-do-i-use-nift-gift',
@@ -1407,6 +1563,8 @@ const articles = [
 			},
 			{ text: [{ textline: 'Having trouble? Email Nift at', mail: 'vanap387@gmail.com' }] },
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'what-is-nift-gift-card',
@@ -1440,6 +1598,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'what-is-vummly',
@@ -1456,6 +1616,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'how-to-use-vummly',
@@ -1480,6 +1642,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'adding-recipes-to-vummly-from-other-sites',
@@ -1504,6 +1668,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'discovering-recipes',
@@ -1531,6 +1697,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'web-search-recipe',
@@ -1555,6 +1723,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'recipe-box',
@@ -1584,6 +1754,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'acc-and-pass-problems',
@@ -1677,6 +1849,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'recipe-problems',
@@ -1741,6 +1915,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'collection-problems',
@@ -1780,6 +1956,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'recipe-recommendation-issues',
@@ -1804,6 +1982,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'recipe-search-result-problem',
@@ -1844,6 +2024,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'recipe-box-organazing',
@@ -1881,6 +2063,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'collections',
@@ -1933,6 +2117,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'shopping-list-add',
@@ -1956,6 +2142,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'meal-plan-changes',
@@ -1973,6 +2161,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'meal-plan-adding',
@@ -1988,6 +2178,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'loggining-in-to-the-website',
@@ -2033,6 +2225,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'your-profile',
@@ -2076,6 +2270,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'taste-preferences',
@@ -2108,6 +2304,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'web-acc-settings',
@@ -2151,6 +2349,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'unsub-emails',
@@ -2169,6 +2369,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'delete-acc',
@@ -2208,6 +2410,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'change-the-email',
@@ -2223,6 +2427,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'recipe-pages',
@@ -2307,6 +2513,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-recipe-search',
@@ -2343,6 +2551,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-recipe-box',
@@ -2375,6 +2585,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-recipe-recommendations',
@@ -2400,6 +2612,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-acc-settings',
@@ -2420,6 +2634,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-ing-recognition',
@@ -2474,6 +2690,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-and-basic-troubleshooting',
@@ -2502,6 +2720,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-home-feed',
@@ -2535,6 +2755,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-sign-in-issue',
@@ -2562,6 +2784,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-adding-new-recipes-from-website',
@@ -2582,6 +2806,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-saved-recipes-missing',
@@ -2604,6 +2830,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-use-meal-planner',
@@ -2641,6 +2869,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-find-meal-planner',
@@ -2660,6 +2890,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-meal-recomm-from',
@@ -2677,6 +2909,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-find-out-more-rec-recomm',
@@ -2691,6 +2925,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-tips-meal-planning',
@@ -2705,6 +2941,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-shopping-list-overview',
@@ -2746,6 +2984,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-buy-ingr-vummly',
@@ -2773,6 +3013,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-diff-devices-shopping-list',
@@ -2787,6 +3029,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'ios-move-ingr-to-a-diff-shopping-list',
@@ -2826,6 +3070,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'andriod-app-overview',
@@ -2889,6 +3135,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-getting-app',
@@ -2935,6 +3183,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-recipe-pages',
@@ -3014,6 +3264,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-recipe-search',
@@ -3050,6 +3302,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-recipe-box',
@@ -3086,6 +3340,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-recommendations',
@@ -3110,6 +3366,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-and-basic-troubleshooting',
@@ -3129,6 +3387,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-home-feed',
@@ -3162,6 +3422,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-sign-in-issue',
@@ -3196,6 +3458,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-recipe-search-results-issues',
@@ -3221,6 +3485,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-saved-recipes-missing',
@@ -3243,6 +3509,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-printing-recipes',
@@ -3257,6 +3525,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-virtual-pantry',
@@ -3284,6 +3554,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-how-does-vr-pantry-money',
@@ -3301,6 +3573,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-vummly-running-low-or-expiring',
@@ -3318,6 +3592,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-acces-from-other-devices',
@@ -3332,6 +3608,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'android-shopping-list-and-vr-pantry',
@@ -3357,6 +3635,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'how-vummly-works',
@@ -3393,6 +3673,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'get-discovered',
@@ -3426,6 +3708,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'best-practices-guidelines',
@@ -3465,6 +3749,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'yumm-butt-ur-site',
@@ -3590,6 +3876,8 @@ const articles = [
 				points: [{ point: 'Sharethis', mail: 'support@sharethis.com' }],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'plugins-yumm-butt',
@@ -3675,6 +3963,8 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 	{
 		id: 'yumm-butt-via-img-hover',
@@ -3692,378 +3982,449 @@ const articles = [
 				],
 			},
 		],
+		createdAt: new Date(Date.now()),
+		updatedAt: new Date(Date.now()),
 	},
 ]
 
 export { articles }
 
-const section = [
+const sections = [
 	{
-		own: 'getting-help',
-		list: [{ name: 'Contact us', link: 'contact-us' }],
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Getting Help',
+		list: [{ articleTitle: 'Contact us', articleId: 'contact-us' }],
 	},
 	{
-		own: 'cooking-the-perfect-prime-rib-or-rib-roast',
-		list: [{ name: 'How long does a roast need to rest?', link: 'roast-need-to-rest' }],
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Cooking the Perfect Prime Rib or Rib Roast',
+		list: [{ articleTitle: 'How long does a roast need to rest?', articleId: 'roast-need-to-rest' }],
 	},
 	{
-		own: 'coocking-a-turkey',
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Cooking a Turkey',
 		list: [
-			{ name: 'How to cook the perfect turkey', link: 'perfect-turkey-guide' },
-			{ name: 'For Best Results', link: 'best-results' },
+			{ articleTitle: 'How to cook the perfect turkey', articleId: 'perfect-turkey-guide' },
+			{ articleTitle: 'For Best Results', articleId: 'best-results' },
 		],
 	},
 	{
-		own: 'troubleshooting',
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Troubleshooting',
 		list: [
-			{ name: 'Thermometer not found', link: 'thermometer-not-found' },
-			{ name: 'Inaccurate results', link: 'inaccurate-results' },
-			{ name: "Smart Thermometer won't charge in dock", link: 'thermometer-will-not-charge-in-dock' },
-			{ name: 'Smart Thermometer disconnected during cooking', link: 'disconnected-during-cooking' },
-			{ name: 'How do I reset the Smart Thermometer?', link: 'reset-thermometer' },
-			{ name: 'Where can I get further assistance?', link: 'where-can-i-get-further-assistance' },
-		],
-	},
-	{
-		own: 'connecting-pairing',
-		list: [
-			{ name: 'How do I connect/pair the Smart Thermometer to my phone?', link: 'connect-thermometer-to-phone' },
-			{ name: 'What is the docking station for?', link: 'what-is-docking-station-for' },
+			{ articleTitle: 'Thermometer not found', articleId: 'thermometer-not-found' },
+			{ articleTitle: 'Inaccurate results', articleId: 'inaccurate-results' },
 			{
-				name: 'Where should I place the dock when cooking/not cooking?',
-				link: 'place-dock-coocking-not-coocking',
+				articleTitle: "Smart Thermometer won't charge in dock",
+				articleId: 'thermometer-will-not-charge-in-dock',
+			},
+			{ articleTitle: 'Smart Thermometer disconnected during cooking', articleId: 'disconnected-during-cooking' },
+			{ articleTitle: 'How do I reset the Smart Thermometer?', articleId: 'reset-thermometer' },
+			{ articleTitle: 'Where can I get further assistance?', articleId: 'where-can-i-get-further-assistance' },
+		],
+	},
+	{
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Connecting, Pairing, and Docking',
+		list: [
+			{
+				articleTitle: 'How do I connect/pair the Smart Thermometer to my phone?',
+				articleId: 'connect-thermometer-to-phone',
+			},
+			{ articleTitle: 'What is the docking station for?', articleId: 'what-is-docking-station-for' },
+			{
+				articleTitle: 'Where should I place the dock when cooking/not cooking?',
+				articleId: 'place-dock-coocking-not-coocking',
 			},
 			{
-				name: 'How do I install batteries and charge my Smart Thermometer?',
-				link: 'install-and-charge-thermometer',
+				articleTitle: 'How do I install batteries and charge my Smart Thermometer?',
+				articleId: 'install-and-charge-thermometer',
 			},
-			{ name: 'How do I turn the Smart Thermometer on/off?', link: 'turnon-turnoff-thermometer' },
-			{ name: 'What is the thing/tool on the bottom of the dock?', link: 'bottom-dock-tool' },
+			{ articleTitle: 'How do I turn the Smart Thermometer on/off?', articleId: 'turnon-turnoff-thermometer' },
+			{ articleTitle: 'What is the thing/tool on the bottom of the dock?', articleId: 'bottom-dock-tool' },
 			{
-				name: 'Where should I place my phone/tablet when cooking to ensure the app and thermometer stay connected?',
-				link: 'phone-tablet-place-when-coocking',
+				articleTitle:
+					'Where should I place my phone/tablet when cooking to ensure the app and thermometer stay connected?',
+				articleId: 'phone-tablet-place-when-coocking',
 			},
-			{ name: 'How do I check the charge status?', link: 'check-charge-status' },
-			{ name: 'What do the LED lights mean?', link: 'led-lights-meaning' },
+			{ articleTitle: 'How do I check the charge status?', articleId: 'check-charge-status' },
+			{ articleTitle: 'What do the LED lights mean?', articleId: 'led-lights-meaning' },
 		],
 	},
 	{
-		own: 'coocking-with-thermometer',
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Cooking With Smart Thermometer',
 		list: [
-			{ name: 'Quick start guide', link: 'quick-start-guide' },
-			{ name: 'Where should I place the dock when cooking?', link: 'place-dock-when-coocking' },
-			{ name: 'Can I use it for anything other than meat?', link: 'anything-other-than-meat' },
-			{ name: 'Cooking with metallic foil', link: 'coocking-with-metallic-foil' },
-			{ name: 'Can I air fry?', link: 'can-i-air-fry' },
-			{ name: 'Can I deep fry?', link: 'can-i-deep-fry' },
-			{ name: 'Can I sous vide?', link: 'can-i-sous-vide' },
-			{ name: 'Can I use the Smart Thermometer on my BBQ grill?', link: 'thermometer-on-bbq-grill' },
+			{ articleTitle: 'Quick start guide', articleId: 'quick-start-guide' },
+			{ articleTitle: 'Where should I place the dock when cooking?', articleId: 'place-dock-when-coocking' },
+			{ articleTitle: 'Can I use it for anything other than meat?', articleId: 'anything-other-than-meat' },
+			{ articleTitle: 'Cooking with metallic foil', articleId: 'coocking-with-metallic-foil' },
+			{ articleTitle: 'Can I air fry?', articleId: 'can-i-air-fry' },
+			{ articleTitle: 'Can I deep fry?', articleId: 'can-i-deep-fry' },
+			{ articleTitle: 'Can I sous vide?', articleId: 'can-i-sous-vide' },
+			{ articleTitle: 'Can I use the Smart Thermometer on my BBQ grill?', articleId: 'thermometer-on-bbq-grill' },
 		],
 	},
 	{
-		own: 'care-instructions',
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Care Instructions',
 		list: [
-			{ name: 'Is the Smart Thermometer waterproof?', link: 'thermometer-water-proof' },
-			{ name: 'Is the Smart Thermometer dishwasher safe?', link: 'thermometer-dishwasher-safe' },
-			{ name: 'How do I clean my Smart Thermometer?', link: 'how-to-clean-thermometer' },
+			{ articleTitle: 'Is the Smart Thermometer waterproof?', articleId: 'thermometer-water-proof' },
+			{ articleTitle: 'Is the Smart Thermometer dishwasher safe?', articleId: 'thermometer-dishwasher-safe' },
+			{ articleTitle: 'How do I clean my Smart Thermometer?', articleId: 'how-to-clean-thermometer' },
 		],
 	},
 	{
-		own: 'vummly-app',
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Vummly App',
 		list: [
-			{ name: 'Do I need to create an account?', link: 'do-i-need-to-create-an-acc' },
-			{ name: 'Is the Yummly® app free?', link: 'is-vummly-app-free' },
-			{ name: 'Where can I download the Vummly app?', link: 'where-i-can-download-vummly-app' },
+			{ articleTitle: 'Do I need to create an account?', articleId: 'do-i-need-to-create-an-acc' },
+			{ articleTitle: 'Is the Yummly® app free?', articleId: 'is-vummly-app-free' },
+			{ articleTitle: 'Where can I download the Vummly app?', articleId: 'where-i-can-download-vummly-app' },
 			{
-				name: 'Do I need to use the Vummly app with the Smart Thermometer?',
-				link: 'do-i-need-to-use-vummly-app-with-thermometer',
+				articleTitle: 'Do I need to use the Vummly app with the Smart Thermometer?',
+				articleId: 'do-i-need-to-use-vummly-app-with-thermometer',
 			},
-			{ name: 'Updating your iOS device', link: 'updating-your-iOS-device' },
-			{ name: 'Updating your Android device', link: 'updating-your-Android-device' },
+			{ articleTitle: 'Updating your iOS device', articleId: 'updating-your-iOS-device' },
+			{ articleTitle: 'Updating your Android device', articleId: 'updating-your-Android-device' },
 		],
 	},
 	{
-		own: 'multiple-thermometers',
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Multiple Thermometers',
 		list: [
-			{ name: 'How to add multiple thermometers', link: 'how-to-add-multiple-thermometers' },
+			{ articleTitle: 'How to add multiple thermometers', articleId: 'how-to-add-multiple-thermometers' },
 			{
-				name: 'Navigating while multiple thermometers are cooking.',
-				link: 'navigationg-while-multiple-thermometers-are-coocking',
-			},
-			{
-				name: 'How to edit thermometer names while cooking',
-				link: 'how-to-edit-thermometer-names-while-coocking',
-			},
-			{
-				name: 'Does it matter which docks I put my thermometers back into when my food is ready?',
-				link: 'does-it-matter-which-docks-I-put-my-thermometers-back-into-when-my-food-is-ready',
-			},
-			{
-				name: 'How do I reconnect one of my thermometers to its dock during a cook session?',
-				link: 'reconnect-one-of-my-thermometers-to-its-dock-during-cook-session',
+				articleTitle: 'Navigating while multiple thermometers are cooking.',
+				articleId: 'navigationg-while-multiple-thermometers-are-coocking',
 			},
 			{
-				name: 'Can I connect more than one Vummly Smart Thermometer at a time?',
-				link: 'reconnect-more-than-one-vummly-start-thermometer-at-a-time',
+				articleTitle: 'How to edit thermometer names while cooking',
+				articleId: 'how-to-edit-thermometer-names-while-coocking',
 			},
-		],
-	},
-	{
-		own: 'sensor',
-		list: [{ name: 'How does the ambient temperature sensor work?', link: 'how-does-temperature-sensor-work' }],
-	},
-	{
-		own: 'warranty-returns-and-shipping',
-		list: [
-			{ name: 'What is your return policy?', link: 'what-is-return-policy' },
-			{ name: 'Is shipping free/how long does it take?', link: 'is-shipping-free' },
-			{ name: 'Do you ship internationally?', link: 'do-you-ship-internationally' },
-			{ name: 'What is the warranty policy?', link: 'what-is-warranty-policy' },
-			{ name: 'How do I track my order?', link: 'track-my-order' },
-			{ name: 'I want to return my Smart Thermometer', link: 'return-thermometer' },
-			{ name: 'What model do I have?', link: 'what-model-do-i-have' },
-			{ name: 'Where can I find the serial number of my thermometer?', link: 'find-serial-number-thermometer' },
-		],
-	},
-	{
-		own: 'tech-specifications',
-		list: [
-			{ name: 'Technical specifications', link: 'tech-specifications' },
-			{ name: 'How long do batteries last?', link: 'how-long-do-batteries-last' },
-			{ name: 'What type of batteries are required?', link: 'what-type-of-batteries-are-required' },
-			{ name: 'Where can I find the user manual?', link: 'find-user-manual' },
-			{ name: 'What comes in the box with the Smart Thermometer?', link: 'what-comes-with-thermometer' },
-			{ name: 'Requirements for using the Smart Thermometer', link: 'requirements-for-using-thermometer' },
-		],
-	},
-	{
-		own: 'getting-started',
-		list: [
-			{ name: "What's included in my Vummly subscription?", link: 'including-sub' },
-			{ name: 'Am I automatically enrolled in the paid subscription?', link: 'auto-enrolled-in-paid-sub' },
-			{ name: 'Does my subscription include a Yummly® Smart Thermometer?', link: 'sub-include-thermomter' },
 			{
-				name: 'Do I need a subscription to use my Yummly® Smart Thermometer?',
-				link: 'do-i-need-a-sub-to-use-thermometer',
+				articleTitle: 'Does it matter which docks I put my thermometers back into when my food is ready?',
+				articleId: 'does-it-matter-which-docks-I-put-my-thermometers-back-into-when-my-food-is-ready',
 			},
-			{ name: 'Why is subscription not available in my region?', link: "why-sub-isn't-available-in-my-region" },
-			{ name: "What's so special about Vummly's subscriber-only recipes?", link: 'only-for-subs-recipes' },
-			{ name: 'Tell me more about the Vummly Meal Planner.', link: 'more-about-the-meal-planner' },
-		],
-	},
-	{
-		own: 'subs-and-payments',
-		list: [
 			{
-				name: "I'm a subscriber and don't want to renew my subscription. What do I do?",
-				link: 'do-not-want-to-renew-sub',
+				articleTitle: 'How do I reconnect one of my thermometers to its dock during a cook session?',
+				articleId: 'reconnect-one-of-my-thermometers-to-its-dock-during-cook-session',
 			},
-			{ name: 'How much does a Vummly subscription cost?', link: 'sub-cost' },
-			{ name: 'Will I be charged if I cancel before the free trial is over?', link: 'free-trial-sub' },
 			{
-				name: 'If I cancel before the free trial is over, can I still access content?',
-				link: 'if-i-cancel-before-the-free-trial-sub',
-			},
-			{ name: 'Does my subscription automatically renew?', link: 'does-my-sub-renew-auto' },
-			{ name: 'How do I update my payment method through the web?', link: 'update-payment-through-the-web' },
-		],
-	},
-	{
-		own: 'vummly-pro-recipes',
-		list: [
-			{ name: 'What are Vummly Pro recipes?', link: 'what-are-vummly-pro-recipes' },
-			{ name: 'How do Vummly Pro videos work?', link: 'how-do-vummly-pro-videos-work' },
-			{ name: 'Do Vummly Pro recipes work on my device?', link: 'do-vummly-pro-recipes-work-on-my-device' },
-			{ name: 'Do Vummly Pro recipes work with my Whirlpool connected oven?', link: 'work-with-whirlpool' },
-		],
-	},
-	{
-		own: 'nift-gift-card',
-		list: [
-			{ name: 'Does my Nift gift card expire?', link: 'nift-card-expire' },
-			{ name: 'What is Nift doing with my information?', link: 'nift-doing-with-my-info' },
-			{
-				name: 'What do I do if my selected gift is worth less or more than $30?',
-				link: 'what-do-i-do-if-selected-gift-worthless-more-30$',
-			},
-			{ name: 'Why do I see limited gift options?', link: 'gift-limited-options' },
-			{ name: 'How do I use my Nift gift?', link: 'how-do-i-use-nift-gift' },
-			{ name: 'What is a Nift gift card?', link: 'what-is-nift-gift-card' },
-		],
-	},
-	{
-		own: 'getting-started-web-help-topics',
-		list: [
-			{ name: 'What is Vummly?', link: 'what-is-vummly' },
-			{ name: 'How to use Vummly', link: 'how-to-use-vummly' },
-			{ name: 'Adding recipes to Vummly from other sites', link: 'adding-recipes-to-vummly-from-other-sites' },
-			{ name: 'Discovering recipes', link: 'discovering-recipes' },
-			{ name: 'Website Recipe search', link: 'web-search-recipe' },
-			{ name: 'Recipe box', link: 'recipe-box' },
-		],
-	},
-	{
-		own: 'fix-a-common-problem',
-		list: [
-			{ name: 'Account & password problems', link: 'acc-and-pass-problems' },
-			{ name: 'Recipe problems', link: 'recipe-problems' },
-			{ name: 'Collection problems', link: 'collection-problems' },
-			{ name: 'Recipe recommendation issues', link: 'recipe-recommendation-issues' },
-			{ name: 'Recipe search result problems', link: 'recipe-search-result-problem' },
-		],
-	},
-	{
-		own: 'organizing-recipes',
-		list: [
-			{ name: 'Recipe box', link: 'recipe-box-organazing' },
-			{ name: 'Collections', link: 'collections' },
-			{ name: 'How can I add items to my Shopping List on the website?', link: 'shopping-list-add' },
-			{ name: 'How do I make changes to my Meal Plan on the website?', link: 'meal-plan-changes' },
-			{ name: 'How do I add recipes to my Meal Plan on the website?', link: 'meal-plan-adding' },
-		],
-	},
-	{
-		own: 'your-acc',
-		list: [
-			{ name: 'Logging in to the website', link: 'loggining-in-to-the-website' },
-			{ name: 'Your profile', link: 'your-profile' },
-			{ name: 'Taste preferences', link: 'taste-preferences' },
-			{ name: 'Website Account settings', link: 'web-acc-settings' },
-		],
-	},
-	{
-		own: 'acc-deactivation',
-		list: [
-			{ name: 'Unsubscribe from emails', link: 'unsub-emails' },
-			{ name: 'Delete account', link: 'delete-acc' },
-			{ name: 'Change the email address on your account', link: 'change-the-email' },
-		],
-	},
-	{
-		own: 'ios-getting-started',
-		list: [
-			{ name: 'Recipe pages', link: 'recipe-pages' },
-			{ name: 'iOS Recipe search', link: 'ios-recipe-search' },
-			{ name: 'Recipe box', link: 'ios-recipe-box' },
-			{ name: 'Recipe recommendations', link: 'ios-recipe-recommendations' },
-			{ name: 'Account settings', link: 'ios-acc-settings' },
-			{ name: 'Ingredient Recognition', link: 'ios-ing-recognition' },
-		],
-	},
-	{
-		own: 'ios-explore-help-topics',
-		list: [
-			{ name: 'iOS app Basic troubleshooting', link: 'ios-and-basic-troubleshooting' },
-			{ name: 'Home Feed', link: 'ios-home-feed' },
-			{ name: 'Sign-in issues', link: 'ios-sign-in-issue' },
-			{
-				name: 'Adding new recipes to the Vummly app from a website',
-				link: 'ios-adding-new-recipes-from-website',
-			},
-			{ name: 'My saved recipes are missing', link: 'ios-saved-recipes-missing' },
-		],
-	},
-	{
-		own: 'ios-meal-planner',
-		list: [
-			{ name: 'How do I use the Vummly Meal Planner?', link: 'ios-use-meal-planner' },
-			{ name: 'Where can I find the Meal Planner?', link: 'ios-find-meal-planner' },
-			{ name: 'Where do my Meal Plan recommendations come from?', link: 'ios-meal-recomm-from' },
-			{
-				name: 'How do I find out more about a recipe in my Meal Plan recommendations?',
-				link: 'ios-find-out-more-rec-recomm',
-			},
-			{ name: 'Do you have any meal planning tips for me?', link: 'ios-tips-meal-planning' },
-		],
-	},
-	{
-		own: 'ios-shopping-list',
-		list: [
-			{ name: 'Shopping List Overview', link: 'ios-shopping-list-overview' },
-			{ name: 'Can I buy ingredients through Vummly?', link: 'ios-buy-ingr-vummly' },
-			{ name: 'Can I access my Shopping List on different devices?', link: 'ios-diff-devices-shopping-list' },
-			{
-				name: 'How do I move ingredients to a different shopping aisle?',
-				link: 'ios-move-ingr-to-a-diff-shopping-list',
+				articleTitle: 'Can I connect more than one Vummly Smart Thermometer at a time?',
+				articleId: 'reconnect-more-than-one-vummly-start-thermometer-at-a-time',
 			},
 		],
 	},
 	{
-		own: 'android-getting-started',
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Ambient Temperature Sensor',
 		list: [
-			{ name: 'Android app overview', link: 'andriod-app-overview' },
-			{ name: 'Getting the Android app', link: 'android-getting-app' },
-			{ name: 'Recipe pages', link: 'android-recipe-pages' },
-			{ name: 'Android Recipe search', link: 'android-recipe-search' },
-			{ name: 'Recipe box', link: 'android-recipe-box' },
-			{ name: 'Recipe recommendations', link: 'android-recommendations' },
-		],
-	},
-	{
-		own: 'android-explore-help-topics',
-		list: [
-			{ name: 'Android app Basic troubleshooting', link: 'android-and-basic-troubleshooting' },
-			{ name: 'Home Feed', link: 'android-home-feed' },
-			{ name: 'Sign-in issues', link: 'android-sign-in-issue' },
-			{ name: 'Recipe search results', link: 'android-recipe-search-results-issues' },
-			{ name: 'My saved recipes are missing', link: 'android-saved-recipes-missing' },
-			{ name: 'Printing recipes', link: 'android-printing-recipes' },
-		],
-	},
-	{
-		own: 'android-virtual-pantry',
-		list: [
-			{ name: 'What is Virtual Pantry?', link: 'android-virtual-pantry' },
-			{ name: 'How does Virtual Pantry save me money?', link: 'android-how-does-vr-pantry-money' },
 			{
-				name: 'How does Vummly know when my ingredients are Running Low or Expiring?',
-				link: 'android-vummly-running-low-or-expiring',
-			},
-			{ name: 'Can I access my Virtual Pantry from other devices?', link: 'android-acces-from-other-devices' },
-			{
-				name: 'How do the Shopping List and Virtual Pantry work together?',
-				link: 'android-shopping-list-and-vr-pantry',
+				articleTitle: 'How does the ambient temperature sensor work?',
+				articleId: 'how-does-temperature-sensor-work',
 			},
 		],
 	},
 	{
-		own: 'vummly-for-publishers',
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Warranty, Returns and Shipping',
 		list: [
-			{ name: 'How Vummly works', link: 'how-vummly-works' },
-			{ name: 'Get discovered even faster', link: 'get-discovered' },
-			{ name: 'Best practices/guidelines', link: 'best-practices-guidelines' },
-			{ name: 'How to add the Yum button to your site', link: 'yumm-butt-ur-site' },
-			{ name: 'Adding the Yum button via plugins', link: 'plugins-yumm-butt' },
-			{ name: 'Add the Yum button via image hover', link: 'yumm-butt-via-img-hover' },
+			{ articleTitle: 'What is your return policy?', articleId: 'what-is-return-policy' },
+			{ articleTitle: 'Is shipping free/how long does it take?', articleId: 'is-shipping-free' },
+			{ articleTitle: 'Do you ship internationally?', articleId: 'do-you-ship-internationally' },
+			{ articleTitle: 'What is the warranty policy?', articleId: 'what-is-warranty-policy' },
+			{ articleTitle: 'How do I track my order?', articleId: 'track-my-order' },
+			{ articleTitle: 'I want to return my Smart Thermometer', articleId: 'return-thermometer' },
+			{ articleTitle: 'What model do I have?', articleId: 'what-model-do-i-have' },
+			{
+				articleTitle: 'Where can I find the serial number of my thermometer?',
+				articleId: 'find-serial-number-thermometer',
+			},
+		],
+	},
+	{
+		categoryId: 'smart-thermometer',
+		categoryName: 'Smart Thermometer',
+		title: 'Technical Specifications',
+		list: [
+			{ articleTitle: 'Technical specifications', articleId: 'tech-specifications' },
+			{ articleTitle: 'How long do batteries last?', articleId: 'how-long-do-batteries-last' },
+			{ articleTitle: 'What type of batteries are required?', articleId: 'what-type-of-batteries-are-required' },
+			{ articleTitle: 'Where can I find the user manual?', articleId: 'find-user-manual' },
+			{
+				articleTitle: 'What comes in the box with the Smart Thermometer?',
+				articleId: 'what-comes-with-thermometer',
+			},
+			{
+				articleTitle: 'Requirements for using the Smart Thermometer',
+				articleId: 'requirements-for-using-thermometer',
+			},
+		],
+	},
+	{
+		categoryId: 'vummly-paid-subscription',
+		categoryName: 'Vummly Paid Subscription',
+		title: 'Getting Started',
+		list: [
+			{ articleTitle: "What's included in my Vummly subscription?", articleId: 'including-sub' },
+			{
+				articleTitle: 'Am I automatically enrolled in the paid subscription?',
+				articleId: 'auto-enrolled-in-paid-sub',
+			},
+			{
+				articleTitle: 'Does my subscription include a Yummly® Smart Thermometer?',
+				articleId: 'sub-include-thermomter',
+			},
+			{
+				articleTitle: 'Do I need a subscription to use my Yummly® Smart Thermometer?',
+				articleId: 'do-i-need-a-sub-to-use-thermometer',
+			},
+			{
+				articleTitle: 'Why is subscription not available in my region?',
+				articleId: "why-sub-isn't-available-in-my-region",
+			},
+			{
+				articleTitle: "What's so special about Vummly's subscriber-only recipes?",
+				articleId: 'only-for-subs-recipes',
+			},
+			{ articleTitle: 'Tell me more about the Vummly Meal Planner.', articleId: 'more-about-the-meal-planner' },
+		],
+	},
+	{
+		categoryId: 'vummly-paid-subscription',
+		categoryName: 'Vummly Paid Subscription',
+		title: 'Subscription and Payments',
+		list: [
+			{
+				articleTitle: "I'm a subscriber and don't want to renew my subscription. What do I do?",
+				articleId: 'do-not-want-to-renew-sub',
+			},
+			{ articleTitle: 'How much does a Vummly subscription cost?', articleId: 'sub-cost' },
+			{
+				articleTitle: 'Will I be charged if I cancel before the free trial is over?',
+				articleId: 'free-trial-sub',
+			},
+			{
+				articleTitle: 'If I cancel before the free trial is over, can I still access content?',
+				articleId: 'if-i-cancel-before-the-free-trial-sub',
+			},
+			{ articleTitle: 'Does my subscription automatically renew?', articleId: 'does-my-sub-renew-auto' },
+			{
+				articleTitle: 'How do I update my payment method through the web?',
+				articleId: 'update-payment-through-the-web',
+			},
+		],
+	},
+	{
+		categoryId: 'vummly-paid-subscription',
+		categoryName: 'Vummly Paid Subscription',
+		title: 'Vummly Pro Recipes',
+		list: [
+			{ articleTitle: 'What are Vummly Pro recipes?', articleId: 'what-are-vummly-pro-recipes' },
+			{ articleTitle: 'How do Vummly Pro videos work?', articleId: 'how-do-vummly-pro-videos-work' },
+			{
+				articleTitle: 'Do Vummly Pro recipes work on my device?',
+				articleId: 'do-vummly-pro-recipes-work-on-my-device',
+			},
+			{
+				articleTitle: 'Do Vummly Pro recipes work with my Whirlpool connected oven?',
+				articleId: 'work-with-whirlpool',
+			},
+		],
+	},
+	{
+		categoryId: 'website-help-topics',
+		categoryName: 'Website Help Topics',
+		title: 'Getting Started',
+		list: [
+			{ articleTitle: 'What is Vummly?', articleId: 'what-is-vummly' },
+			{ articleTitle: 'How to use Vummly', articleId: 'how-to-use-vummly' },
+			{
+				articleTitle: 'Adding recipes to Vummly from other sites',
+				articleId: 'adding-recipes-to-vummly-from-other-sites',
+			},
+			{ articleTitle: 'Discovering recipes', articleId: 'discovering-recipes' },
+			{ articleTitle: 'Website Recipe search', articleId: 'web-search-recipe' },
+			{ articleTitle: 'Recipe box', articleId: 'recipe-box' },
+		],
+	},
+	{
+		categoryId: 'website-help-topics',
+		categoryName: 'Website Help Topics',
+		title: 'Fix a Common Problem',
+		list: [
+			{ articleTitle: 'Account & password problems', articleId: 'acc-and-pass-problems' },
+			{ articleTitle: 'Recipe problems', articleId: 'recipe-problems' },
+			{ articleTitle: 'Collection problems', articleId: 'collection-problems' },
+			{ articleTitle: 'Recipe recommendation issues', articleId: 'recipe-recommendation-issues' },
+			{ articleTitle: 'Recipe search result problems', articleId: 'recipe-search-result-problem' },
+		],
+	},
+	{
+		categoryId: 'website-help-topics',
+		categoryName: 'Website Help Topics',
+		title: 'Organizing Recipes',
+		list: [
+			{ articleTitle: 'Recipe box', articleId: 'recipe-box-organazing' },
+			{ articleTitle: 'Collections', articleId: 'collections' },
+			{ articleTitle: 'How can I add items to my Shopping List on the website?', articleId: 'shopping-list-add' },
+			{ articleTitle: 'How do I make changes to my Meal Plan on the website?', articleId: 'meal-plan-changes' },
+			{ articleTitle: 'How do I add recipes to my Meal Plan on the website?', articleId: 'meal-plan-adding' },
+		],
+	},
+	{
+		categoryId: 'website-help-topics',
+		categoryName: 'Website Help Topics',
+		title: 'Your Account',
+		list: [
+			{ articleTitle: 'Logging in to the website', articleId: 'loggining-in-to-the-website' },
+			{ articleTitle: 'Your profile', articleId: 'your-profile' },
+			{ articleTitle: 'Taste preferences', articleId: 'taste-preferences' },
+			{ articleTitle: 'Website Account settings', articleId: 'web-acc-settings' },
+		],
+	},
+	{
+		categoryId: 'website-help-topics',
+		categoryName: 'Website Help Topics',
+		title: 'Account Deactivation',
+		list: [
+			{ articleTitle: 'Unsubscribe from emails', articleId: 'unsub-emails' },
+			{ articleTitle: 'Delete account', articleId: 'delete-acc' },
+			{ articleTitle: 'Change the email address on your account', articleId: 'change-the-email' },
+		],
+	},
+	{
+		categoryId: 'vummly-ios-app',
+		categoryName: 'Vummly iOS App',
+		title: 'Getting Started',
+		list: [
+			{ articleTitle: 'Recipe pages', articleId: 'recipe-pages' },
+			{ articleTitle: 'iOS Recipe search', articleId: 'ios-recipe-search' },
+			{ articleTitle: 'Recipe box', articleId: 'ios-recipe-box' },
+			{ articleTitle: 'Recipe recommendations', articleId: 'ios-recipe-recommendations' },
+			{ articleTitle: 'Account settings', articleId: 'ios-acc-settings' },
+			{ articleTitle: 'Ingredient Recognition', articleId: 'ios-ing-recognition' },
+		],
+	},
+	{
+		categoryId: 'vummly-ios-app',
+		categoryName: 'Vummly iOS App',
+		title: 'Explore Help Topics',
+		list: [
+			{ articleTitle: 'iOS app Basic troubleshooting', articleId: 'ios-and-basic-troubleshooting' },
+			{ articleTitle: 'Home Feed', articleId: 'ios-home-feed' },
+			{ articleTitle: 'Sign-in issues', articleId: 'ios-sign-in-issue' },
+			{
+				articleTitle: 'Adding new recipes to the Vummly app from a website',
+				articleId: 'ios-adding-new-recipes-from-website',
+			},
+			{ articleTitle: 'My saved recipes are missing', articleId: 'ios-saved-recipes-missing' },
+		],
+	},
+	{
+		categoryId: 'vummly-ios-app',
+		categoryName: 'Vummly iOS App',
+		title: 'Meal Planner',
+		list: [
+			{ articleTitle: 'How do I use the Vummly Meal Planner?', articleId: 'ios-use-meal-planner' },
+			{ articleTitle: 'Where can I find the Meal Planner?', articleId: 'ios-find-meal-planner' },
+			{ articleTitle: 'Where do my Meal Plan recommendations come from?', articleId: 'ios-meal-recomm-from' },
+			{
+				articleTitle: 'How do I find out more about a recipe in my Meal Plan recommendations?',
+				articleId: 'ios-find-out-more-rec-recomm',
+			},
+			{ articleTitle: 'Do you have any meal planning tips for me?', articleId: 'ios-tips-meal-planning' },
+		],
+	},
+	{
+		categoryId: 'vummly-ios-app',
+		categoryName: 'Vummly iOS App',
+		title: 'Shopping List',
+		list: [
+			{ articleTitle: 'Shopping List Overview', articleId: 'ios-shopping-list-overview' },
+			{ articleTitle: 'Can I buy ingredients through Vummly?', articleId: 'ios-buy-ingr-vummly' },
+			{
+				articleTitle: 'Can I access my Shopping List on different devices?',
+				articleId: 'ios-diff-devices-shopping-list',
+			},
+			{
+				articleTitle: 'How do I move ingredients to a different shopping aisle?',
+				articleId: 'ios-move-ingr-to-a-diff-shopping-list',
+			},
+		],
+	},
+	{
+		categoryId: 'vummly-android-app',
+		categoryName: 'Vummly Android App',
+		title: 'Getting Started',
+		list: [
+			{ articleTitle: 'Android app overview', articleId: 'andriod-app-overview' },
+			{ articleTitle: 'Getting the Android app', articleId: 'android-getting-app' },
+			{ articleTitle: 'Recipe pages', articleId: 'android-recipe-pages' },
+			{ articleTitle: 'Android Recipe search', articleId: 'android-recipe-search' },
+			{ articleTitle: 'Recipe box', articleId: 'android-recipe-box' },
+			{ articleTitle: 'Recipe recommendations', articleId: 'android-recommendations' },
+		],
+	},
+	{
+		categoryId: 'vummly-android-app',
+		categoryName: 'Vummly Android App',
+		title: 'Explore Help Topics',
+		list: [
+			{ articleTitle: 'Android app Basic troubleshooting', articleId: 'android-and-basic-troubleshooting' },
+			{ articleTitle: 'Home Feed', articleId: 'android-home-feed' },
+			{ articleTitle: 'Sign-in issues', articleId: 'android-sign-in-issue' },
+			{ articleTitle: 'Recipe search results', articleId: 'android-recipe-search-results-issues' },
+			{ articleTitle: 'My saved recipes are missing', articleId: 'android-saved-recipes-missing' },
+			{ articleTitle: 'Printing recipes', articleId: 'android-printing-recipes' },
+		],
+	},
+	{
+		categoryId: 'vummly-android-app',
+		categoryName: 'Vummly Android App',
+		title: 'Meal Planner',
+		list: [
+			{ articleTitle: 'What is Virtual Pantry?', articleId: 'android-virtual-pantry' },
+			{ articleTitle: 'How does Virtual Pantry save me money?', articleId: 'android-how-does-vr-pantry-money' },
+			{
+				articleTitle: 'How does Vummly know when my ingredients are Running Low or Expiring?',
+				articleId: 'android-vummly-running-low-or-expiring',
+			},
+			{
+				articleTitle: 'Can I access my Virtual Pantry from other devices?',
+				articleId: 'android-acces-from-other-devices',
+			},
+			{
+				articleTitle: 'How do the Shopping List and Virtual Pantry work together?',
+				articleId: 'android-shopping-list-and-vr-pantry',
+			},
+		],
+	},
+	{
+		categoryId: 'publisher-help-topics',
+		categoryName: 'Publisher Help Topics',
+		title: 'Vummly for Publishers',
+		list: [
+			{ articleTitle: 'How Vummly works', articleId: 'how-vummly-works' },
+			{ articleTitle: 'Get discovered even faster', articleId: 'get-discovered' },
+			{ articleTitle: 'Best practices/guidelines', articleId: 'best-practices-guidelines' },
+			{ articleTitle: 'How to add the Vum button to your site', articleId: 'yumm-butt-ur-site' },
+			{ articleTitle: 'Adding the Vum button via plugins', articleId: 'plugins-yumm-butt' },
+			{ articleTitle: 'Add the Vum button via image hover', articleId: 'yumm-butt-via-img-hover' },
 		],
 	},
 ]
 
-export { section }
-
-const recommendations = [
-	{
-		recently: [
-			{
-				article: "Smart Thermometer won't charge in dock",
-				link: 'troubleshooting/thermometer-will-not-charge-in-dock',
-			},
-			{ article: 'How to cook the perfect turkey.', link: 'perfect-turkey-guide' },
-			{ article: 'Who can I contact if I have questions or need help?', link: 'contact-us' },
-			{ article: 'How long does a roast need to rest?', link: 'roast-need-to-rest' },
-			{ article: 'Contact us', link: 'getting-help/contact-us' },
-		],
-		related: [
-			{ article: 'How to cook the perfect turkey.', link: 'perfect-turkey-guide' },
-			{ article: 'Quick start guide', link: 'quick-start-guide' },
-			{
-				article: 'How do I connect/pair the Smart Thermometer to my phone?',
-				link: 'connect-thermometer-to-phone',
-			},
-			{ article: 'Inaccurate results', link: 'inaccurate-results' },
-			{ article: 'Can I air fry?', link: 'can-i-air-fry' },
-		],
-	},
-]
-
-export { recommendations }
+export { sections }

@@ -4,7 +4,7 @@ let list = [
 		title: 'Smart Thermometer',
 		dropdown: [
 			{ label: 'Overview', link: '/thermometer/overview' },
-			{ label: 'Support', link: '/support/categories/thermometer' },
+			{ label: 'Support', link: '/support/categories/smart-thermometer' },
 			{ label: 'Activate', link: '/thermometer/activate' },
 		],
 	},

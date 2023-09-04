@@ -2,34 +2,30 @@ import s from './searchInput.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
-const SearchInput = ({ way, title }) => {
+const SearchInput = ({ breadcrumbs, title, text, setText }) => {
 	const PF = process.env.REACT_APP_BASE_URL
-
-	const [searchVal, setSearchVal] = useState(null)
-	const searchHandle = e => {
-		setSearchVal(e)
-	}
-
 	const navigate = useNavigate()
+
+	const [searchVal, setSearchVal] = useState(text || '')
+
 	const handleEnter = event => {
 		event.key === 'Enter' &&
-			navigate(`${searchVal !== null ? '/support/search' : ''}`, { state: { data: searchVal } })
+			navigate(`${searchVal !== '' ? '/support/search' : ''}`, { state: { data: searchVal } })
 	}
 
 	return (
 		<div className={s.searchBar}>
-			<div className={s.searchBar__way}>
+			<div className={s.searchBar__breadcrumbs}>
 				<Link data-end={'>'} className={s.searchBar__link} to={'/support'}>
-					Yummly Help Center
+					Vummly Help Center
 				</Link>
-				{way &&
-					way.map((w, index) => (
-						<Link key={index} to={`/support/${w.link}`}>
-							<p data-end={'>'} className={s.searchBar__link}>
-								{w.wayname}
-							</p>
-						</Link>
-					))}
+				{breadcrumbs && (
+					<Link to={`/support/${breadcrumbs.categoryId}`}>
+						<p data-end={'>'} className={s.searchBar__link}>
+							{breadcrumbs.categoryName}
+						</p>
+					</Link>
+				)}
 				{title && title}
 			</div>
 			<div className={s.searchBar__search}>
@@ -42,7 +38,11 @@ const SearchInput = ({ way, title }) => {
 				</Link>
 				<input
 					onKeyDown={handleEnter}
-					onChange={e => searchHandle(e.target.value)}
+					onChange={e => {
+						setSearchVal(e.target.value)
+						setText && setText(e.target.value)
+					}}
+					value={searchVal}
 					className={s.search}
 					type="search"
 					placeholder="Search"

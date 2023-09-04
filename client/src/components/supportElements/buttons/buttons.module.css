@@ -1,0 +1,26 @@
+.list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 30px 25px;
+	padding: 60px 0px 80px;
+	border-bottom: 1px solid #e3e3e3;
+}
+
+.list__item {
+	border: 1px solid #3a9691;
+	width: 364px;
+	border-radius: 30px;
+	font-weight: 400;
+	font-size: 15px;
+	line-height: 22.5px;
+	cursor: pointer;
+	color: #3a9691;
+	padding: 20px 0px;
+	background: #fff;
+	transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.list__item:hover {
+	background: #3a9691;
+	color: #fff;
+}

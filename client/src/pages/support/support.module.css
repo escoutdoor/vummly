@@ -1,0 +1,59 @@
+.support {
+	display: block;
+	width: 100%;
+	background: #fff;
+}
+
+.container {
+}
+
+.support__search {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-position: center;
+	background-size: cover;
+	height: 300px;
+	background-image: url('http://localhost:3000/assets/images/img/support/supportMainPage.jpg');
+}
+
+.search__content {
+	display: flex;
+	position: relative;
+}
+
+.input {
+	font-family: 'europa';
+	width: 610px;
+	padding: 0 20px 0 40px;
+	border-radius: 30px;
+	outline: none;
+	background: #fff;
+	cursor: pointer;
+	height: 40px;
+	border: 1px solid #fff;
+	color: #666;
+	font-weight: 300;
+	line-height: 16.1px;
+	font-size: 14px;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.input:focus {
+	border: 1px solid #3a9691;
+	cursor: auto;
+}
+
+.input::placeholder {
+	font-family: 'europa';
+	color: #666;
+	font-weight: 300;
+	line-height: 16.1px;
+	font-size: 14px;
+}
+
+.icon {
+	top: 18%;
+	position: absolute;
+	left: 10px;
+}

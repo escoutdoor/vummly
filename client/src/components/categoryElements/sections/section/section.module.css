@@ -1,0 +1,31 @@
+.section {
+	flex: 0 0 45%;
+	margin-bottom: 60px;
+}
+
+.section__title {
+	font-size: 18px;
+	color: #4a4a4a;
+	line-height: 27px;
+	margin-bottom: 16px;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.list__item {
+	width: fit-content;
+}
+
+.list__item a {
+	font-size: 16px;
+	line-height: 26px;
+	color: #3a9691;
+}
+
+.list__item:hover a {
+	text-decoration: underline;
+}

@@ -1,0 +1,11 @@
+.category {
+	display: block;
+	width: 100%;
+	padding: 20px 0px 60px 0px;
+}
+
+.category__title {
+	color: #323232;
+	font-size: 32px;
+	line-height: 39.36px;
+}

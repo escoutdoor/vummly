@@ -1,0 +1,17 @@
+.footer {
+	width: 100%;
+	padding: 30px 5%;
+	border-top: 1px solid #e3e3e3;
+}
+
+.title {
+	color: #7d7d7d;
+	display: inline-block;
+	font-size: 15px;
+	line-height: 22.5px;
+	transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.2s;
+}
+
+.title:hover {
+	text-decoration: underline;
+}

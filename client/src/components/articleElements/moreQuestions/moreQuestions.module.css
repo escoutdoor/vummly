@@ -1,0 +1,22 @@
+.more {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding: 30px 0;
+}
+
+.title {
+	font-size: 20px;
+	margin-bottom: 8px;
+}
+
+.button {
+	color: #3a9691;
+	font-size: 14px;
+}
+
+.button:hover {
+	text-decoration: underline;
+}

@@ -3,26 +3,37 @@ const Article = require('./../models/Article')
 
 // get an article
 
-router.get('/one/:idPage', async (req, res) => {
+router.get('/getOne/:id', async (req, res) => {
+	const id = req.params.id
+
 	try {
-		const article = await Article.aggregate([
-			{ $match: { idPage: req.params.idPage } },
+		const [article] = await Article.aggregate([
+			{ $match: { id } },
 			{
 				$lookup: {
 					from: 'sections',
-					localField: 'idPage',
-					foreignField: 'list.link',
+					localField: 'id',
+					foreignField: 'list.articleId',
 					as: 'section',
 				},
 			},
-			{ $limit: 1 },
+			{
+				$addFields: {
+					section: { $arrayElemAt: ['$section', 0] },
+				},
+			},
+			{
+				$addFields: {
+					categoryId: '$section.categoryId',
+					categoryName: '$section.categoryName',
+					section: '$section.list',
+				},
+			},
 		])
 
-		res.status(200).json({
-			article: article[0],
-		})
-	} catch (err) {
-		res.status(500).json(err)
+		res.status(200).json(article)
+	} catch (error) {
+		res.status(404).json(error)
 	}
 })
 
@@ -45,59 +56,46 @@ router.post('/postArticle', async (req, res) => {
 	}
 })
 
-router.put('/:idPage', async (req, res) => {
-	try {
-		const article = await Article.findOne({ idPage: req.params.idPage })
-		if (article.idPage === req.params.idPage) {
-			await article.updateOne({ $set: req.body })
-			res.status(200).json('the post has been updated')
-		} else {
-			res.status(403).json('You can update only your post')
-		}
-	} catch (err) {
-		res.status(500).json(err)
-	}
-})
-
 // get all
 
 router.get('/getAll', async (req, res) => {
 	try {
-		const data = await Article.find({})
-		res.status(200).json(data)
+		const { category } = req.query
+
+		const articles = await Article.aggregate([
+			{
+				$lookup: {
+					from: 'sections',
+					localField: 'id',
+					foreignField: 'list.articleId',
+					as: 'section',
+				},
+			},
+			{
+				$match: category ? { 'section.categoryId': category } : {},
+			},
+			{
+				$addFields: {
+					section: { $arrayElemAt: ['$section', 0] },
+				},
+			},
+			{
+				$addFields: {
+					categoryId: '$section.categoryId',
+					categoryName: '$section.categoryName',
+				},
+			},
+			{
+				$project: {
+					section: 0,
+				},
+			},
+		])
+
+		res.status(200).json(articles)
 	} catch (err) {
 		res.status(500).json(err)
 	}
-})
-
-// get all / by category using switch case
-
-router.get('/:filter', async (req, res) => {
-	let data = []
-	switch (req.params.filter) {
-		case 'all':
-			data = await Article.find({})
-			break
-		case 'thermometer':
-			data = await Article.find({ way: { $elemMatch: { link: 'categories/thermometer' } } })
-			break
-		case 'website-help-topics':
-			data = await Article.find({ way: { $elemMatch: { link: 'categories/website-help-topics' } } })
-			break
-		case 'sub':
-			data = await Article.find({ way: { $elemMatch: { link: 'categories/sub' } } })
-			break
-		case 'ios-app':
-			data = await Article.find({ way: { $elemMatch: { link: 'categories/ios-app' } } })
-			break
-		case 'android-app':
-			data = await Article.find({ way: { $elemMatch: { link: 'categories/android-app' } } })
-			break
-		case 'publisher-help-topics':
-			data = await Article.find({ way: { $elemMatch: { link: 'categories/publisher-help-topics' } } })
-			break
-	}
-	res.status(200).json(data)
 })
 
 module.exports = router

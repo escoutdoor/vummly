@@ -1,0 +1,11 @@
+.navbar {
+	padding: 20px 5% 10px;
+	width: 100%;
+	background: #fff;
+	border-bottom: 1px solid #e3e3e3;
+}
+
+.suppNavbar img {
+	width: 99px;
+	height: 37px;
+}

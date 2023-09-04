@@ -10,7 +10,6 @@ dotenv.config()
 
 const articles = require('./routes/articles')
 const sections = require('./routes/sections')
-const categories = require('./routes/categories')
 const collections = require('./routes/collections')
 const recipes = require('./routes/recipes')
 const users = require('./routes/users')
@@ -27,7 +26,6 @@ const shopping = require('./routes/shopping')
 // support
 app.use('/server/support/articles', articles)
 app.use('/server/support/sections', sections)
-app.use('/server/support/categories', categories)
 
 // recipe
 app.use('/server/recipe', recipes)

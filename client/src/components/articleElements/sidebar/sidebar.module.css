@@ -1,0 +1,32 @@
+.sidebar {
+	flex: 0 0 17%;
+}
+
+.title {
+	font-size: 15px;
+	line-height: 22.5px;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.list__item {
+	padding: 10px;
+	transition: all 0.1s cubic-bezier(0.39, 0.575, 0.565, 1);
+	font-weight: 300;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.list__item:hover {
+	background: #3a9691;
+	color: #fff;
+}
+
+.list__item.active {
+	background: #3a9691;
+	color: #fff;
+}
