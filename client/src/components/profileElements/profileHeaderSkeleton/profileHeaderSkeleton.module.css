@@ -1,0 +1,22 @@
+.ava {
+	margin-bottom: 5px;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	gap: 42px;
+}
+
+.detailsUser {
+	display: flex;
+	flex-direction: column;
+}
+
+.name {
+	margin-bottom: 8px;
+}
+
+.description {
+	margin-bottom: 15px;
+}

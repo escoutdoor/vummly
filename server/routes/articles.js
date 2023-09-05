@@ -37,27 +37,6 @@ router.get('/getOne/:id', async (req, res) => {
 	}
 })
 
-router.get('/all', async (req, res) => {
-	try {
-		const article = await Article.find({})
-		res.status(200).json(article)
-	} catch (err) {
-		res.status(404).json(err)
-	}
-})
-
-router.post('/postArticle', async (req, res) => {
-	const newArticle = await new Article(req.body)
-	try {
-		const saveArticle = await newArticle.save()
-		res.status(200).json(saveArticle)
-	} catch (err) {
-		res.status(500).json(err)
-	}
-})
-
-// get all
-
 router.get('/getAll', async (req, res) => {
 	try {
 		const { category } = req.query

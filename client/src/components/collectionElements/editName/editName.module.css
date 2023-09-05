@@ -1,0 +1,33 @@
+.edit__name {
+	display: flex;
+	flex-direction: column;
+	min-width: 342px;
+	align-items: center;
+	cursor: pointer;
+}
+
+.name {
+	font-size: 32px;
+	color: #fff;
+	line-height: 48px;
+	font-weight: 100;
+}
+
+.name.active {
+	display: none;
+}
+
+.input {
+	color: #fff;
+	font-weight: 100;
+	line-height: 48px;
+	text-align: center;
+	font-size: 32px;
+	border-bottom: 1px solid #bababa;
+	padding-bottom: 5px;
+	display: none;
+}
+
+.input.active {
+	display: block;
+}

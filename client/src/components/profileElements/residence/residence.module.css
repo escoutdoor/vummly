@@ -1,0 +1,8 @@
+.residence {
+	display: flex;
+	color: #bababa;
+}
+
+.residence > div:last-child {
+	margin-left: 3px;
+}

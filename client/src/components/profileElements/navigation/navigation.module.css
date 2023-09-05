@@ -1,0 +1,26 @@
+.navbar {
+	display: flex;
+	gap: 22px;
+	margin: 52px 0px 30px;
+}
+
+.navbar__item {
+	text-transform: uppercase;
+	color: #707070;
+	margin-right: 22px;
+	padding-bottom: 10px;
+	letter-spacing: 3px;
+	font-size: 12px;
+	line-height: 12px;
+	transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	cursor: pointer;
+}
+
+.navbar__item.active {
+	color: #232323;
+	border-bottom: 3px solid #3a9691;
+}
+
+.navbar__item:hover {
+	color: #3a9691;
+}

@@ -1,0 +1,38 @@
+.header {
+	display: flex;
+	gap: 42px;
+}
+
+.avatar {
+	height: 124px;
+	width: 124px;
+	object-fit: cover;
+	border-radius: 100%;
+}
+
+.details {
+}
+
+.name {
+	display: block;
+	line-height: 51px;
+	font-size: 34px;
+	color: #232323;
+}
+
+.description {
+	color: #707070;
+	font-size: 16px;
+	line-height: 25px;
+	margin-bottom: 15px;
+}
+
+.location {
+	display: flex;
+	gap: 2px;
+	color: #bababa;
+}
+
+.location__text {
+	font-size: 14px;
+}

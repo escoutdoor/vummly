@@ -1,0 +1,72 @@
+.actions {
+	display: flex;
+	justify-content: right;
+}
+
+.container {
+	position: relative;
+}
+
+.text {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	text-transform: capitalize;
+	cursor: pointer;
+}
+
+.title {
+	font-size: 14px;
+	color: #232323;
+	line-height: 40px;
+}
+
+.icon {
+}
+
+.dropdown {
+	display: flex;
+	flex-direction: column;
+	text-transform: capitalize;
+	background: #fff;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	z-index: 99;
+	position: absolute;
+	right: 0;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.dropdown.active {
+	visibility: visible;
+	opacity: 1;
+}
+
+.dropdown__item {
+	padding: 15px 25px;
+	transition: color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95),
+		background-color 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.dropdown__item.active {
+	color: #3a9691;
+	background-image: url(http://localhost:3000/assets/images/icons/recipes/check.svg);
+	background-repeat: no-repeat;
+	background-position: calc(100% - 5px) center;
+}
+
+.dropdown__item:hover {
+	background-color: #f1f1f1;
+	color: #3a9691;
+	cursor: pointer;
+}
+
+.dropdown__item.active:hover {
+	background: #f1f1f1;
+	background-image: url(http://localhost:3000/assets/images/icons/recipes/check.svg);
+	background-repeat: no-repeat;
+	background-position: calc(100% - 5px) center;
+}

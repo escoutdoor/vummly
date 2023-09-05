@@ -1,0 +1,69 @@
+.header {
+	display: flex;
+	gap: 42px;
+}
+
+.change__avatar {
+	position: relative;
+}
+
+.avatar {
+	height: 124px;
+	width: 124px;
+	object-fit: cover;
+	border-radius: 100%;
+}
+
+.avatar__click {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 4;
+	height: 100%;
+	width: 100%;
+}
+
+.avatar__input {
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.logout__button {
+	font-size: 14px;
+	padding: 0px 32px 2px;
+	font-weight: 700;
+	color: #3a9691;
+	border: 2px solid #3a9691;
+	border-radius: 42px;
+	height: 30px;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.logout__button:hover {
+	color: #fff;
+	background: #3a9691;
+}
+
+.details {
+}
+
+.description {
+	color: #707070;
+	font-size: 16px;
+	line-height: 25px;
+	margin-bottom: 15px;
+}
+
+.location {
+	display: flex;
+	gap: 2px;
+	color: #bababa;
+}
+
+.location__text {
+	font-size: 14px;
+}

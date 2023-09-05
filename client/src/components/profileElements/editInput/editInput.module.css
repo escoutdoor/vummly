@@ -1,0 +1,30 @@
+.edit__input {
+}
+
+.name {
+	line-height: 51px;
+	font-size: 34px;
+	color: #232323;
+	transition: all 0.2s ease;
+	cursor: pointer;
+}
+
+.name:hover {
+	color: #3a9691;
+}
+
+.name.active {
+	display: none;
+}
+
+.input {
+	display: none;
+	line-height: 51px;
+	font-size: 34px;
+	color: #232323;
+	font-weight: 700;
+}
+
+.input.active {
+	display: block;
+}

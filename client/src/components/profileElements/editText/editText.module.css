@@ -1,0 +1,43 @@
+.edit__text {
+}
+
+.text {
+	color: #707070;
+	font-size: 16px;
+	line-height: 25px;
+	display: none;
+	cursor: pointer;
+	margin-bottom: 15px;
+}
+
+.text.active {
+	display: block;
+}
+
+.text.active:hover {
+	color: #3a9691;
+}
+
+.description {
+	display: none;
+}
+
+.description.active {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	margin-bottom: 5px;
+}
+
+.textarea {
+	resize: none;
+	width: 300px;
+	outline: none;
+	border-width: 0px 0px 1px 0px;
+	border-color: #e3e3e3;
+}
+
+.counter {
+	color: #707070;
+	font-size: 11px;
+}
