@@ -1,0 +1,35 @@
+.sortingbar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid #e3e3e3;
+}
+
+.sortingbar__left {
+	display: flex;
+	gap: 15px;
+}
+
+.title {
+	color: #242424;
+	font-size: 14px;
+	padding: 5px 5px 5px 0;
+	cursor: pointer;
+	position: relative;
+}
+
+.title.reset::before {
+	content: '';
+	width: 2px;
+	height: 16px;
+	position: absolute;
+	top: 7px;
+	margin-right: 5px;
+	right: 100%;
+	background: #e3e3e3;
+}
+
+.title.reset {
+	color: #3a9691;
+	padding-left: 5px;
+}

@@ -1,0 +1,39 @@
+.search__recipes {
+	display: flex;
+	justify-content: center;
+}
+
+.content {
+	position: relative;
+}
+
+.searchbar {
+	display: flex;
+	align-items: center;
+	position: relative;
+	margin: 18px 0;
+}
+
+.icon {
+	position: absolute;
+	left: 14px;
+}
+
+.input {
+	padding: 0px 18px 0px 54px;
+	font-family: 'europa', sans-serif;
+	font-size: 18px;
+	color: #4a4a4a;
+	font-weight: 700;
+	height: 55px;
+	width: 600px;
+	border-radius: 39px;
+	background-color: #fff;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12), 0 0 1px rgba(0, 0, 0, 0.05) inset;
+}
+
+.input::placeholder {
+	font-size: 16px;
+	color: #bababa;
+	font-weight: 600;
+}

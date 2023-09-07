@@ -1,0 +1,47 @@
+.menu {
+	position: absolute;
+	visibility: hidden;
+	opacity: 0;
+	z-index: 999;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	width: 100%;
+}
+
+.menu.active {
+	padding: 24px 0px 32px;
+	visibility: visible;
+	opacity: 1;
+
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+	background: #fff;
+}
+
+.title {
+	color: #bababa;
+	font-size: 12px;
+	margin-bottom: 18px;
+	font-weight: 700;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.list {
+}
+
+.list__item {
+	font-size: 16px;
+	color: #4a4a4a;
+	text-transform: capitalize;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.list__item a {
+	display: flex;
+	padding: 10px 35px;
+}
+
+.list__item:hover {
+	background: #f1f1f1;
+	border-radius: 4px;
+}

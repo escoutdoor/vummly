@@ -20,7 +20,7 @@ const Navbar = money => {
 					>
 						overview
 					</Link>
-					<Link className={s.button} to={'/support/categories/thermometer'}>
+					<Link className={s.button} to={'/support/categories/smart-thermometer'}>
 						support
 					</Link>
 				</div>

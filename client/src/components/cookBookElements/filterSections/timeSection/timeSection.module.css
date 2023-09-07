@@ -1,0 +1,14 @@
+.time {
+	color: #707070;
+}
+
+.title {
+	font-size: 16px;
+	line-height: 48px;
+}
+
+.buttons {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}

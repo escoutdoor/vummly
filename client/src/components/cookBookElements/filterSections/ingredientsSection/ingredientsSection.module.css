@@ -1,0 +1,8 @@
+.section {
+	display: flex;
+	justify-content: space-between;
+}
+
+.section__item {
+	position: relative;
+}

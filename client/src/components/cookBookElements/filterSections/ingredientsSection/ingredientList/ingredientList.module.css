@@ -1,0 +1,30 @@
+.list {
+	margin-top: 16px;
+}
+
+.list__item {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+	padding-left: 12px;
+	border-radius: 28px;
+	transition: all 0.2s ease;
+}
+
+.list__item:hover {
+	background: #f5f5f5;
+}
+
+.ingredient {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 35px;
+}
+
+.icon {
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
+}

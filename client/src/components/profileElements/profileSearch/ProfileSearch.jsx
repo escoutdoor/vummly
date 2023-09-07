@@ -3,7 +3,7 @@ import s from './profileSearch.module.css'
 import SearchMenu from './searchMenu/SearchMenu'
 import { useEffect, useState } from 'react'
 
-const ProfileSearch = ({ recipes }) => {
+const ProfileSearch = ({ recipes, title }) => {
 	const PF = process.env.REACT_APP_BASE_URL
 	const [text, setText] = useState('')
 	const [active, setActive] = useState(false)
@@ -25,7 +25,7 @@ const ProfileSearch = ({ recipes }) => {
 					value={text}
 					onChange={e => handleText(e.target.value)}
 					placeholder="Search My Vums"
-					type="text"
+					type={title}
 					className={s.input}
 				/>
 			</div>

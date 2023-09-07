@@ -62,7 +62,9 @@ const Profile = () => {
 					)}
 					{isLoggedIn && <Navigation setSection={setSection} section={section} />}
 				</div>
-				{isLoggedIn && section === 'saved recipes' && <ProfileSearch recipes={recipes} />}
+				{isLoggedIn && section === 'saved recipes' && (
+					<ProfileSearch recipes={recipes} title={'Search My Vums'} />
+				)}
 				<div className={s.section}>
 					{section === 'saved recipes' && (
 						<SavedRecipes user={user} recipes={recipes} setRecipes={setRecipes} isLoggedIn={isLoggedIn} />

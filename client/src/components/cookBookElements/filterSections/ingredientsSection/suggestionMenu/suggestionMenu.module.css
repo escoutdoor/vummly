@@ -1,0 +1,48 @@
+.menu {
+	visibility: hidden;
+	background: #fff;
+	opacity: 0;
+	height: 0;
+	width: 100%;
+	transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+	position: absolute;
+	z-index: 99;
+}
+
+.menu.active {
+	opacity: 1;
+	height: auto;
+	visibility: visible;
+}
+
+.menu__item {
+	display: flex;
+	align-items: center;
+	padding-left: 24px;
+	gap: 10px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.menu__item:hover {
+	background: #f5f5f5;
+}
+
+.plus {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-bottom: 5px;
+	font-weight: 700;
+	color: #3a9691;
+	border-radius: 50%;
+	border: 2px solid #3a9691;
+	width: 16px;
+	height: 16px;
+}
+
+.ingredient {
+	line-height: 36.4px;
+	font-size: 14px;
+}

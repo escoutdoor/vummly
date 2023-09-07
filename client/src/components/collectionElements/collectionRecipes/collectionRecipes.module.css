@@ -1,3 +1,8 @@
 .collection__recipes {
 	margin-top: 42px;
 }
+
+.menu {
+	display: flex;
+	justify-content: right;
+}

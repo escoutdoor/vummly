@@ -1,0 +1,23 @@
+.header {
+	padding: 87px 20px 24px 0;
+}
+
+.info {
+	display: flex;
+	align-items: center;
+	gap: 42px;
+	max-width: 727px;
+}
+
+.details {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.socials {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}

@@ -1,0 +1,16 @@
+.section {
+	visibility: hidden;
+	height: 0;
+	opacity: 0;
+	padding: 0;
+	transition: padding 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+
+.section.active {
+	visibility: visible;
+	height: auto;
+	opacity: 1;
+	padding: 64px 0px 24px;
+	max-width: 880px;
+	margin: 0 auto;
+}

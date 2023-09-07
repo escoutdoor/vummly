@@ -1,0 +1,19 @@
+.button {
+	font-size: 14px;
+	background-color: #fff;
+	border-radius: 42px;
+	text-align: center;
+	padding: 10px 24px;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	text-transform: capitalize;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.button.active {
+	background: #e3e3e3;
+}
+
+.button:hover {
+	background-color: #f1f1f1;
+}

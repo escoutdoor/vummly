@@ -1,7 +1,7 @@
 import axios from 'axios'
 import s from './collections.module.css'
 import { useEffect, useState } from 'react'
-import SortMenu from './sortMenu/SortMenu'
+import SortMenu from '../../../../sortMenu/SortMenu'
 import CollectionList from './collectionList/CollectionList'
 import RecipeItemSkeleton from '../../../../recipeElements/recipeItemSkeleton/RecipeItemSkeleton'
 
@@ -32,7 +32,13 @@ const Collections = ({ isLoggedIn, user }) => {
 		<div className={s.collections} onClick={() => setActiveMenu(false)}>
 			<div className={s.collections__header}>
 				<h1 className={s.title}>Collections</h1>
-				<SortMenu sortBy={sortBy} setSortBy={setSortBy} active={activeMenu} setActive={setActiveMenu} />
+				<SortMenu
+					sortBy={sortBy}
+					setSortBy={setSortBy}
+					active={activeMenu}
+					setActive={setActiveMenu}
+					options={['last modified', 'collection name', 'last created']}
+				/>
 			</div>
 			{loaded ? (
 				<CollectionList

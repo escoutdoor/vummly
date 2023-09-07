@@ -17,6 +17,7 @@ import {
 	Ideas,
 	MealPlannerSupport,
 	Browse,
+	CookBook,
 } from './pages/pages'
 import SupportLayout from './layouts/support/SupportLayout'
 import MainLayout from './layouts/main/MainLayout'
@@ -61,7 +62,8 @@ function App() {
 
 				<Route path={'/'} element={<MainLayout />}>
 					<Route path={'recipe/:recipeId'} element={<Recipe />} />
-					<Route path={'recipes'} element={<SearchRecipe />} />
+					{/* <Route path={'recipes'} element={<SearchRecipe />} /> */}
+					<Route path={'recipes'} element={<CookBook />} />
 					<Route path={''} element={<MyFeed />} />
 					<Route path={'page/:id'} element={<Resource />} />
 					<Route path={'profile/:userId'} element={<Profile />} />

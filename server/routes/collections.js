@@ -308,7 +308,6 @@ router.get('/recipes/:userId', async (req, res) => {
 				},
 			},
 			{ $sort: { addedToCollection: -1 } },
-			{ $limit: 6 },
 		])
 
 		res.status(200).json(recipes)

@@ -1,0 +1,41 @@
+.header {
+	padding: 87px 20px 24px 0;
+}
+
+.info {
+	display: flex;
+	gap: 42px;
+	align-items: center;
+	max-width: 727px;
+}
+
+.icon {
+	max-width: 148px;
+	max-height: 148px;
+}
+
+.details {
+}
+
+.title {
+	color: #232323;
+	font-size: 34px;
+	line-height: 51px;
+}
+
+.description {
+	font-size: 16px;
+	color: #707070;
+	line-height: 25px;
+	margin-bottom: 15px;
+}
+
+.socials {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.social {
+	padding: 0px 7px 0px 0px;
+}

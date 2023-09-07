@@ -290,9 +290,9 @@ router.get(`/all`, async (req, res) => {
 
 // page
 
-router.get('/page/:page', async (req, res) => {
+router.get('/resource/:page', async (req, res) => {
 	try {
-		const page = await Recipe.aggregate([
+		const resource = await Recipe.aggregate([
 			{ $match: { 'resource.link': req.params.page } },
 			{
 				$lookup: {
@@ -318,7 +318,7 @@ router.get('/page/:page', async (req, res) => {
 				},
 			},
 		])
-		res.status(200).json(page)
+		res.status(200).json(resource)
 	} catch (err) {
 		res.status(500).json(err)
 	}
