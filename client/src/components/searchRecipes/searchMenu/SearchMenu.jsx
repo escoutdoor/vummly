@@ -46,7 +46,8 @@ const SearchMenu = ({ active, setActive }) => {
 							<p
 								key={index}
 								onClick={() => nav('/recipes', { state: { query: item } })}
-								className={s.list__item}>
+								className={s.list__item}
+							>
 								{item}
 							</p>
 						))}

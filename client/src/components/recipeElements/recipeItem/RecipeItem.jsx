@@ -7,7 +7,7 @@ import RecipeItemSkeleton from '../recipeItemSkeleton/RecipeItemSkeleton'
 
 const RecipeItem = ({ recipe, loading, setLoading, rating }) => {
 	const PF = process.env.REACT_APP_BASE_URL
-	//
+
 	const ratingStars = {
 		itemShapes: Star,
 		activeFillColor: '#e16120',
@@ -26,13 +26,20 @@ const RecipeItem = ({ recipe, loading, setLoading, rating }) => {
 			className={s.recipe}
 			onClick={() => {
 				loading && setLoading(false)
-			}}>
+			}}
+		>
 			{inView ? (
 				<div>
 					<Link to={`/recipe/${recipe.id}`}>
 						<div title={recipe.title} className={s.imgBlock}>
 							<img className={s.recipeImg} src={`${PF}images/img/recipes/${recipe.id}.webp`} alt="" />
-							<div className={s.ingredients}>{recipe.ingredients.metric.map(ing => (recipe.ingredients.metric[0] !== ing ? ', ' + ing.ingredient.toLowerCase() : ing.ingredient.toLowerCase()))}</div>
+							<div className={s.ingredients}>
+								{recipe.ingredients.metric.map(ing =>
+									recipe.ingredients.metric[0] !== ing
+										? ', ' + ing.ingredient.toLowerCase()
+										: ing.ingredient.toLowerCase()
+								)}
+							</div>
 						</div>
 					</Link>
 					<div className={s.details}>
@@ -46,7 +53,13 @@ const RecipeItem = ({ recipe, loading, setLoading, rating }) => {
 								{recipe.resource.name}
 							</span>
 						</Link>
-						<Rating halfFillMode="svg" className={s.rating} readOnly={true} value={rating || 0} itemStyles={ratingStars} />
+						<Rating
+							halfFillMode="svg"
+							className={s.rating}
+							readOnly={true}
+							value={rating || 0}
+							itemStyles={ratingStars}
+						/>
 					</div>
 				</div>
 			) : (

@@ -78,7 +78,8 @@ const RecipeIngredients = ({
 								measurement === 'us'
 									? `${s.measurementSelect__item} ${s.active}`
 									: s.measurementSelect__item
-							}>
+							}
+						>
 							us
 						</li>
 						<li
@@ -87,7 +88,8 @@ const RecipeIngredients = ({
 								measurement === 'metric'
 									? `${s.measurementSelect__item} ${s.active}`
 									: s.measurementSelect__item
-							}>
+							}
+						>
 							metric
 						</li>
 					</ul>
@@ -99,7 +101,7 @@ const RecipeIngredients = ({
 			<div className={s.list}>
 				{loaded
 					? measurement === 'us'
-						? recipe.ingredients.us?.map((ingredient, index) => (
+						? recipe.ingredients?.us?.map((ingredient, index) => (
 								<IngredientListItem
 									key={index}
 									ingredient={ingredient}
@@ -108,7 +110,7 @@ const RecipeIngredients = ({
 								/>
 						  ))
 						: measurement === 'metric'
-						? recipe.ingredients.metric.map((ingredient, index) => (
+						? recipe.ingredients?.metric.map((ingredient, index) => (
 								<IngredientListItem
 									key={index}
 									ingredient={ingredient}
@@ -142,7 +144,8 @@ const RecipeIngredients = ({
 								? deleteFromCollection('Scheduled and Made')
 								: addToCollection('Scheduled and Made')
 							: setActiveModal(true)
-					}>
+					}
+				>
 					<h1 className={s.checkButton__status}>{madeIt ? 'Made it!' : 'Did you make this?'}</h1>
 					<img
 						src={

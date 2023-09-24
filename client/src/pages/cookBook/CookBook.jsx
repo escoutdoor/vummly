@@ -58,6 +58,16 @@ const CookBook = () => {
 		])
 	}, [searchValue, recipes])
 
+	useEffect(() => {
+		const prev = JSON.parse(localStorage.getItem('search-history')) || []
+		const act = prev
+			? JSON.stringify(
+					[query, ...prev.slice(0, 5)].filter((value, index, array) => array.indexOf(value) === index)
+			  )
+			: []
+		query && query !== '' && localStorage.setItem('search-history', act)
+	}, [])
+
 	return (
 		<div className={s.cookbook} onClick={() => setActiveToolTip(false)}>
 			<div className="wrap1160">
