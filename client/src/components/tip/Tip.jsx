@@ -10,7 +10,10 @@ const Tip = ({ tip }) => {
 				<span className={s.questionStatus}>{active ? '-' : '+'}</span>
 				<h1 className={s.title}>{tip.title}</h1>
 			</div>
-			<div className={active ? `${s.text} ${s.active}` : s.text} onClick={e => e.stopPropagation()}>
+			<div
+				className={active ? `${s.text} ${s.active}` : s.text}
+				onClick={e => e.stopPropagation()}
+			>
 				{tip.text?.map(line => (
 					<p key={line.id} className={s.textline}>
 						{line.textline}
